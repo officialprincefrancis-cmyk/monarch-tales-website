@@ -11,8 +11,7 @@
   <style>
     :root {
       --bg: #fbf7f2;
-      --bg-soft: #f6efe6;
-      --card: rgba(255, 253, 249, 0.92);
+      --card: rgba(255, 253, 249, 0.94);
       --text: #2b211c;
       --muted: #6d5f57;
       --gold: #b6915f;
@@ -65,6 +64,7 @@
       align-items: center;
       gap: 20px;
       padding: 18px 0;
+      position: relative;
     }
 
     .brand {
@@ -84,6 +84,45 @@
       color: var(--muted);
     }
 
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
     .btn {
       display: inline-block;
       padding: 13px 24px;
@@ -92,6 +131,7 @@
       cursor: pointer;
       font-size: 0.96rem;
       transition: 0.25s ease;
+      text-align: center;
     }
 
     .btn-primary {
@@ -217,7 +257,7 @@
 
     .section-head {
       text-align: center;
-      max-width: 780px;
+      max-width: 800px;
       margin: 0 auto 40px;
     }
 
@@ -243,8 +283,9 @@
     .receives-grid,
     .stories-grid,
     .reassure-grid,
-    .contact-grid,
-    .footer-grid {
+    .pricing-grid,
+    .footer-grid,
+    .contact-grid {
       display: grid;
       gap: 22px;
     }
@@ -290,12 +331,16 @@
       margin-bottom: 10px;
     }
 
-    .card p {
+    .card p, .card li {
       color: var(--muted);
       font-size: 0.97rem;
     }
 
-    .steps {
+    .steps,
+    .receives-grid,
+    .stories-grid,
+    .reassure-grid,
+    .pricing-grid {
       grid-template-columns: repeat(3, 1fr);
     }
 
@@ -312,22 +357,18 @@
       box-shadow: var(--shadow);
     }
 
-    .receives-grid,
-    .stories-grid,
-    .reassure-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
     .receives-grid .card,
     .stories-grid .card,
-    .reassure-grid .card {
+    .reassure-grid .card,
+    .pricing-grid .card {
       position: relative;
       overflow: hidden;
     }
 
     .receives-grid .card::before,
     .stories-grid .card::before,
-    .reassure-grid .card::before {
+    .reassure-grid .card::before,
+    .pricing-grid .card::before {
       content: "";
       width: 46px;
       height: 46px;
@@ -336,6 +377,62 @@
       position: absolute;
       top: 18px;
       right: 18px;
+    }
+
+    .price-name {
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .price {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      color: var(--gold-dark);
+      margin: 10px 0 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
+    }
+
+    .testimonial-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .testimonial-box blockquote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .testimonial-box p {
+      color: var(--muted);
+      font-size: 0.96rem;
     }
 
     .faq-grid {
@@ -409,6 +506,13 @@
       border-radius: 28px;
       padding: 28px;
       box-shadow: var(--shadow);
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
     }
 
     .cta {
@@ -485,6 +589,7 @@
       .receives-grid,
       .stories-grid,
       .reassure-grid,
+      .pricing-grid,
       .trust-grid,
       .contact-grid,
       .footer-grid {
@@ -492,16 +597,38 @@
       }
     }
 
-    @media (max-width: 720px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: inline-flex;
       }
 
       .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 14px;
       }
 
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 720px) {
       .hero {
         padding-top: 58px;
       }
@@ -510,7 +637,8 @@
       .trust-item,
       .hero-card,
       .contact-box,
-      .contact-card {
+      .contact-card,
+      .testimonial-box {
         padding: 22px;
       }
     }
@@ -520,10 +648,20 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">Monarch Tales</a>
-      <nav class="nav-links">
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <nav class="nav-links" id="mobileNav">
         <a href="#about">About</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#receive">What You Receive</a>
+        <a href="#pricing">Pricing</a>
         <a href="#stories">Our Stories</a>
         <a href="#contact">Contact</a>
         <a href="start.html" class="btn btn-primary">Start a Story</a>
@@ -619,7 +757,7 @@
           <div class="card">
             <h3>Where we’re going</h3>
             <p>
-              We begin with personalized books in physical and digital form. Over time, the wider vision can grow into audiobooks, animation, and digital story experiences.
+              We begin with personalized books in physical and digital form. Over time, the wider vision can grow into audiobooks, animations, and digital story experiences.
             </p>
           </div>
         </div>
@@ -638,17 +776,17 @@
         <div class="steps">
           <div class="card">
             <div class="step-number">1</div>
-            <h3>Begin with a simple request</h3>
+            <h3>Choose your package</h3>
             <p>
-              Start with a short form that helps us understand the basics — your child, the kind of story experience you want, and how you’d like us to guide the process.
+              Start by selecting the package that best fits the kind of story experience, keepsake depth, and emotional value you want.
             </p>
           </div>
 
           <div class="card">
             <div class="step-number">2</div>
-            <h3>Share the deeper story details</h3>
+            <h3>Share the child’s world</h3>
             <p>
-              Next, we gather the emotional and personal details that shape the heart of the book — your child’s personality, meaningful relationships, and the truths you want the story to carry.
+              We gather the story details, emotional direction, and character information that help us shape something that feels deeply personal.
             </p>
           </div>
 
@@ -656,7 +794,7 @@
             <div class="step-number">3</div>
             <h3>Receive a keepsake worth remembering</h3>
             <p>
-              Your Monarch Tale is then shaped into a warm, beautifully crafted experience designed to feel personal, gift-worthy, and meaningful enough to keep.
+              Your Monarch Tale is shaped into a warm, beautifully crafted experience designed to feel personal, gift-worthy, and meaningful enough to keep.
             </p>
           </div>
         </div>
@@ -683,16 +821,122 @@
           <div class="card">
             <h3>A keepsake with emotional value</h3>
             <p>
-              From dedication pages to story meaning, each Monarch Tale is created to feel gift-worthy, memorable, and worth returning to.
+              From dedication pages to character identity and story meaning, each Monarch Tale is designed to be remembered.
             </p>
           </div>
 
           <div class="card">
             <h3>A guided experience for parents</h3>
             <p>
-              We don’t leave families guessing. The process is designed to feel simple, thoughtful, and carefully guided from beginning to end.
+              We do not leave families guessing. The journey is designed to feel calm, clear, and carefully guided from beginning to end.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2>The Monarch Package System</h2>
+          <p>
+            A clean, scalable structure designed to give families different levels of depth, emotion, and premium experience.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="card">
+            <h3 class="price-name">The Seed</h3>
+            <div class="price">$49</div>
+            <p>Entry point, accessibility, and a beautiful first step into the Monarch Tales world.</p>
+            <ul class="feature-list">
+              <li>Child’s name in story</li>
+              <li>Character appearance customization</li>
+              <li>Dedication page</li>
+              <li>Digital version (PDF)</li>
+            </ul>
+            <a href="start.html?plan=basic" class="btn btn-primary">Select Basic</a>
+          </div>
+
+          <div class="card">
+            <h3 class="price-name">The Becoming</h3>
+            <div class="price">$69</div>
+            <p>Your core package and strongest value tier for families who want a fuller keepsake experience.</p>
+            <ul class="feature-list">
+              <li>Everything in Basic</li>
+              <li>Custom illustrated character</li>
+              <li>Printed hardcover book</li>
+              <li>Child’s name integrated deeper into story</li>
+              <li>Audio narration</li>
+            </ul>
+            <a href="start.html?plan=premium" class="btn btn-primary">Select Premium</a>
+          </div>
+
+          <div class="card">
+            <h3 class="price-name">The Legacy</h3>
+            <div class="price">$99–$120</div>
+            <p>High emotion, high value, and premium positioning for milestone moments and deeper gift experiences.</p>
+            <ul class="feature-list">
+              <li>Everything in Premium</li>
+              <li>Animated story</li>
+              <li>Personalized birthday message from character</li>
+              <li>Custom song with child’s name</li>
+              <li>Premium packaging feel</li>
+            </ul>
+            <a href="start.html?plan=royal" class="btn btn-primary">Select Royal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="character-creation">
+      <div class="container">
+        <div class="section-head">
+          <h2>How character visuals can be created</h2>
+          <p>
+            We can shape the child’s character in two simple ways, depending on what the family is comfortable with.
+          </p>
+        </div>
+
+        <div class="reassure-grid">
+          <div class="card">
+            <h3>Photo-based direction</h3>
+            <p>
+              Parents can share a child photo for stronger likeness when creating visual references and illustrated identity.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Description-based direction</h3>
+            <p>
+              Families can also describe the child’s skin tone, hairstyle, outfit style, favorite colors, and personality if they prefer not to upload a photo.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Flexible for launch</h3>
+            <p>
+              At launch, the easiest system is to allow either a reference photo or a detailed written description so the process stays flexible and easy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonial">
+      <div class="container">
+        <div class="section-head">
+          <h2>What this kind of story can feel like</h2>
+          <p>
+            The goal is not just a book — it is an emotional memory.
+          </p>
+        </div>
+
+        <div class="testimonial-box">
+          <blockquote>
+            “This story made my child smile like it truly belonged to them.”
+          </blockquote>
+          <p>Inspired by the heart behind the Monarch Tales experience.</p>
         </div>
       </div>
     </section>
@@ -783,9 +1027,16 @@
           </details>
 
           <details>
+            <summary>How are character visuals created?</summary>
+            <p>
+              Families can either provide a child photo for stronger likeness or describe the child’s look and personality in detail for a description-based build.
+            </p>
+          </details>
+
+          <details>
             <summary>Do you offer printed books?</summary>
             <p>
-              Yes. Monarch Tales is built around physical and digital story experiences.
+              Yes. Printed books are part of the higher package experiences, while entry options can begin digitally.
             </p>
           </details>
 
@@ -793,13 +1044,6 @@
             <summary>Is this good for birthdays or milestones?</summary>
             <p>
               Yes. These books are designed to feel meaningful enough for birthdays, milestones, bedtime keepsakes, and thoughtful family gifts.
-            </p>
-          </details>
-
-          <details>
-            <summary>Who is Monarch Tales for?</summary>
-            <p>
-              Monarch Tales is for families who want a more personal, emotional, and beautifully crafted story experience for their child.
             </p>
           </details>
         </div>
@@ -819,23 +1063,30 @@
           <div class="contact-box">
             <h3>Start your child’s story with confidence</h3>
             <p>
-              Monarch Tales is built to feel warm, guided, and intentional. If you’re ready, the best next step is simply to begin the process and let the story unfold from there.
+              Monarch Tales is built to feel warm, guided, and intentional. If you’re ready, the best next step is to select a package and begin the journey.
             </p>
-            <div style="margin-top: 18px;">
+
+            <div class="social-links">
               <a href="start.html" class="btn btn-primary">Begin Now</a>
+              <a href="https://wa.me/2348104743496" class="btn btn-secondary">Chat on WhatsApp</a>
             </div>
           </div>
 
           <div class="contact-card">
             <h3>Need reassurance first?</h3>
             <p>
-              You can explore the journey, review the story form, and understand the process before committing emotionally to the full experience.
+              You can explore the journey, review the forms, and understand the process before committing emotionally to the full experience.
             </p>
+
             <ul class="contact-list">
               <li><a href="start.html">Go to the start page</a></li>
               <li><a href="order.html">View the order form</a></li>
               <li><a href="story-form.html">Review the story form</a></li>
             </ul>
+
+            <div class="social-links">
+              <a href="https://www.instagram.com/monarchtales.world?igsh=MXh4Y2FzejNzdG53cw==" class="btn btn-secondary">Visit Instagram</a>
+            </div>
           </div>
         </div>
       </div>
@@ -850,7 +1101,7 @@
           </p>
           <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
             <a href="start.html" class="btn btn-primary">Create Your Child’s Story</a>
-            <a href="#about" class="btn btn-secondary">Learn More</a>
+            <a href="#pricing" class="btn btn-secondary">See Packages</a>
           </div>
         </div>
       </div>
@@ -873,6 +1124,7 @@
             <a href="#about">About</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#receive">What You Receive</a>
+            <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
           </div>
         </div>
@@ -893,5 +1145,25 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
 </body>
 </html>
