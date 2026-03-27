@@ -1,371 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Begin Your Child’s Story | Monarch Tales</title>
-  <meta
-    name="description"
-    content="Begin your Monarch Tales journey and take the first step toward creating a personalized storybook for your child."
-  />
+  <meta charset="UTF-8">
+  <title>Start Your Story | Monarch Tales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    :root {
-      --bg: #fbf7f2;
-      --card: #fffdf9;
-      --text: #2b211c;
-      --muted: #6d5f57;
-      --gold: #b6915f;
-      --gold-dark: #8f6f45;
-      --line: rgba(43, 33, 28, 0.08);
-      --shadow: 0 10px 30px rgba(43, 33, 28, 0.08);
-      --radius: 24px;
-      --max: 980px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
+      font-family: Arial, sans-serif;
+      background: #fbf7f2;
+      color: #2b211c;
+      margin: 0;
     }
 
     .container {
-      width: min(92%, var(--max));
+      width: min(92%, 800px);
       margin: 0 auto;
+      padding: 40px 0;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(251, 247, 242, 0.93);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 18px 0;
-    }
-
-    .brand {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--gold-dark);
-      letter-spacing: 0.4px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-family: Arial, sans-serif;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-family: Arial, sans-serif;
-      font-size: 0.98rem;
-      transition: 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: white;
-      box-shadow: var(--shadow);
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-dark);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--gold-dark);
-      border-color: var(--gold);
-    }
-
-    .btn-secondary:hover {
-      background: #f7efe4;
-      transform: translateY(-2px);
-    }
-
-    .hero {
-      padding: 86px 0 42px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: #f3e8d9;
-      color: var(--gold-dark);
-      font-family: Arial, sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.4px;
+    h1, h2 {
+      font-family: Georgia, serif;
     }
 
     h1 {
-      font-size: clamp(2.3rem, 5vw, 4rem);
-      line-height: 1.08;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      max-width: 760px;
-      margin: 0 auto 18px;
-      font-family: Arial, sans-serif;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    section {
-      padding: 32px 0 80px;
-    }
-
-    .intro-card,
-    .steps-card,
-    .note-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px;
-    }
-
-    .intro-card {
-      margin-bottom: 24px;
-    }
-
-    .section-title {
-      font-size: 1.45rem;
+      font-size: 2.4rem;
       margin-bottom: 10px;
     }
 
-    .section-text {
-      font-family: Arial, sans-serif;
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.7;
+    p {
+      color: #6d5f57;
     }
 
-    .steps-card {
-      margin-bottom: 24px;
+    form {
+      margin-top: 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 22px;
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
     }
 
-    .step-box {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .step-number {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #f3e8d9;
-      color: var(--gold-dark);
-      display: grid;
-      place-items: center;
-      font-family: Arial, sans-serif;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .step-box h3 {
-      font-size: 1.12rem;
-      margin-bottom: 8px;
-    }
-
-    .step-box p {
-      font-family: Arial, sans-serif;
-      color: var(--muted);
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
       font-size: 0.95rem;
-      line-height: 1.65;
     }
 
-    .action-wrap {
-      text-align: center;
-      margin-top: 28px;
+    textarea {
+      min-height: 100px;
     }
 
-    .small-note {
-      margin-top: 14px;
-      font-family: Arial, sans-serif;
-      color: var(--muted);
-      font-size: 0.9rem;
+    .section {
+      margin-top: 40px;
     }
 
-    .note-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 8px;
+    .btn {
+      margin-top: 30px;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 999px;
+      background: #b6915f;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
-    .note-card p {
-      font-family: Arial, sans-serif;
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.7;
-      margin-bottom: 12px;
+    .btn:hover {
+      background: #8f6f45;
     }
 
-    footer {
-      padding: 28px 0 36px;
-      border-top: 1px solid var(--line);
-      background: #fcf8f2;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      color: var(--muted);
-      font-size: 0.92rem;
+    .note {
+      font-size: 0.85rem;
+      color: #6d5f57;
+      margin-top: 6px;
     }
 
-    @media (max-width: 860px) {
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero {
-        padding-top: 56px;
-      }
-
-      .intro-card,
-      .steps-card,
-      .note-card {
-        padding: 22px;
-      }
-    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <a href="index.html" class="brand">Monarch Tales</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="order.html" class="btn btn-primary">Continue</a>
-      </div>
+
+<div class="container">
+
+  <h1>Let’s begin your child’s story</h1>
+  <p>This takes less than 2 minutes. We’ll guide you step by step.</p>
+
+  <form action="thank-you.html">
+
+    <!-- STEP 1 -->
+    <div class="section">
+      <h2>Step 1 — Quick start</h2>
+
+      <label>Your name</label>
+      <input type="text" required>
+
+      <label>Email address</label>
+      <input type="email" required>
+
+      <label>What is this story for?</label>
+      <select required>
+        <option value="">Select one</option>
+        <option>Birthday</option>
+        <option>Bedtime</option>
+        <option>Gift</option>
+        <option>Special moment</option>
+      </select>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <span class="eyebrow">Begin your Monarch Tales journey</span>
-        <h1>Begin your child’s story with clarity and care.</h1>
-        <p>
-          This is the first step in creating a personalized Monarch Tales book. We begin with a simple order stage, then move into the deeper story details that make the final book feel truly personal.
-        </p>
-      </div>
-    </section>
+    <!-- STEP 2 -->
+    <div class="section">
+      <h2>Step 2 — About your child</h2>
 
-    <section>
-      <div class="container">
-        <div class="intro-card">
-          <h2 class="section-title">What this step is for</h2>
-          <p class="section-text">
-            This page helps you begin the process without overwhelm. You do not need to answer every deep story question yet. First, we gather the essential details about your child and the kind of book experience you want.
-          </p>
-        </div>
+      <label>Child’s name</label>
+      <input type="text" required>
 
-        <div class="steps-card">
-          <h2 class="section-title">What happens next</h2>
-          <p class="section-text">
-            The Monarch Tales process is simple, thoughtful, and guided from beginning to end.
-          </p>
+      <label>Age</label>
+      <input type="number" required>
 
-          <div class="steps-grid">
-            <div class="step-box">
-              <div class="step-number">1</div>
-              <h3>Start the request</h3>
-              <p>
-                Fill in the short order form with the first essential details about your child and your preferred format.
-              </p>
-            </div>
+      <label>What makes your child special?</label>
+      <textarea placeholder="Personality, habits, things they love..."></textarea>
 
-            <div class="step-box">
-              <div class="step-number">2</div>
-              <h3>Share the deeper story</h3>
-              <p>
-                After that, we gather the emotional and personal story details that make the book feel connected and meaningful.
-              </p>
-            </div>
+      <label>Favorite things</label>
+      <textarea placeholder="Animals, colors, hobbies, characters..."></textarea>
+    </div>
 
-            <div class="step-box">
-              <div class="step-number">3</div>
-              <h3>Receive a keepsake</h3>
-              <p>
-                Your child’s Monarch Tale is created as a warm, beautifully crafted experience designed to be kept and remembered.
-              </p>
-            </div>
-          </div>
+    <!-- STEP 3 -->
+    <div class="section">
+      <h2>Step 3 — Story direction</h2>
 
-          <div class="action-wrap">
-            <a href="order.html" class="btn btn-primary">Continue to Order Form</a>
-            <p class="small-note">
-              This first step is short and simple. The deeper story questions come after.
-            </p>
-          </div>
-        </div>
+      <label>What message should the story carry?</label>
+      <textarea placeholder="Confidence, love, courage, kindness..."></textarea>
 
-        <div class="note-card">
-          <h3>Why Monarch Tales takes this approach</h3>
-          <p>
-            A meaningful personalized story should feel intentional, not rushed. That is why Monarch Tales begins with a clear first step and builds carefully into the full story creation process.
-          </p>
-          <p>
-            We want families to feel guided, not overwhelmed — and we want each child’s book to carry real warmth, identity, and emotional value.
-          </p>
-          <a href="index.html" class="btn btn-secondary">Back to Home</a>
-        </div>
-      </div>
-    </section>
-  </main>
+      <label>Any specific details you'd like included?</label>
+      <textarea placeholder="Family members, places, memories..."></textarea>
 
-  <footer>
-    © 2026 Monarch Tales. All rights reserved.
-  </footer>
+      <p class="note">You don’t need to fill everything. We’ll guide you after this.</p>
+    </div>
+
+    <button class="btn">Continue</button>
+
+  </form>
+
+</div>
+
 </body>
 </html>
