@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monarch Tales | Personalized Storybooks for Children</title>
+  <meta
+    name="description"
+    content="Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them."
+  />
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --bg-soft: #f5eee6;
+      --card: #fffdf9;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 10px 30px rgba(43, 33, 28, 0.08);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: Arial, sans-serif;
+      font-size: 0.98rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #f3e8d9;
+      color: var(--gold-dark);
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.06;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-family: Arial, sans-serif;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #fffdf9, #f6ede3);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .book-mockup {
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #d8bc96, #f7ebdb 60%, #c7a06f);
+      padding: 22px;
+      display: flex;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-mockup::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.52);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .book-cover-text {
+      position: relative;
+      z-index: 2;
+      max-width: 78%;
+    }
+
+    .book-cover-text small {
+      display: block;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 1px;
+      color: #6b4f2f;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .book-cover-text h2 {
+      font-size: 2rem;
+      line-height: 1.05;
+      color: #402d1f;
+      margin-bottom: 10px;
+    }
+
+    .book-cover-text p {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #6a574d;
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .trust-bar {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      padding: 24px 0;
+      text-align: center;
+    }
+
+    .trust-item {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f3e8d9;
+      color: var(--gold-dark);
+      display: grid;
+      place-items: center;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .receives-grid,
+    .stories-grid,
+    .faq-grid,
+    .footer-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .receives-grid,
+    .stories-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .faq-grid {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    details {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      margin-top: 12px;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+    }
+
+    .cta {
+      padding-bottom: 100px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 52px 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    footer {
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+    }
+
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr;
+      align-items: start;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.2rem;
+      color: var(--gold-dark);
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p,
+    .footer-col a,
+    .footer-col p {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-bottom {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .steps,
+      .receives-grid,
+      .stories-grid,
+      .trust-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .hero-card {
+        padding: 20px;
+      }
+
+      .book-cover-text h2 {
+        font-size: 1.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">Monarch Tales</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#receive">What You Receive</a>
+        <a href="#stories">Our Stories</a>
+        <a href="#faq">FAQ</a>
+        <a href="start.html" class="btn btn-primary">Start a Story</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Personalized storybooks for children</span>
+          <h1>Every child deserves to feel like the hero of a meaningful story.</h1>
+          <p>
+            Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them.
+          </p>
+
+          <div class="hero-actions">
+            <a href="start.html" class="btn btn-primary">Start Your Child’s Story</a>
+            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+          </div>
+
+          <div class="hero-points">
+            <span>Physical + digital book experience</span>
+            <span>Premium, gift-worthy feel</span>
+            <span>Designed with heart and intention</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="book-mockup">
+            <div class="book-cover-text">
+              <small>The story that began it</small>
+              <h2>Knox: Sunshine in Red and Blue</h2>
+              <p>A personalized keepsake that helped inspire the Monarch Tales vision.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-bar">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <strong>Personalized</strong>
+          Each story is built around the child, not mass-made.
+        </div>
+        <div class="trust-item">
+          <strong>Premium Feel</strong>
+          Designed to feel beautiful, special, and gift-worthy.
+        </div>
+        <div class="trust-item">
+          <strong>Emotional</strong>
+          Created to hold warmth, memory, and meaning.
+        </div>
+        <div class="trust-item">
+          <strong>Global Vision</strong>
+          Thoughtfully designed for families across the world.
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About Monarch Tales</h2>
+          <p>
+            Monarch Tales began from real story creation and is growing into a brand that turns children into the heroes of meaningful keepsake books.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card">
+            <h3>Our mission</h3>
+            <p>
+              At Monarch Tales, we create personalized storybooks that turn every child into the hero of their own adventure. Our mission is to inspire imagination, strengthen family bonds, and leave children with timeless lessons of love, courage, and resilience.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Why it matters</h3>
+            <p>
+              Stories shape identity. When a child sees themselves inside a beautifully made story, it can deepen confidence, belonging, wonder, and emotional connection.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>What guides us</h3>
+            <p>
+              Personalization, creativity, connection, inclusion, and legacy are at the heart of Monarch Tales. Each story is crafted to feel meaningful enough to keep, gift, and remember.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Where we’re going</h3>
+            <p>
+              We begin with personalized books in physical and digital form. Over time, the wider vision can grow into audiobooks, animation, and digital story experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>
+            Simple for families. Meaningful for children. Intentional from beginning to end.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="card">
+            <div class="step-number">1</div>
+            <h3>Begin your request</h3>
+            <p>
+              Start with a short form that gives us the essential details about your child and the type of book experience you want.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">2</div>
+            <h3>Share the deeper story</h3>
+            <p>
+              After the first step, we gather the emotional and personal details that make the story feel truly connected to your child.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">3</div>
+            <h3>Receive a keepsake</h3>
+            <p>
+              Your family receives a beautifully crafted Monarch Tale designed to feel personal, warm, and worth keeping.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="receive">
+      <div class="container">
+        <div class="section-head">
+          <h2>What families receive</h2>
+          <p>
+            Monarch Tales begins with a clear, focused book experience built around meaning, quality, and emotional connection.
+          </p>
+        </div>
+
+        <div class="receives-grid">
+          <div class="card">
+            <h3>Child-centered storytelling</h3>
+            <p>
+              Your child’s name and identity are woven into the story so it feels personal, not generic.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Dedication and warmth</h3>
+            <p>
+              A dedication page and thoughtful story structure help turn the book into a family keepsake.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Physical + digital access</h3>
+            <p>
+              The story experience begins with premium print and digital formats so it can be held, shared, and revisited.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Stories we’ve begun with</h2>
+          <p>
+            Monarch Tales is rooted in real creative work and real story beginnings.
+          </p>
+        </div>
+
+        <div class="stories-grid">
+          <div class="card">
+            <h3>Knox</h3>
+            <p>
+              The Knox stories helped spark the heart of Monarch Tales: storytelling filled with warmth, imagination, identity, and memory.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Lucas, Lochlan & Scarlett</h3>
+            <p>
+              A family-centered story experience that helped prove the brand could hold deeper emotional meaning across more than one child.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Your child next</h3>
+            <p>
+              Monarch Tales is growing into a brand that creates personalized books for different children around the world, one meaningful story at a time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently asked questions</h2>
+          <p>
+            These are the questions families are likely to ask before beginning.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <details>
+            <summary>How personalized is each book?</summary>
+            <p>
+              Each book is shaped around the child’s name and identity details so the final story feels built with them in mind, not copied from a standard template.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you offer printed books?</summary>
+            <p>
+              Yes. Monarch Tales begins with physical and digital book experiences.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is this good for birthdays or milestones?</summary>
+            <p>
+              Yes. Monarch Tales is designed to feel meaningful enough for birthdays, milestones, family gifts, and bedtime keepsakes.
+            </p>
+          </details>
+
+          <details>
+            <summary>Who is Monarch Tales for?</summary>
+            <p>
+              The brand is positioned for families globally, especially those who value thoughtful, premium, emotionally rich personalized gifts for children.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Create a story your child will carry with them.</h2>
+          <p>
+            Begin your Monarch Tales journey with a personalized storybook designed to feel warm, memorable, and beautifully made.
+          </p>
+          <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+            <a href="start.html" class="btn btn-primary">Start Your Child’s Story</a>
+            <a href="#about" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Monarch Tales</h3>
+          <p>
+            Personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#receive">What You Receive</a>
+            <a href="#faq">FAQ</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Journey</h4>
+          <div class="footer-links">
+            <a href="start.html">Begin a Story</a>
+            <a href="order.html">Order Form</a>
+            <a href="story-form.html">Story Form</a>
+            <a href="thank-you.html">Thank You Page</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Monarch Tales. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

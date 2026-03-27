@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Monarch Tales</title>
+  <meta
+    name="description"
+    content="Thank you for beginning your Monarch Tales journey."
+  />
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 10px 30px rgba(43, 33, 28, 0.08);
+      --radius: 28px;
+      --max: 780px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .card {
+      width: 100%;
+      max-width: var(--max);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #f3e8d9;
+      color: var(--gold-dark);
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    p {
+      max-width: 610px;
+      margin: 0 auto 14px;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: Arial, sans-serif;
+      font-size: 0.98rem;
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .note {
+      margin-top: 24px;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="eyebrow">Monarch Tales</span>
+    <h1>Thank you for beginning your child’s story.</h1>
+    <p>
+      Your submission has been received, and this is the beginning of something meaningful.
+    </p>
+    <p>
+      We’ll review your details and guide the next step of your child’s story with care, warmth, and intention.
+    </p>
+
+    <div class="actions">
+      <a href="

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Form | Monarch Tales</title>
+  <meta
+    name="description"
+    content="Begin your Monarch Tales order by sharing the first details about your child and the story experience you want."
+  />
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --card-soft: #f8f1e8;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 10px 30px rgba(43, 33, 28, 0.08);
+      --radius: 24px;
+      --max: 1000px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: Arial, sans-serif;
+      font-size: 0.98rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 72px 0 28px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #f3e8d9;
+      color: var(--gold-dark);
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .layout {
+      padding: 26px 0 88px;
+    }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .form-card,
+    .side-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-card {
+      padding: 34px;
+    }
+
+    .side-card {
+      padding: 24px;
+      position: sticky;
+      top: 98px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .intro-text {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 28px;
+    }
+
+    form {
+      display: grid;
+      gap: 26px;
+    }
+
+    .form-section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .form-section-title {
+      font-size: 1.12rem;
+      margin-bottom: 6px;
+    }
+
+    .form-section-text {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    .field-full {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(182, 145, 95, 0.14);
+    }
+
+    .helper {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: -2px;
+    }
+
+    .submit-box {
+      background: var(--card-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .submit-box p {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.93rem;
+      max-width: 560px;
+    }
+
+    .post-submit-links {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .post-submit-links p {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .side-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .side-card p,
+    .side-card li {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .side-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .side-block + .side-block {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 920px) {
+      .form-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card,
+      .side-card {
+        padding: 22px;
+      }
+
+      .submit-box {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">Monarch Tales</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="start.html">Back</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Order Form</span>
+        <h1>Begin your child’s Monarch Tale.</h1>
+        <p>
+          This first form gathers the essential details we need before moving into the deeper story-creation process.
+        </p>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="container form-shell">
+        <div class="form-card">
+          <h2 class="intro-title">Order Details</h2>
+          <p class="intro-text">
+            Keep this step simple. Once we receive your request, the next stage is where we gather the emotional and personal details that shape the story.
+          </p>
+
+          <form action="https://formspree.io/f/xojpaejp" method="POST">
+            <div class="form-section">
+              <h3 class="form-section-title">Parent Details</h3>
+              <p class="form-section-text">
+                Tell us who is making this request and how we should contact you.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="parentName">Parent / Guardian Name</label>
+                  <input type="text" id="parentName" name="parentName" placeholder="Your full name" required />
+                </div>
+
+                <div class="field-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Child Details</h3>
+              <p class="form-section-text">
+                These first details help us begin shaping the story around the child.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="childName">Child’s Name</label>
+                  <input type="text" id="childName" name="childName" placeholder="Child's name" required />
+                </div>
+
+                <div class="field-group">
+                  <label for="childAge">Child’s Age</label>
+                  <input type="text" id="childAge" name="childAge" placeholder="e.g. 5" required />
+                </div>
+              </div>
+
+              <div class="field-full">
+                <label for="notes">Tell us anything small you’d like us to know about your child</label>
+                <textarea id="notes" name="notes" placeholder="A few words about their personality, interests, or anything special..."></textarea>
+                <p class="helper">
+                  This can be simple. The deeper story questions come later.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Book Preferences</h3>
+              <p class="form-section-text">
+                Choose the kind of experience you want us to begin with.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="productType">What would you like to order?</label>
+                  <select id="productType" name="productType" required>
+                    <option value="">Select an option</option>
+                    <option value="Personalized Digital Book">Personalized Digital Book</option>
+                    <option value="Personalized Printed Book">Personalized Printed Book</option>
+                    <option value="Personalized Printed + Digital Book">Personalized Printed + Digital Book</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label for="occasion">What is this story for?</label>
+                  <select id="occasion" name="occasion" required>
+                    <option value="">Select an option</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Bedtime keepsake">Bedtime keepsake</option>
+                    <option value="Gift">Gift</option>
+                    <option value="Milestone">Milestone</option>
+                    <option value="Just because">Just because</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Contact Preference</h3>
+              <p class="form-section-text">
+                Let us know how you’d prefer to hear from us after your request is received.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="contactMethod">Preferred contact method</label>
+                  <select id="contactMethod" name="contactMethod" required>
+                    <option value="">Select an option</option>
+                    <option value="Email">Email</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label for="whatsapp">WhatsApp Number</label>
+                  <input type="text" id="whatsapp" name="whatsapp" placeholder="Optional" />
+                </div>
+              </div>
+            </div>
+
+            <div class="submit-box">
+              <p>
+                Submit this first step and we’ll guide you into the deeper story creation process that makes each Monarch Tale feel warm, personal, and beautifully made.
+              </p>
+              <button type="submit" class="btn btn-primary">Submit Order Request</button>
+            </div>
+
+            <div class="post-submit-links">
+              <p>After submitting, continue to the next step of your child’s story.</p>
+              <a href="story-form.html" class="btn btn-secondary">Continue to Story Form →</a>
+            </div>
+          </form>
+        </div>
+
+        <aside class="side-card">
+          <div class="side-block">
+            <h3>What happens after this?</h3>
+            <p>
+              After this first request, the next stage is the deeper story form where we gather the emotional and personal details that shape the final book.
+            </p>
+            <p style="margin-top: 12px;">
+              You can preview that next step here:
+            </p>
+            <a href="story-form.html" class="btn btn-secondary" style="margin-top: 12px;">View Story Form</a>
+          </div>
+
+          <div class="side-block">
+            <h3>What this first step covers</h3>
+            <ul>
+              <li>Essential parent details</li>
+              <li>Child’s basic information</li>
+              <li>Preferred book format</li>
+              <li>Occasion and contact preference</li>
+            </ul>
+          </div>
+
+          <div class="side-block">
+            <h3>Our approach</h3>
+            <p>
+              Monarch Tales is designed to guide families gently. We begin with clarity, then go deeper with care.
+            </p>
+          </div>
+
+          <div class="side-block">
+            <a href="start.html" class="btn btn-secondary">Back to Start Page</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+</body>
+</html>
