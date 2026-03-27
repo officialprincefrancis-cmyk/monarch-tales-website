@@ -17,10 +17,11 @@
       --muted: #6d5f57;
       --gold: #b6915f;
       --gold-dark: #8f6f45;
+      --gold-soft: #f3e8d9;
       --line: rgba(43, 33, 28, 0.08);
-      --shadow: 0 10px 30px rgba(43, 33, 28, 0.08);
+      --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
       --radius: 24px;
-      --max: 1000px;
+      --max: 1040px;
     }
 
     * {
@@ -34,8 +35,10 @@
     }
 
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--bg);
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
+        var(--bg);
       color: var(--text);
       line-height: 1.65;
     }
@@ -54,7 +57,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(251, 247, 242, 0.93);
+      background: rgba(251, 247, 242, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
@@ -68,10 +71,11 @@
     }
 
     .brand {
-      font-size: 1.35rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.38rem;
       font-weight: 700;
       color: var(--gold-dark);
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
     }
 
     .nav-links {
@@ -79,7 +83,6 @@
       align-items: center;
       gap: 18px;
       flex-wrap: wrap;
-      font-family: Arial, sans-serif;
       font-size: 0.95rem;
       color: var(--muted);
     }
@@ -89,8 +92,7 @@
       padding: 14px 24px;
       border-radius: 999px;
       border: 1px solid transparent;
-      font-family: Arial, sans-serif;
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       transition: 0.25s ease;
       cursor: pointer;
       text-align: center;
@@ -128,11 +130,14 @@
       margin-bottom: 16px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: #f3e8d9;
+      background: var(--gold-soft);
       color: var(--gold-dark);
-      font-family: Arial, sans-serif;
       font-size: 0.82rem;
       letter-spacing: 0.4px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
     }
 
     h1 {
@@ -144,7 +149,6 @@
     .hero p {
       max-width: 760px;
       margin: 0 auto;
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 1rem;
     }
@@ -155,7 +159,7 @@
 
     .form-shell {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 24px;
       align-items: start;
     }
@@ -179,14 +183,20 @@
     }
 
     .intro-title {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       margin-bottom: 8px;
     }
 
     .intro-text {
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.98rem;
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    .intro-note {
+      color: var(--gold-dark);
+      font-size: 0.93rem;
       margin-bottom: 28px;
     }
 
@@ -203,15 +213,15 @@
     }
 
     .form-section-title {
-      font-size: 1.12rem;
+      font-size: 1.14rem;
       margin-bottom: 6px;
     }
 
     .form-section-text {
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.93rem;
       margin-bottom: 18px;
+      line-height: 1.7;
     }
 
     .grid-2 {
@@ -232,7 +242,6 @@
     }
 
     label {
-      font-family: Arial, sans-serif;
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--text);
@@ -265,10 +274,10 @@
     }
 
     .helper {
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.88rem;
       margin-top: -2px;
+      line-height: 1.6;
     }
 
     .submit-box {
@@ -284,34 +293,37 @@
     }
 
     .submit-box p {
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.93rem;
       max-width: 560px;
+      line-height: 1.7;
     }
 
     .manual-next {
       margin-top: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
     }
 
     .manual-next p {
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.9rem;
       margin-bottom: 10px;
+      line-height: 1.65;
     }
 
     .side-card h3 {
-      font-size: 1.12rem;
+      font-size: 1.16rem;
       margin-bottom: 8px;
     }
 
     .side-card p,
     .side-card li {
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.94rem;
-      line-height: 1.7;
+      line-height: 1.72;
     }
 
     .side-card ul {
@@ -319,6 +331,19 @@
       display: grid;
       gap: 10px;
       margin: 14px 0 18px;
+    }
+
+    .side-card li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .side-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
     }
 
     .side-block + .side-block {
@@ -332,7 +357,6 @@
       border-top: 1px solid var(--line);
       background: #fcf8f2;
       text-align: center;
-      font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.92rem;
     }
@@ -391,7 +415,7 @@
         <span class="eyebrow">Order Form</span>
         <h1>Begin your child’s Monarch Tale.</h1>
         <p>
-          This first form gathers the essential details we need before moving into the deeper story-creation process.
+          This first step gathers the essential details we need before shaping the deeper emotional story experience.
         </p>
       </div>
     </section>
@@ -401,14 +425,15 @@
         <div class="form-card">
           <h2 class="intro-title">Order Details</h2>
           <p class="intro-text">
-            Keep this step simple. Once we receive your request, the next stage is where we gather the emotional and personal details that shape the story.
+            This part is designed to feel simple. You are not expected to share every deep detail yet — just enough for us to understand your child, your preferred story format, and how to guide the journey forward.
           </p>
+          <p class="intro-note">Takes less than 2 minutes to begin.</p>
 
           <form action="https://formspree.io/f/xojpaejp" method="POST">
             <div class="form-section">
               <h3 class="form-section-title">Parent Details</h3>
               <p class="form-section-text">
-                Tell us who is making this request and how we should contact you.
+                Tell us who is making this request and the best way to reach you.
               </p>
 
               <div class="grid-2">
@@ -454,7 +479,7 @@
             <div class="form-section">
               <h3 class="form-section-title">Book Preferences</h3>
               <p class="form-section-text">
-                Choose the kind of experience you want us to begin with.
+                Choose the kind of experience you’d like us to begin with.
               </p>
 
               <div class="grid-2">
@@ -514,7 +539,9 @@
           </form>
 
           <div class="manual-next">
-            <p>After submitting, continue to the next step of your child’s story.</p>
+            <p>
+              After submitting, you can continue to the deeper story form where the emotional heart of your child’s book begins to take shape.
+            </p>
             <a href="story-form.html" class="btn btn-secondary">Continue to Story Form →</a>
           </div>
         </div>
@@ -542,9 +569,9 @@
           </div>
 
           <div class="side-block">
-            <h3>Our approach</h3>
+            <h3>Why we begin this way</h3>
             <p>
-              Monarch Tales is designed to guide families gently. We begin with clarity, then go deeper with care.
+              Monarch Tales is designed to guide families gently. We begin with clarity first, then move into the deeper emotional and storytelling details with care.
             </p>
           </div>
 
