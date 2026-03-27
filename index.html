@@ -242,6 +242,8 @@
     .steps,
     .receives-grid,
     .stories-grid,
+    .reassure-grid,
+    .contact-grid,
     .footer-grid {
       display: grid;
       gap: 22px;
@@ -311,18 +313,21 @@
     }
 
     .receives-grid,
-    .stories-grid {
+    .stories-grid,
+    .reassure-grid {
       grid-template-columns: repeat(3, 1fr);
     }
 
     .receives-grid .card,
-    .stories-grid .card {
+    .stories-grid .card,
+    .reassure-grid .card {
       position: relative;
       overflow: hidden;
     }
 
     .receives-grid .card::before,
-    .stories-grid .card::before {
+    .stories-grid .card::before,
+    .reassure-grid .card::before {
       content: "";
       width: 46px;
       height: 46px;
@@ -362,6 +367,48 @@
     details p {
       margin-top: 12px;
       color: var(--muted);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: start;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3,
+    .contact-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p,
+    .contact-card p,
+    .contact-list li {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.75;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
     .cta {
@@ -437,7 +484,9 @@
       .steps,
       .receives-grid,
       .stories-grid,
+      .reassure-grid,
       .trust-grid,
+      .contact-grid,
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -459,7 +508,9 @@
 
       .card,
       .trust-item,
-      .hero-card {
+      .hero-card,
+      .contact-box,
+      .contact-card {
         padding: 22px;
       }
     }
@@ -474,7 +525,7 @@
         <a href="#how-it-works">How It Works</a>
         <a href="#receive">What You Receive</a>
         <a href="#stories">Our Stories</a>
-        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
         <a href="start.html" class="btn btn-primary">Start a Story</a>
       </nav>
     </div>
@@ -659,7 +710,7 @@
           <div class="card">
             <h3>Knox</h3>
             <p>
-              The Knox stories helped inspire the heart of Monarch Tales — warm storytelling filled with imagination, identity, and memory.
+              The Knox stories helped spark the heart of Monarch Tales — warm storytelling filled with imagination, identity, and memory.
             </p>
           </div>
 
@@ -674,6 +725,40 @@
             <h3>Your child next</h3>
             <p>
               Monarch Tales is growing into a brand that creates personalized books for children around the world, one meaningful story at a time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reassurance">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why parents feel good saying yes</h2>
+          <p>
+            Monarch Tales is designed to feel thoughtful from the first click to the final story.
+          </p>
+        </div>
+
+        <div class="reassure-grid">
+          <div class="card">
+            <h3>It feels personal</h3>
+            <p>
+              This is not a generic children’s book with a name dropped in. The story is shaped with emotional meaning and child-centered detail.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>It feels guided</h3>
+            <p>
+              Parents are not left confused. Each step is structured to feel calm, easy, and supported from beginning to end.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>It feels worth keeping</h3>
+            <p>
+              The goal is not just to deliver a story, but to create a keepsake that feels memorable, gift-worthy, and emotionally lasting.
             </p>
           </div>
         </div>
@@ -717,6 +802,41 @@
               Monarch Tales is for families who want a more personal, emotional, and beautifully crafted story experience for their child.
             </p>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact & next steps</h2>
+          <p>
+            If you’re ready to begin or want clarity before starting, this is where the journey stays open and human.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Start your child’s story with confidence</h3>
+            <p>
+              Monarch Tales is built to feel warm, guided, and intentional. If you’re ready, the best next step is simply to begin the process and let the story unfold from there.
+            </p>
+            <div style="margin-top: 18px;">
+              <a href="start.html" class="btn btn-primary">Begin Now</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Need reassurance first?</h3>
+            <p>
+              You can explore the journey, review the story form, and understand the process before committing emotionally to the full experience.
+            </p>
+            <ul class="contact-list">
+              <li><a href="start.html">Go to the start page</a></li>
+              <li><a href="order.html">View the order form</a></li>
+              <li><a href="story-form.html">Review the story form</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
