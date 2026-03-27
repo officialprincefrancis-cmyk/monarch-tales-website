@@ -27,9 +27,8 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, sans-serif;
@@ -40,10 +39,7 @@
       line-height: 1.65;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
     .container {
       width: min(92%, var(--max));
@@ -65,6 +61,7 @@
       align-items: center;
       gap: 20px;
       padding: 18px 0;
+      position: relative;
     }
 
     .brand {
@@ -83,6 +80,35 @@
       font-size: 0.95rem;
       color: var(--muted);
     }
+
+    .nav-links a:hover { color: var(--gold-dark); }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     .btn {
       display: inline-block;
@@ -153,6 +179,18 @@
     .hero-note {
       color: var(--gold-dark);
       font-size: 0.93rem;
+    }
+
+    .selected-plan {
+      max-width: 720px;
+      margin: 20px auto 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      display: none;
     }
 
     section {
@@ -240,9 +278,7 @@
       margin-bottom: 8px;
     }
 
-    .note-card p {
-      margin-bottom: 12px;
-    }
+    .note-card p { margin-bottom: 12px; }
 
     footer {
       padding: 28px 0 36px;
@@ -254,26 +290,35 @@
     }
 
     @media (max-width: 860px) {
-      .steps-grid {
-        grid-template-columns: 1fr;
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle { display: inline-flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
       }
+
+      .nav-links.open { display: flex; }
+      .nav-links .btn { width: 100%; text-align: center; }
     }
 
     @media (max-width: 720px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero {
-        padding-top: 56px;
-      }
-
-      .intro-card,
-      .steps-card,
-      .note-card {
-        padding: 22px;
-      }
+      .hero { padding-top: 56px; }
+      .intro-card, .steps-card, .note-card { padding: 22px; }
     }
   </style>
 </head>
@@ -281,7 +326,12 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">Monarch Tales</a>
-      <div class="nav-links">
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div><span></span><span></span><span></span></div>
+      </button>
+
+      <div class="nav-links" id="mobileNav">
         <a href="index.html">Home</a>
         <a href="order.html" class="btn btn-primary">Continue</a>
       </div>
@@ -297,6 +347,8 @@
           This is the first step in creating a personalized Monarch Tales book. We begin simply, then guide you deeper into the emotional details that make the final story feel truly personal.
         </p>
         <p class="hero-note">Takes less than 2 minutes to begin.</p>
+
+        <div class="selected-plan" id="selectedPlanBox"></div>
       </div>
     </section>
 
@@ -305,7 +357,7 @@
         <div class="intro-card">
           <h2 class="section-title">What this step is for</h2>
           <p class="section-text">
-            This page helps you begin the process without overwhelm. You do not need to answer every deep story question yet. First, we gather the essential details about your child and the kind of book experience you want.
+            This page helps you begin the process without overwhelm. You do not need to answer every deep story question yet. First, we gather the essential details about your child, your preferred package, and the kind of book experience you want.
           </p>
         </div>
 
@@ -318,44 +370,36 @@
           <div class="steps-grid">
             <div class="step-box">
               <div class="step-number">1</div>
-              <h3>Start the request</h3>
-              <p>
-                Fill in a short order form with the first essential details about your child and your preferred story format.
-              </p>
+              <h3>Confirm your package</h3>
+              <p>We carry your selected package into the next step so the journey already matches the level of experience you want.</p>
             </div>
 
             <div class="step-box">
               <div class="step-number">2</div>
-              <h3>Share the deeper story</h3>
-              <p>
-                Then we gather the emotional and personal details that make the book feel connected, meaningful, and beautifully shaped.
-              </p>
+              <h3>Share the story direction</h3>
+              <p>Then we gather the emotional and personal details that make the book feel connected, meaningful, and beautifully shaped.</p>
             </div>
 
             <div class="step-box">
               <div class="step-number">3</div>
               <h3>Receive a keepsake</h3>
-              <p>
-                Your child’s Monarch Tale is created as a warm, premium experience designed to be remembered and kept.
-              </p>
+              <p>Your child’s Monarch Tale is created as a warm, premium experience designed to be remembered and kept.</p>
             </div>
           </div>
 
           <div class="action-wrap">
-            <a href="order.html" class="btn btn-primary">Continue to Order Form</a>
-            <p class="small-note">
-              This first step is intentionally simple. The deeper story questions come after.
-            </p>
+            <a href="order.html" class="btn btn-primary" id="continueButton">Continue to Order Form</a>
+            <p class="small-note">This first step is intentionally simple. The deeper story questions come after.</p>
           </div>
         </div>
 
         <div class="note-card">
-          <h3>Why Monarch Tales takes this approach</h3>
+          <h3>Character visuals at launch</h3>
           <p>
-            A meaningful personalized story should feel intentional, not rushed. That is why Monarch Tales begins with a clear first step and then builds carefully into the full story creation journey.
+            Families can either provide a child photo for stronger likeness or describe the child’s look in detail if they prefer not to upload an image.
           </p>
           <p>
-            We want families to feel guided, not overwhelmed — and we want each child’s book to carry real warmth, identity, and emotional value.
+            This gives flexibility while keeping the launch process simple, fast, and realistic.
           </p>
           <a href="index.html" class="btn btn-secondary">Back to Home</a>
         </div>
@@ -366,5 +410,44 @@
   <footer>
     © 2026 Monarch Tales. All rights reserved.
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get("plan");
+    const planBox = document.getElementById("selectedPlanBox");
+    const continueButton = document.getElementById("continueButton");
+
+    const planMap = {
+      basic: "You selected The Seed — $49",
+      premium: "You selected The Becoming — $69",
+      royal: "You selected The Legacy — $99–$120"
+    };
+
+    if (plan && planMap[plan]) {
+      planBox.style.display = "block";
+      planBox.textContent = planMap[plan];
+      continueButton.href = "order.html?plan=" + encodeURIComponent(plan);
+    } else {
+      continueButton.href = "order.html";
+    }
+  </script>
 </body>
 </html>
