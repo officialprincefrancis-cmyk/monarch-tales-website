@@ -208,38 +208,20 @@
       position: absolute;
       inset: 18px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.56);
-      border: 1px solid rgba(255,255,255,0.62);
+      background: rgba(255,255,255,0.20);
+      border: 1px solid rgba(255,255,255,0.25);
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .book-cover-text {
+    .book-mockup img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
       position: relative;
       z-index: 2;
-      max-width: 78%;
-    }
-
-    .book-cover-text small {
       display: block;
-      margin-bottom: 10px;
-      font-family: Arial, sans-serif;
-      letter-spacing: 1px;
-      color: #6b4f2f;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-    }
-
-    .book-cover-text h2 {
-      font-size: 2rem;
-      line-height: 1.05;
-      color: #402d1f;
-      margin-bottom: 10px;
-    }
-
-    .book-cover-text p {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #6a574d;
-      font-size: 0.92rem;
     }
 
     section {
@@ -487,10 +469,6 @@
         padding: 20px;
       }
 
-      .book-cover-text h2 {
-        font-size: 1.65rem;
-      }
-
       .trust-item,
       .card {
         padding: 22px;
@@ -537,11 +515,10 @@
 
         <div class="hero-card">
           <div class="book-mockup">
-            <div class="book-cover-text">
-              <small>The story that began it</small>
-              <h2>Knox: Sunshine in Red and Blue</h2>
-              <p>A personalized keepsake that helped inspire the Monarch Tales vision.</p>
-            </div>
+            <img
+              src="hero.jpg"
+              alt="Child reading a personalized storybook"
+            />
           </div>
         </div>
       </div>
