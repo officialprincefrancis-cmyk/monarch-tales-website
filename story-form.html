@@ -93,6 +93,7 @@
       font-size: 0.98rem;
       transition: 0.25s ease;
       cursor: pointer;
+      text-align: center;
     }
 
     .btn-primary {
@@ -282,18 +283,15 @@
       max-width: 560px;
     }
 
-    .post-submit-links {
+    .manual-next {
       margin-top: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-start;
     }
 
-    .post-submit-links p {
+    .manual-next p {
       font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.9rem;
+      margin-bottom: 10px;
     }
 
     .side-card h3 {
@@ -576,12 +574,12 @@
               </p>
               <button type="submit" class="btn btn-primary">Submit Story Details</button>
             </div>
-
-            <div class="post-submit-links">
-              <p>After submitting, continue to your completion page.</p>
-              <a href="thank-you.html" class="btn btn-secondary">Go to Thank You Page →</a>
-            </div>
           </form>
+
+          <div class="manual-next">
+            <p>After submitting, continue to your completion page.</p>
+            <a href="thank-you.html" class="btn btn-secondary">Go to Thank You Page →</a>
+          </div>
         </div>
 
         <aside class="side-card">
