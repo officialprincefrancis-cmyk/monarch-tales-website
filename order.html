@@ -93,6 +93,7 @@
       font-size: 0.98rem;
       transition: 0.25s ease;
       cursor: pointer;
+      text-align: center;
     }
 
     .btn-primary {
@@ -289,18 +290,15 @@
       max-width: 560px;
     }
 
-    .post-submit-links {
+    .manual-next {
       margin-top: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-start;
     }
 
-    .post-submit-links p {
+    .manual-next p {
       font-family: Arial, sans-serif;
       color: var(--muted);
       font-size: 0.9rem;
+      margin-bottom: 10px;
     }
 
     .side-card h3 {
@@ -513,12 +511,12 @@
               </p>
               <button type="submit" class="btn btn-primary">Submit Order Request</button>
             </div>
-
-            <div class="post-submit-links">
-              <p>After submitting, continue to the next step of your child’s story.</p>
-              <a href="story-form.html" class="btn btn-secondary">Continue to Story Form →</a>
-            </div>
           </form>
+
+          <div class="manual-next">
+            <p>After submitting, continue to the next step of your child’s story.</p>
+            <a href="story-form.html" class="btn btn-secondary">Continue to Story Form →</a>
+          </div>
         </div>
 
         <aside class="side-card">
