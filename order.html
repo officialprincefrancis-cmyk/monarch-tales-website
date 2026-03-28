@@ -6,7 +6,7 @@
   <title>Order Form | Monarch Tales</title>
   <meta
     name="description"
-    content="Begin your Monarch Tales order by sharing the first details about your child and the story experience you want."
+    content="Begin your Monarch Tales order by choosing a package and sharing the first details about the child and the story experience you want."
   />
   <style>
     :root {
@@ -21,7 +21,7 @@
       --line: rgba(43, 33, 28, 0.08);
       --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
       --radius: 24px;
-      --max: 1040px;
+      --max: 1120px;
     }
 
     * {
@@ -35,6 +35,930 @@
       font-family: Arial, sans-serif;
       background:
         radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      position: relative;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.97rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 72px 0 28px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .layout {
+      padding: 26px 0 88px;
+    }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .form-card,
+    .side-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-card {
+      padding: 34px;
+    }
+
+    .side-card {
+      padding: 24px;
+      position: sticky;
+      top: 98px;
+    }
+
+    .intro-title {
+      font-size: 1.55rem;
+      margin-bottom: 8px;
+    }
+
+    .intro-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    .intro-note {
+      color: var(--gold-dark);
+      font-size: 0.93rem;
+      margin-bottom: 28px;
+    }
+
+    .plan-select {
+      margin-bottom: 28px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .plan-select h2 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .plan-sub {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: 0.96rem;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .plan-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+      transition: 0.25s ease;
+      overflow: hidden;
+    }
+
+    .plan-card.active {
+      border: 2px solid var(--gold);
+      box-shadow: 0 10px 22px rgba(182, 145, 95, 0.14);
+    }
+
+    .plan-card-top {
+      padding: 20px;
+    }
+
+    .plan-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+    }
+
+    .plan-price {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--gold-dark);
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .plan-summary {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 14px;
+    }
+
+    .plan-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .reveal-btn {
+      background: transparent;
+      color: var(--gold-dark);
+      border: 1px solid var(--gold);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 0.93rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .reveal-btn:hover {
+      background: #f7efe4;
+      transform: translateY(-1px);
+    }
+
+    .plan-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+      border-top: 1px solid transparent;
+      background: #fffaf4;
+    }
+
+    .plan-details.open {
+      grid-template-rows: 1fr;
+      border-top: 1px solid var(--line);
+    }
+
+    .plan-details-inner {
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    .plan-details.open .plan-details-inner {
+      padding: 18px 20px 20px;
+    }
+
+    .plan-details ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .plan-details li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .plan-details li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
+    }
+
+    .plan-chosen-text {
+      margin-top: 14px;
+      color: var(--gold-dark);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    form {
+      display: grid;
+      gap: 26px;
+    }
+
+    .form-section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .form-section-title {
+      font-size: 1.14rem;
+      margin-bottom: 6px;
+    }
+
+    .form-section-text {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    .field-full {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(182, 145, 95, 0.14);
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: -2px;
+      line-height: 1.6;
+    }
+
+    .submit-box {
+      background: var(--card-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .submit-box p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .manual-next {
+      margin-top: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .manual-next p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .side-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+    }
+
+    .side-card p,
+    .side-card li {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.72;
+    }
+
+    .side-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .side-card li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .side-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
+    }
+
+    .side-block + .side-block {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .plan-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .form-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card,
+      .side-card {
+        padding: 22px;
+      }
+
+      .submit-box {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">Monarch Tales</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div><span></span><span></span><span></span></div>
+      </button>
+
+      <div class="nav-links" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="start.html">Back</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Order Form</span>
+        <h1>Begin your child’s Monarch Tale.</h1>
+        <p>
+          Choose your package first, then share the first details we need before shaping the deeper emotional story experience.
+        </p>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="container form-shell">
+        <div class="form-card">
+          <h2 class="intro-title">Order Details</h2>
+          <p class="intro-text">
+            This part is designed to feel simple. First, inspect the package that fits your story experience. Then share the first essential details about the child and how you’d like us to guide the journey forward.
+          </p>
+          <p class="intro-note">Takes less than 2 minutes to begin.</p>
+
+          <section class="plan-select" id="plan-selection">
+            <h2>Choose Your Package</h2>
+            <p class="plan-sub">Tap “View Package” to reveal what each experience includes before you select it.</p>
+
+            <div class="plan-grid">
+              <div class="plan-card" data-plan="basic">
+                <div class="plan-card-top">
+                  <h3>The Seed</h3>
+                  <p class="plan-price">$49</p>
+                  <p class="plan-summary">Entry point, accessibility, and a beautiful first step into the Monarch Tales world.</p>
+                  <div class="plan-actions">
+                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('basic')">View Package</button>
+                  </div>
+                </div>
+                <div class="plan-details" id="plan-details-basic">
+                  <div class="plan-details-inner">
+                    <ul>
+                      <li>Child’s name in story</li>
+                      <li>Character appearance customization</li>
+                      <li>Dedication page</li>
+                      <li>Digital version (PDF)</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('basic')">Select The Seed</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="plan-card" data-plan="premium">
+                <div class="plan-card-top">
+                  <h3>The Becoming</h3>
+                  <p class="plan-price">$69</p>
+                  <p class="plan-summary">Your core money-maker and strongest value tier for families who want a fuller keepsake experience.</p>
+                  <div class="plan-actions">
+                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('premium')">View Package</button>
+                  </div>
+                </div>
+                <div class="plan-details" id="plan-details-premium">
+                  <div class="plan-details-inner">
+                    <ul>
+                      <li>Everything in Basic</li>
+                      <li>Custom illustrated character</li>
+                      <li>Printed hardcover book</li>
+                      <li>Child’s name integrated deeper into story</li>
+                      <li>Audio narration</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('premium')">Select The Becoming</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="plan-card" data-plan="royal">
+                <div class="plan-card-top">
+                  <h3>The Legacy</h3>
+                  <p class="plan-price">$99–$120</p>
+                  <p class="plan-summary">High emotion, high value, and premium positioning for milestone moments and deeper gift experiences.</p>
+                  <div class="plan-actions">
+                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('royal')">View Package</button>
+                  </div>
+                </div>
+                <div class="plan-details" id="plan-details-royal">
+                  <div class="plan-details-inner">
+                    <ul>
+                      <li>Everything in Premium</li>
+                      <li>Animated story</li>
+                      <li>Personalized birthday message from character</li>
+                      <li>Custom song with child’s name</li>
+                      <li>Premium packaging feel</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('royal')">Select The Legacy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="plan-chosen-text" id="planChosenText">No package selected yet.</p>
+          </section>
+
+          <form action="https://formspree.io/f/xojpaejp" method="POST">
+            <input type="hidden" name="selectedPlan" id="selectedPlan" required />
+
+            <div class="form-section">
+              <h3 class="form-section-title">Customer Details</h3>
+              <p class="form-section-text">
+                Tell us who is making this request and the best way to reach you. This could be a parent, aunt, uncle, sibling, godparent, or anyone ordering for the child.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="customerName">Customer Name</label>
+                  <input type="text" id="customerName" name="customerName" placeholder="Your full name" required />
+                </div>
+
+                <div class="field-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+
+              <div class="field-full">
+                <label for="relationshipToChild">Relationship to the child</label>
+                <input type="text" id="relationshipToChild" name="relationshipToChild" placeholder="Parent, aunt, uncle, sibling, godparent, family friend, etc." />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Child Details</h3>
+              <p class="form-section-text">
+                These first details help us begin shaping the story around the child.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="childName">Child’s Name</label>
+                  <input type="text" id="childName" name="childName" placeholder="Child's name" required />
+                </div>
+
+                <div class="field-group">
+                  <label for="childAge">Child’s Age</label>
+                  <input type="text" id="childAge" name="childAge" placeholder="e.g. 5" required />
+                </div>
+              </div>
+
+              <div class="field-full">
+                <label for="notes">Tell us anything small you’d like us to know about the child</label>
+                <textarea id="notes" name="notes" placeholder="A few words about their personality, interests, or anything special..."></textarea>
+                <p class="helper">
+                  This can be simple. The deeper story questions come later.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Character Creation Direction</h3>
+              <p class="form-section-text">
+                For launch, we can work either from a child photo or from a strong written description.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="visualMethod">Preferred visual direction</label>
+                  <select id="visualMethod" name="visualMethod">
+                    <option value="">Select an option</option>
+                    <option value="Photo reference">Photo reference</option>
+                    <option value="Description only">Description only</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label for="photoLink">Photo link (optional)</label>
+                  <input type="text" id="photoLink" name="photoLink" placeholder="Paste a Drive link or image link if available" />
+                </div>
+              </div>
+
+              <div class="field-full">
+                <label for="visualDescription">Describe the child’s look if needed</label>
+                <textarea id="visualDescription" name="visualDescription" placeholder="Skin tone, hairstyle, outfit style, favorite colors, accessories, personality vibe..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Contact Preference</h3>
+              <p class="form-section-text">
+                Let us know how you’d prefer to hear from us after your request is received.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="contactMethod">Preferred contact method</label>
+                  <select id="contactMethod" name="contactMethod" required>
+                    <option value="">Select an option</option>
+                    <option value="Email">Email</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label for="whatsapp">WhatsApp Number</label>
+                  <input type="text" id="whatsapp" name="whatsapp" placeholder="Optional" />
+                </div>
+              </div>
+            </div>
+
+            <div class="submit-box">
+              <p>
+                Submit this first step and we’ll guide you into the deeper story creation process that makes each Monarch Tale feel warm, personal, and beautifully made.
+              </p>
+              <button type="submit" class="btn btn-primary">Submit Order Request</button>
+            </div>
+          </form>
+
+          <div class="manual-next">
+            <p>
+              After this, continue to the deeper story form where the emotional heart of the child’s book begins to take shape.
+            </p>
+            <a href="story-form.html" class="btn btn-secondary" id="storyFormButton">Continue to Story Form →</a>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="side-block">
+            <h3>What happens after this?</h3>
+            <p>
+              After this first request, the next stage is the deeper story form where we gather the emotional and personal details that shape the final book.
+            </p>
+            <p style="margin-top: 12px;">
+              You can preview that next step here:
+            </p>
+            <a href="story-form.html" class="btn btn-secondary" style="margin-top: 12px;" id="previewStoryFormButton">View Story Form</a>
+          </div>
+
+          <div class="side-block">
+            <h3>What this first step covers</h3>
+            <ul>
+              <li>Package selection</li>
+              <li>Customer details</li>
+              <li>Child’s basic information</li>
+              <li>Visual direction for character creation</li>
+              <li>Contact preference</li>
+            </ul>
+          </div>
+
+          <div class="side-block">
+            <h3>Why we begin this way</h3>
+            <p>
+              Monarch Tales is designed to guide families gently. We begin with clarity first, then move into the deeper emotional and storytelling details with care.
+            </p>
+          </div>
+
+          <div class="side-block">
+            <a href="start.html" class="btn btn-secondary">Back to Start Page</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const initialPlan = params.get("plan");
+    const selectedPlanInput = document.getElementById("selectedPlan");
+    const planChosenText = document.getElementById("planChosenText");
+    const storyFormButton = document.getElementById("storyFormButton");
+    const previewStoryFormButton = document.getElementById("previewStoryFormButton");
+    const planCards = document.querySelectorAll(".plan-card");
+    const planDetails = document.querySelectorAll(".plan-details");
+
+    const planLabelMap = {
+      basic: "The Seed — $49",
+      premium: "The Becoming — $69",
+      royal: "The Legacy — $99–$120"
+    };
+
+    function closeAllPlanDetails() {
+      planDetails.forEach(detail => detail.classList.remove("open"));
+    }
+
+    function togglePlanDetails(plan) {
+      const target = document.getElementById("plan-details-" + plan);
+      const isOpen = target.classList.contains("open");
+
+      closeAllPlanDetails();
+
+      if (!isOpen) {
+        target.classList.add("open");
+      }
+    }
+
+    function updatePlanUI(plan) {
+      planCards.forEach(card => {
+        card.classList.toggle("active", card.dataset.plan === plan);
+      });
+
+      if (planLabelMap[plan]) {
+        selectedPlanInput.value = planLabelMap[plan];
+        planChosenText.textContent = "Selected package: " + planLabelMap[plan];
+        storyFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
+        previewStoryFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
+      }
+    }
+
+    function selectPlan(plan) {
+      updatePlanUI(plan);
+      const target = document.getElementById("plan-details-" + plan);
+      closeAllPlanDetails();
+      target.classList.add("open");
+    }
+
+    if (initialPlan && planLabelMap[initialPlan]) {
+      updatePlanUI(initialPlan);
+      const target = document.getElementById("plan-details-" + initialPlan);
+      if (target) {
+        target.classList.add("open");
+      }
+    }
+
+    window.selectPlan = selectPlan;
+    window.togglePlanDetails = togglePlanDetails;
+  </script>
+</body>
+</html>        radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
         var(--bg);
       color: var(--text);
       line-height: 1.65;
