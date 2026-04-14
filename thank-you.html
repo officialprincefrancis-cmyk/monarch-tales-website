@@ -176,6 +176,178 @@
   <div class="card">
     <span class="eyebrow">Monarch Tales</span>
 
+    <h1>The story journey has officially begun.</h1>
+
+    <p class="lead">
+      Thank you for taking the first step. This is more than a form submission — it is the beginning of a story shaped with care, warmth, and meaning.
+    </p>
+
+    <p class="lead">
+      You’ve just created the opening for something a child can feel connected to, remember, and keep.
+    </p>
+
+    <div class="next-box">
+      <h2>What happens next</h2>
+      <ul>
+        <li>We review the details you shared and understand the direction of the story.</li>
+        <li>The emotional and personal elements you gave us begin shaping the heart of the final book.</li>
+        <li>You move one step closer to a personalized keepsake designed to feel thoughtful, beautiful, and worth remembering.</li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <a href="index.html" class="btn btn-primary">Return Home</a>
+      <a href="story-form.html" class="btn btn-secondary">Review Story Form</a>
+      <a href="https://wa.me/2348104743496" class="btn btn-secondary">Chat on WhatsApp</a>
+    </div>
+
+    <p class="note">
+      Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them.
+    </p>
+  </div>
+</body>
+</html>      color: var(--text);
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: var(--max);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 54px 34px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin: 0 auto 14px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .next-box {
+      margin: 28px auto 0;
+      max-width: 680px;
+      text-align: left;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .next-box h2 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .next-box ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    .next-box li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .next-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.97rem;
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .note {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 680px) {
+      .card { padding: 38px 22px; }
+      .next-box { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="eyebrow">Monarch Tales</span>
+
     <h1>Your child’s story has officially begun.</h1>
 
     <p class="lead">
