@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Begin Your Child’s Story | Monarch Tales</title>
 
-  <meta name="description"
-    content="Begin your Monarch Tales journey and take the first step toward creating a personalized storybook where your child becomes the hero." />
+  <meta
+    name="description"
+    content="Begin your Monarch Tales journey and take the first step toward creating a personalized storybook for a child."
+  />
 
   <style>
     :root {
@@ -23,233 +26,26 @@
       --max: 980px;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
+        var(--bg);
       color: var(--text);
       line-height: 1.65;
     }
 
-    a { text-decoration:none; color:inherit; }
-
-    .container {
-      width: min(92%, var(--max));
-      margin: 0 auto;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
-
-    header {
-      position: sticky;
-      top:0;
-      background: rgba(251,247,242,0.95);
-      border-bottom:1px solid var(--line);
-      z-index:1000;
-    }
-
-    .nav {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 0;
-    }
-
-    .brand {
-      font-family: Georgia, serif;
-      font-size:1.3rem;
-      font-weight:700;
-      color:var(--gold-dark);
-    }
-
-    .btn {
-      padding:14px 24px;
-      border-radius:999px;
-      background:var(--gold);
-      color:#fff;
-      font-size:0.95rem;
-      transition:0.25s;
-    }
-
-    .btn:hover {
-      background:var(--gold-dark);
-    }
-
-    .hero {
-      padding:80px 0 40px;
-      text-align:center;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(2.5rem,5vw,3.8rem);
-      margin-bottom:16px;
-    }
-
-    .hero p {
-      color:var(--muted);
-      max-width:680px;
-      margin:0 auto 14px;
-    }
-
-    .highlight {
-      color:var(--gold-dark);
-      font-weight:600;
-      margin-top:10px;
-    }
-
-    section {
-      padding:30px 0 80px;
-    }
-
-    .card {
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-      margin-bottom:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .steps {
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      gap:16px;
-      margin-top:20px;
-    }
-
-    .step {
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:20px;
-    }
-
-    .step-num {
-      width:38px;
-      height:38px;
-      border-radius:50%;
-      background:var(--gold);
-      color:#fff;
-      display:grid;
-      place-items:center;
-      margin-bottom:10px;
-      font-weight:bold;
-    }
-
-    .center {
-      text-align:center;
-      margin-top:25px;
-    }
-
-    .small {
-      font-size:0.9rem;
-      color:var(--muted);
-      margin-top:10px;
-    }
-
-    footer {
-      text-align:center;
-      padding:30px 0;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:0.9rem;
-    }
-
-    @media(max-width:800px){
-      .steps { grid-template-columns:1fr; }
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div class="container nav">
-    <a href="index.html" class="brand">Monarch Tales</a>
-    <a href="order.html" class="btn">Continue</a>
-  </div>
-</header>
-
-<main>
-
-<section class="hero">
-  <div class="container">
-    <h1>Start Your Child’s Story</h1>
-
-    <p>
-      You’re about to create something personal — a story shaped from your child’s world,
-      designed to be kept, remembered, and loved.
-    </p>
-
-    <p class="highlight">
-      No two Monarch Tales are ever the same.
-    </p>
-
-    <p class="small">
-      Digital: 5–7 days • Printed: 2–4 weeks
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-
-    <div class="card">
-      <h2>What happens next</h2>
-      <p class="small">
-        A simple, guided process — no confusion, no overwhelm.
-      </p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Choose your package</h3>
-          <p class="small">Select the experience that fits your story.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Tell us about the child</h3>
-          <p class="small">We gather the key details that shape the story.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>We create the story</h3>
-          <p class="small">A meaningful keepsake crafted just for them.</p>
-        </div>
-      </div>
-
-      <div class="center">
-        <a href="order.html" class="btn">Continue to Order</a>
-        <p class="small">Takes less than 2 minutes to begin.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Character creation</h3>
-      <p class="small">
-        You can choose:
-        <br>• Story-based (recommended)
-        <br>• Photo-based (for closer likeness)
-      </p>
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<footer>
-  © 2026 Monarch Tales. All rights reserved.
-</footer>
-
-</body>
-</html>        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    a { text-decoration: none; color: inherit; }
 
     .container {
       width: min(92%, var(--max));
@@ -291,7 +87,9 @@
       color: var(--muted);
     }
 
-    .nav-links a:hover { color: var(--gold-dark); }
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
 
     .menu-toggle {
       display: none;
@@ -316,9 +114,17 @@
       border-radius: 999px;
     }
 
-    .menu-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
 
     .btn {
       display: inline-block;
@@ -369,7 +175,9 @@
       letter-spacing: 0.4px;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-family: Georgia, "Times New Roman", serif;
     }
 
@@ -389,6 +197,7 @@
     .hero-note {
       color: var(--gold-dark);
       font-size: 0.93rem;
+      font-weight: 700;
     }
 
     section {
@@ -419,6 +228,24 @@
       color: var(--muted);
       font-size: 0.98rem;
       line-height: 1.75;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .trust-pill {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 12px 14px;
+      text-align: center;
+      color: var(--gold-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
     }
 
     .steps-grid {
@@ -476,7 +303,9 @@
       margin-bottom: 8px;
     }
 
-    .note-card p { margin-bottom: 12px; }
+    .note-card p {
+      margin-bottom: 12px;
+    }
 
     footer {
       padding: 28px 0 36px;
@@ -488,11 +317,16 @@
     }
 
     @media (max-width: 860px) {
-      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid,
+      .trust-strip {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 800px) {
-      .menu-toggle { display: inline-flex; }
+      .menu-toggle {
+        display: inline-flex;
+      }
 
       .nav-links {
         display: none;
@@ -510,23 +344,41 @@
         gap: 14px;
       }
 
-      .nav-links.open { display: flex; }
-      .nav-links .btn { width: 100%; text-align: center; }
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
 
     @media (max-width: 720px) {
-      .hero { padding-top: 56px; }
-      .intro-card, .steps-card, .note-card { padding: 22px; }
+      .hero {
+        padding-top: 56px;
+      }
+
+      .intro-card,
+      .steps-card,
+      .note-card {
+        padding: 22px;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container nav">
       <a href="index.html" class="brand">Monarch Tales</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-        <div><span></span><span></span><span></span></div>
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </button>
 
       <div class="nav-links" id="mobileNav">
@@ -540,11 +392,15 @@
     <section class="hero">
       <div class="container">
         <span class="eyebrow">Begin your Monarch Tales journey</span>
-        <h1>Begin the story with clarity and care.</h1>
+
+        <h1>Start Your Child’s Story</h1>
+
         <p>
-          This is the first step in creating a personalized Monarch Tales book. We begin simply, then guide you into the order stage where you inspect and choose the package that fits the story experience.
+          You’re about to create something personal — a story shaped from your child’s world,
+          designed to be kept, remembered, and loved.
         </p>
-        <p class="hero-note">Takes less than 2 minutes to begin.</p>
+
+        <p class="hero-note">No two Monarch Tales are ever the same.</p>
       </div>
     </section>
 
@@ -553,8 +409,15 @@
         <div class="intro-card">
           <h2 class="section-title">What this step is for</h2>
           <p class="section-text">
-            This page helps you begin the process without overwhelm. You do not need to answer every deep story question yet. First, you enter the journey calmly, then you choose the package and share the first essential details about the child.
+            This page helps you begin the process without overwhelm. First, you enter the journey calmly,
+            then you choose the package and share the first essential details about the child.
           </p>
+
+          <div class="trust-strip">
+            <div class="trust-pill">Digital: 5–7 days</div>
+            <div class="trust-pill">Printed: 2–4 weeks</div>
+            <div class="trust-pill">Secure payment link after review</div>
+          </div>
         </div>
 
         <div class="steps-card">
@@ -568,15 +431,15 @@
               <div class="step-number">1</div>
               <h3>Choose your package</h3>
               <p>
-                In the order stage, you’ll inspect the package that best fits the level of emotion, depth, and keepsake experience you want.
+                Select the experience that fits your family — digital, printed keepsake, or full premium story experience.
               </p>
             </div>
 
             <div class="step-box">
               <div class="step-number">2</div>
-              <h3>Share the deeper story</h3>
+              <h3>Share the child’s world</h3>
               <p>
-                Then we gather the emotional and personal details that make the book feel connected, meaningful, and beautifully shaped.
+                We gather simple details about the child, their personality, and the people who matter in their life.
               </p>
             </div>
 
@@ -584,7 +447,7 @@
               <div class="step-number">3</div>
               <h3>Receive a keepsake</h3>
               <p>
-                The Monarch Tale is created as a warm, premium experience designed to be remembered and kept.
+                Your Monarch Tale is created as a warm, premium experience designed to be remembered and kept.
               </p>
             </div>
           </div>
@@ -598,10 +461,10 @@
         <div class="note-card">
           <h3>Character visuals at launch</h3>
           <p>
-            Customers can either provide a child photo for stronger likeness or describe the child’s look in detail if they prefer not to upload an image.
+            Families can choose story-based character creation with no photos, or photo-based references for closer likeness when permission is granted.
           </p>
           <p>
-            This gives flexibility while keeping the launch process simple, fast, and realistic.
+            This keeps Monarch Tales accessible for families who want privacy, while still serving families who want a more personal visual resemblance.
           </p>
           <a href="index.html" class="btn btn-secondary">Back to Home</a>
         </div>
