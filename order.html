@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Order Form | Monarch Tales</title>
+
   <meta
     name="description"
     content="Begin your Monarch Tales order by choosing a package and sharing the first details about the child and the story experience you want."
   />
+
   <style>
     :root {
       --bg: #fbf7f2;
@@ -235,6 +238,7 @@
       color: var(--gold-dark);
       font-size: 0.93rem;
       margin-bottom: 18px;
+      font-weight: 700;
     }
 
     .unique-note {
@@ -254,6 +258,12 @@
       color: var(--gold-dark);
       font-size: 0.95rem;
       font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .payment-line {
+      color: var(--muted);
+      font-size: 0.92rem;
       margin-bottom: 28px;
     }
 
@@ -289,15 +299,33 @@
       background: #fffdf9;
       transition: 0.25s ease;
       overflow: hidden;
+      position: relative;
     }
 
     .plan-card.active {
       border: 2px solid var(--gold);
-      box-shadow: 0 10px 22px rgba(182, 145, 95, 0.14);
+      box-shadow: 0 12px 28px rgba(182, 145, 95, 0.16);
+    }
+
+    .plan-card.featured {
+      border: 2px solid rgba(182, 145, 95, 0.55);
+      background: linear-gradient(180deg, #fffdf9, #fff8ef);
     }
 
     .plan-card-top {
       padding: 20px;
+    }
+
+    .plan-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
     }
 
     .plan-card h3 {
@@ -308,7 +336,7 @@
     .plan-price {
       font-family: Georgia, "Times New Roman", serif;
       color: var(--gold-dark);
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin-bottom: 10px;
     }
 
@@ -316,6 +344,7 @@
       color: var(--muted);
       font-size: 0.93rem;
       margin-bottom: 14px;
+      line-height: 1.65;
     }
 
     .plan-actions {
@@ -388,7 +417,14 @@
       margin-top: 14px;
       color: var(--gold-dark);
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
+    }
+
+    .plan-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     form {
@@ -452,8 +488,14 @@
       outline: none;
     }
 
+    input[type="file"] {
+      padding: 12px;
+      background: #fffdf9;
+      cursor: pointer;
+    }
+
     textarea {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
     }
 
@@ -464,11 +506,88 @@
       box-shadow: 0 0 0 3px rgba(182, 145, 95, 0.14);
     }
 
+    .checkbox-grid,
+    .radio-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .checkbox-option,
+    .radio-option {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffdf9;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .checkbox-option:hover,
+    .radio-option:hover {
+      border-color: var(--gold);
+      background: #fffaf4;
+    }
+
+    .checkbox-option input,
+    .radio-option input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--gold-dark);
+    }
+
+    .option-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .option-text strong {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .option-text span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
     .helper {
       color: var(--muted);
       font-size: 0.88rem;
       margin-top: -2px;
       line-height: 1.6;
+    }
+
+    .photo-upload-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fffaf4;
+      border: 1px solid var(--line);
+      display: none;
+    }
+
+    .photo-upload-box.show {
+      display: block;
+    }
+
+    .permission-box {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .privacy-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
     }
 
     .submit-box {
@@ -541,6 +660,10 @@
       margin-top: 22px;
       padding-top: 18px;
       border-top: 1px solid var(--line);
+    }
+
+    .hidden {
+      display: none;
     }
 
     footer {
@@ -621,6 +744,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container nav">
@@ -643,7 +767,7 @@
         <span class="eyebrow">Order Form</span>
         <h1>Begin the Monarch Tale.</h1>
         <p>
-          Choose your package first, then share the first details we need before shaping the deeper emotional story experience.
+          Choose your package first, then share the key details we need to shape the story clearly and beautifully.
         </p>
       </div>
     </section>
@@ -652,60 +776,81 @@
       <div class="container form-shell">
         <div class="form-card">
           <h2 class="intro-title">Order Details</h2>
+
           <p class="intro-text">
-            This part is designed to feel simple. First, inspect the package that fits your story experience. Then share the first essential details about the child and how you’d like us to guide the journey forward.
+            This process is guided by design. You do not need to explain everything — just choose the options that best fit the child and the experience you want.
           </p>
+
           <p class="intro-note">Takes less than 2 minutes to begin.</p>
           <p class="unique-note">No two Monarch Tales are ever the same.</p>
-          <p class="delivery-line">Digital: 5–7 days • Print: 2–4 weeks</p>
+          <p class="delivery-line">Digital: 5–7 days • Printed: 2–4 weeks</p>
           <p class="limit-line">We are currently accepting a limited number of families for our first Monarch Tales.</p>
+          <p class="payment-line">Secure global payment link sent after your request is reviewed.</p>
 
           <section class="plan-select" id="plan-selection">
             <h2>Choose Your Package</h2>
-            <p class="plan-sub">Tap “View Package” to reveal what each experience includes before you select it.</p>
+            <p class="plan-sub">
+              Tap “View Package” to reveal what each experience includes before you select it.
+            </p>
 
             <div class="plan-grid">
               <div class="plan-card" data-plan="basic">
                 <div class="plan-card-top">
                   <h3>The Seed</h3>
-                  <p class="plan-price">$49</p>
-                  <p class="plan-summary">Entry point, accessibility, and a beautiful first step into the Monarch Tales world.</p>
+                  <p class="plan-price">$39</p>
+                  <p class="plan-summary">
+                    A simple beginning for families who want a beautiful digital story experience first.
+                  </p>
+
                   <div class="plan-actions">
                     <button type="button" class="reveal-btn" onclick="togglePlanDetails('basic')">View Package</button>
                   </div>
                 </div>
+
                 <div class="plan-details" id="plan-details-basic">
                   <div class="plan-details-inner">
                     <ul>
-                      <li>Child’s name in story</li>
-                      <li>Character appearance customization</li>
+                      <li>Digital only</li>
+                      <li>Personalized story</li>
+                      <li>Child’s name + traits</li>
                       <li>Dedication page</li>
-                      <li>Digital version (PDF)</li>
+                      <li>Delivered as PDF</li>
                     </ul>
-                    <button type="button" class="btn btn-primary" onclick="selectPlan('basic')">Select The Seed</button>
+
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('basic')">
+                      Select The Seed
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <div class="plan-card" data-plan="premium">
+              <div class="plan-card featured" data-plan="premium">
                 <div class="plan-card-top">
+                  <span class="plan-badge">Most Chosen • Core Product</span>
                   <h3>The Becoming</h3>
-                  <p class="plan-price">$69</p>
-                  <p class="plan-summary">Your core money-maker and strongest value tier for customers who want a fuller keepsake experience.</p>
+                  <p class="plan-price">$89</p>
+                  <p class="plan-summary">
+                    The complete Monarch Tales experience — designed to be held, kept, and remembered.
+                  </p>
+
                   <div class="plan-actions">
                     <button type="button" class="reveal-btn" onclick="togglePlanDetails('premium')">View Package</button>
                   </div>
                 </div>
+
                 <div class="plan-details" id="plan-details-premium">
                   <div class="plan-details-inner">
                     <ul>
-                      <li>Everything in Basic</li>
-                      <li>Custom illustrated character</li>
-                      <li>Printed hardcover book</li>
-                      <li>Child’s name integrated deeper into story</li>
-                      <li>Audio narration</li>
+                      <li>Printed hardcover + digital version</li>
+                      <li>Everything in Seed</li>
+                      <li>Full personalization</li>
+                      <li>Premium layout</li>
+                      <li>Free worldwide shipping included</li>
                     </ul>
-                    <button type="button" class="btn btn-primary" onclick="selectPlan('premium')">Select The Becoming</button>
+
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('premium')">
+                      Select The Becoming
+                    </button>
                   </div>
                 </div>
               </div>
@@ -713,37 +858,49 @@
               <div class="plan-card" data-plan="royal">
                 <div class="plan-card-top">
                   <h3>The Legacy</h3>
-                  <p class="plan-price">$99–$120</p>
-                  <p class="plan-summary">High emotion, high value, and premium positioning for milestone moments and deeper gift experiences.</p>
+                  <p class="plan-price">$129</p>
+                  <p class="plan-summary">
+                    For families who want something truly unforgettable, emotional, and deeply personal.
+                  </p>
+
                   <div class="plan-actions">
                     <button type="button" class="reveal-btn" onclick="togglePlanDetails('royal')">View Package</button>
                   </div>
                 </div>
+
                 <div class="plan-details" id="plan-details-royal">
                   <div class="plan-details-inner">
                     <ul>
-                      <li>Everything in Premium</li>
-                      <li>Animated story</li>
-                      <li>Personalized birthday message from character</li>
-                      <li>Custom song with child’s name</li>
-                      <li>Premium packaging feel</li>
+                      <li>Full premium experience</li>
+                      <li>Everything in Becoming</li>
+                      <li>Personalized audio narration</li>
+                      <li>Short animated version</li>
+                      <li>Custom message or song</li>
+                      <li>Premium emotional experience</li>
                     </ul>
-                    <button type="button" class="btn btn-primary" onclick="selectPlan('royal')">Select The Legacy</button>
+
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('royal')">
+                      Select The Legacy
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
             <p class="plan-chosen-text" id="planChosenText">No package selected yet.</p>
+
+            <p class="plan-note">
+              Payment is not taken on this page. After your request is reviewed, you’ll receive a secure payment link to begin your story.
+            </p>
           </section>
 
-          <form action="https://formspree.io/f/xojpaejp" method="POST">
+          <form action="https://formspree.io/f/xojpaejp" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="selectedPlan" id="selectedPlan" required />
 
             <div class="form-section">
               <h3 class="form-section-title">Customer Details</h3>
               <p class="form-section-text">
-                Tell us who is making this request and the best way to reach you. This could be a parent, aunt, uncle, sibling, godparent, or anyone ordering for the child.
+                Tell us who is making this request and the best way to reach you.
               </p>
 
               <div class="grid-2">
@@ -767,7 +924,7 @@
             <div class="form-section">
               <h3 class="form-section-title">Child Details</h3>
               <p class="form-section-text">
-                These first details help us begin shaping the story around the child.
+                These core details help us begin shaping the story clearly and consistently.
               </p>
 
               <div class="grid-2">
@@ -783,39 +940,172 @@
               </div>
 
               <div class="field-full">
-                <label for="notes">Tell us anything small you’d like us to know about the child</label>
-                <textarea id="notes" name="notes" placeholder="A few words about their personality, interests, or anything special..."></textarea>
-                <p class="helper">
-                  This can be simple. The deeper story questions come later.
-                </p>
+                <label>Which best describes your child? (Choose 2–3)</label>
+
+                <div class="checkbox-grid">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="personalityTraits[]" value="Kind & gentle">
+                    <span class="option-text"><strong>Kind & gentle</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="personalityTraits[]" value="Energetic & playful">
+                    <span class="option-text"><strong>Energetic & playful</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="personalityTraits[]" value="Curious & adventurous">
+                    <span class="option-text"><strong>Curious & adventurous</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="personalityTraits[]" value="Quiet & thoughtful">
+                    <span class="option-text"><strong>Quiet & thoughtful</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="personalityTraits[]" value="Bold & confident">
+                    <span class="option-text"><strong>Bold & confident</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="personalityTraits[]" value="Funny & expressive">
+                    <span class="option-text"><strong>Funny & expressive</strong></span>
+                  </label>
+                </div>
+
+                <p class="helper">Choose the traits that feel most like the child.</p>
+              </div>
+
+              <div class="field-full">
+                <label for="childNotes">Anything else we should know about the child? (optional)</label>
+                <textarea id="childNotes" name="childNotes" placeholder="Optional extra note for emotional or personal detail..."></textarea>
               </div>
             </div>
 
             <div class="form-section">
-              <h3 class="form-section-title">Character Creation Direction</h3>
+              <h3 class="form-section-title">Story Roles</h3>
               <p class="form-section-text">
-                For launch, we can work either from a child photo or from a strong written description.
+                Choose who should appear in the story so we can shape relationships clearly.
               </p>
 
-              <div class="grid-2">
-                <div class="field-group">
-                  <label for="visualMethod">Preferred visual direction</label>
-                  <select id="visualMethod" name="visualMethod">
-                    <option value="">Select an option</option>
-                    <option value="Photo reference">Photo reference</option>
-                    <option value="Description only">Description only</option>
-                  </select>
-                </div>
+              <div class="field-full">
+                <label>Who should appear in the story?</label>
 
-                <div class="field-group">
-                  <label for="photoLink">Photo link (optional)</label>
-                  <input type="text" id="photoLink" name="photoLink" placeholder="Paste a Drive link or image link if available" />
+                <div class="checkbox-grid">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyRoles[]" value="Mum">
+                    <span class="option-text"><strong>Mum</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyRoles[]" value="Dad">
+                    <span class="option-text"><strong>Dad</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyRoles[]" value="Grandma">
+                    <span class="option-text"><strong>Grandma</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyRoles[]" value="Grandpa">
+                    <span class="option-text"><strong>Grandpa</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyRoles[]" value="Sibling">
+                    <span class="option-text"><strong>Sibling</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyRoles[]" value="Other">
+                    <span class="option-text"><strong>Other</strong></span>
+                  </label>
                 </div>
               </div>
 
               <div class="field-full">
-                <label for="visualDescription">Describe the child’s look if needed</label>
-                <textarea id="visualDescription" name="visualDescription" placeholder="Skin tone, hairstyle, outfit style, favorite colors, accessories, personality vibe..."></textarea>
+                <label for="roleDescription">Describe their role in the child’s life (optional)</label>
+                <textarea id="roleDescription" name="roleDescription" placeholder="Optional note about how these people matter in the child’s world..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Character Style Preference</h3>
+              <p class="form-section-text">
+                Choose how you’d like the characters to be created. Photos are optional and only needed if you want closer likeness.
+              </p>
+
+              <div class="radio-grid">
+                <label class="radio-option">
+                  <input type="radio" name="characterStyle" value="Story-based (recommended)" checked>
+                  <span class="option-text">
+                    <strong>Story-based (recommended)</strong>
+                    <span>No photos needed. Characters are created from your child’s personality, traits, story world, and the details you share.</span>
+                  </span>
+                </label>
+
+                <label class="radio-option">
+                  <input type="radio" name="characterStyle" value="Photo-based (closer likeness)">
+                  <span class="option-text">
+                    <strong>Photo-based (closer likeness)</strong>
+                    <span>Upload or share clear reference photos if you want the child and chosen people to look closer to real life.</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="photo-upload-box" id="photoUploadField">
+                <div class="field-full">
+                  <label for="childPhoto">Child photo reference</label>
+                  <input type="file" id="childPhoto" name="childPhoto" accept=".jpg,.jpeg,.png,.webp" />
+                  <p class="helper">Upload one clear photo if you want closer likeness.</p>
+                </div>
+
+                <div class="field-full">
+                  <label for="familyPhotos">Family / character reference photos</label>
+                  <input type="file" id="familyPhotos" name="familyPhotos[]" accept=".jpg,.jpeg,.png,.webp" multiple />
+                  <p class="helper">Optional. Upload photos of people you want included in the story.</p>
+                </div>
+
+                <div class="field-full">
+                  <label for="photoLink">Or paste a photo folder link</label>
+                  <input type="text" id="photoLink" name="photoLink" placeholder="Google Drive, Dropbox, iCloud, or image folder link" />
+                  <p class="helper">Best for multiple photos or larger files.</p>
+                </div>
+
+                <div class="permission-box">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="photoPermission" value="Permission granted for likeness reference">
+                    <span class="option-text">
+                      <strong>I have permission to share these photos for story illustration reference.</strong>
+                      <span>Photos are used to guide character creation for this order.</span>
+                    </span>
+                  </label>
+
+                  <p class="privacy-note">
+                    Please only upload photos you have permission to share. If you prefer not to upload photos, choose Story-based and describe the child instead.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Emotional Anchor</h3>
+              <p class="form-section-text">
+                This helps us understand what the story should leave in the child’s heart.
+              </p>
+
+              <div class="field-full">
+                <label for="childFeeling">What is something special you want your child to feel from this story?</label>
+                <select id="childFeeling" name="childFeeling" required>
+                  <option value="">Select an option</option>
+                  <option value="Confidence">Confidence</option>
+                  <option value="Loved">Loved</option>
+                  <option value="Brave">Brave</option>
+                  <option value="Calm">Calm</option>
+                  <option value="Happy">Happy</option>
+                </select>
               </div>
             </div>
 
@@ -844,7 +1134,7 @@
 
             <div class="submit-box">
               <p>
-                Submit this first step and we’ll guide you into the deeper story creation process that makes each Monarch Tale feel warm, personal, and beautifully made.
+                Submit this first step and we’ll guide the journey forward with a story shaped around the child’s identity, personality, and world.
               </p>
               <button type="submit" class="btn btn-primary">Submit Order Request</button>
             </div>
@@ -871,13 +1161,12 @@
           </div>
 
           <div class="side-block">
-            <h3>What this first step covers</h3>
+            <h3>Why this form feels easier</h3>
             <ul>
-              <li>Package selection</li>
-              <li>Customer details</li>
-              <li>Child’s basic information</li>
-              <li>Visual direction for character creation</li>
-              <li>Contact preference</li>
+              <li>Shorter guided choices</li>
+              <li>Less guesswork</li>
+              <li>Clearer story structure</li>
+              <li>Photo upload is optional</li>
             </ul>
           </div>
 
@@ -885,14 +1174,21 @@
             <h3>Delivery time</h3>
             <ul>
               <li>Digital: 5–7 days</li>
-              <li>Print: 2–4 weeks</li>
+              <li>Printed: 2–4 weeks</li>
             </ul>
           </div>
 
           <div class="side-block">
-            <h3>Why we begin this way</h3>
+            <h3>Payment</h3>
             <p>
-              Monarch Tales is designed to guide families gently. We begin with clarity first, then move into the deeper emotional and storytelling details with care.
+              After your request is reviewed, you’ll receive a secure global payment link to begin your story.
+            </p>
+          </div>
+
+          <div class="side-block">
+            <h3>Character visuals</h3>
+            <p>
+              Families can choose story-based characters with no photos, or photo-based references for closer likeness when permission is granted.
             </p>
           </div>
 
@@ -937,9 +1233,9 @@
     const planDetails = document.querySelectorAll(".plan-details");
 
     const planLabelMap = {
-      basic: "The Seed — $49",
-      premium: "The Becoming — $69",
-      royal: "The Legacy — $99–$120"
+      basic: "The Seed — $39",
+      premium: "The Becoming — $89",
+      royal: "The Legacy — $129"
     };
 
     function closeAllPlanDetails() {
@@ -987,6 +1283,25 @@
 
     window.selectPlan = selectPlan;
     window.togglePlanDetails = togglePlanDetails;
+
+    const characterStyleInputs = document.querySelectorAll('input[name="characterStyle"]');
+    const photoUploadField = document.getElementById("photoUploadField");
+
+    function updateCharacterStyleUI() {
+      const selected = document.querySelector('input[name="characterStyle"]:checked');
+
+      if (selected && selected.value === "Photo-based (closer likeness)") {
+        photoUploadField.classList.add("show");
+      } else {
+        photoUploadField.classList.remove("show");
+      }
+    }
+
+    characterStyleInputs.forEach(input => {
+      input.addEventListener("change", updateCharacterStyleUI);
+    });
+
+    updateCharacterStyleUI();
   </script>
 </body>
 </html>
