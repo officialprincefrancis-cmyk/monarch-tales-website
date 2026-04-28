@@ -226,12 +226,18 @@
       color: var(--gold-dark);
       font-size: 0.98rem;
       font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .hero-trust {
       color: var(--gold-dark);
       font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-payment {
+      color: var(--muted);
+      font-size: 0.9rem;
       margin-bottom: 20px;
     }
 
@@ -491,6 +497,23 @@
       margin: 10px 0 14px;
     }
 
+    .popular-card {
+      border: 2px solid rgba(182, 145, 95, 0.55);
+      transform: translateY(-6px);
+    }
+
+    .popular-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
     .feature-list {
       list-style: none;
       display: grid;
@@ -538,6 +561,13 @@
       line-height: 1.7;
     }
 
+    .payment-note {
+      text-align: center;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .limited-note {
       text-align: center;
       max-width: 900px;
@@ -553,28 +583,31 @@
       line-height: 1.7;
     }
 
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
     .testimonial-box {
-      max-width: 900px;
-      margin: 0 auto;
       background: linear-gradient(135deg, #f4e8d9, #fffaf4);
       border: 1px solid var(--line);
       border-radius: 28px;
-      padding: 34px;
+      padding: 28px;
       box-shadow: var(--shadow);
-      text-align: center;
     }
 
     .testimonial-box blockquote {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.45rem;
-      line-height: 1.5;
+      font-size: 1.15rem;
+      line-height: 1.55;
       margin-bottom: 12px;
       color: var(--text);
     }
 
     .testimonial-box p {
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.92rem;
     }
 
     .faq-grid {
@@ -736,8 +769,13 @@
       .contact-grid,
       .footer-grid,
       .creation-grid,
-      .proof-grid {
+      .proof-grid,
+      .testimonial-grid {
         grid-template-columns: 1fr;
+      }
+
+      .popular-card {
+        transform: none;
       }
     }
 
@@ -792,6 +830,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container nav">
@@ -810,7 +849,7 @@
         <a href="#how-it-works">How It Works</a>
         <a href="#receive">What You Receive</a>
         <a href="#pricing">Pricing</a>
-        <a href="#stories">Our Stories</a>
+        <a href="#proof">See Examples</a>
         <a href="#contact">Contact</a>
         <a href="start.html" class="btn btn-primary">Create Your Child’s Story</a>
       </nav>
@@ -822,9 +861,11 @@
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Personalized storybooks for children</span>
-          <h1>Every child deserves to see themselves inside a story.</h1>
+
+          <h1>A Story Where Your Child Becomes the Hero.</h1>
+
           <p class="hero-copy">
-            Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them.
+            Personalized storybooks crafted from your child’s world—designed to be kept, remembered, and loved for a lifetime.
           </p>
 
           <div class="hero-buttons">
@@ -836,11 +877,12 @@
           <p class="hero-unique">No two Monarch Tales are ever the same.</p>
           <p class="hero-launch">We are currently accepting a limited number of families for our first Monarch Tales.</p>
           <p class="hero-trust">Created for families who want more than just a story.</p>
+          <p class="hero-payment">Secure global payments • Worldwide delivery available</p>
 
           <div class="hero-points">
-            <span>Physical + digital experience</span>
-            <span>Premium, gift-worthy feel</span>
-            <span>Built with heart and intention</span>
+            <span>Personalized around the child</span>
+            <span>Digital + printed options</span>
+            <span>Premium, gift-worthy keepsake</span>
           </div>
         </div>
 
@@ -855,20 +897,20 @@
     <section class="trust-bar">
       <div class="container trust-grid">
         <div class="trust-item">
-          <strong>Personalized</strong>
-          Each story is built around the child, not mass-made.
+          <strong>No two books are ever the same</strong>
+          Each story is created from the child’s identity, personality, and world.
         </div>
         <div class="trust-item">
-          <strong>Premium Feel</strong>
-          Designed to feel beautiful, special, and gift-worthy.
+          <strong>Crafted from personality</strong>
+          The child’s traits guide the emotional direction of the story.
         </div>
         <div class="trust-item">
-          <strong>Emotional</strong>
-          Created to hold warmth, memory, and meaning.
+          <strong>Worldwide delivery</strong>
+          Digital and printed options are built for global families.
         </div>
         <div class="trust-item">
-          <strong>Global Vision</strong>
-          Thoughtfully designed for families across the world.
+          <strong>Lifelong keepsake</strong>
+          Designed to feel beautiful, special, and worth keeping.
         </div>
       </div>
     </section>
@@ -878,7 +920,7 @@
         <div class="section-head">
           <h2>See your child inside a Monarch Tale</h2>
           <p>
-            Real glimpses from story pages and dedication moments that show the emotional heart of the experience.
+            These are real pages from actual story concepts we’ve created—not empty templates.
           </p>
         </div>
 
@@ -922,15 +964,15 @@
                 <img src="knox_dedication.png" alt="Dedication page example" />
               </div>
               <div class="proof-card-body">
-                <span class="proof-tag">Dedication page (from parents)</span>
-                <h3>Dedication page</h3>
+                <span class="proof-tag">Dedication page</span>
+                <h3>From the heart</h3>
                 <p>A special opening note that turns the book into a keepsake, not just a story.</p>
               </div>
             </div>
           </div>
 
           <p class="proof-line">
-            No two Monarch Tales are ever the same—each story is written from your child’s identity, personality, and world.
+            Each of these pages was created for a different child—your child’s story will be completely unique.
           </p>
         </div>
       </div>
@@ -1014,25 +1056,25 @@
         <div class="steps">
           <div class="card">
             <div class="step-number">1</div>
-            <h3>Begin the journey</h3>
+            <h3>Tell us about your child</h3>
             <p>
-              Start the process with a simple entry point, then move into the order stage where you inspect and choose the package that fits your story experience.
+              Choose simple options that describe their personality, world, and the feeling you want the story to leave.
             </p>
           </div>
 
           <div class="card">
             <div class="step-number">2</div>
-            <h3>Share the child’s world</h3>
+            <h3>We craft the story</h3>
             <p>
-              We gather the story details, emotional direction, and character information that help us shape something that feels deeply personal.
+              We turn those details into a meaningful, personalized story built around the child.
             </p>
           </div>
 
           <div class="card">
             <div class="step-number">3</div>
-            <h3>Receive a keepsake worth remembering</h3>
+            <h3>Receive your book</h3>
             <p>
-              Your Monarch Tale is shaped into a warm, beautifully crafted experience designed to feel personal, gift-worthy, and meaningful enough to keep.
+              Your story is delivered digitally or as a printed keepsake, depending on your selected package.
             </p>
           </div>
         </div>
@@ -1076,9 +1118,9 @@
     <section id="pricing">
       <div class="container">
         <div class="section-head">
-          <h2>The Monarch Package System</h2>
+          <h2>Choose your story experience</h2>
           <p>
-            A clean, scalable structure designed to give families different levels of depth, emotion, and premium experience.
+            A clean package system designed for different levels of depth, emotion, and premium experience.
           </p>
         </div>
 
@@ -1086,26 +1128,28 @@
           <div class="card">
             <h3 class="price-name">The Seed</h3>
             <div class="price">$49</div>
-            <p>Entry point, accessibility, and a beautiful first step into the Monarch Tales world.</p>
+            <p>Digital story experience for families who want a beautiful, personalized story delivered quickly.</p>
             <ul class="feature-list">
+              <li>Personalized story</li>
               <li>Child’s name in story</li>
-              <li>Character appearance customization</li>
               <li>Dedication page</li>
-              <li>Digital version (PDF)</li>
+              <li>Digital PDF delivery</li>
+              <li>Perfect for quick gifting</li>
             </ul>
-            <a href="order.html?plan=basic#plan-selection" class="btn btn-primary">Choose The Seed</a>
+            <a href="order.html?plan=basic#plan-selection" class="btn btn-primary">Start with Seed</a>
           </div>
 
-          <div class="card">
+          <div class="card popular-card">
+            <span class="popular-badge">Most Chosen</span>
             <h3 class="price-name">The Becoming</h3>
             <div class="price">$69</div>
-            <p>Your core money-maker and strongest value tier for families who want a fuller keepsake experience.</p>
+            <p>The core keepsake experience for families who want the story to feel physical, premium, and lasting.</p>
             <ul class="feature-list">
-              <li>Everything in Basic</li>
-              <li>Custom illustrated character</li>
+              <li>Everything in Seed</li>
               <li>Printed hardcover book</li>
-              <li>Child’s name integrated deeper into story</li>
-              <li>Audio narration</li>
+              <li>Personalized story</li>
+              <li>Delivered worldwide</li>
+              <li>Premium keepsake feel</li>
             </ul>
             <a href="order.html?plan=premium#plan-selection" class="btn btn-primary">Choose The Becoming</a>
           </div>
@@ -1113,15 +1157,15 @@
           <div class="card">
             <h3 class="price-name">The Legacy</h3>
             <div class="price">$99–$120</div>
-            <p>High emotion, high value, and premium positioning for milestone moments and deeper gift experiences.</p>
+            <p>For families who want something unforgettable, emotional, and deeply personal.</p>
             <ul class="feature-list">
-              <li>Everything in Premium</li>
-              <li>Animated story</li>
-              <li>Personalized birthday message from character</li>
-              <li>Custom song with child’s name</li>
-              <li>Premium packaging feel</li>
+              <li>Everything in Becoming</li>
+              <li>Personalized audio/story voice</li>
+              <li>Custom message or song</li>
+              <li>Premium gift experience</li>
+              <li>Designed for milestone moments</li>
             </ul>
-            <a href="order.html?plan=royal#plan-selection" class="btn btn-primary">Choose The Legacy</a>
+            <a href="order.html?plan=royal#plan-selection" class="btn btn-primary">Go Legacy</a>
           </div>
         </div>
 
@@ -1129,6 +1173,10 @@
           Digital: 5–7 days &nbsp;•&nbsp; Printed: 2–4 weeks<br>
           Each story is carefully crafted after your order—never pre-made.
         </div>
+
+        <p class="payment-note">
+          Secure global payments via Stripe • Trusted checkout experience • Worldwide delivery available
+        </p>
 
         <div class="limited-note">
           We are currently accepting a limited number of families for our first Monarch Tales.
@@ -1147,16 +1195,16 @@
 
         <div class="reassure-grid">
           <div class="card">
-            <h3>Photo-based direction</h3>
+            <h3>Story-based direction</h3>
             <p>
-              Customers can share a child photo for stronger likeness when creating visual references and illustrated identity.
+              Characters can be illustrated from the child’s personality, story world, favorite colors, and identity details.
             </p>
           </div>
 
           <div class="card">
-            <h3>Description-based direction</h3>
+            <h3>Photo-based direction</h3>
             <p>
-              Customers can also describe the child’s skin tone, hairstyle, outfit style, favorite colors, and personality if they prefer not to upload a photo.
+              Customers can share a child photo for stronger likeness when creating visual references and illustrated identity.
             </p>
           </div>
 
@@ -1179,11 +1227,27 @@
           </p>
         </div>
 
-        <div class="testimonial-box">
-          <blockquote>
-            “This story made my child smile like it truly belonged to them.”
-          </blockquote>
-          <p>Inspired by the heart behind the Monarch Tales experience.</p>
+        <div class="testimonial-grid">
+          <div class="testimonial-box">
+            <blockquote>
+              “This story made my child smile like it truly belonged to them.”
+            </blockquote>
+            <p>Inspired by the heart behind the Monarch Tales experience.</p>
+          </div>
+
+          <div class="testimonial-box">
+            <blockquote>
+              “It felt personal, thoughtful, and different from a normal children’s book.”
+            </blockquote>
+            <p>A keepsake-style reaction from early story concept feedback.</p>
+          </div>
+
+          <div class="testimonial-box">
+            <blockquote>
+              “The dedication page alone made it feel like something worth keeping.”
+            </blockquote>
+            <p>Proof that emotion and memory are part of the product.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1269,7 +1333,7 @@
           <details>
             <summary>How personalized is each book?</summary>
             <p>
-              Each Monarch Tale is shaped around the child’s name, identity, and emotional details so the final story feels meaningfully connected to them.
+              Each Monarch Tale is shaped around the child’s name, identity, personality, and emotional details so the final story feels meaningfully connected to them.
             </p>
           </details>
 
@@ -1291,6 +1355,13 @@
             <summary>Is each story pre-made?</summary>
             <p>
               No. Each story is carefully crafted after your order and shaped around the child’s identity, personality, and world.
+            </p>
+          </details>
+
+          <details>
+            <summary>How does payment work?</summary>
+            <p>
+              After your request is reviewed, you’ll receive a secure Stripe payment link to begin your story.
             </p>
           </details>
         </div>
@@ -1369,7 +1440,7 @@
           <h4>Explore</h4>
           <div class="footer-links">
             <a href="#about">About</a>
-            <a href="#proof">Proof</a>
+            <a href="#proof">See Examples</a>
             <a href="#story-created">How It’s Created</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#pricing">Pricing</a>
