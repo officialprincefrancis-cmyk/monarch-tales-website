@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Story Creation Form | Monarch Tales</title>
+
   <meta
     name="description"
     content="Share the deeper story details that help shape a child's personalized Monarch Tales book."
   />
+
   <style>
     :root {
       --bg: #fbf7f2;
@@ -40,7 +43,10 @@
       line-height: 1.65;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .container {
       width: min(92%, var(--max));
@@ -82,7 +88,9 @@
       color: var(--muted);
     }
 
-    .nav-links a:hover { color: var(--gold-dark); }
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
 
     .menu-toggle {
       display: none;
@@ -107,9 +115,17 @@
       border-radius: 999px;
     }
 
-    .menu-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
 
     .btn {
       display: inline-block;
@@ -185,7 +201,8 @@
       border-radius: 18px;
       padding: 16px 18px;
       box-shadow: var(--shadow);
-      color: var(--muted);
+      color: var(--gold-dark);
+      font-weight: 700;
       display: none;
     }
 
@@ -208,7 +225,9 @@
       box-shadow: var(--shadow);
     }
 
-    .form-card { padding: 34px; }
+    .form-card {
+      padding: 34px;
+    }
 
     .side-card {
       padding: 24px;
@@ -232,6 +251,7 @@
       color: var(--gold-dark);
       font-size: 0.93rem;
       margin-bottom: 28px;
+      font-weight: 700;
     }
 
     form {
@@ -296,7 +316,7 @@
     }
 
     textarea {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
     }
 
@@ -305,6 +325,58 @@
     textarea:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(182, 145, 95, 0.14);
+    }
+
+    .checkbox-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .checkbox-option {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffdf9;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .checkbox-option:hover {
+      border-color: var(--gold);
+      background: #fffaf4;
+    }
+
+    .checkbox-option input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--gold-dark);
+    }
+
+    .option-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .option-text strong {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .option-text span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: -2px;
+      line-height: 1.6;
     }
 
     .submit-box {
@@ -451,6 +523,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container nav">
@@ -462,7 +535,7 @@
 
       <div class="nav-links" id="mobileNav">
         <a href="index.html">Home</a>
-        <a href="order.html">Back</a>
+        <a href="order.html">Back to Order</a>
       </div>
     </div>
   </header>
@@ -473,7 +546,7 @@
         <span class="eyebrow">Story Creation Form</span>
         <h1>Now let’s shape the heart of the story.</h1>
         <p>
-          This stage gathers the deeper personal details that help us create a Monarch Tale that feels warm, meaningful, and beautifully connected to the child.
+          This stage gathers the deeper details that help us create a Monarch Tale that feels warm, meaningful, and beautifully connected to the child.
         </p>
 
         <div class="selected-plan" id="selectedPlanBox"></div>
@@ -485,9 +558,9 @@
         <div class="form-card">
           <h2 class="intro-title">Story Details</h2>
           <p class="intro-text">
-            This is the deeper part of the process — where the child’s world, personality, relationships, and emotional truths begin shaping the final story.
+            You do not need perfect words. Choose what feels true, add a few personal notes, and we’ll shape the story with care.
           </p>
-          <p class="intro-note">You do not need perfect wording. Honest, simple answers are enough.</p>
+          <p class="intro-note">Simple answers are enough.</p>
 
           <form action="https://formspree.io/f/xojpaejp" method="POST">
             <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
@@ -501,143 +574,152 @@
               <div class="grid-2">
                 <div class="field-group">
                   <label for="storyChildName">Child’s Name</label>
-                  <input type="text" id="storyChildName" name="storyChildName" placeholder="Child's name" />
+                  <input type="text" id="storyChildName" name="storyChildName" placeholder="Child's name" required />
                 </div>
 
                 <div class="field-group">
                   <label for="storyChildAge">Child’s Age</label>
-                  <input type="text" id="storyChildAge" name="storyChildAge" placeholder="e.g. 5" />
+                  <input type="text" id="storyChildAge" name="storyChildAge" placeholder="e.g. 5" required />
                 </div>
               </div>
 
               <div class="field-full">
-                <label for="speechStyle">How do they talk? Any cute or funny words they use often?</label>
-                <textarea id="speechStyle" name="speechStyle"></textarea>
-              </div>
+                <label>Which best describes your child? (Choose 2–3)</label>
+                <div class="checkbox-grid">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Kind & gentle">
+                    <span class="option-text"><strong>Kind & gentle</strong></span>
+                  </label>
 
-              <div class="field-full">
-                <label for="favoriteActivities">What are some of their favorite things to do?</label>
-                <textarea id="favoriteActivities" name="favoriteActivities" placeholder="Play, draw, pretend games, sports, etc."></textarea>
-              </div>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Energetic & playful">
+                    <span class="option-text"><strong>Energetic & playful</strong></span>
+                  </label>
 
-              <div class="field-full">
-                <label for="favoriteToy">Do they have a favorite toy, stuffed animal, or blanket?</label>
-                <textarea id="favoriteToy" name="favoriteToy"></textarea>
-              </div>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Curious & adventurous">
+                    <span class="option-text"><strong>Curious & adventurous</strong></span>
+                  </label>
 
-              <div class="field-full">
-                <label for="favoriteAnimals">Do they love animals? If yes, which ones?</label>
-                <textarea id="favoriteAnimals" name="favoriteAnimals"></textarea>
-              </div>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Quiet & thoughtful">
+                    <span class="option-text"><strong>Quiet & thoughtful</strong></span>
+                  </label>
 
-              <div class="field-full">
-                <label for="favoriteHero">Who’s their favorite superhero, character, or role model? Why?</label>
-                <textarea id="favoriteHero" name="favoriteHero"></textarea>
-              </div>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Bold & confident">
+                    <span class="option-text"><strong>Bold & confident</strong></span>
+                  </label>
 
-              <div class="field-full">
-                <label for="creativeExpression">Do they like to draw, dance, sing, or create things?</label>
-                <textarea id="creativeExpression" name="creativeExpression" placeholder="This can become part of their magical power in the story."></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="personalityTraits">How would you describe them?</label>
-                <textarea id="personalityTraits" name="personalityTraits" placeholder="Shy, bold, curious, quiet, energetic, thoughtful, etc."></textarea>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Funny & expressive">
+                    <span class="option-text"><strong>Funny & expressive</strong></span>
+                  </label>
+                </div>
+                <p class="helper">Choose the traits that feel closest. You do not need to choose everything.</p>
               </div>
             </div>
 
             <div class="form-section">
-              <h3 class="form-section-title">About a Special Person</h3>
+              <h3 class="form-section-title">Emotional Direction</h3>
               <p class="form-section-text">
-                This can be a parent, grandparent, sibling, guardian, or any meaningful figure in the child’s world.
+                This becomes the emotional anchor of the story.
               </p>
 
               <div class="field-full">
-                <label for="specialPersonRelationship">What’s the relationship like between the child and this special person?</label>
-                <textarea id="specialPersonRelationship" name="specialPersonRelationship"></textarea>
+                <label for="emotionalTruth">What is something special you want the child to feel from this story?</label>
+                <select id="emotionalTruth" name="emotionalTruth" required>
+                  <option value="">Select an option</option>
+                  <option value="Confidence">Confidence</option>
+                  <option value="Loved">Loved</option>
+                  <option value="Brave">Brave</option>
+                  <option value="Calm">Calm</option>
+                  <option value="Happy">Happy</option>
+                </select>
               </div>
 
               <div class="field-full">
-                <label for="specialPersonName">What do they call them?</label>
-                <textarea id="specialPersonName" name="specialPersonName" placeholder="Grandma, Mommy, Papa, nickname, etc."></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="sharedTraditions">Do they have little traditions together?</label>
-                <textarea id="sharedTraditions" name="sharedTraditions" placeholder="Songs, bedtime prayers, stories, routines, etc."></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="sharedFoods">Any foods they love to cook or eat together?</label>
-                <textarea id="sharedFoods" name="sharedFoods"></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="sweetPhrase">What’s one sweet thing this person always says to the child?</label>
-                <textarea id="sweetPhrase" name="sweetPhrase"></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="specialRole">What role does this person play in the child’s life?</label>
-                <textarea id="specialRole" name="specialRole" placeholder="Caregiver, mentor, support system, special visits, etc."></textarea>
+                <label for="futureCharacter">Optional: what kind of person do you want them to grow into?</label>
+                <textarea id="futureCharacter" name="futureCharacter" placeholder="Kind, resilient, joyful, thoughtful, brave, grounded..."></textarea>
               </div>
             </div>
 
             <div class="form-section">
-              <h3 class="form-section-title">Emotional Core</h3>
+              <h3 class="form-section-title">People in the Story</h3>
               <p class="form-section-text">
-                This section helps shape the emotional truth and message carried by the book.
+                Choose who should appear or be felt inside the child’s world.
+              </p>
+
+              <div class="checkbox-grid">
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Mum">
+                  <span class="option-text"><strong>Mum</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Dad">
+                  <span class="option-text"><strong>Dad</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Grandma">
+                  <span class="option-text"><strong>Grandma</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Grandpa">
+                  <span class="option-text"><strong>Grandpa</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Sibling">
+                  <span class="option-text"><strong>Sibling</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Other">
+                  <span class="option-text"><strong>Other</strong></span>
+                </label>
+              </div>
+
+              <div class="field-full">
+                <label for="characterRoleDescription">Optional: describe their role in the child’s life</label>
+                <textarea id="characterRoleDescription" name="characterRoleDescription" placeholder="A few words about their love, presence, support, or importance..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">Personal Touch</h3>
+              <p class="form-section-text">
+                These small details can make the story feel unforgettable.
               </p>
 
               <div class="field-full">
-                <label for="emotionalTruth">What emotional truth do you want the child to grow up believing?</label>
-                <textarea id="emotionalTruth" name="emotionalTruth" placeholder="I am loved, I am enough, kindness is my strength, I can be brave, etc."></textarea>
+                <label for="specialPhrase">Optional: a sweet phrase, lesson, blessing, or line you would love included</label>
+                <textarea id="specialPhrase" name="specialPhrase" placeholder="A short phrase, blessing, or message you want the child to carry..."></textarea>
               </div>
 
               <div class="field-full">
-                <label for="futureCharacter">What kind of person do you want them to grow into?</label>
-                <textarea id="futureCharacter" name="futureCharacter" placeholder="Confident, kind, resilient, joyful, thoughtful, bold, etc."></textarea>
+                <label for="specialOccasion">Optional: is this for a birthday, milestone, bedtime keepsake, or special season?</label>
+                <textarea id="specialOccasion" name="specialOccasion" placeholder="Birthday, bedtime keepsake, encouragement, milestone, gift, etc."></textarea>
               </div>
 
               <div class="field-full">
-                <label for="gentleChallenge">Are there any challenges in their life you’d like the story to gently rewrite or give light to?</label>
-                <textarea id="gentleChallenge" name="gentleChallenge"></textarea>
+                <label for="dedicationPage">Optional: dedication page or opening message</label>
+                <textarea id="dedicationPage" name="dedicationPage" placeholder="For Knox — who teaches us that love never leaves..."></textarea>
               </div>
             </div>
 
             <div class="form-section">
-              <h3 class="form-section-title">Personal Touches</h3>
+              <h3 class="form-section-title">Book Style</h3>
               <p class="form-section-text">
-                These final details help the story feel even more intimate and special.
-              </p>
-
-              <div class="field-full">
-                <label for="specialEnding">Do you want the story to end with a special phrase, song, or blessing?</label>
-                <textarea id="specialEnding" name="specialEnding"></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="messageFromYou">Would you like to include a message from you at the end?</label>
-                <textarea id="messageFromYou" name="messageFromYou" placeholder="From Mommy with love, From Uncle..., etc."></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="specialOccasion">Should the book mark something special like a birthday, milestone, or season in their life?</label>
-                <textarea id="specialOccasion" name="specialOccasion"></textarea>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h3 class="form-section-title">Book Details</h3>
-              <p class="form-section-text">
-                These choices help guide the final presentation of the storybook.
+                These choices guide the feel of the final book.
               </p>
 
               <div class="grid-2">
                 <div class="field-group">
                   <label for="chapterCount">How many chapters would you like?</label>
                   <select id="chapterCount" name="chapterCount">
-                    <option value="">Select an option</option>
                     <option value="7">7 chapters</option>
                     <option value="8">8 chapters</option>
                     <option value="9">9 chapters</option>
@@ -648,23 +730,18 @@
                 <div class="field-group">
                   <label for="illustrationStyle">Illustration style</label>
                   <select id="illustrationStyle" name="illustrationStyle">
-                    <option value="">Select an option</option>
-                    <option value="Playful cartoon">Playful cartoon</option>
                     <option value="Soft watercolor">Soft watercolor</option>
+                    <option value="Playful cartoon">Playful cartoon</option>
                     <option value="Bold comic-style">Bold comic-style</option>
+                    <option value="Premium storybook illustration">Premium storybook illustration</option>
                   </select>
                 </div>
-              </div>
-
-              <div class="field-full">
-                <label for="dedicationPage">Would you like a dedication page or opening letter to the child?</label>
-                <textarea id="dedicationPage" name="dedicationPage"></textarea>
               </div>
             </div>
 
             <div class="submit-box">
               <p>
-                Submit these story details and we’ll have the emotional material needed to shape a Monarch Tale with real warmth, meaning, and memory.
+                You’ve given enough. From here, we shape something meaningful, personal, and worth keeping.
               </p>
               <button type="submit" class="btn btn-primary">Submit Story Details</button>
             </div>
@@ -672,7 +749,7 @@
 
           <div class="manual-next">
             <p>
-              After submitting, continue to your completion page and keep the journey moving smoothly.
+              After submitting, continue to the completion page. Your request will be reviewed before payment and production begin.
             </p>
             <a href="thank-you.html" class="btn btn-secondary">Go to Thank You Page →</a>
           </div>
@@ -682,24 +759,31 @@
           <div class="side-block">
             <h3>Why this form matters</h3>
             <p>
-              This is where the story becomes deeply personal. The more warmth, truth, and detail you share here, the more meaning the final book can carry.
+              This is where the story becomes personal. The details you share help shape tone, emotion, relationships, and meaning.
             </p>
           </div>
 
           <div class="side-block">
             <h3>What this step captures</h3>
             <ul>
-              <li>The child’s personality and world</li>
-              <li>Meaningful family bonds</li>
-              <li>The emotional truth behind the story</li>
+              <li>The child’s personality direction</li>
+              <li>The emotional feeling you want the story to leave</li>
+              <li>The people who matter in the story world</li>
               <li>Special touches that make it unforgettable</li>
             </ul>
           </div>
 
           <div class="side-block">
+            <h3>Payment note</h3>
+            <p>
+              After your request is reviewed, you’ll receive a secure payment link to begin your story.
+            </p>
+          </div>
+
+          <div class="side-block">
             <h3>How to answer well</h3>
             <p>
-              You do not need polished or perfect answers. Honest, human, simple details are more than enough to shape something beautiful.
+              Choose what feels most true. You do not need long explanations for every question—the structure is designed to guide you.
             </p>
           </div>
 
