@@ -751,7 +751,7 @@
             <p>
               After submitting, continue to the completion page. Your request will be reviewed before payment and production begin.
             </p>
-            <a href="thank-you.html" class="btn btn-secondary">Go to Thank You Page →</a>
+            <a href="thank-you.html" class="btn btn-secondary">Complete Request  →</a>
           </div>
         </div>
 
@@ -824,11 +824,10 @@
     const planInput = document.getElementById("storySelectedPlanInput");
 
     const planMap = {
-      basic: "Selected package: The Seed — $49",
-      premium: "Selected package: The Becoming — $69",
-      royal: "Selected package: The Legacy — $99–$120"
-    };
-
+  seed: "Selected package: The Seed — $39",
+  becoming: "Selected package: The Becoming — $89",
+  legacy: "Selected package: The Legacy — $129"
+};
     if (plan && planMap[plan]) {
       planBox.style.display = "block";
       planBox.textContent = planMap[plan];
