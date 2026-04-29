@@ -794,7 +794,7 @@
             </p>
 
             <div class="plan-grid">
-              <div class="plan-card" data-plan="basic">
+              <div class="plan-card" data-plan="seed">
                 <div class="plan-card-top">
                   <h3>The Seed</h3>
                   <p class="plan-price">$39</p>
@@ -803,11 +803,11 @@
                   </p>
 
                   <div class="plan-actions">
-                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('basic')">View Package</button>
+                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('seed')">View Package</button>
                   </div>
                 </div>
 
-                <div class="plan-details" id="plan-details-basic">
+                <div class="plan-details" id="plan-details-seed">
                   <div class="plan-details-inner">
                     <ul>
                       <li>Digital only</li>
@@ -817,14 +817,14 @@
                       <li>Delivered as PDF</li>
                     </ul>
 
-                    <button type="button" class="btn btn-primary" onclick="selectPlan('basic')">
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('seed')">
                       Select The Seed
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div class="plan-card featured" data-plan="premium">
+              <div class="plan-card featured" data-plan="becoming">
                 <div class="plan-card-top">
                   <span class="plan-badge">Most Chosen • Core Product</span>
                   <h3>The Becoming</h3>
@@ -834,28 +834,28 @@
                   </p>
 
                   <div class="plan-actions">
-                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('premium')">View Package</button>
+                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('becoming')">View Package</button>
                   </div>
                 </div>
 
-                <div class="plan-details" id="plan-details-premium">
+                <div class="plan-details" id="plan-details-becoming">
                   <div class="plan-details-inner">
                     <ul>
                       <li>Printed hardcover + digital version</li>
                       <li>Everything in Seed</li>
                       <li>Full personalization</li>
                       <li>Premium layout</li>
-                      <li>Free worldwide shipping included</li>
+                      <li>Worldwide shipping included for launch orders</li>
                     </ul>
 
-                    <button type="button" class="btn btn-primary" onclick="selectPlan('premium')">
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('becoming')">
                       Select The Becoming
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div class="plan-card" data-plan="royal">
+              <div class="plan-card" data-plan="legacy">
                 <div class="plan-card-top">
                   <h3>The Legacy</h3>
                   <p class="plan-price">$129</p>
@@ -864,11 +864,11 @@
                   </p>
 
                   <div class="plan-actions">
-                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('royal')">View Package</button>
+                    <button type="button" class="reveal-btn" onclick="togglePlanDetails('legacy')">View Package</button>
                   </div>
                 </div>
 
-                <div class="plan-details" id="plan-details-royal">
+                <div class="plan-details" id="plan-details-legacy">
                   <div class="plan-details-inner">
                     <ul>
                       <li>Full premium experience</li>
@@ -879,7 +879,7 @@
                       <li>Premium emotional experience</li>
                     </ul>
 
-                    <button type="button" class="btn btn-primary" onclick="selectPlan('royal')">
+                    <button type="button" class="btn btn-primary" onclick="selectPlan('legacy')">
                       Select The Legacy
                     </button>
                   </div>
@@ -894,7 +894,7 @@
             </p>
           </section>
 
-          <form action="https://formspree.io/f/xojpaejp" method="POST" enctype="multipart/form-data">
+          <form action="https://formspree.io/f/xojpaejp" method="POST" >
             <input type="hidden" name="selectedPlan" id="selectedPlan" required />
 
             <div class="form-section">
@@ -1056,20 +1056,9 @@
               </div>
 
               <div class="photo-upload-box" id="photoUploadField">
+          
                 <div class="field-full">
-                  <label for="childPhoto">Child photo reference</label>
-                  <input type="file" id="childPhoto" name="childPhoto" accept=".jpg,.jpeg,.png,.webp" />
-                  <p class="helper">Upload one clear photo if you want closer likeness.</p>
-                </div>
-
-                <div class="field-full">
-                  <label for="familyPhotos">Family / character reference photos</label>
-                  <input type="file" id="familyPhotos" name="familyPhotos[]" accept=".jpg,.jpeg,.png,.webp" multiple />
-                  <p class="helper">Optional. Upload photos of people you want included in the story.</p>
-                </div>
-
-                <div class="field-full">
-                  <label for="photoLink">Or paste a photo folder link</label>
+                  <label for="photoLink">Paste a photo folder link</label>
                   <input type="text" id="photoLink" name="photoLink" placeholder="Google Drive, Dropbox, iCloud, or image folder link" />
                   <p class="helper">Best for multiple photos or larger files.</p>
                 </div>
@@ -1084,7 +1073,7 @@
                   </label>
 
                   <p class="privacy-note">
-                    Please only upload photos you have permission to share. If you prefer not to upload photos, choose Story-based and describe the child instead.
+                    Please only share photo links you have permission to provide. If you prefer not to upload photos, choose Story-based and describe the child instead.
                   </p>
                 </div>
               </div>
@@ -1144,7 +1133,7 @@
             <p>
               After this, continue to the deeper story form where the emotional heart of the child’s book begins to take shape.
             </p>
-            <a href="story-form.html" class="btn btn-secondary" id="storyFormButton">Continue to Story Form →</a>
+            <a href="story-form.html" class="btn btn-secondary" id="storyFormButton">After submitting this form, continue to the deeper story form. →</a>
           </div>
         </div>
 
@@ -1166,7 +1155,7 @@
               <li>Shorter guided choices</li>
               <li>Less guesswork</li>
               <li>Clearer story structure</li>
-              <li>Photo upload is optional</li>
+              <li>Photo link is optional</li>
             </ul>
           </div>
 
@@ -1233,10 +1222,10 @@
     const planDetails = document.querySelectorAll(".plan-details");
 
     const planLabelMap = {
-      basic: "The Seed — $39",
-      premium: "The Becoming — $89",
-      royal: "The Legacy — $129"
-    };
+  seed: "The Seed — $39",
+  becoming: "The Becoming — $89",
+  legacy: "The Legacy — $129"
+};
 
     function closeAllPlanDetails() {
       planDetails.forEach(detail => detail.classList.remove("open"));
