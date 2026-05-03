@@ -542,8 +542,8 @@
 
   <main>
     <section class="hero">
-      <p class="helper">Step 2 of 2 — Story Details</p>
       <div class="container">
+        <p class="helper">Step 2 of 2 — Story Details</p>
         <span class="eyebrow">Story Creation Form</span>
         <h1>Now let’s shape the heart of the story.</h1>
         <p>
@@ -563,13 +563,14 @@
           </p>
           <p class="intro-note">Simple answers are enough.</p>
 
-          <form action="https://formspree.io/f/xojpaejp" method="POST">
+          <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST">
+            <input type="hidden" name="_subject" value="New Monarch Tales Story Details" />
             <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
 
             <div class="form-section">
-              <h3 class="form-section-title">About the Child</h3>
+              <h3 class="form-section-title">Confirm Child Details</h3>
               <p class="form-section-text">
-                These details help us understand the child as the true hero of the story.
+                These details help us confirm your child as the true hero of the story and keep everything accurate and personal.
               </p>
 
               <div class="grid-2">
@@ -752,12 +753,6 @@ e.g. curious, shy, playful, thoughtful</p>
 </div>
           </form>
 
-          <div class="manual-next">
-            <p>
-              Every Monarch Tale is carefully crafted from your answers. Take your time—this is where the magic begins. After submitting, continue to the completion page. Your request will be reviewed before payment and production begin.
-            </p>
-            <a href="thank-you.html" class="btn btn-secondary">Complete Request  →</a>
-          </div>
         </div>
 
         <aside class="side-card">
@@ -781,7 +776,7 @@ e.g. curious, shy, playful, thoughtful</p>
           <div class="side-block">
             <h3>Payment note</h3>
             <p>
-              After your request is reviewed, you’ll receive a secure payment link to begin your story.
+              After your request is reviewed, you’ll receive a secure Stripe payment link to begin your story.
             </p>
           </div>
 
@@ -838,6 +833,31 @@ e.g. curious, shy, playful, thoughtful</p>
       planBox.textContent = planMap[plan];
       planInput.value = planMap[plan];
     }
+    const storyForm = document.getElementById("storyForm");
+
+storyForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(storyForm);
+
+  try {
+    const response = await fetch(storyForm.action, {
+      method: storyForm.method,
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      window.location.href = "thank-you.html";
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+});
   </script>
 </body>
 </html>
