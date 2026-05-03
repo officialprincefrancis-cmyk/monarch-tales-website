@@ -785,7 +785,7 @@
           <p class="unique-note">No two Monarch Tales are ever the same.</p>
           <p class="delivery-line">Digital: 5–7 days • Printed: 2–4 weeks</p>
           <p class="limit-line">We are currently accepting a limited number of families for our first Monarch Tales.</p>
-          <p class="payment-line">Secure global payment link sent after your request is reviewed.</p>
+          <p class="payment-line">Secure Stripe payment link sent after your request is reviewed.</p>
 
           <section class="plan-select" id="plan-selection">
             <h2>Choose Your Package</h2>
@@ -893,8 +893,9 @@
               Payment is not taken on this page. After your request is reviewed, you’ll receive a secure payment link to begin your story.
             </p>
           </section>
-
-          <form action="https://formspree.io/f/xojpaejp" method="POST" >
+          
+          <form id="orderForm" action="https://formspree.io/f/xojpaejp" method="POST">
+  <input type="hidden" name="_subject" value="New Monarch Tales Order Request" />
             <input type="hidden" name="selectedPlan" id="selectedPlan" required />
 
             <div class="form-section">
@@ -1125,19 +1126,16 @@ e.g. curious, shy, playful, thoughtful</p>
 
             <div class="submit-box">
               <p>
-                Submit this first step first. After it sends, continue to the story creation stage so we can shape the child’s full book.
+                After submitting, we’ll contact you within 24 hours via email or WhatsApp to confirm your details and send your secure Stripe payment link.
               </p>
-              <button type="submit" class="btn btn-primary">Submit Order Request First</button>
+              <button type="submit" class="btn btn-primary">Begin Your Child’s Story</button>
+              <p class="helper" style="margin-top:10px;">
+                No payment is required at this stage — you’ll receive a secure Stripe link after your request is reviewed. You’ll continue to the story form immediately, where the real magic of your child’s story begins.
+</p>
             </div>
           </form>
 
-          <div class="manual-next">
-  <p>
-    Important: after submitting your order request, return here and continue to the story creation stage.
-    This second step is where we gather the deeper details that make your child’s book personal.
-  </p>
-  <a href="story-form.html" class="btn btn-primary" id="storyFormButton">Continue to Story Creation →</a>
-</div>
+          
         </div>
 
         <aside class="side-card">
@@ -1173,8 +1171,13 @@ e.g. curious, shy, playful, thoughtful</p>
           <div class="side-block">
             <h3>Payment</h3>
             <p>
-              After your request is reviewed, you’ll receive a secure global payment link to begin your story.
+              After your request is reviewed, you’ll receive a secure Stripe payment link to begin your story.
             </p>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--muted);">
+
+Stripe is a globally trusted payment provider used by millions of businesses worldwide. 
+You can pay securely using your debit or credit card.
+</p>
           </div>
 
           <div class="side-block">
@@ -1219,7 +1222,6 @@ e.g. curious, shy, playful, thoughtful</p>
     const initialPlan = params.get("plan");
     const selectedPlanInput = document.getElementById("selectedPlan");
     const planChosenText = document.getElementById("planChosenText");
-    const storyFormButton = document.getElementById("storyFormButton");
     const previewStoryFormButton = document.getElementById("previewStoryFormButton");
     const planCards = document.querySelectorAll(".plan-card");
     const planDetails = document.querySelectorAll(".plan-details");
@@ -1253,8 +1255,7 @@ e.g. curious, shy, playful, thoughtful</p>
       if (planLabelMap[plan]) {
         selectedPlanInput.value = planLabelMap[plan];
         planChosenText.textContent = "Selected package: " + planLabelMap[plan];
-        storyFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
-        previewStoryFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
+       previewStoryFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
       }
     }
 
@@ -1294,6 +1295,31 @@ e.g. curious, shy, playful, thoughtful</p>
     });
 
     updateCharacterStyleUI();
+    const orderForm = document.getElementById("orderForm");
+
+orderForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(orderForm);
+
+  try {
+    const response = await fetch(orderForm.action, {
+      method: orderForm.method,
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      window.location.href = "story-form.html?plan=" + encodeURIComponent(selectedPlanInput.value);
+    } else {
+      alert("Something went wrong. Please check your details and try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+});
   </script>
 </body>
 </html>
