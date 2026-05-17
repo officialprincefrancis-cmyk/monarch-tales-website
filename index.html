@@ -163,12 +163,12 @@
     }
 
     .hero {
-      padding: 88px 0 72px;
+      padding: 120px 0 110px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1fr 1fr;
       gap: 42px;
       align-items: center;
     }
@@ -257,35 +257,50 @@
     }
 
     .hero-card {
-      background: linear-gradient(180deg, rgba(255,253,249,0.96), rgba(246,237,227,0.98));
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 24px;
-      box-shadow: 0 18px 40px rgba(43, 33, 28, 0.06);
+      background: transparent;
+      border: none;
+      padding: 0;
+      box-shadow: none;
     }
 
     .book-mockup img {
-      width: 100%;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      filter: contrast(1.05) brightness(1.02);
-      transition: transform 0.6s ease;
-      object-fit: cover;
-      aspect-ratio: 4 / 5;
-    }
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(43, 33, 28, 0.12);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
 
     .book-mockup img:hover {
       transform: scale(1.02);
     }
 
     section {
-      padding: 78px 0;
+      padding: 96px 0;
     }
+    #how-it-works {
+  position: relative;
+  overflow: hidden;
+}
+
+.soft-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(182, 145, 95, 0.08),
+    transparent 70%
+  );
+  top: -180px;
+  right: -120px;
+  pointer-events: none;
+}
 
     .section-head {
       text-align: center;
-      max-width: 840px;
-      margin: 0 auto 40px;
+      max-width: 760px;
+      margin: 0 auto 52px;
     }
 
     .section-head h2 {
@@ -293,10 +308,11 @@
       margin-bottom: 12px;
     }
 
-    .section-head p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
+   .section-head p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
 
     .trust-bar {
       background: linear-gradient(180deg, rgba(246,238,230,0.9), rgba(245,238,230,0.7));
@@ -305,8 +321,55 @@
       padding: 28px 0;
     }
 
-    .trust-grid,
-    .steps,
+    #how-it-works {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,253,249,0.96), rgba(246,238,230,0.92));
+  border-top: 1px solid rgba(182,145,95,0.08);
+  border-bottom: 1px solid rgba(182,145,95,0.08);
+}
+#pricing {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right,
+    rgba(182,145,95,0.08),
+    transparent 28%),
+    linear-gradient(
+      180deg,
+      rgba(255,253,249,0.98),
+      rgba(247,239,228,0.92)
+    );
+
+  border-top: 1px solid rgba(182,145,95,0.08);
+  border-bottom: 1px solid rgba(182,145,95,0.08);
+}
+.pricing-grid .card {
+  background: rgba(255, 253, 249, 0.86);
+  border: 1px solid rgba(182,145,95,0.12);
+  border-radius: 28px;
+  padding: 34px 30px;
+  box-shadow: 0 16px 36px rgba(43,33,28,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-grid .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 54px rgba(43,33,28,0.11);
+}
+
+.pricing-grid .popular-card {
+  background: linear-gradient(180deg, #fffdf9, #fff6ea);
+  border: 2px solid rgba(182,145,95,0.5);
+}
+
+.pricing-grid .price {
+  margin: 14px 0 18px;
+}
+
+.pricing-grid .feature-list {
+  margin: 20px 0 24px;
+}
     .receives-grid,
     .stories-grid,
     .reassure-grid,
@@ -353,7 +416,7 @@
     }
 
     .card {
-      padding: 28px;
+      padding: 34px 30px;
     }
 
     .card h3 {
@@ -367,14 +430,16 @@
       font-size: 0.97rem;
     }
 
-    .steps,
-    .receives-grid,
-    .stories-grid,
-    .reassure-grid,
-    .pricing-grid,
-    .creation-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+   .steps,
+.receives-grid,
+.stories-grid,
+.reassure-grid,
+.pricing-grid,
+.creation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
 
     .proof-grid {
       grid-template-columns: repeat(4, 1fr);
@@ -388,13 +453,13 @@
       overflow: hidden;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       background: #fffdf9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .proof-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 34px rgba(43, 33, 28, 0.10);
-    }
-
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(43, 33, 28, 0.12);
+}
     .proof-image {
       background: #efe7dd;
       border-bottom: 1px solid var(--line);
@@ -403,16 +468,18 @@
       align-items: stretch;
       justify-content: center;
       overflow: hidden;
+      filter: contrast(1.03) saturate(0.96) brightness(0.98);
     }
 
     .proof-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: contrast(1.03) saturate(0.96) brightness(0.98);
     }
 
     .proof-card-body {
-      padding: 18px;
+      padding: 30px 28px;
     }
 
     .proof-tag {
@@ -436,7 +503,9 @@
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.6;
+      max-width: 95%;
     }
+    
 
     .proof-line {
       text-align: center;
@@ -447,6 +516,89 @@
       font-weight: 700;
       line-height: 1.7;
     }
+
+    .featured-proof {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 26px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #fffdf9, #f7efe4);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.featured-proof-image img {
+  width: 100%;
+  border-radius: 26px;
+  box-shadow: 0 18px 40px rgba(43, 33, 28, 0.12);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  filter: contrast(1.03) saturate(0.96) brightness(0.98);
+}
+
+.featured-proof-content h3 {
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.featured-proof-content p {
+  color: var(--muted);
+  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 95%;
+}
+
+.proof-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.proof-small-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.proof-small-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.proof-small-content {
+  padding: 20px;
+}
+
+.proof-small-content h3 {
+  font-size: 1.12rem;
+  margin-bottom: 8px;
+}
+
+.proof-small-content p {
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .featured-proof,
+  .proof-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-small-card img {
+    height: auto;
+  }
+}
 
     .step-number {
       width: 42px;
@@ -498,9 +650,8 @@
     }
 
     .popular-card {
-      border: 2px solid rgba(182, 145, 95, 0.55);
-      transform: translateY(-6px);
-    }
+  border: 2px solid rgba(182, 145, 95, 0.55);
+}
 
     .popular-badge {
       display: inline-block;
@@ -715,11 +866,26 @@
     }
 
     footer {
-      padding: 34px 0 42px;
-      border-top: 1px solid var(--line);
-      background: rgba(252,248,242,0.95);
-    }
-
+  position: relative;
+  overflow: hidden;
+  padding: 34px 0 42px;
+  border-top: 1px solid var(--line);
+  background: rgba(252,248,242,0.95);
+}
+footer::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(182, 145, 95, 0.08),
+    transparent 70%
+  );
+  top: -240px;
+  left: -140px;
+  pointer-events: none;
+}
     .footer-grid {
       grid-template-columns: 2fr 1fr 1fr;
       align-items: start;
@@ -736,8 +902,11 @@
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.7;
+      transition: color 0.25s ease;
     }
-
+.footer-col a:hover {
+  color: var(--gold-dark);
+}
     .footer-col h4 {
       margin-bottom: 10px;
       font-size: 1rem;
@@ -815,6 +984,11 @@
         padding-top: 58px;
       }
 
+@media (max-width: 980px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
       .card,
       .trust-item,
       .hero-card,
@@ -851,7 +1025,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#proof">Book Preview</a>
         <a href="#contact">Contact</a>
-        <a href="start.html" class="btn btn-primary">Create Your Child’s Story</a>
+        <a href="start.html" class="btn btn-primary">Start Your Story</a>
       </nav>
     </div>
   </header>
@@ -862,33 +1036,25 @@
         <div>
           <span class="eyebrow">Personalized storybooks for children</span>
 
-          <h1>A Story Where Your Child Becomes the Hero.</h1>
+          <h1>Where your child becomes the hero of a timeless story.</h1>
 
           <p class="hero-copy">
-            Personalized storybooks crafted from your child’s world—designed to be kept, remembered, and loved for a lifetime.
+            Every Monarch Tale is written and illustrated from scratch using your child’s world, personality, memories, and magic.
           </p>
 
           <div class="hero-buttons">
-            <a href="start.html" class="btn btn-primary">Create Your Child’s Story</a>
-            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+            <a href="start.html" class="btn btn-primary">Start Your Story</a>
+            <a href="#proof" class="btn btn-secondary">See a Real Monarch Tale</a>
           </div>
+<p class="hero-note">
+Stories children remember. Memories families keep forever.
+</p>
 
-          <p class="hero-note">Takes less than 2 minutes to begin.</p>
-          <p class="hero-unique">No two Monarch Tales are ever the same.</p>
-          <p class="hero-launch">We are currently accepting a limited number of families for our first Monarch Tales.</p>
-          <p class="hero-trust">Created for families who want more than just a story.</p>
-<p class="hero-payment">Secure Stripe payment link sent after your story request is reviewed.</p>
-
-          <div class="hero-points">
-            <span>Personalized around the child</span>
-            <span>Digital + printed options</span>
-            <span>Premium, gift-worthy keepsake</span>
-          </div>
         </div>
 
         <div class="hero-card">
           <div class="book-mockup">
-            <img src="hero.jpg" alt="Adult reading a storybook with a child" />
+            <img src="knox-reading.jpg" alt="Adult reading a storybook with a child" />
           </div>
         </div>
       </div>
@@ -915,68 +1081,97 @@
       </div>
     </section>
 
-    <section id="proof">
-      <div class="container">
-        <div class="section-head">
-          <h2>See what a Monarch Tale can look like</h2>
+   <section id="proof">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">A Real Monarch Tale</span>
+
+      <h2>Meet Knox — the first Monarch Tale</h2>
+
+      <p>
+        A real printed storybook created to make one child feel seen, celebrated, and remembered.
+      </p>
+    </div>
+
+    <div class="featured-proof">
+
+      <div class="featured-proof-image">
+        <img src="knox-cover.jpg" alt="Knox holding his Monarch Tales book" />
+      </div>
+
+      <div class="featured-proof-content">
+
+        <span class="proof-tag">The First Monarch Tale</span>
+
+        <h3>
+          This is where Monarch Tales became real.
+        </h3>
+
+        <p>
+          Knox’s story was created as a meaningful keepsake built around warmth, memory, imagination, and emotional connection.
+        </p>
+
+        <p>
+          Seeing him hold the finished book transformed Monarch Tales from an idea into something tangible — a story a child could truly call their own.
+        </p>
+
+        <p>
+          Every Monarch Tale is crafted from scratch using the child’s personality, emotional world, relationships, and imagination.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="proof-gallery">
+
+      <div class="proof-small-card">
+        <img src="knox-reading.jpg" alt="Knox reading his storybook" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Emotion-led storytelling</span>
+
+          <h3>Children become the hero</h3>
+
           <p>
-            Preview sample pages and story moments created to show the warmth, detail, and keepsake feeling behind Monarch Tales.
-          </p>
-        </div>
-
-        <div class="proof-wrapper">
-          <div class="proof-grid">
-            <div class="proof-card">
-              <div class="proof-image">
-                <img src="knox_story.png" alt="Knox page example" />
-              </div>
-              <div class="proof-card-body">
-                <span class="proof-tag">Real example (Knox)</span>
-                <h3>Knox page</h3>
-                <p>A warm story moment that shows character, wonder, and emotional meaning.</p>
-              </div>
-            </div>
-
-            <div class="proof-card">
-              <div class="proof-image">
-                <img src="lucas.png" alt="Lucas page example" />
-              </div>
-              <div class="proof-card-body">
-                <span class="proof-tag">Emotional storytelling (Lucas)</span>
-                <h3>Lucas page</h3>
-                <p>A story voice shaped around tenderness, reassurance, and identity.</p>
-              </div>
-            </div>
-
-            <div class="proof-card">
-              <div class="proof-image">
-                <img src="ava.png" alt="Ava page example" />
-              </div>
-              <div class="proof-card-body">
-                <span class="proof-tag">Personalized example (Ava)</span>
-                <h3>Ava page</h3>
-                <p>A deeply personal page showing sensitivity, strength, and quiet magic.</p>
-              </div>
-            </div>
-
-            <div class="proof-card">
-              <div class="proof-image">
-                <img src="knox_dedication.png" alt="Dedication page example" />
-              </div>
-              <div class="proof-card-body">
-                <span class="proof-tag">Dedication page</span>
-                <h3>From the heart</h3>
-                <p>A special opening note that turns the book into a keepsake, not just a story.</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="proof-line">
-            These previews show the style, emotion, and storytelling direction. When the printed book arrives, real product photos will be added here.
+            Each story is built around the child’s world so they feel emotionally connected to what they are reading.
           </p>
         </div>
       </div>
-    </section>
+
+      <div class="proof-small-card">
+        <img src="knox-inside.jpg" alt="Inside pages of a Monarch Tales book" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Crafted from scratch</span>
+
+          <h3>No reused stories</h3>
+
+          <p>
+            No two Monarch Tales are ever the same. Every story is written uniquely for the child it belongs to.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="knox-cover.jpg" alt="Knox holding his personalized storybook" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Keepsake experience</span>
+
+          <h3>More than a book</h3>
+
+          <p>
+            From dedication pages to premium hardcover presentation, Monarch Tales is designed to become something families keep for years.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
     <section id="about">
       <div class="container">
@@ -1019,37 +1214,14 @@
       </div>
     </section>
 
-    <section id="story-created">
-      <div class="container">
-        <div class="section-head">
-          <h2>How your child’s story is created</h2>
+      <section id="how-it-works">
+        <div class="soft-glow">
         </div>
-
-        <div class="creation-grid">
-          <div class="card">
-            <div class="simple-step">Step 1 — You tell us about your child</div>
-            <div class="simple-line">We begin with the child’s world, personality, and story direction.</div>
-          </div>
-
-          <div class="card">
-            <div class="simple-step">Step 2 — We craft a world around them</div>
-            <div class="simple-line">We shape a meaningful story experience around who they are.</div>
-          </div>
-
-          <div class="card">
-            <div class="simple-step">Step 3 — They become the hero of their own story</div>
-            <div class="simple-line">The final tale is created to feel personal, beautiful, and worth keeping.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="how-it-works">
       <div class="container">
         <div class="section-head">
           <h2>How it works</h2>
           <p>
-            A simple, thoughtful process designed to feel easy for customers and meaningful for children.
+            A calm, guided process from first idea to finished keepsake.
           </p>
         </div>
 
@@ -1058,23 +1230,23 @@
             <div class="step-number">1</div>
             <h3>Tell us about your child</h3>
             <p>
-              Choose simple options that describe their personality, world, and the feeling you want the story to leave.
+              Share their name, personality, memories, relationships, and the feeling you want the story to leave.
             </p>
           </div>
 
           <div class="card">
             <div class="step-number">2</div>
-            <h3>We craft the story</h3>
+            <h3>We shape the story world</h3>
             <p>
-              We turn those details into a meaningful, personalized story built around the child.
+              We craft the story and visuals around your child so the book feels personal, warm, and meaningful.
             </p>
           </div>
 
           <div class="card">
             <div class="step-number">3</div>
-            <h3>Receive your book</h3>
+            <h3>Receive a keepsake</h3>
             <p>
-              Your story is delivered digitally or as a printed keepsake, depending on your selected package.
+             Your final story is delivered digitally or as a printed hardcover, depending on your selected experience.
             </p>
           </div>
         </div>
@@ -1120,9 +1292,9 @@
 <section id="pricing">
   <div class="container">
     <div class="section-head">
-      <h2>Choose your story experience</h2>
+      <h2>Choose the experience your child will keep.</h2>
       <p>
-        A clean package system designed for different levels of depth, emotion, and premium experience.
+       Each Monarch Tales package is designed as a different level of memory, meaning, and keepsake value.
       </p>
     </div>
 
@@ -1132,13 +1304,13 @@
       <div class="card">
         <h3 class="price-name">The Seed</h3>
         <div class="price">$39</div>
-        <p>Digital story experience for families who want a beautiful, personalized story delivered quickly.</p>
+        <p>A beautiful digital beginning for families who want a personalized story their child can read, keep, and revisit anytime.</p>
         <ul class="feature-list">
-          <li>Personalized story</li>
-          <li>Child’s name + traits</li>
-          <li>Dedication page</li>
-          <li>Digital PDF delivery</li>
-          <li>No printing, no shipping</li>
+          <li>Personalized digital storybook</li>
+          <li>Written around the child’s name, traits, and emotional world</li>
+          <li>Dedication page included</li>
+          <li>Mobile-friendly PDF delivery</li>
+          <li>Printable version for home use</li>
         </ul>
 <a href="order.html?plan=seed#plan-selection" class="btn btn-primary">Start with Seed</a>
       </div>
@@ -1148,13 +1320,13 @@
         <span class="popular-badge">Most Chosen • Core Product</span>
         <h3 class="price-name">The Becoming</h3>
         <div class="price">$89</div>
-        <p>The complete Monarch Tales experience — printed hardcover plus digital, designed to be held, kept, and remembered.</p>
+        <p>The signature Monarch Tales experience — a beautifully crafted personalized storybook designed to become part of a child’s memory for years.</p>
         <ul class="feature-list">
-          <li>Everything in Seed</li>
-          <li>Printed hardcover book</li>
-          <li>Full personalization</li>
-          <li>Premium layout</li>
-          <li>Worldwide shipping included for launch orders</li>
+          <li>Everything included in The Seed</li>
+          <li>Premium printed softcover keepsake book</li>
+          <li>Emotion-led personalized storytelling</li>
+          <li>Dedication page & premium interior layout</li>
+          <li>Worldwide shipping included during launch</li>
         </ul>
 <a href="order.html?plan=becoming#plan-selection" class="btn btn-primary">Choose The Becoming</a>
       </div>
@@ -1163,13 +1335,14 @@
       <div class="card">
         <h3 class="price-name">The Legacy</h3>
         <div class="price">$129</div>
-        <p>For families who want the full premium experience: audio, animation, custom message, and deeper personalization.</p>
+        <p>The most immersive Monarch Tales experience — created for families who want a deeply personal keepsake designed to be treasured for years.</p>
         <ul class="feature-list">
-          <li>Everything in Becoming</li>
+          <li>Everything included in The Becoming</li>
+          <li>Premium hardcover collector edition</li>
+          <li>Ribbon marker & luxury presentation</li>
           <li>Personalized audio narration</li>
-          <li>Short animated version</li>
-          <li>Custom message or song</li>
-          <li>Premium emotional experience</li>
+          <li>Premium printable story artwork</li>
+          <li>Priority production experience</li>
         </ul>
         <a href="order.html?plan=legacy#plan-selection" class="btn btn-primary">Go Legacy</a>
       </div>
@@ -1228,32 +1401,32 @@
     <section id="testimonial">
       <div class="container">
         <div class="section-head">
-<h2>The feeling we create</h2>
+<h2>What families feel</h2>
           <p>
-            The goal is not just a book — it is an emotional memory.
+             The most meaningful part of Monarch Tales is watching a child see themselves inside a story made just for them.
           </p>
         </div>
 
         <div class="testimonial-grid">
           <div class="testimonial-box">
             <blockquote>
-              “This story made my child smile like it truly belonged to them.”
+              “Watching him hold a story created around his own world felt incredibly special.”
             </blockquote>
-<p>Based on early story reactions and concept feedback.</p>
+<p>First Monarch Tales family experience.</p>
           </div>
 
           <div class="testimonial-box">
             <blockquote>
-              “It felt personal, thoughtful, and different from a normal children’s book.”
+            “It felt far more personal than a normal children’s book. You could feel the care inside it.”
             </blockquote>
-            <p>A keepsake-style reaction from early story concept feedback.</p>
+            <p>Early family feedback from Monarch Tales.</p>
           </div>
 
           <div class="testimonial-box">
             <blockquote>
-              “The dedication page alone made it feel like something worth keeping.”
+               “The dedication pages and emotional details made it feel like something we’ll keep for years.”
             </blockquote>
-            <p>Proof that emotion and memory are part of the product.</p>
+            <p>Response to the Monarch Tales keepsake experience.</p>
           </div>
         </div>
       </div>
@@ -1439,7 +1612,7 @@
         <div class="footer-brand">
           <h3>Monarch Tales</h3>
           <p>
-            Personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them.
+            Monarch Tales creates personalized keepsake storybooks designed to help children feel seen, celebrated, and remembered through meaningful storytelling.
           </p>
         </div>
 
@@ -1447,8 +1620,8 @@
           <h4>Explore</h4>
           <div class="footer-links">
             <a href="#about">About</a>
-            <a href="#proof">See Examples</a>
-            <a href="#story-created">How It’s Created</a>
+            <a href="#proof">Real Stories</a>
+            <a href="#character-creation">Character Creation</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
