@@ -826,7 +826,7 @@
 
               <div class="plan-card featured" data-plan="becoming">
                 <div class="plan-card-top">
-                  <span class="plan-badge">Most Chosen • Core Product</span>
+                  <span class="plan-badge">Most Loved • Signature Experience</span>
                   <h3>The Becoming</h3>
                   <p class="plan-price">$89</p>
                   <p class="plan-summary">
@@ -841,11 +841,12 @@
                 <div class="plan-details" id="plan-details-becoming">
                   <div class="plan-details-inner">
                     <ul>
-                      <li>Printed hardcover + digital version</li>
-                      <li>Everything in Seed</li>
-                      <li>Full personalization</li>
-                      <li>Premium layout</li>
-                      <li>Worldwide shipping included for launch orders</li>
+                      <li>Printed softcover keepsake book + digital version</li>
+<li>Everything in The Seed</li>
+<li>Full personalization</li>
+<li>Premium layout</li>
+<li>Dedication page included</li>
+<li>Worldwide shipping included for launch orders</li>
                     </ul>
 
                     <button type="button" class="btn btn-primary" onclick="selectPlan('becoming')">
@@ -871,12 +872,12 @@
                 <div class="plan-details" id="plan-details-legacy">
                   <div class="plan-details-inner">
                     <ul>
-                      <li>Full premium experience</li>
-                      <li>Everything in Becoming</li>
-                      <li>Personalized audio narration</li>
-                      <li>Short animated version</li>
-                      <li>Custom message or song</li>
-                      <li>Premium emotional experience</li>
+                      <li>Everything in The Becoming</li>
+<li>Premium hardcover collector edition</li>
+<li>Ribbon marker & luxury presentation</li>
+<li>Personalized audio narration</li>
+<li>Premium printable story artwork</li>
+<li>Priority production experience</li>
                     </ul>
 
                     <button type="button" class="btn btn-primary" onclick="selectPlan('legacy')">
@@ -1247,17 +1248,21 @@ You can pay securely using your debit or credit card.
       }
     }
 
-    function updatePlanUI(plan) {
-      planCards.forEach(card => {
-        card.classList.toggle("active", card.dataset.plan === plan);
-      });
+    let selectedPlanKey = "";
 
-      if (planLabelMap[plan]) {
-        selectedPlanInput.value = planLabelMap[plan];
-        planChosenText.textContent = "Selected package: " + planLabelMap[plan];
-       previewStoryFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
-      }
-    }
+function updatePlanUI(plan) {
+  selectedPlanKey = plan;
+
+  planCards.forEach(card => {
+    card.classList.toggle("active", card.dataset.plan === plan);
+  });
+
+  if (planLabelMap[plan]) {
+    selectedPlanInput.value = planLabelMap[plan];
+    planChosenText.textContent = "Selected package: " + planLabelMap[plan];
+    previewStoryFormButton.href = "story-form.html?plan=" + encodeURIComponent(plan);
+  }
+}
 
     function selectPlan(plan) {
       updatePlanUI(plan);
@@ -1300,6 +1305,11 @@ You can pay securely using your debit or credit card.
 orderForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
+  if (!selectedPlanKey) {
+    alert("Please select a package before submitting.");
+    return;
+  }
+
   const formData = new FormData(orderForm);
 
   try {
@@ -1312,7 +1322,13 @@ orderForm.addEventListener("submit", async function (event) {
     });
 
     if (response.ok) {
-      window.location.href = "story-form.html?plan=" + encodeURIComponent(selectedPlanInput.value);
+     const childName = document.getElementById("childName").value;
+const childAge = document.getElementById("childAge").value;
+
+window.location.href =
+  "story-form.html?plan=" + encodeURIComponent(selectedPlanKey) +
+  "&child=" + encodeURIComponent(childName) +
+  "&age=" + encodeURIComponent(childAge);
     } else {
       alert("Something went wrong. Please check your details and try again.");
     }
