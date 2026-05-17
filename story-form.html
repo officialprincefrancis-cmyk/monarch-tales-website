@@ -722,14 +722,13 @@ e.g. curious, shy, playful, thoughtful</p>
 
               <div class="grid-2">
                 <div class="field-group">
-                  <label for="chapterCount">How many chapters would you like?</label>
-                  <select id="chapterCount" name="chapterCount">
-                    <option value="7">7 chapters</option>
-                    <option value="8">8 chapters</option>
-                    <option value="9">9 chapters</option>
-                    <option value="10">10 chapters</option>
-                  </select>
-                </div>
+  <label for="storyDepth">Story depth</label>
+  <select id="storyDepth" name="storyDepth">
+    <option value="Balanced story journey">Balanced story journey</option>
+    <option value="Short & gentle">Short & gentle</option>
+    <option value="Deeper immersive experience">Deeper immersive experience</option>
+  </select>
+</div>
 
                 <div class="field-group">
                   <label for="illustrationStyle">Illustration style</label>
@@ -788,7 +787,7 @@ e.g. curious, shy, playful, thoughtful</p>
           </div>
 
           <div class="side-block">
-            <a href="order.html" class="btn btn-secondary">Back to Order Form</a>
+            <a href="order.html" class="btn btn-secondary" id="backToOrderButton">Back to Order Form</a>
           </div>
         </aside>
       </div>
@@ -818,10 +817,15 @@ e.g. curious, shy, playful, thoughtful</p>
       });
     });
 
-    const params = new URLSearchParams(window.location.search);
-    const plan = params.get("plan");
+  const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+const child = params.get("child");
+const age = params.get("age");
     const planBox = document.getElementById("selectedPlanBox");
     const planInput = document.getElementById("storySelectedPlanInput");
+    const storyChildName = document.getElementById("storyChildName");
+const storyChildAge = document.getElementById("storyChildAge");
+    const backToOrderButton = document.getElementById("backToOrderButton");
 
     const planMap = {
   seed: "Selected package: The Seed — $39",
@@ -832,11 +836,24 @@ e.g. curious, shy, playful, thoughtful</p>
       planBox.style.display = "block";
       planBox.textContent = planMap[plan];
       planInput.value = planMap[plan];
+      backToOrderButton.href = "order.html?plan=" + encodeURIComponent(plan) + "#plan-selection";
     }
+    if (child) {
+  storyChildName.value = child;
+}
+
+if (age) {
+  storyChildAge.value = age;
+}
     const storyForm = document.getElementById("storyForm");
 
 storyForm.addEventListener("submit", async function (event) {
   event.preventDefault();
+
+  if (!planInput.value) {
+    alert("Please return to the order form and select a package first.");
+    return;
+  }
 
   const formData = new FormData(storyForm);
 
