@@ -9,6 +9,29 @@
     content="Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them."
   />
   <style>
+
+  .price-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 18px;
+}
+
+.package-note {
+  color: var(--gold-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.checkout-note {
+  text-align: center;
+  max-width: 850px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
     :root {
       --bg: #fbf7f2;
       --card: rgba(255, 253, 249, 0.96);
@@ -82,13 +105,13 @@
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
-      font-size: 0.96rem;
-      color: var(--muted);
-    }
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  font-size: 0.94rem;
+  color: var(--muted);
+}
 
     .nav-links a:hover {
       color: var(--gold-dark);
@@ -330,20 +353,30 @@
 }
 #pricing {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  scroll-margin-top: 120px;
+  padding-top: 110px;
   background:
-    radial-gradient(circle at top right,
-    rgba(182,145,95,0.08),
-    transparent 28%),
-    linear-gradient(
-      180deg,
-      rgba(255,253,249,0.98),
-      rgba(247,239,228,0.92)
-    );
-
+    radial-gradient(circle at top right, rgba(182,145,95,0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255,253,249,0.98), rgba(247,239,228,0.92));
   border-top: 1px solid rgba(182,145,95,0.08);
   border-bottom: 1px solid rgba(182,145,95,0.08);
 }
+
+.pricing-grid {
+  align-items: stretch;
+}
+
+.pricing-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-grid .card .btn {
+  margin-top: auto;
+  width: fit-content;
+}
+
 .pricing-grid .card {
   background: rgba(255, 253, 249, 0.86);
   border: 1px solid rgba(182,145,95,0.12);
@@ -570,8 +603,10 @@
 
 .proof-small-card img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 230px;
+  object-fit: contain;
+  background: #f7f1e9;
+  padding: 14px;
 }
 
 .proof-small-content {
@@ -1015,13 +1050,75 @@ footer::before {
         min-height: 280px;
       }
     }
+
+ .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.logo-brand img {
+  width: 60px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  white-space: nowrap;
+}
+
+.local-price {
+  font-size: 0.82rem;
+  color: #8a7b70;
+  margin-bottom: 14px;
+}
+
+#book-preview {
+  scroll-margin-top: 110px;
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+#book-preview .section-head {
+  margin-bottom: 34px;
+}
+
+#book-preview .proof-gallery {
+  margin-top: 0;
+}
+
+#book-preview .proof-small-card img {
+  height: 240px;
+  object-fit: contain;
+  background: #f7f1e9;
+  padding: 12px;
+}
+
+.mini-gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-top:30px;
+}
+
+.mini-gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
   </style>
 </head>
 
 <body>
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">Monarch Tales</a>
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.png" alt="Monarch Tales logo" />
+  <span class="logo-text">Monarch Tales</span>
+</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <div>
@@ -1033,12 +1130,11 @@ footer::before {
 
       <nav class="nav-links" id="mobileNav">
         <a href="#about">About</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#receive">What You Receive</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#proof">Book Preview</a>
-        <a href="#contact">Contact</a>
-        <a href="start.html" class="btn btn-primary">Start Your Story</a>
+<a href="#how-it-works">How It Works</a>
+<a href="#pricing">Pricing</a>
+<a href="#book-preview">Book Preview</a>
+<a href="#contact">Contact</a>
+<a href="preview.html" class="btn btn-primary">Request Preview</a>
       </nav>
     </div>
   </header>
@@ -1047,17 +1143,17 @@ footer::before {
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Personalized storybooks for children</span>
+          <span class="eyebrow">Personalized legacy storybooks for children</span>
 
-          <h1>Where your child becomes the hero of a timeless story.</h1>
+          <h1>Preserve the childhood you’ll one day miss.</h1>
 
           <p class="hero-copy">
-            Every Monarch Tale is written and illustrated from scratch using your child’s world, personality, memories, and magic.
+            Monarch Tales creates personalized keepsake storybooks that capture your child’s world, personality, memories, and magic — so your family can hold onto this season forever.
           </p>
 
           <div class="hero-buttons">
-            <a href="start.html" class="btn btn-primary">Start Your Story</a>
-            <a href="#proof" class="btn btn-secondary">See a Real Monarch Tale</a>
+            <a href="preview.html" class="btn btn-primary">Request Complimentary Preview</a>
+<a href="#pricing" class="btn btn-secondary">See Packages</a>
           </div>
 <p class="hero-note">
 Stories children remember. Memories families keep forever.
@@ -1136,8 +1232,8 @@ Stories children remember. Memories families keep forever.
       </div>
 
     </div>
-
-    <div class="proof-gallery">
+    
+<div class="proof-gallery">
 
       <div class="proof-small-card">
         <img src="knox-reading.jpg" alt="Knox reading his storybook" />
@@ -1145,10 +1241,10 @@ Stories children remember. Memories families keep forever.
         <div class="proof-small-content">
           <span class="proof-tag">Emotion-led storytelling</span>
 
-          <h3>Children become the hero</h3>
+          <h3>Children see themselves inside the story</h3>
 
           <p>
-            Each story is built around the child’s world so they feel emotionally connected to what they are reading.
+            Every Monarch Tale is built around a child’s world, helping them feel connected to the story they are holding.
           </p>
         </div>
       </div>
@@ -1157,12 +1253,12 @@ Stories children remember. Memories families keep forever.
         <img src="knox-inside.jpg" alt="Inside pages of a Monarch Tales book" />
 
         <div class="proof-small-content">
-          <span class="proof-tag">Crafted from scratch</span>
+          <span class="proof-tag">Beautifully Crafted</span>
 
-          <h3>No reused stories</h3>
+          <h3>Stories designed to be explored</h3>
 
           <p>
-            No two Monarch Tales are ever the same. Every story is written uniquely for the child it belongs to.
+            From custom illustrations to thoughtful storytelling, every page is designed to invite curiosity and imagination.
           </p>
         </div>
       </div>
@@ -1173,10 +1269,10 @@ Stories children remember. Memories families keep forever.
         <div class="proof-small-content">
           <span class="proof-tag">Keepsake experience</span>
 
-          <h3>More than a book</h3>
+          <h3>Created to be kept for years</h3>
 
           <p>
-           From dedication pages to printed keepsake presentation, Monarch Tales is designed to become something families keep for years.
+           Premium details, dedication pages, and personalized storytelling combine to create a keepsake families can revisit again and again.
           </p>
         </div>
       </div>
@@ -1185,7 +1281,196 @@ Stories children remember. Memories families keep forever.
 
   </div>
 </section>
+<section id="book-preview">
+  <div class="container">
 
+    <div class="section-head">
+      <span class="eyebrow">More Monarch Tales</span>
+
+      <h2>A Growing Collection of Personalized Storybooks</h2>
+
+      <p>
+        Every Monarch Tale is created uniquely for the child and family it belongs to.
+      </p>
+    </div>
+
+    <div class="proof-gallery">
+
+      <div class="proof-small-card">
+        <img src="knox-christmas.jpg" alt="Knox You Are My Christmas Sunshine" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Hardcover Keepsake</span>
+
+          <h3>Knox, You Are My Christmas Sunshine</h3>
+
+          <p>
+            A premium hardcover story celebrating warmth, family, memory, and Christmas wonder.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="knox-map-of-love.jpg" alt="Knox and the Map of Love" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Personalized Family Story</span>
+
+          <h3>Knox and the Map of Love</h3>
+
+          <p>
+            A story about connection, belonging, and the people who help shape a child's world.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="lucas-moon-back.jpg" alt="Lucas Lochlan and Scarlett" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Family Adventure</span>
+
+          <h3>Lucas, Lochlan & Scarlett</h3>
+
+          <p>
+            A story celebrating imagination, togetherness, and family love.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<section id="why-families">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">Why Families Choose Monarch Tales</span>
+
+      <h2>Because some moments deserve more than a photograph.</h2>
+
+      <p>
+        Monarch Tales exists for families who want to preserve meaning before it quietly slips away.
+      </p>
+    </div>
+
+    <div class="reassure-grid">
+
+      <div class="card">
+        <h3>Because childhood changes quickly</h3>
+
+        <p>
+          The little habits, favourite outfits, funny phrases, and curious questions that define childhood never stay the same for long.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Because memories fade</h3>
+
+        <p>
+          Even beautiful moments become harder to recall as years pass. Stories help preserve what families never want to lose.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Because stories strengthen connection</h3>
+
+        <p>
+          Children remember how stories made them feel. Shared stories become part of a family's emotional history.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Because identity matters</h3>
+
+        <p>
+          Seeing themselves reflected inside a meaningful story can help children feel seen, valued, and celebrated.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Because one day they'll want to remember</h3>
+
+        <p>
+          What feels ordinary today often becomes precious tomorrow.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Because some gifts last longer</h3>
+
+        <p>
+          Monarch Tales is designed to become something families return to years later and still treasure.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="preserves">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">What Monarch Tales Preserves</span>
+
+      <h2>More than a story.</h2>
+
+      <p>
+        Every Monarch Tale is designed to capture pieces of childhood that deserve to be remembered.
+      </p>
+    </div>
+
+    <div class="receives-grid">
+
+      <div class="card">
+        <h3>Childhood</h3>
+        <p>
+          The season of imagination, wonder, growth, and discovery that never lasts forever.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Identity</h3>
+        <p>
+          The unique personality, interests, dreams, and traits that make each child who they are.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Family Connection</h3>
+        <p>
+          The people, relationships, and moments that shape a child's world.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Wonder</h3>
+        <p>
+          The magic children naturally see before the world teaches them to stop looking.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Memories</h3>
+        <p>
+          The moments families wish they could hold onto forever.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Wisdom</h3>
+        <p>
+          Gentle lessons, values, and truths that can travel with a child through life.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
     <section id="about">
       <div class="container">
         <div class="section-head">
@@ -1199,7 +1484,7 @@ Stories children remember. Memories families keep forever.
           <div class="card">
             <h3>Our mission</h3>
             <p>
-              At Monarch Tales, we create personalized storybooks that turn every child into the hero of their own adventure. Our mission is to inspire imagination, strengthen family bonds, and leave children with timeless lessons of love, courage, and resilience.
+              To help families preserve meaningful chapters before they disappear. Childhood changes quickly. Memories fade. Photographs capture what life looked like — stories capture what life felt like. Monarch Tales transforms real memories, personalities, milestones, and family moments into personalized keepsakes designed to be treasured for years to come.
             </p>
           </div>
 
@@ -1227,44 +1512,43 @@ Stories children remember. Memories families keep forever.
       </div>
     </section>
 
-      <section id="how-it-works">
-        <div class="soft-glow">
-        </div>
-      <div class="container">
-        <div class="section-head">
-          <h2>How it works</h2>
-          <p>
-            A calm, guided process from first idea to finished keepsake.
-          </p>
-        </div>
+ <section id="how-it-works">
+  <div class="soft-glow"></div>
+  <div class="container">
+    <div class="section-head">
+      <h2>Two simple ways to begin</h2>
+      <p>
+        Choose the path that feels right for your family — request a complimentary preview first, or begin directly with a package.
+      </p>
+    </div>
 
-        <div class="steps">
-          <div class="card">
-            <div class="step-number">1</div>
-            <h3>Tell us about your child</h3>
-            <p>
-              Share their name, personality, memories, relationships, and the feeling you want the story to leave.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="step-number">2</div>
-            <h3>We shape the story world</h3>
-            <p>
-              We craft the story and visuals around your child so the book feels personal, warm, and meaningful.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="step-number">3</div>
-            <h3>Receive a keepsake</h3>
-            <p>
-             Your final story is delivered digitally, as a printed softcover, or as a premium hardcover depending on your selected experience.
-            </p>
-          </div>
-        </div>
+    <div class="steps">
+      <div class="card">
+        <div class="step-number">1</div>
+        <h3>Request a Complimentary Preview</h3>
+        <p>
+          Share a few child and family details so we can prepare a small preview of the story direction before you choose a package.
+        </p>
       </div>
-    </section>
+
+      <div class="card">
+        <div class="step-number">2</div>
+        <h3>Choose your package</h3>
+        <p>
+          After reviewing your preview — or if you are ready to begin immediately — choose Seed, Becoming, or Legacy.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="step-number">3</div>
+        <h3>Complete your story journey</h3>
+        <p>
+          Payment is completed securely, then the full story form is submitted so Monarch Tales can create the complete keepsake.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="receive">
       <div class="container">
@@ -1300,8 +1584,6 @@ Stories children remember. Memories families keep forever.
       </div>
     </section>
 
-   <!-- ONLY SHOWING UPDATED PRICING SECTION (THE REST OF YOUR CODE REMAINS EXACTLY AS YOU SENT) -->
-
 <section id="pricing">
   <div class="container">
     <div class="section-head">
@@ -1316,7 +1598,7 @@ Stories children remember. Memories families keep forever.
       <!-- SEED -->
       <div class="card">
         <h3 class="price-name">The Seed</h3>
-        <div class="price">$39</div>
+        <div class="price">$49 USD</div>
         <p>A beautiful digital beginning for families who want a personalized story their child can read, keep, and revisit anytime.</p>
         <ul class="feature-list">
           <li>Personalized digital storybook</li>
@@ -1325,29 +1607,29 @@ Stories children remember. Memories families keep forever.
           <li>Mobile-friendly PDF delivery</li>
           <li>Printable version for home use</li>
         </ul>
-<a href="order.html?plan=seed#plan-selection" class="btn btn-primary">Start with Seed</a>
+<a href="start.html?plan=seed" class="btn btn-primary">Start with Seed</a>
       </div>
 
       <!-- BECOMING -->
       <div class="card popular-card">
         <span class="popular-badge">Most Chosen • Core Product</span>
         <h3 class="price-name">The Becoming</h3>
-        <div class="price">$89</div>
+        <div class="price">$99 USD + Shipping</div>
         <p>The signature Monarch Tales experience — a beautifully crafted personalized storybook designed to become part of a child’s memory for years.</p>
         <ul class="feature-list">
           <li>Everything included in The Seed</li>
           <li>Premium printed softcover keepsake book</li>
           <li>Emotion-led personalized storytelling</li>
           <li>Dedication page & premium interior layout</li>
-          <li>Worldwide shipping included during launch</li>
+          <li>Shipping calculated at checkout based on destination</li>
         </ul>
-<a href="order.html?plan=becoming#plan-selection" class="btn btn-primary">Choose The Becoming</a>
+<a href="start.html?plan=becoming" class="btn btn-primary">Choose The Becoming</a>
       </div>
 
       <!-- LEGACY -->
       <div class="card">
         <h3 class="price-name">The Legacy</h3>
-        <div class="price">$129</div>
+        <div class="price">$149 USD + Shipping</div>
         <p>The most immersive Monarch Tales experience — created for families who want a deeply personal keepsake designed to be treasured for years.</p>
         <ul class="feature-list">
           <li>Everything included in The Becoming</li>
@@ -1357,7 +1639,7 @@ Stories children remember. Memories families keep forever.
           <li>Premium printable story artwork</li>
           <li>Priority production experience</li>
         </ul>
-        <a href="order.html?plan=legacy#plan-selection" class="btn btn-primary">Go Legacy</a>
+        <a href="start.html?plan=legacy" class="btn btn-primary">Go Legacy</a>
       </div>
 
     </div>
@@ -1368,11 +1650,11 @@ Stories children remember. Memories families keep forever.
     </div>
 
     <p class="payment-note">
- After submitting your request, you’ll receive a secure Stripe payment link to begin your story.
+All prices are charged in USD. Your bank or card provider may convert the amount into your local currency at checkout. Shipping for printed packages is calculated on the checkout page.
     </p>
 
     <div class="limited-note">
-      We are currently accepting a limited number of families for our first Monarch Tales.
+      We are currently welcoming a limited number of Founding Families while each story is personally crafted.
     </div>
   </div>
 </section>
@@ -1551,17 +1833,17 @@ Stories children remember. Memories families keep forever.
   </details>
 
   <details>
-    <summary>How does payment work?</summary>
-    <p>
-      After your request is reviewed, you’ll receive a secure Stripe payment link to begin your story.
-    </p>
-  </details>
+  <summary>How does payment work?</summary>
+  <p>
+    Direct package orders are completed securely through Stripe. If you request a complimentary preview first, your preview request will be reviewed before a secure payment link is sent.
+  </p>
+</details>
 
   <details>
     <summary>Do you ship internationally?</summary>
     <p>
       Yes. Monarch Tales is designed for families around the world. Printed books can be shipped internationally. Delivery timing may vary depending on your location.
-      <p>
+      </p>
   </details>
 
   <details>
@@ -1591,8 +1873,8 @@ Stories children remember. Memories families keep forever.
             </p>
 
             <div class="social-links">
-              <a href="start.html" class="btn btn-primary">Create Your Child’s Story</a>
-              <a href="https://wa.me/2348104743496" class="btn btn-secondary">Chat on WhatsApp</a>
+              <a href="preview.html" class="btn btn-primary">Request Complimentary Preview</a>
+              <a href="https://wa.me/61432510020" class="btn btn-secondary">Chat on WhatsApp</a>
             </div>
           </div>
 
@@ -1603,9 +1885,9 @@ Stories children remember. Memories families keep forever.
             </p>
 
             <ul class="contact-list">
-              <li><a href="start.html">Go to the start page</a></li>
-              <li><a href="order.html">View the order form</a></li>
-              <li><a href="story-form.html">Review the story form</a></li>
+            <li><a href="preview.html">Request a complimentary preview</a></li>
+<li><a href="order.html">View packages</a></li>
+<li><a href="story-form.html">Review the story intake form</a></li>
             </ul>
 
             <div class="social-links">
@@ -1624,7 +1906,7 @@ Stories children remember. Memories families keep forever.
             Begin your Monarch Tales journey with a personalized storybook designed to feel warm, memorable, and beautifully made.
           </p>
           <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
-            <a href="start.html" class="btn btn-primary">Create Your Child’s Story</a>
+            <a href="preview.html" class="btn btn-primary">Request Complimentary Preview</a>
             <a href="#pricing" class="btn btn-secondary">See Packages</a>
           </div>
         </div>
@@ -1651,16 +1933,17 @@ Stories children remember. Memories families keep forever.
             <a href="#how-it-works">How It Works</a>
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
+            <a href="policies.html">Policies</a>
           </div>
         </div>
 
         <div class="footer-col">
           <h4>Journey</h4>
           <div class="footer-links">
-            <a href="start.html">Begin a Story</a>
-            <a href="order.html">Order Form</a>
-            <a href="story-form.html">Story Form</a>
-            <a href="thank-you.html">Completion Page</a>
+            <a href="preview.html">Request Preview</a>
+<a href="#pricing">View packages</a>
+<a href="story-form.html">Story Intake Form</a>
+<a href="request-received.html">Request Received</a>
           </div>
         </div>
       </div>
