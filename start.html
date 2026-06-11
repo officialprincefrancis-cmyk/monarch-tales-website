@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Begin Your Child’s Story | Monarch Tales</title>
+  <title>Start | Monarch Tales</title>
 
   <meta
     name="description"
@@ -316,6 +316,46 @@
       font-size: 0.92rem;
     }
 
+    .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.logo-brand span {
+  color: var(--gold-dark);
+}
+
+.terms-check {
+  display: block;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.terms-check input {
+  width: auto;
+  margin-right: 8px;
+}
+
+.terms-check a {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .logo {
+    height: 38px;
+  }
+}
+
     @media (max-width: 860px) {
       .steps-grid,
       .trust-strip {
@@ -371,7 +411,10 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">Monarch Tales</a>
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+  <span>Monarch Tales</span>
+</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <div>
@@ -382,41 +425,71 @@
       </button>
 
       <div class="nav-links" id="mobileNav">
-        <a href="index.html">Home</a>
-        <a href="order.html#plan-selection" class="btn btn-primary">Continue to Order Form</a>
-      </div>
+  <a href="index.html">Home</a>
+  <a href="packages.html" class="btn btn-primary">
+    Choose Your Package
+  </a>
+</div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="container">
-        <span class="eyebrow">Begin your Monarch Tales journey</span>
+        <span class="eyebrow">Welcome to Monarch Tales</span>
 
-        <h1>Start Your Child’s Story</h1>
+        <h1>Begin Your Child's Monarch Tale</h1>
 
         <p>
-          You’re about to create something personal — a story shaped from your child’s world,
-          designed to be kept, remembered, and loved.
+          Create a personalized story inspired by your child's personality, imagination, family, and memories — designed to be treasured for years to come.
         </p>
 
         <p class="hero-note">No two Monarch Tales are ever the same.</p>
       </div>
     </section>
 
+    <section class="story-meaning">
+  <div class="container">
+    <div class="intro-card">
+      <h2 class="section-title">Every Child Has A Story Worth Keeping</h2>
+
+      <p class="section-text">
+        A real personality.
+      </p>
+
+      <p class="section-text">
+        A real family.
+      </p>
+
+      <p class="section-text">
+        A real story worth remembering.
+      </p>
+
+      <br>
+
+      <p class="section-text">
+        Monarch Tales was created to help families preserve the wonder, personality, memories, and imagination that make childhood special.
+      </p>
+
+      <p class="section-text">
+        The next step is simply choosing how that story will be preserved.
+      </p>
+    </div>
+  </div>
+</section>
+
     <section>
       <div class="container">
         <div class="intro-card">
           <h2 class="section-title">What this step is for</h2>
           <p class="section-text">
-            This page helps you begin the process without overwhelm. First, you enter the journey calmly,
-            then you choose the package and share the first essential details about the child.
+            This page helps you begin the process without overwhelm. First, you explore the journey, choose the package that fits your family, complete secure checkout, and then enter our Creative Intake experience where we begin creating your child's story.
           </p>
 
           <div class="trust-strip">
             <div class="trust-pill">Digital: 5–7 days</div>
-            <div class="trust-pill">Printed: 2–4 weeks</div>
-            <div class="trust-pill">Secure payment link after review</div>
+            <div class="trust-pill">Premium Printed Keepsakes</div>
+            <div class="trust-pill">Secure Checkout</div>
           </div>
         </div>
 
@@ -437,31 +510,40 @@
 
             <div class="step-box">
               <div class="step-number">2</div>
-              <h3>Share the child’s world</h3>
+              <h3>Complete secure checkout</h3>
               <p>
-                We gather simple details about the child, their personality, and the people who matter in their life.
+                Once you choose your package, you'll complete secure payment and officially reserve your place in the Monarch Tales Studio.
               </p>
             </div>
 
             <div class="step-box">
               <div class="step-number">3</div>
-              <h3>Receive a keepsake</h3>
+              <h3>Begin your Creative Intake</h3>
               <p>
-                Your Monarch Tale is created as a warm, premium experience designed to be remembered and kept.
+                After payment, you'll be invited into our Creative Intake process where we gather the story details, memories, photos, and personality traits that bring your child's book to life.
               </p>
             </div>
           </div>
 
           <div class="action-wrap">
-            <a href="order.html" class="btn btn-primary">Continue to Order Form</a>
-            <p class="small-note">This first step is intentionally simple. The deeper story questions come after.</p>
+            <a href="#" class="btn btn-primary" id="continueButton">
+Continue to Checkout
+</a>
+
+<label class="terms-check">
+  <input type="checkbox" id="termsCheck">
+  I have read and agree to the
+  <a href="policies.html" target="_blank">Terms, Refund Policy, and Production Timeline</a>.
+</label>
+
+            <p class="small-note">Choose the experience that best fits your family. You'll complete checkout before entering the Creative Intake process.</p>
           </div>
         </div>
 
         <div class="note-card">
-          <h3>Character visuals at launch</h3>
+          <h3>Personalized Character Creation</h3>
           <p>
-            Families can choose story-based character creation with no photos, or share a Google Drive/Dropbox photo folder link or WhatsApp reference after submitting.
+           Families can choose story-based character creation with no photos, or provide reference photos during the Creative Intake process after checkout if they would like a closer visual resemblance.
           </p>
           <p>
             This keeps Monarch Tales accessible for families who want privacy, while still serving families who want a more personal visual resemblance.
@@ -494,6 +576,26 @@
         menuToggle.setAttribute("aria-expanded", "false");
       });
     });
+
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+const continueButton = document.getElementById("continueButton");
+const termsCheck = document.getElementById("termsCheck");
+
+if (plan) {
+  continueButton.href = "checkout.html?plan=" + encodeURIComponent(plan);
+} else {
+  continueButton.href = "packages.html";
+  continueButton.textContent = "Choose Your Package";
+}
+
+continueButton.addEventListener("click", function(event) {
+  if (plan && !termsCheck.checked) {
+    event.preventDefault();
+    alert("Please agree to the terms before continuing to checkout.");
+  }
+});
+
   </script>
 </body>
 </html>
