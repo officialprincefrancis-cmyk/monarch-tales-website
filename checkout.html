@@ -310,57 +310,21 @@ Total:
     © 2026 Monarch Tales. All rights reserved.
   </footer>
 
-  <script>
+<script>
   const params = new URLSearchParams(window.location.search);
   const plan = params.get("plan") || "seed";
 
-  const packages = {
-    seed: {
-      name: "The Seed",
-      price: 49,
-      displayPrice: "$49 USD",
-      description: "A personalized digital storybook delivered as a PDF."
-    },
-    becoming: {
-      name: "The Becoming",
-      price: 99,
-      displayPrice: "$99 USD + Shipping",
-      description: "The signature printed softcover keepsake book plus digital version."
-    },
-    legacy: {
-      name: "The Legacy",
-      price: 149,
-      displayPrice: "$149 USD + Shipping",
-      description: "Premium hardcover collector edition with luxury extras and audio narration."
-    }
+  const packageDescriptions = {
+    seed: "A personalized digital storybook delivered as a PDF.",
+    becoming: "The signature printed softcover keepsake book plus digital version.",
+    legacy: "Premium hardcover collector edition with luxury extras and audio narration."
   };
 
-  const shippingRates = {
-    US: { base: 12.28, note: "Shipping to the United States is included in the checkout total." },
-    CA: { base: 26.27, note: "Shipping to Canada is included in the checkout total." },
-    AU: { base: 28.85, note: "Shipping to Australia is included in the checkout total." },
-    UK: { base: 15, note: "Shipping to the United Kingdom is included in the checkout total." }
+  const packageNames = {
+    seed: "The Seed",
+    becoming: "The Becoming",
+    legacy: "The Legacy"
   };
-
-  const stripeLinks = {
-    seed: {
-      default: "https://buy.stripe.com/7sYcN421K6Hi9OMa1i0gw00"
-    },
-    becoming: {
-      US: "https://buy.stripe.com/dRmaEW21K5Degda8Xe0gw01",
-      CA: "https://buy.stripe.com/28EaEW6i04za5yw8Xe0gw02",
-      AU: "https://buy.stripe.com/00w7sKfSAaXy0ec1uM0gw03",
-      UK: "https://buy.stripe.com/3cI28qayg6Hi4us4GY0gw04"
-    },
-    legacy: {
-      US: "https://buy.stripe.com/14AeVc7m4c1Cd0Yb5m0gw05",
-      CA: "https://buy.stripe.com/28E28qaygfdO0ec7Ta0gw06",
-      AU: "https://buy.stripe.com/eVq3cu7m4aXy8KIehy0gw07",
-      UK: "https://buy.stripe.com/7sY7sK0XG2r27GE7Ta0gw08"
-    }
-  };
-
-  const selected = packages[plan] || packages.seed;
 
   const packageName = document.getElementById("packageName");
   const packagePrice = document.getElementById("packagePrice");
@@ -372,59 +336,69 @@ Total:
   const shippingNote = document.getElementById("shippingNote");
   const paymentButton = document.getElementById("paymentButton");
 
-  packageName.textContent = selected.name;
-  packagePrice.textContent = selected.displayPrice;
-  packageDescription.textContent = selected.description;
-
-  function updateTotals() {
-    const subtotal = selected.price;
-    let shipping = 0;
-
-    subtotalOutput.textContent = "$" + subtotal.toFixed(2);
-
-    if (plan === "seed") {
-      countryInput.disabled = true;
-      shippingOutput.textContent = "$0.00";
-      totalOutput.textContent = "$" + subtotal.toFixed(2);
-      shippingNote.textContent = "No shipping required for The Seed digital package.";
-      paymentButton.textContent = "Continue to Secure Payment";
-      paymentButton.href = stripeLinks.seed.default;
-      return;
-    }
-
-    countryInput.disabled = false;
-    const country = countryInput.value;
-
-    if (!country || !shippingRates[country]) {
-      shippingOutput.textContent = "$0.00";
-      totalOutput.textContent = "$" + subtotal.toFixed(2);
-      shippingNote.textContent = "Please select your shipping destination to calculate the final checkout total.";
-      paymentButton.textContent = "Select Destination First";
-      paymentButton.href = "#";
-      return;
-    }
-
-    shipping = shippingRates[country].base;
-    const total = subtotal + shipping;
-
-    shippingOutput.textContent = "$" + shipping.toFixed(2);
-    totalOutput.textContent = "$" + total.toFixed(2);
-    shippingNote.textContent = shippingRates[country].note;
-    paymentButton.textContent = "Continue to Secure Payment";
-    paymentButton.href = stripeLinks[plan][country];
+  function normalizeCountry(country) {
+    if (country === "UK") return "GB";
+    return country;
   }
 
-  paymentButton.addEventListener("click", function(event) {
-    if (paymentButton.href.endsWith("#")) {
-      event.preventDefault();
-      alert("Please select your shipping destination first.");
-    }
-  });
+  function formatCheckoutMoney(country, amount) {
+    const pricing = MONARCH_PRICING[country];
 
-  countryInput.addEventListener("change", updateTotals);
-  updateTotals();
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: pricing.currency,
+      maximumFractionDigits: 0
+    }).format(amount);
+  }
+
+  function getCheckoutCountry() {
+    const saved = localStorage.getItem("monarchCountry");
+
+    if (saved && MONARCH_PRICING[saved]) {
+      return saved;
+    }
+
+    return "US";
+  }
+
+  function updateCheckout() {
+    const country = normalizeCountry(countryInput.value || getCheckoutCountry());
+
+    if (!MONARCH_PRICING[country]) {
+      return;
+    }
+
+    const pricing = MONARCH_PRICING[country];
+    const selected = pricing[plan];
+
+    packageName.textContent = packageNames[plan];
+    packagePrice.textContent = formatCheckoutMoney(country, selected.total);
+    packageDescription.textContent = packageDescriptions[plan];
+
+    subtotalOutput.textContent = formatCheckoutMoney(country, selected.book);
+    shippingOutput.textContent = formatCheckoutMoney(country, selected.shipping);
+    totalOutput.textContent = formatCheckoutMoney(country, selected.total);
+
+    if (plan === "seed") {
+      shippingNote.textContent = "No shipping required for The Seed digital package.";
+    } else {
+      shippingNote.textContent = `Shipping to ${pricing.countryName} is included in the checkout total.`;
+    }
+
+    paymentButton.textContent = "Continue to Secure Payment";
+    paymentButton.href = selected.stripe;
+
+    localStorage.setItem("monarchCountry", country);
+  }
+
+  countryInput.addEventListener("change", updateCheckout);
+
+  const currentCountry = getCheckoutCountry();
+  countryInput.value = currentCountry === "GB" ? "UK" : currentCountry;
+
+  updateCheckout();
 </script>
   
-
+<script src="pricing.js"></script>
 </body>
 </html>
