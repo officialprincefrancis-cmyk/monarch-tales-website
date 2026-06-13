@@ -678,7 +678,7 @@
           <p class="unique-note">No two Monarch Tales are ever the same.</p>
           <p class="delivery-line">Digital: 5–7 days • Printed: 2–4 weeks</p>
           <p class="limit-line">We are currently accepting a limited number of families for our first Monarch Tales.</p>
-          <p class="payment-line">Secure Stripe payment link sent after your request is reviewed.</p>
+          <p class="payment-line">You’ll continue to secure checkout after selecting your package.</p>
 
           <section class="plan-select" id="plan-selection">
             <h2>Choose Your Package</h2>
@@ -690,7 +690,7 @@
               <div class="plan-card" data-plan="seed">
                 <div class="plan-card-top">
                   <h3>The Seed</h3>
-                  <p class="plan-price">$49 USD</p>
+                  <p class="plan-price" data-price="seed">$49</p>
                   <p class="plan-summary">
                     A simple beginning for families who want a beautiful digital story experience first.
                   </p>
@@ -721,7 +721,7 @@
                 <div class="plan-card-top">
                   <span class="plan-badge">Most Loved • Signature Experience</span>
                   <h3>The Becoming</h3>
-                  <p class="plan-price">$99 USD + Shipping</p>
+                  <p class="plan-price" data-price="becoming">$119</p>
                   <p class="plan-summary">
                     The complete Monarch Tales experience — designed to be held, kept, and remembered.
                   </p>
@@ -752,7 +752,7 @@
               <div class="plan-card" data-plan="legacy">
                 <div class="plan-card-top">
                   <h3>The Legacy</h3>
-                  <p class="plan-price">$149 USD + Shipping</p>
+                  <p class="plan-price" data-price="legacy">$169</p>
                   <p class="plan-summary">
                     For families who want something truly unforgettable, emotional, and deeply personal.
                   </p>
@@ -833,10 +833,10 @@
     const planCards = document.querySelectorAll(".plan-card");
     const planDetails = document.querySelectorAll(".plan-details");
 
-  const planLabelMap = {
-  seed: "The Seed — $49 USD",
-  becoming: "The Becoming — $99 USD + Shipping",
-  legacy: "The Legacy — $149 USD + Shipping"
+ const planLabelMap = {
+  seed: "The Seed",
+  becoming: "The Becoming",
+  legacy: "The Legacy"
 };
 
     function closeAllPlanDetails() {
@@ -905,5 +905,6 @@ continueButton.addEventListener("click", function (event) {
     window.togglePlanDetails = togglePlanDetails;
 
   </script>
+  <script src="pricing.js"></script>
 </body>
 </html>
