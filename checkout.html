@@ -233,7 +233,7 @@
         <h1>Secure Your Monarch Tale.</h1>
 
         <p class="intro">
-          Review your selected package before continuing. Payment links will be connected here once Stripe checkout is ready.
+          Review your selected package before continuing to secure Stripe checkout.
         </p>
 
         <div class="summary-box">
@@ -309,6 +309,8 @@ Total:
   <footer>
     © 2026 Monarch Tales. All rights reserved.
   </footer>
+
+<script src="pricing.js"></script>
 
 <script>
   const params = new URLSearchParams(window.location.search);
@@ -391,6 +393,10 @@ Total:
     localStorage.setItem("monarchCountry", country);
   }
 
+  paymentButton.addEventListener("click", function () {
+  localStorage.setItem("selectedPlan", plan);
+});
+
   countryInput.addEventListener("change", updateCheckout);
 
   const currentCountry = getCheckoutCountry();
@@ -399,6 +405,6 @@ Total:
   updateCheckout();
 </script>
   
-<script src="pricing.js"></script>
+
 </body>
 </html>
