@@ -636,150 +636,273 @@
 </head>
 
 <body>
+
   <header>
+
     <div class="container nav">
-    <a href="index.html" class="brand logo-brand">
-  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
-  <span>Monarch Tales</span>
-</a>
+
+      <a href="index.html" class="brand logo-brand">
+
+        <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+
+        <span>Monarch Tales</span>
+
+      </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+
         <div><span></span><span></span><span></span></div>
+
       </button>
 
       <div class="nav-links" id="mobileNav">
+
         <a href="index.html">Home</a>
-        <a href="start.html">Back</a>
+
+        <a href="start.html">Start Page</a>
+
       </div>
+
     </div>
+
   </header>
 
   <main>
+
     <section class="hero">
+
       <div class="container">
-        <span class="eyebrow">Order Form</span>
-        <h1>Begin the Monarch Tale.</h1>
+
+        <span class="eyebrow">Choose Your Monarch Tales Package</span>
+
+        <h1>Choose the story experience your child will keep.</h1>
+
         <p>
-          Choose your package first, then share the key details we need to shape the story clearly and beautifully.
+
+          Select the package that best fits your family. After secure checkout, you’ll complete the full story form so we can begin creating your child’s Monarch Tale.
+
         </p>
+
       </div>
+
     </section>
 
     <section class="layout">
+
       <div class="container">
+
         <div class="form-card">
-          <h2 class="intro-title">Order Details</h2>
+
+          <h2 class="intro-title">Select Your Package</h2>
 
           <p class="intro-text">
-            This process is guided by design. You do not need to explain everything — just choose the options that best fit the child and the experience you want.
+
+            Each package offers a different level of memory, meaning, and keepsake value. Choose the experience that feels right for your child.
+
           </p>
 
           <p class="intro-note">Takes less than 2 minutes to begin.</p>
+
           <p class="unique-note">No two Monarch Tales are ever the same.</p>
+
           <p class="delivery-line">Digital: 5–7 days • Printed: 2–4 weeks</p>
-          <p class="limit-line">We are currently accepting a limited number of families for our first Monarch Tales.</p>
-          <p class="payment-line">You’ll continue to secure checkout after selecting your package.</p>
+
+          <p class="limit-line">We are currently welcoming a limited number of Founding Families while each story is personally crafted.</p>
+
+          <p class="payment-line">
+
+            After checkout, you’ll complete the full story form. If we need clarification, we’ll contact you before production begins.
+
+          </p>
+
+          <p class="privacy-note">
+
+            Child and family details are used only to create your story and are treated with care.
+
+          </p>
 
           <section class="plan-select" id="plan-selection">
-            <h2>Choose Your Package</h2>
+
+            <h2>Available Packages</h2>
+
             <p class="plan-sub">
+
               Tap “View Package” to reveal what each experience includes before you select it.
+
             </p>
 
             <div class="plan-grid">
+
               <div class="plan-card" data-plan="seed">
+
                 <div class="plan-card-top">
+
                   <h3>The Seed</h3>
+
                   <p class="plan-price" data-price="seed">$49</p>
+
+                  <p class="plan-summary"><strong>Best for: Digital keepsake</strong></p>
+
                   <p class="plan-summary">
-                    A simple beginning for families who want a beautiful digital story experience first.
+
+                    A digital personalized storybook for families who want a meaningful story their child can read, keep, and revisit anytime.
+
                   </p>
 
                   <div class="plan-actions">
+
                     <button type="button" class="reveal-btn" onclick="togglePlanDetails('seed')">View Package</button>
+
                   </div>
+
                 </div>
 
                 <div class="plan-details" id="plan-details-seed">
+
                   <div class="plan-details-inner">
+
                     <ul>
+
                       <li>Digital only</li>
+
                       <li>Personalized story</li>
+
                       <li>Child’s name + traits</li>
+
                       <li>Dedication page</li>
+
                       <li>Delivered as PDF</li>
+
                     </ul>
 
                     <button type="button" class="btn btn-primary" onclick="selectPlan('seed')">
+
                       Select The Seed
+
                     </button>
+
                   </div>
+
                 </div>
+
               </div>
 
               <div class="plan-card featured" data-plan="becoming">
+
                 <div class="plan-card-top">
-                  <span class="plan-badge">Most Loved • Signature Experience</span>
+
+                  <span class="plan-badge">Core Keepsake Package</span>
+
                   <h3>The Becoming</h3>
+
                   <p class="plan-price" data-price="becoming">$119</p>
+
+                  <p class="plan-summary"><strong>Best for: Printed softcover gift</strong></p>
+
                   <p class="plan-summary">
-                    The complete Monarch Tales experience — designed to be held, kept, and remembered.
+
+                    The core Monarch Tales keepsake — a premium printed softcover storybook created around your child’s personality, memories, and world.
+
                   </p>
 
                   <div class="plan-actions">
+
                     <button type="button" class="reveal-btn" onclick="togglePlanDetails('becoming')">View Package</button>
+
                   </div>
+
                 </div>
 
                 <div class="plan-details" id="plan-details-becoming">
+
                   <div class="plan-details-inner">
+
                     <ul>
+
                       <li>Printed softcover keepsake book + digital version</li>
-<li>Everything in The Seed</li>
-<li>Full personalization</li>
-<li>Premium layout</li>
-<li>Dedication page included</li>
-<li>Shipping calculated at checkout based on destination</li>
+
+                      <li>Everything in The Seed</li>
+
+                      <li>Full personalization</li>
+
+                      <li>Premium layout</li>
+
+                      <li>Dedication page included</li>
+
+                      <li>Shipping calculated at checkout based on destination</li>
+
                     </ul>
 
                     <button type="button" class="btn btn-primary" onclick="selectPlan('becoming')">
+
                       Select The Becoming
+
                     </button>
+
                   </div>
+
                 </div>
+
               </div>
 
               <div class="plan-card" data-plan="legacy">
+
                 <div class="plan-card-top">
+
                   <h3>The Legacy</h3>
+
                   <p class="plan-price" data-price="legacy">$169</p>
+
+                  <p class="plan-summary"><strong>Best for: Hardcover collector experience</strong></p>
+
                   <p class="plan-summary">
-                    For families who want something truly unforgettable, emotional, and deeply personal.
+
+                    The most complete Monarch Tales experience — a premium hardcover collector edition with personalized audio narration and deluxe keepsake extras.
+
                   </p>
 
                   <div class="plan-actions">
+
                     <button type="button" class="reveal-btn" onclick="togglePlanDetails('legacy')">View Package</button>
+
                   </div>
+
                 </div>
 
                 <div class="plan-details" id="plan-details-legacy">
+
                   <div class="plan-details-inner">
+
                     <ul>
-                      <li>Everything in The Becoming</li>
-<li>Premium hardcover collector edition</li>
-<li>Ribbon marker & luxury presentation</li>
-<li>Personalized audio narration</li>
-<li>Premium printable story artwork</li>
-<li>Priority production experience</li>
-<li>Shipping calculated at checkout based on destination</li>
+
+                      <li>Everything included in The Becoming</li>
+
+                      <li>Premium hardcover collector edition</li>
+
+                      <li>Personalized audio narration</li>
+
+                      <li>Deluxe keepsake presentation</li>
+
+                      <li>Premium printable story artwork</li>
+
+                      <li>Priority production experience</li>
+
+                      <li>Shipping calculated at checkout based on destination</li>
+
                     </ul>
 
                     <button type="button" class="btn btn-primary" onclick="selectPlan('legacy')">
+
                       Select The Legacy
+
                     </button>
+
                   </div>
+
                 </div>
+
               </div>
+
             </div>
 
             <p class="plan-chosen-text" id="planChosenText">No package selected yet.</p>
@@ -787,124 +910,197 @@
             <a href="#" id="continueButton" class="btn btn-primary">Continue to Payment</a>
 
             <p class="plan-note">
-              After choosing your package, you’ll continue to secure payment. Story details are collected after checkout.
+
+              After checkout, you’ll complete the full story form. If we need clarification, we’ll contact you before production begins.
+
             </p>
+
           </section>
-          
+
           <div class="support-box">
-  <h3>Need help?</h3>
-  <p>Message Monarch Tales Customer Care on WhatsApp.</p>
-  <a href="https://wa.me/61432510020" target="_blank" class="btn btn-secondary">
-    Chat on WhatsApp
-  </a>
-</div>
+
+            <h3>Need help?</h3>
+
+            <p>Message Monarch Tales Customer Care on WhatsApp.</p>
+
+            <a href="https://wa.me/61432510020" target="_blank" class="btn btn-secondary">
+
+              Chat on WhatsApp
+
+            </a>
+
+          </div>
 
         </div>
+
       </div>
+
     </section>
+
   </main>
 
   <footer>
+
     © 2026 Monarch Tales. All rights reserved.
+
   </footer>
 
   <script>
+
     const menuToggle = document.getElementById("menuToggle");
+
     const mobileNav = document.getElementById("mobileNav");
 
     menuToggle.addEventListener("click", () => {
+
       mobileNav.classList.toggle("open");
+
       menuToggle.classList.toggle("active");
+
       const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+
       menuToggle.setAttribute("aria-expanded", String(!expanded));
+
     });
 
     mobileNav.querySelectorAll("a").forEach(link => {
+
       link.addEventListener("click", () => {
+
         mobileNav.classList.remove("open");
+
         menuToggle.classList.remove("active");
+
         menuToggle.setAttribute("aria-expanded", "false");
+
       });
+
     });
 
     const params = new URLSearchParams(window.location.search);
+
     const initialPlan = params.get("plan");
+
     const planChosenText = document.getElementById("planChosenText");
+
     const planCards = document.querySelectorAll(".plan-card");
+
     const planDetails = document.querySelectorAll(".plan-details");
 
- const planLabelMap = {
-  seed: "The Seed",
-  becoming: "The Becoming",
-  legacy: "The Legacy"
-};
+    const planLabelMap = {
+
+      seed: "The Seed",
+
+      becoming: "The Becoming",
+
+      legacy: "The Legacy"
+
+    };
 
     function closeAllPlanDetails() {
+
       planDetails.forEach(detail => detail.classList.remove("open"));
+
     }
 
     function togglePlanDetails(plan) {
+
       const target = document.getElementById("plan-details-" + plan);
+
       const isOpen = target.classList.contains("open");
 
       closeAllPlanDetails();
 
       if (!isOpen) {
+
         target.classList.add("open");
+
       }
+
     }
 
     let selectedPlanKey = "";
 
-function updatePlanUI(plan) {
-  selectedPlanKey = plan;
+    function updatePlanUI(plan) {
 
-  planCards.forEach(card => {
-    card.classList.toggle("active", card.dataset.plan === plan);
-  });
+      selectedPlanKey = plan;
 
-  if (planLabelMap[plan]) {
-  planChosenText.textContent = "Selected package: " + planLabelMap[plan];
-  }
-}
+      planCards.forEach(card => {
+
+        card.classList.toggle("active", card.dataset.plan === plan);
+
+      });
+
+      if (planLabelMap[plan]) {
+
+        planChosenText.textContent = "Selected package: " + planLabelMap[plan];
+
+      }
+
+    }
 
     function selectPlan(plan) {
+
       updatePlanUI(plan);
+
       const target = document.getElementById("plan-details-" + plan);
+
       closeAllPlanDetails();
+
       target.classList.add("open");
+
     }
 
     if (initialPlan && planLabelMap[initialPlan]) {
+
       updatePlanUI(initialPlan);
+
       const target = document.getElementById("plan-details-" + initialPlan);
+
       if (target) {
+
         target.classList.add("open");
+
       }
+
     }
 
     window.selectPlan = selectPlan;
-    const continueButton = document.getElementById("continueButton");
 
-const paymentLinks = {
-  seed: "checkout.html?plan=seed",
-  becoming: "checkout.html?plan=becoming",
-  legacy: "checkout.html?plan=legacy"
-};
-
-continueButton.addEventListener("click", function (event) {
-  event.preventDefault();
-
-  if (!selectedPlanKey) {
-    alert("Please select a package before continuing.");
-    return;
-  }
-
-  window.location.href = paymentLinks[selectedPlanKey];
-});
     window.togglePlanDetails = togglePlanDetails;
 
+    const continueButton = document.getElementById("continueButton");
+
+    const paymentLinks = {
+
+      seed: "checkout.html?plan=seed",
+
+      becoming: "checkout.html?plan=becoming",
+
+      legacy: "checkout.html?plan=legacy"
+
+    };
+
+    continueButton.addEventListener("click", function (event) {
+
+      event.preventDefault();
+
+      if (!selectedPlanKey) {
+
+        alert("Please select a package before continuing.");
+
+        return;
+
+      }
+
+      window.location.href = paymentLinks[selectedPlanKey];
+
+    });
+
   </script>
+
   <script src="pricing.js"></script>
+
 </body>
+
 </html>
