@@ -221,7 +221,7 @@
         <span>Monarch Tales</span>
       </a>
 
-      <a href="packages.html">Back</a>
+      <a href="packages.html">Change Package</a>
     </div>
   </header>
 
@@ -230,12 +230,11 @@
       <div class="checkout-card">
         <span class="eyebrow">Checkout</span>
 
-        <h1>Secure Your Monarch Tale.</h1>
+       <h1>Review your package and continue securely.</h1>
 
-        <p class="intro">
-          Review your selected package before continuing to secure Stripe checkout.
-        </p>
-
+<p class="intro">
+  Confirm your selected package and destination. Your payment is completed securely through Stripe.
+</p>
         <div class="summary-box">
          <h2 id="packageName">Selected Package</h2>
 
@@ -281,9 +280,9 @@ Total:
 <p id="shippingNote"></p>
         </div>
 
-        <a href="#" class="btn btn-primary" id="paymentButton">
-          Payment Link Coming Soon
-        </a>
+       <a href="#" class="btn btn-primary" id="paymentButton">
+  Select Destination to Continue
+</a>
 
         <br>
 
@@ -291,20 +290,26 @@ Total:
   Change Package
 </a>
 
-        <p class="notice">
-          After payment, customers will continue to the full story form where the deeper story details are collected.
-        </p>
-      </div>
-    </div>
-  </main>
+<p class="notice">
+  After payment, you’ll continue to the full story form where the deeper story details are collected. If anything is unclear, we’ll contact you before production begins.
+</p>
 
-  <div class="support-box">
+<p class="notice">
+  Child and family details are used only to create your story and are treated with care.
+</p>
+
+<div class="support-box">
   <h3>Need help?</h3>
   <p>Message Monarch Tales Customer Care on WhatsApp.</p>
   <a href="https://wa.me/61432510020" target="_blank" class="btn btn-secondary">
     Chat on WhatsApp
   </a>
 </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
 
   <footer>
     © 2026 Monarch Tales. All rights reserved.
@@ -381,13 +386,12 @@ Total:
     shippingOutput.textContent = formatCheckoutMoney(country, selected.shipping);
     totalOutput.textContent = formatCheckoutMoney(country, selected.total);
 
-    if (plan === "seed") {
-      shippingNote.textContent = "No shipping required for The Seed digital package.";
-    } else {
-      shippingNote.textContent = `Shipping to ${pricing.countryName} is included in the checkout total.`;
-    }
+   if (plan === "seed") {
+  shippingNote.textContent = "Digital package — no shipping required.";
+} else {
+  shippingNote.textContent = "Shipping is included in the total shown above.";
+}
 
-    paymentButton.textContent = "Continue to Secure Payment";
     paymentButton.href = selected.stripe;
 
     localStorage.setItem("monarchCountry", country);
