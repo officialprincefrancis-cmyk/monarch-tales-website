@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Thank You | Monarch Tales</title>
+  <title>Testimonial Received | Monarch Tales</title>
+<meta
+  name="description"
+  content="Thank you for sharing your Monarch Tales experience. Your testimonial has been received and helps other families discover personalized keepsake stories."
+/>
 
   <style>
     :root {
@@ -50,6 +54,38 @@
       padding: 52px;
       text-align: center;
     }
+
+    .logo-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+
+.logo-brand img {
+  height: 44px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.logo-brand {
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .logo-brand {
+    font-size: 1.2rem;
+  }
+
+  .logo-brand img {
+    height: 38px;
+  }
+}
 
     .eyebrow {
       display: inline-block;
@@ -103,12 +139,18 @@
 <body>
 
   <div class="card">
-    <span class="eyebrow">Testimonial Received</span>
+
+  <a href="index.html" class="logo-brand" aria-label="Monarch Tales Home">
+    <img src="logo.png" alt="Monarch Tales Logo">
+    <span>Monarch Tales</span>
+  </a>
+
+  <span class="eyebrow">Testimonial Received</span>
 
     <h1>Thank you for sharing your family’s experience.</h1>
 
     <p>
-      Your words mean more than you know. They help other families understand the heart behind Monarch Tales.
+      Your story will help other families discover the lasting value of a personalized keepsake created just for their child.
     </p>
 
     <p>
