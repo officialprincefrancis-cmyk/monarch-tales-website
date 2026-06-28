@@ -560,7 +560,7 @@
 
       <div class="nav-links" id="mobileNav">
         <a href="index.html">Home</a>
-        <a href="packages.html">Back to Packages</a>
+        <a href="https://wa.me/61432510020">Need Help?</a>
       </div>
     </div>
   </header>
@@ -586,7 +586,19 @@
           <p class="intro-text">
             You do not need perfect words. Choose what feels true, add a few personal notes, and we’ll shape the story with care.
           </p>
-          <p class="intro-note">Simple answers are enough.</p>
+          <p class="intro-note">Simple answers are enough. You do not need to write perfectly.</p>
+
+<p class="helper">
+  This form usually takes 15–25 minutes. Simple answers are enough.
+</p>
+
+<p class="helper">
+  Child and family details are used only to create your story and are treated with care.
+</p>
+
+<p class="helper">
+  Please complete this form in one sitting. Your answers may not be saved if you leave the page.
+</p>
 
           <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST">
             <input type="hidden" name="_subject" value="New Monarch Tales Story Details" />
@@ -867,9 +879,7 @@ placeholder="Nana, Pop, Daddy, Mumma..."
 
 <div class="field-full">
 
-<label>
-Do they share any special traditions together?
-</label>
+<label>Optional: Do they share any special traditions together?</label>
 
 <textarea
 name="specialTraditions"
@@ -880,9 +890,7 @@ placeholder="Bedtime stories, Sunday pancakes, prayers, fishing trips..."
 
 <div class="field-full">
 
-<label>
-What is something this person often says to your child?
-</label>
+<label>Optional: What is something this person often says to your child?</label>
 
 <textarea
 name="specialPhraseFromLovedOne"
@@ -931,9 +939,7 @@ placeholder="Funny stories are welcome..."
 
 <div class="field-full">
 
-<label>
-What moment perfectly captures who your child is?
-</label>
+<label>Optional: What moment perfectly captures who your child is?</label>
 
 <textarea
 name="whoTheyAreMoment"
@@ -944,9 +950,7 @@ placeholder="A moment that shows their personality..."
 
 <div class="field-full">
 
-<label>
-If you could preserve one stage of your child's life forever, what would it be and why?
-</label>
+<label>Optional: If you could preserve one stage of your child's life forever, what would it be and why?</label>
 
 <textarea
 name="preserveStage"
@@ -982,9 +986,7 @@ placeholder="I am loved. I belong. I can be brave. I matter. I am enough..."
 
 <div class="field-full">
 
-<label>
-What kind of person do you hope they become?
-</label>
+<label>Optional: What kind of person do you hope they become?</label>
 
 <textarea
 name="futureHope"
@@ -995,9 +997,7 @@ placeholder="Kind, courageous, curious, resilient, generous..."
 
 <div class="field-full">
 
-<label>
-Are there any fears, struggles, challenges, or life lessons you would like the story to gently address?
-</label>
+<label>Optional: Are there any fears, struggles, challenges, or life lessons you would like the story to gently address?</label>
 
 <textarea
 name="lifeChallenges"
@@ -1008,9 +1008,7 @@ placeholder="Confidence, anxiety, making friends, believing in themselves, adapt
 
 <div class="field-full">
 
-<label>
-Twenty years from now, what do you hope your child remembers about this stage of life?
-</label>
+<label>Optional: Twenty years from now, what do you hope your child remembers about this stage of life?</label>
 
 <textarea
 name="futureMemory"
@@ -1183,9 +1181,7 @@ Would you like faith or Christian themes included?
 
 <div class="field-full">
 
-<label>
-Anything else you'd like us to know?
-</label>
+<label>Optional: Anything else you'd like us to know?</label>
 
 <textarea
 name="additionalNotes"
@@ -1228,7 +1224,7 @@ placeholder="Any final notes, requests, ideas, memories, or details..."
           <div class="side-block">
             <h3>You're Almost There</h3>
             <p>
-              Your package has already been secured. These details help us create a story that feels personal, meaningful, and uniquely yours.
+             Your payment is complete. These details help us create the full Monarch Tale.
             </p>
           </div>
 
@@ -1240,7 +1236,7 @@ placeholder="Any final notes, requests, ideas, memories, or details..."
           </div>
 
           <div class="side-block">
-            <a href="packages.html" class="btn btn-secondary" id="backToOrderButton">Back to Packages</a>
+            <a href="https://wa.me/61432510020" class="btn btn-secondary" id="backToOrderButton">Need help? Chat on WhatsApp</a>
           </div>
         </aside>
       </div>
@@ -1278,12 +1274,11 @@ const age = params.get("age");
     const planInput = document.getElementById("storySelectedPlanInput");
     const storyChildName = document.getElementById("storyChildName");
 const storyChildAge = document.getElementById("storyChildAge");
-    const backToOrderButton = document.getElementById("backToOrderButton");
 
    const planMap = {
   seed: "Selected package: The Seed — $49",
-  becoming: "Selected package: The Becoming — $99 + Shipping",
-  legacy: "Selected package: The Legacy — $149 + Shipping"
+  becoming: "Selected package: The Becoming — $119",
+  legacy: "Selected package: The Legacy — $169"
 };
 const packagePurchased =
 document.getElementById("packagePurchased");
@@ -1303,7 +1298,6 @@ if (plan === "legacy") {
       planBox.style.display = "block";
       planBox.textContent = planMap[plan];
       planInput.value = planMap[plan];
-      backToOrderButton.href = "packages.html?plan=" + encodeURIComponent(plan) + "#plan-selection";
     }
     if (child) {
   storyChildName.value = child;
