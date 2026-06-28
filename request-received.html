@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Thank You | Monarch Tales</title>
+  <title>Preview Request Received | Monarch Tales</title>
 
   <meta
     name="description"
@@ -342,6 +342,28 @@
       font-size: 0.92rem;
     }
 
+    .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.logo-brand span {
+  color: var(--gold-dark);
+}
+
+@media (max-width: 720px) {
+  .logo {
+    height: 38px;
+  }
+}
+
     @media (max-width: 860px) {
       .steps-grid {
         grid-template-columns: 1fr;
@@ -408,7 +430,10 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">Monarch Tales</a>
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+  <span>Monarch Tales</span>
+</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <div>
@@ -432,7 +457,7 @@
       <div class="container">
         <span class="eyebrow">Preview Request Received</span>
 
-        <h1>Your child’s Monarch Tale Preview request has been received.</h1>
+        <h1>Your child’s Monarch Tale preview request has been received.</h1>
 
         <p>
           Thank you for requesting a complimentary Monarch Preview. We’ll review your child’s details and begin shaping a small emotional glimpse of their story world.
@@ -464,7 +489,7 @@
               <div class="step-number">1</div>
               <h3>We review your preview request</h3>
               <p>
-                 We check your child’s name, age, story atmosphere, photo link if provided, and any emotional notes you shared.
+                 We check your child’s name, age, story feeling, photo link if provided, and any emotional notes you shared.
               </p>
             </div>
 
@@ -472,7 +497,7 @@
               <div class="step-number">2</div>
               <h3>We prepare your emotional preview</h3>
               <p>
-                We shape a small handcrafted preview around your child’s name, atmosphere, and story energy.
+                We shape a small handcrafted preview around your child’s name, personality, and story direction.
               </p>
             </div>
 
