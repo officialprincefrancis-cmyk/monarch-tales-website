@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Story Creation Form | Monarch Tales</title>
+  <meta name="robots" content="noindex, nofollow" />
 
   <meta
     name="description"
@@ -272,6 +273,43 @@
     .form-section-title {
       font-size: 1.16rem;
       margin-bottom: 6px;
+    }
+
+    .form-progress {
+      position: sticky;
+      top: 92px;
+      z-index: 20;
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,253,249,0.96);
+      box-shadow: 0 8px 22px rgba(43,33,28,0.07);
+    }
+
+    .form-progress-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .form-progress-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--gold-soft);
+    }
+
+    .form-progress-bar {
+      width: 10%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--gold);
+      transition: width 0.25s ease;
     }
 
     .form-section-text {
@@ -553,7 +591,7 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand logo-brand">
-  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+  <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612" class="logo">
   <span>Monarch Tales</span>
 </a>
 
@@ -603,6 +641,14 @@
   Please complete this form in one sitting. Your answers may not be saved if you leave the page.
 </p>
 
+          <div class="form-progress" aria-live="polite">
+            <div class="form-progress-row">
+              <span id="formProgressText">Step 1 of 10</span>
+              <span>About 15–25 minutes</span>
+            </div>
+            <div class="form-progress-track" aria-hidden="true"><div class="form-progress-bar" id="formProgressBar"></div></div>
+          </div>
+
           <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST">
             <input type="hidden" name="_subject" value="New Monarch Tales Story Details" />
             <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
@@ -617,17 +663,17 @@
   <div class="grid-2">
 
     <div class="field-group">
-      <label>Full Name</label>
-      <input type="text" name="fullName" required>
+      <label for="storyFullName">Full Name</label>
+      <input type="text" id="storyFullName" name="fullName" autocomplete="name" required>
     </div>
 
     <div class="field-group">
-      <label>Email Address</label>
-      <input type="email" name="email" required>
+      <label for="storyEmail">Email Address</label>
+      <input type="email" id="storyEmail" name="email" autocomplete="email" required>
     </div>
 
     <div class="field-group">
-      <label>Package Purchased</label>
+      <label for="packagePurchased">Package Purchased</label>
 
      <input
 type="text"
@@ -1278,10 +1324,10 @@ const age = params.get("age");
     const storyChildName = document.getElementById("storyChildName");
 const storyChildAge = document.getElementById("storyChildAge");
 
-   const planMap = {
-  seed: "Selected package: The Seed — $49",
-  becoming: "Selected package: The Becoming — $119",
-  legacy: "Selected package: The Legacy — $169"
+const planMap = {
+  seed: "Selected package: The Seed",
+  becoming: "Selected package: The Becoming",
+  legacy: "Selected package: The Legacy"
 };
 const packagePurchased =
 document.getElementById("packagePurchased");
@@ -1309,7 +1355,35 @@ if (plan === "legacy") {
 if (age) {
   storyChildAge.value = age;
 }
-    const storyForm = document.getElementById("storyForm");
+const storyForm = document.getElementById("storyForm");
+
+// Connect every visible form control to its nearby written label for assistive technology.
+storyForm.querySelectorAll('input:not([type="hidden"]), select, textarea').forEach((control, index) => {
+  if (!control.id) control.id = `storyField${index + 1}`;
+  if (control.closest('label') || storyForm.querySelector(`label[for="${control.id}"]`)) return;
+  const field = control.closest('.field-group, .field-full');
+  const label = field ? field.querySelector('label') : null;
+  if (label && !label.htmlFor) label.htmlFor = control.id;
+});
+
+const formSections = Array.from(storyForm.querySelectorAll(".form-section"));
+const formProgressText = document.getElementById("formProgressText");
+const formProgressBar = document.getElementById("formProgressBar");
+
+if ("IntersectionObserver" in window && formSections.length) {
+  const progressObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visible) return;
+    const index = formSections.indexOf(visible.target) + 1;
+    formProgressText.textContent = `Step ${index} of ${formSections.length}`;
+    formProgressBar.style.width = `${(index / formSections.length) * 100}%`;
+  }, { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.5] });
+
+  formSections.forEach(section => progressObserver.observe(section));
+}
 
 storyForm.addEventListener("submit", async function (event) {
   event.preventDefault();
@@ -1334,3 +1408,6 @@ storyForm.addEventListener("submit", async function (event) {
     alert("Network error. Please try again.");
   }
 });
+  </script>
+</body>
+</html>

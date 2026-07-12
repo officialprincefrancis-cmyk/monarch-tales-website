@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Start | Monarch Tales</title>
+  <meta name="robots" content="noindex, follow" />
 
   <meta
     name="description"
@@ -415,7 +416,7 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand logo-brand">
-  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+  <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612" class="logo">
   <span>Monarch Tales</span>
 </a>
 
@@ -533,13 +534,7 @@
 Continue to Checkout
 </a>
 
-<label class="terms-check">
-  <input type="checkbox" id="termsCheck">
-  I have read and agree to the
-  <a href="policies.html" target="_blank">Terms, Refund Policy, and Production Timeline</a>.
-</label>
-
-            <p class="small-note">Choose the experience that best fits your family. You'll complete checkout before entering the Creative Intake process.</p>
+            <p class="small-note">You’ll review your package total, destination, and policies on the secure checkout step before payment.</p>
           </div>
         </div>
 
@@ -583,7 +578,6 @@ Continue to Checkout
 const params = new URLSearchParams(window.location.search);
 const plan = params.get("plan");
 const continueButton = document.getElementById("continueButton");
-const termsCheck = document.getElementById("termsCheck");
 
 if (plan) {
   continueButton.href = "checkout.html?plan=" + encodeURIComponent(plan);
@@ -592,9 +586,6 @@ if (plan) {
   continueButton.textContent = "Choose Your Package";
 }
 
-continueButton.addEventListener("click", function(event) {
-  if (plan && !termsCheck.checked) {
-    event.preventDefault();
-    alert("Please agree to the terms before continuing to checkout.");
-  }
-});
+  </script>
+</body>
+</html>

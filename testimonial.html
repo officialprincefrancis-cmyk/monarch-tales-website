@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Share Your Monarch Tales Experience</title>
+  <meta name="robots" content="noindex, nofollow" />
 <meta
   name="description"
   content="Share your Monarch Tales experience and help other families understand the meaning of a personalized keepsake storybook."
@@ -213,7 +214,7 @@
   <header>
     <div class="container">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="Monarch Tales Logo">
+        <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612">
         <span>Monarch Tales</span>
       </a>
     </div>
@@ -238,25 +239,25 @@
 
           <div class="grid-2">
             <div>
-              <label>Parent / Guardian Name</label>
-              <input type="text" name="parent_name" required>
+              <label for="testimonialParentName">Parent / Guardian Name</label>
+              <input type="text" id="testimonialParentName" name="parent_name" autocomplete="name" required>
             </div>
 
             <div>
-              <label>Country</label>
-              <input type="text" name="country" placeholder="Australia, Canada, UK, USA..." required>
+              <label for="testimonialCountry">Country</label>
+              <input type="text" id="testimonialCountry" name="country" autocomplete="country-name" placeholder="Australia, Canada, UK, USA..." required>
             </div>
           </div>
 
           <div class="grid-2">
             <div>
-              <label>Child’s Name</label>
-              <input type="text" name="child_name" required>
+              <label for="testimonialChildName">Child’s Name</label>
+              <input type="text" id="testimonialChildName" name="child_name" required>
             </div>
 
             <div>
-              <label>Package Received</label>
-              <select name="package_received" required>
+              <label for="testimonialPackage">Package Received</label>
+              <select id="testimonialPackage" name="package_received" required>
                 <option value="">Choose one</option>
                 <option>The Seed</option>
                 <option>The Becoming</option>
@@ -266,8 +267,8 @@
           </div>
 
           <div>
-            <label>How would you rate your Monarch Tales experience?</label>
-            <select name="rating" required>
+            <label for="testimonialRating">How would you rate your Monarch Tales experience?</label>
+            <select id="testimonialRating" name="rating" required>
               <option value="">Choose one</option>
               <option>5 Stars</option>
               <option>4 Stars</option>
@@ -278,28 +279,28 @@
           </div>
 
           <div>
-            <label>What was your child’s reaction when they first saw the story?</label>
-            <textarea name="child_reaction" required></textarea>
+            <label for="testimonialReaction">What was your child’s reaction when they first saw the story?</label>
+            <textarea id="testimonialReaction" name="child_reaction" required></textarea>
           </div>
 
           <div>
-            <label>Was there a specific moment that stood out to you as a parent or family?</label>
-            <textarea name="special_moment" required></textarea>
+            <label for="testimonialMoment">Was there a specific moment that stood out to you as a parent or family?</label>
+            <textarea id="testimonialMoment" name="special_moment" required></textarea>
           </div>
 
           <div>
-            <label>What did this story mean to your family?</label>
-            <textarea name="family_meaning" required></textarea>
+            <label for="testimonialMeaning">What did this story mean to your family?</label>
+            <textarea id="testimonialMeaning" name="family_meaning" required></textarea>
           </div>
 
           <div>
-            <label>How would you describe Monarch Tales to another family?</label>
-            <textarea name="recommendation_quote" required></textarea>
+            <label for="testimonialRecommendation">How would you describe Monarch Tales to another family?</label>
+            <textarea id="testimonialRecommendation" name="recommendation_quote" required></textarea>
           </div>
 
           <div>
-            <label>Would you recommend Monarch Tales to other families?</label>
-            <select name="would_recommend" required>
+            <label for="testimonialRecommend">Would you recommend Monarch Tales to other families?</label>
+            <select id="testimonialRecommend" name="would_recommend" required>
               <option value="">Choose one</option>
               <option>Definitely</option>
               <option>Probably</option>
@@ -309,8 +310,8 @@
           </div>
 
           <div>
-            <label>May Monarch Tales feature your feedback publicly?</label>
-            <select name="permission_to_use" required>
+            <label for="testimonialPermission">May Monarch Tales feature your feedback publicly?</label>
+            <select id="testimonialPermission" name="permission_to_use" required>
               <option value="">Choose one</option>
               <option>Yes, you may use my words with first names</option>
               <option>Yes, but use parent first name only</option>
@@ -320,8 +321,8 @@
           </div>
 
           <div>
-            <label>Optional photo or reaction video link</label>
-            <input type="url" name="media_link" placeholder="Google Drive / Dropbox / video link">
+            <label for="testimonialMedia">Optional photo or reaction video link</label>
+            <input type="url" id="testimonialMedia" name="media_link" placeholder="Google Drive / Dropbox / video link">
           </div>
 
           <div class="note-box">

@@ -13,6 +13,12 @@
     name="description"
     content="Request a complimentary emotional preview and see your child inside a Monarch Tale."
   />
+  <link rel="canonical" href="https://monarchtales.com/preview" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Request a Free 1-Page Story Preview | Monarch Tales" />
+  <meta property="og:description" content="See how your child’s personalised Monarch Tale could begin—no payment or obligation required." />
+  <meta property="og:url" content="https://monarchtales.com/preview" />
+  <meta property="og:image" content="https://monarchtales.com/knox-inside.jpg" />
 
   <style>
     :root {
@@ -374,7 +380,7 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand logo-brand">
-  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+  <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612" class="logo">
   <span>Monarch Tales</span>
 </a>
 
@@ -485,27 +491,13 @@
             <div class="grid-2">
 
               <div>
-                <label>Parent Name</label>
-                <input type="text" name="parent_name" required />
+                <label for="previewParentName">Parent Name</label>
+                <input type="text" id="previewParentName" name="parent_name" autocomplete="name" required />
               </div>
 
               <div>
-                <label>Email Address</label>
-                <input type="email" name="email" required />
-              </div>
-
-            </div>
-
-            <div class="grid-2">
-
-              <div>
-                <label>WhatsApp Number</label>
-                <input type="text" name="whatsapp" required />
-              </div>
-
-              <div>
-                <label>Child Name</label>
-                <input type="text" name="child_name" required />
+                <label for="previewEmail">Email Address</label>
+                <input type="email" id="previewEmail" name="email" autocomplete="email" required />
               </div>
 
             </div>
@@ -513,14 +505,29 @@
             <div class="grid-2">
 
               <div>
-                <label>Child Age</label>
-                <input type="number" name="child_age" required />
+                <label for="previewWhatsapp">WhatsApp Number <span class="helper">(Optional)</span></label>
+                <input type="tel" id="previewWhatsapp" name="whatsapp" autocomplete="tel" />
+                <p class="helper">Only add this if you would prefer us to contact you on WhatsApp.</p>
               </div>
 
               <div>
-                <label>Story Feeling</label>
+                <label for="previewChildName">Child Name</label>
+                <input type="text" id="previewChildName" name="child_name" required />
+              </div>
 
-                <select name="story_vibe" required>
+            </div>
+
+            <div class="grid-2">
+
+              <div>
+                <label for="previewChildAge">Child Age</label>
+                <input type="number" id="previewChildAge" name="child_age" min="0" max="18" inputmode="numeric" required />
+              </div>
+
+              <div>
+                <label for="previewStoryFeeling">Story Feeling</label>
+
+                <select id="previewStoryFeeling" name="story_vibe" required>
                   <option value="">Choose one</option>
                   <option>Adventurous</option>
                   <option>Dreamy</option>
@@ -535,10 +542,11 @@
             </div>
 
             <div>
-              <label>Optional Photo Link</label>
+              <label for="previewPhotoLink">Photo Link <span class="helper">(Optional)</span></label>
 
               <input
                 type="url"
+                id="previewPhotoLink"
                 name="photo_link"
                 placeholder="Google Drive / Dropbox / Image Link"
               />
@@ -549,10 +557,11 @@
             </div>
 
             <div>
-              <label>Anything you'd love us to know?</label>
+              <label for="previewStoryNote">Anything you'd love us to know? <span class="helper">(Optional)</span></label>
 
               <textarea
                 name="story_note"
+                id="previewStoryNote"
                 placeholder="Personality, favorite things, emotional direction, special memories, etc."
               ></textarea>
             </div>
@@ -625,4 +634,7 @@ previewForm.addEventListener("submit", async function(event) {
     alert("Network error. Please try again.");
   }
 });
-</scrip
+</script>
+
+</body>
+</html>

@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Checkout | Monarch Tales</title>
+  <meta name="description" content="Review your Monarch Tales package, delivery destination, and total before continuing to secure Stripe payment." />
+  <meta name="robots" content="noindex, follow" />
 
   <style>
     :root {
@@ -177,6 +179,42 @@
       font-size: 0.9rem;
     }
 
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 22px auto;
+      max-width: 620px;
+      text-align: left;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .terms-check input {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+
+    .terms-check a {
+      color: var(--gold-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .secure-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .btn[aria-disabled="true"] {
+      opacity: 0.58;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     footer {
       text-align: center;
       padding: 28px 0;
@@ -220,7 +258,7 @@
   <header>
     <div class="container nav">
       <a href="index.html" class="brand logo-brand">
-        <img src="logo.png" alt="Monarch Tales Logo">
+        <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612">
         <span>Monarch Tales</span>
       </a>
 
@@ -249,7 +287,7 @@ Your selected Monarch Tales package will appear here.
 
 <hr style="margin:20px 0; border:none; border-top:1px solid #ddd;">
 
-<label>
+<label for="country">
 Shipping Destination
 </label>
 
@@ -265,7 +303,7 @@ Shipping Destination
 
 <br><br>
 
-<p>
+<p aria-live="polite">
 Subtotal:
 <strong id="subtotal">$0.00</strong>
 </p>
@@ -280,12 +318,18 @@ Total:
 <strong id="total">$0.00</strong>
 </p>
 
-<p id="shippingNote"></p>
+<p id="shippingNote" aria-live="polite"></p>
         </div>
 
-       <a href="#" class="btn btn-primary" id="paymentButton">
-  Select Destination to Continue
+       <label class="terms-check">
+         <input type="checkbox" id="termsCheck">
+         <span>I have read and agree to the <a href="policies.html" target="_blank" rel="noopener">Terms, Refund Policy, and Production Timeline</a>.</span>
+       </label>
+
+       <a href="#" class="btn btn-primary" id="paymentButton" aria-disabled="true">
+  Select a Destination
 </a>
+       <p class="secure-note">Secure payment is completed on Stripe. Monarch Tales does not store your card details.</p>
 
         <br>
 
@@ -345,6 +389,7 @@ Total:
   const totalOutput = document.getElementById("total");
   const shippingNote = document.getElementById("shippingNote");
   const paymentButton = document.getElementById("paymentButton");
+  const termsCheck = document.getElementById("termsCheck");
 
   function normalizeCountry(country) {
     if (country === "UK") return "GB";
@@ -368,13 +413,23 @@ Total:
       return saved;
     }
 
-    return "US";
+    return "";
   }
 
   function updateCheckout() {
-    const country = normalizeCountry(countryInput.value || getCheckoutCountry());
+    const country = normalizeCountry(countryInput.value);
 
     if (!MONARCH_PRICING[country]) {
+      packageName.textContent = packageNames[plan];
+      packagePrice.textContent = "Select your destination";
+      packageDescription.textContent = packageDescriptions[plan];
+      subtotalOutput.textContent = "—";
+      shippingOutput.textContent = "—";
+      totalOutput.textContent = "—";
+      shippingNote.textContent = "Choose your destination to see the correct currency, shipping, and total.";
+      paymentButton.href = "#";
+      paymentButton.textContent = "Select a Destination";
+      paymentButton.setAttribute("aria-disabled", "true");
       return;
     }
 
@@ -395,20 +450,38 @@ Total:
   shippingNote.textContent = "Shipping is included in the total shown above.";
 }
 
-    paymentButton.href = selected.stripe;
+    if (termsCheck.checked) {
+      paymentButton.href = selected.stripe;
+      paymentButton.textContent = "Continue to Secure Payment — " + formatCheckoutMoney(country, selected.total);
+      paymentButton.setAttribute("aria-disabled", "false");
+    } else {
+      paymentButton.href = "#";
+      paymentButton.textContent = "Accept Terms to Continue";
+      paymentButton.setAttribute("aria-disabled", "true");
+    }
 
     localStorage.setItem("monarchCountry", country);
   }
 
-  paymentButton.addEventListener("click", function () {
+  paymentButton.addEventListener("click", function (event) {
+  const country = normalizeCountry(countryInput.value);
+  if (!MONARCH_PRICING[country] || !termsCheck.checked) {
+    event.preventDefault();
+    if (!MONARCH_PRICING[country]) countryInput.focus();
+    return;
+  }
   localStorage.setItem("selectedPlan", plan);
 });
 
   countryInput.addEventListener("change", updateCheckout);
+  termsCheck.addEventListener("change", updateCheckout);
 
   const currentCountry = getCheckoutCountry();
-  countryInput.value = currentCountry === "GB" ? "UK" : currentCountry;
+  if (currentCountry) countryInput.value = currentCountry === "GB" ? "UK" : currentCountry;
 
   updateCheckout();
 </script>
   
+
+</body>
+</html>

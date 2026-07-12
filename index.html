@@ -11,6 +11,53 @@
     name="description"
     content="Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them."
   />
+  <link rel="canonical" href="https://monarchtales.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Monarch Tales | Personalised Keepsake Storybooks" />
+  <meta property="og:description" content="Handcrafted storybooks centred around one real child, their personality, memories, relationships, and imagination." />
+  <meta property="og:url" content="https://monarchtales.com/" />
+  <meta property="og:image" content="https://monarchtales.com/monarch-books-collection.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Monarch Tales",
+        "url": "https://monarchtales.com/",
+        "logo": "https://monarchtales.com/logo.webp",
+        "sameAs": ["https://www.instagram.com/monarchtales.world"]
+      },
+      {
+        "@type": "Product",
+        "name": "Monarch Tales Personalised Storybook",
+        "description": "A handcrafted keepsake storybook centred around one real child and their family world.",
+        "brand": { "@type": "Brand", "name": "Monarch Tales" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "1"
+        },
+        "review": {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Maddison" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "A beautiful personalised book that makes children feel special and encourages a love of reading."
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "url": "https://monarchtales.com/packages",
+          "priceCurrency": "USD",
+          "lowPrice": "49",
+          "highPrice": "169",
+          "offerCount": "3",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
   <style>
 
   .price-sub {
@@ -568,13 +615,23 @@
   box-shadow: var(--shadow);
 }
 
+.featured-proof-image {
+  height: clamp(420px, 42vw, 560px);
+  overflow: hidden;
+  border-radius: 26px;
+}
+
 .featured-proof-image img {
   width: 100%;
+  height: 100%;
   border-radius: 26px;
   box-shadow: 0 18px 40px rgba(43, 33, 28, 0.12);
   object-fit: cover;
-  aspect-ratio: 4 / 5;
   filter: contrast(1.03) saturate(0.96) brightness(0.98);
+}
+
+#founder .featured-proof-image img {
+  object-position: center 28%;
 }
 
 .featured-proof-content h3 {
@@ -637,6 +694,10 @@
 
   .proof-small-card img {
     height: auto;
+  }
+
+  .featured-proof-image {
+    height: min(112vw, 500px);
   }
 }
 
@@ -1271,7 +1332,7 @@ gtag('config', 'G-GJHKH23NQR');
   <header>
     <div class="container nav">
       <a href="index.html" class="brand logo-brand">
-  <img src="logo.png" alt="Monarch Tales logo" />
+  <img src="logo.webp" alt="Monarch Tales logo" width="408" height="612" />
   <span class="logo-text">Monarch Tales</span>
 </a>
 
@@ -1332,7 +1393,7 @@ gtag('config', 'G-GJHKH23NQR');
 
         <div class="hero-card">
           <div class="book-mockup">
-            <img src="knox-reading.jpg" alt="Adult reading a storybook with a child" />
+            <img src="knox-reading.webp" alt="Adult reading a storybook with a child" width="898" height="875" fetchpriority="high" decoding="async" />
           </div>
         </div>
       </div>
@@ -1375,7 +1436,7 @@ gtag('config', 'G-GJHKH23NQR');
     <div class="featured-proof">
 
       <div class="featured-proof-image">
-        <img src="knox-cover.jpg" alt="Knox holding his Monarch Tales book" />
+        <img src="knox-cover.webp" alt="Knox holding his Monarch Tales book" width="1536" height="1704" loading="lazy" decoding="async" />
       </div>
 
       <div class="featured-proof-content">
@@ -1405,7 +1466,7 @@ gtag('config', 'G-GJHKH23NQR');
 <div class="proof-gallery">
 
       <div class="proof-small-card">
-        <img src="knox-reading.jpg" alt="Knox reading his storybook" />
+        <img src="knox-reading.webp" alt="Knox reading his storybook" width="898" height="875" loading="lazy" decoding="async" />
 
         <div class="proof-small-content">
           <span class="proof-tag">Emotion-led storytelling</span>
@@ -1419,7 +1480,7 @@ gtag('config', 'G-GJHKH23NQR');
       </div>
 
       <div class="proof-small-card">
-        <img src="knox-inside.jpg" alt="Inside pages of a Monarch Tales book" />
+        <img src="knox-inside.webp" alt="Inside pages of a Monarch Tales book" width="1535" height="1711" loading="lazy" decoding="async" />
 
         <div class="proof-small-content">
           <span class="proof-tag">Beautifully Crafted</span>
@@ -1433,7 +1494,7 @@ gtag('config', 'G-GJHKH23NQR');
       </div>
 
       <div class="proof-small-card">
-        <img src="knox-cover.jpg" alt="Knox holding his personalized storybook" />
+        <img src="knox-cover.webp" alt="Knox holding his personalized storybook" width="1536" height="1704" loading="lazy" decoding="async" />
 
         <div class="proof-small-content">
           <span class="proof-tag">Keepsake experience</span>
@@ -1450,6 +1511,34 @@ gtag('config', 'G-GJHKH23NQR');
   </div>
 </section>
 
+    <section id="testimonial">
+      <div class="container">
+        <div class="section-head">
+          <h2>What families say</h2>
+          <p>A real review from a family who received their own Monarch Tale.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-box">
+            <div class="testimonial-badge">Real Family Review</div>
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              “A beautiful personalised book that makes children feel special and encourages a love of reading.”
+            </blockquote>
+            <p class="testimonial-family">Maddison, Australia</p>
+            <p>The Legacy package · 5-star review</p>
+          </div>
+
+          <div class="testimonial-box testimonial-detail">
+            <div class="testimonial-badge">Knox's Reaction</div>
+            <h3>He wanted to read it straight away.</h3>
+            <p>
+              Maddison shared that Knox was excited to see himself in the story, and that seeing his face light up when he recognised his family and the illustrations was really special.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
  <section id="how-it-works">
   <div class="soft-glow"></div>
@@ -1513,7 +1602,7 @@ gtag('config', 'G-GJHKH23NQR');
           <li>Mobile-friendly PDF delivery</li>
           <li>Printable version for home use</li>
         </ul>
-<a href="start.html?plan=seed" class="btn btn-primary track-package-click" data-package="seed">Start with Seed</a>
+<a href="checkout.html?plan=seed" class="btn btn-primary track-package-click" data-package="seed">Choose The Seed</a>
       </div>
 
       <!-- BECOMING -->
@@ -1530,7 +1619,7 @@ gtag('config', 'G-GJHKH23NQR');
           <li>Dedication page & premium interior layout</li>
           <li>Shipping calculated at checkout based on destination</li>
         </ul>
-<a href="start.html?plan=becoming" class="btn btn-primary track-package-click" data-package="becoming">Choose The Becoming</a>
+<a href="checkout.html?plan=becoming" class="btn btn-primary track-package-click" data-package="becoming">Choose The Becoming</a>
       </div>
 
       <!-- LEGACY -->
@@ -1547,7 +1636,7 @@ gtag('config', 'G-GJHKH23NQR');
 <li>Premium printable story artwork</li>
 <li>Priority production experience</li>
         </ul>
-        <a href="start.html?plan=legacy" class="btn btn-primary track-package-click" data-package="legacy">Go Legacy</a>
+        <a href="checkout.html?plan=legacy" class="btn btn-primary track-package-click" data-package="legacy">Choose The Legacy</a>
       </div>
            </div>
 
@@ -1561,34 +1650,6 @@ gtag('config', 'G-GJHKH23NQR');
       </p>
     </div>
   </section>
-
-  <section class="founding-section" id="founding-families">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Limited Opening</span>
-      <h2>Founding Families Now Open</h2>
-      <p>
-        Monarch Tales is currently welcoming a limited number of Founding Families while each story is personally crafted. These early families receive priority attention, a guided creation experience, and the opportunity to help shape the first official Monarch Tales customer stories.
-      </p>
-      <a href="preview.html" class="btn btn-primary track-preview-click">Request Your Free 1-Page Preview</a>
-    </div>
-  </div>
-</section>
-
-  <section id="next-steps">
-  <div class="container">
-    <div class="delivery-note">
-      <h3 style="margin-bottom:16px;">What happens next?</h3>
-
-      <div class="next-steps-grid">
-        <div class="next-step"><strong>1.</strong><br>Choose your package</div>
-        <div class="next-step"><strong>2.</strong><br>Complete your story form</div>
-        <div class="next-step"><strong>3.</strong><br>We create your story</div>
-        <div class="next-step"><strong>4.</strong><br>Your book is delivered</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="book-preview">
   <div class="container">
@@ -1606,7 +1667,7 @@ gtag('config', 'G-GJHKH23NQR');
     <div class="proof-gallery">
 
       <div class="proof-small-card">
-        <img src="knox-christmas.jpg" alt="Knox You Are My Christmas Sunshine" />
+        <img src="knox-christmas.webp" alt="Cover of Knox, You Are My Christmas Sunshine" width="1486" height="1497" loading="lazy" decoding="async" />
 
         <div class="proof-small-content">
           <span class="proof-tag">Hardcover Keepsake</span>
@@ -1620,7 +1681,7 @@ gtag('config', 'G-GJHKH23NQR');
       </div>
 
       <div class="proof-small-card">
-        <img src="knox-map-of-love.jpg" alt="Knox and the Map of Love" />
+        <img src="knox-map-of-love.webp" alt="Cover of Knox and the Map of Love" width="1418" height="1533" loading="lazy" decoding="async" />
 
         <div class="proof-small-content">
           <span class="proof-tag">Personalized Family Story</span>
@@ -1634,7 +1695,7 @@ gtag('config', 'G-GJHKH23NQR');
       </div>
 
       <div class="proof-small-card">
-        <img src="lucas-moon-back.jpg" alt="Lucas Lochlan and Scarlett" />
+        <img src="lucas-moon-back.webp" alt="Illustrated family adventure featuring Lucas, Lochlan and Scarlett" width="1534" height="1541" loading="lazy" decoding="async" />
 
         <div class="proof-small-content">
           <span class="proof-tag">Family Adventure</span>
@@ -1697,7 +1758,7 @@ gtag('config', 'G-GJHKH23NQR');
   <div class="container">
     <div class="featured-proof">
       <div class="featured-proof-image">
-        <img src="founder.jpg" alt="Prince Francix, founder of Monarch Tales" />
+        <img src="founder.webp" alt="Prince Francix, founder of Monarch Tales" width="2712" height="2971" loading="lazy" decoding="async" />
       </div>
 
       <div class="featured-proof-content">
@@ -1716,108 +1777,6 @@ gtag('config', 'G-GJHKH23NQR');
     </div>
   </div>
 </section>
-
-<section id="character-creation">
-      <div class="container">
-        <div class="section-head">
-          <h2>How character visuals can be created</h2>
-          <p class="payment-note">
-  Child and family details are used only to create your story and are treated with care.
-</p>
-          <p>
-            We can shape the child’s character in two simple ways, depending on what the family is comfortable with.
-          </p>
-        </div>
-
-        <div class="reassure-grid">
-          <div class="card">
-            <h3>Story-based direction</h3>
-            <p>
-              Characters can be illustrated from the child’s personality, story world, favorite colors, and identity details.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Photo-based direction</h3>
-            <p>
-              Families can share a child photo through a Google Drive or Dropbox link, or continue the process via WhatsApp after submitting.
-            </p>
-          </div>
-
-          <div class="card">
-  <h3>Comfort-led creation</h3>
-  <p>
-    Families can choose the level of detail they are comfortable sharing. The goal is to create a character and story world that feels warm, respectful, and personal.
-  </p>
-</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonial">
-      <div class="container">
-        <div class="section-head">
-<h2>What families say</h2>
-          <p>
-             A real review from a family who received their own Monarch Tale.
-          </p>
-        </div>
-
-        <div class="testimonial-grid">
-          <div class="testimonial-box">
-            <div class="testimonial-badge">Real Family Review</div>
-            <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
-            <blockquote>
-              “A beautiful personalised book that makes children feel special and encourages a love of reading.”
-            </blockquote>
-            <p class="testimonial-family">Maddison, Australia</p>
-            <p>The Legacy package · 5-star review</p>
-          </div>
-
-          <div class="testimonial-box testimonial-detail">
-            <div class="testimonial-badge">Knox's Reaction</div>
-            <h3>He wanted to read it straight away.</h3>
-            <p>
-              Maddison shared that Knox was excited to see himself in the story, and that seeing his face light up when he recognised his family and the illustrations was really special.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reassurance">
-      <div class="container">
-        <div class="section-head">
-          <h2>Why customers feel good saying yes</h2>
-          <p>
-            Monarch Tales is designed to feel thoughtful from the first click to the final story.
-          </p>
-        </div>
-
-        <div class="reassure-grid">
-          <div class="card">
-            <h3>It feels personal</h3>
-            <p>
-              This is not a generic children’s book with a name dropped in. The story is shaped with emotional meaning and child-centered detail.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>It feels guided</h3>
-            <p>
-              Customers are not left confused. Each step is structured to feel calm, easy, and supported from beginning to end.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>It feels worth keeping</h3>
-            <p>
-              The goal is not just to deliver a story, but to create a keepsake that feels memorable, gift-worthy, and emotionally lasting.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section id="faq">
       <div class="container">
@@ -1995,7 +1954,6 @@ gtag('config', 'G-GJHKH23NQR');
           <div class="footer-links">
             <a href="#about">About</a>
             <a href="#proof">Real Stories</a>
-            <a href="#character-creation">Character Creation</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
@@ -2032,3 +1990,40 @@ gtag('config', 'G-GJHKH23NQR');
 
     mobileNav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+
+  <script>
+  document.querySelectorAll(".track-preview-click").forEach(button => {
+    button.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "preview_button_click");
+      }
+    });
+  });
+
+  document.querySelectorAll(".track-package-click").forEach(button => {
+    button.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "package_button_click", {
+          package_name: button.dataset.package || "unknown"
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll(".track-whatsapp-click").forEach(button => {
+    button.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "whatsapp_click");
+      }
+    });
+  });
+</script>
+  <script src="pricing.js"></script>
+</body>
+</html>
