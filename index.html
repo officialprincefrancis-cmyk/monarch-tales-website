@@ -776,7 +776,7 @@
 
     .testimonial-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
       gap: 22px;
     }
 
@@ -799,6 +799,46 @@
     .testimonial-box p {
       color: var(--muted);
       font-size: 0.92rem;
+    }
+
+    .testimonial-rating {
+      color: #b88425;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-badge {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      color: var(--gold-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-family {
+      margin-top: 18px;
+      color: var(--text) !important;
+      font-weight: 800;
+    }
+
+    .testimonial-detail h3 {
+      margin-bottom: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      color: var(--text);
+    }
+
+    .testimonial-detail p {
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     .faq-grid {
@@ -1717,32 +1757,29 @@ gtag('config', 'G-GJHKH23NQR');
     <section id="testimonial">
       <div class="container">
         <div class="section-head">
-<h2>What families feel</h2>
+<h2>What families say</h2>
           <p>
-             The most meaningful part of Monarch Tales is watching a child see themselves inside a story made just for them.
+             A real review from a family who received their own Monarch Tale.
           </p>
         </div>
 
         <div class="testimonial-grid">
           <div class="testimonial-box">
+            <div class="testimonial-badge">Real Family Review</div>
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
             <blockquote>
-              “Watching him hold a story created around his own world felt incredibly special.”
+              “A beautiful personalised book that makes children feel special and encourages a love of reading.”
             </blockquote>
-<p>First Family Response</p>
+            <p class="testimonial-family">Maddison, Australia</p>
+            <p>The Legacy package · 5-star review</p>
           </div>
 
-          <div class="testimonial-box">
-            <blockquote>
-            “It felt far more personal than a normal children’s book. You could feel the care inside it.”
-            </blockquote>
-            <p>Early Family Feedback</p>
-          </div>
-
-          <div class="testimonial-box">
-            <blockquote>
-  “Another family asked about ordering after seeing one of the books.”
-</blockquote>
-<p>Early Interest From a Family Referral</p>
+          <div class="testimonial-box testimonial-detail">
+            <div class="testimonial-badge">Knox's Reaction</div>
+            <h3>He wanted to read it straight away.</h3>
+            <p>
+              Maddison shared that Knox was excited to see himself in the story, and that seeing his face light up when he recognised his family and the illustrations was really special.
+            </p>
           </div>
         </div>
       </div>
@@ -1995,40 +2032,3 @@ gtag('config', 'G-GJHKH23NQR');
 
     mobileNav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
-        mobileNav.classList.remove("open");
-        menuToggle.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  </script>
-
-  <script>
-  document.querySelectorAll(".track-preview-click").forEach(button => {
-    button.addEventListener("click", () => {
-      if (typeof gtag === "function") {
-        gtag("event", "preview_button_click");
-      }
-    });
-  });
-
-  document.querySelectorAll(".track-package-click").forEach(button => {
-    button.addEventListener("click", () => {
-      if (typeof gtag === "function") {
-        gtag("event", "package_button_click", {
-          package_name: button.dataset.package || "unknown"
-        });
-      }
-    });
-  });
-
-  document.querySelectorAll(".track-whatsapp-click").forEach(button => {
-    button.addEventListener("click", () => {
-      if (typeof gtag === "function") {
-        gtag("event", "whatsapp_click");
-      }
-    });
-  });
-</script>
-  <script src="pricing.js"></script>
-</body>
-</html>
