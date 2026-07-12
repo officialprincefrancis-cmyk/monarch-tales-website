@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -293,6 +296,12 @@
       gap: 18px;
     }
 
+@media (max-width: 1100px) {
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
     .plan-card {
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -333,12 +342,20 @@
       margin-bottom: 8px;
     }
 
-    .plan-price {
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--gold-dark);
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
+  .plan-price {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--gold-dark);
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.shipping-note {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
 
     .plan-summary {
       color: var(--muted);
@@ -675,12 +692,6 @@
       font-size: 0.92rem;
     }
 
-    @media (max-width: 980px) {
-      .plan-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 920px) {
       .form-shell {
         grid-template-columns: 1fr;
@@ -737,18 +748,51 @@
       }
     }
 
-    @media (max-width: 720px) {
-      .hero {
-        padding-top: 54px;
-      }
-    }
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-brand span {
+  display: inline-block;
+  color: var(--gold-dark);
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 720px) {
+  .logo {
+    height: 38px;
+  }
+
+  .brand {
+    font-size: 1.1rem;
+  }
+}
+  
   </style>
 </head>
 
 <body>
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">Monarch Tales</a>
+    <a href="index.html" class="brand logo-brand">
+  <img src="logo.png" alt="Monarch Tales Logo" class="logo">
+  <span>Monarch Tales</span>
+</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <div><span></span><span></span><span></span></div>
@@ -788,7 +832,7 @@
           <p class="payment-line">Secure Stripe payment link sent after your request is reviewed.</p>
 
           <section class="plan-select" id="plan-selection">
-            <h2>Choose Your Package</h2>
+            <h2>Choose How Your Child's Story Will Be Preserved</h2>
             <p class="plan-sub">
               Tap “View Package” to reveal what each experience includes before you select it.
             </p>
@@ -797,9 +841,9 @@
               <div class="plan-card" data-plan="seed">
                 <div class="plan-card-top">
                   <h3>The Seed</h3>
-                  <p class="plan-price">$39</p>
+                  <p class="plan-price">$49 USD</p>
                   <p class="plan-summary">
-                    A simple beginning for families who want a beautiful digital story experience first.
+                    A personalized digital story your child can keep forever.
                   </p>
 
                   <div class="plan-actions">
@@ -828,9 +872,10 @@
                 <div class="plan-card-top">
                   <span class="plan-badge">Most Loved • Signature Experience</span>
                   <h3>The Becoming</h3>
-                  <p class="plan-price">$89</p>
+                  <p class="plan-price">$99 USD</p>
+                  <p class="shipping-note">Shipping calculated after address confirmation.</p>
                   <p class="plan-summary">
-                    The complete Monarch Tales experience — designed to be held, kept, and remembered.
+                    Our signature keepsake book — created for bedtime, memories, and years of rereading.
                   </p>
 
                   <div class="plan-actions">
@@ -846,7 +891,7 @@
 <li>Full personalization</li>
 <li>Premium layout</li>
 <li>Dedication page included</li>
-<li>Worldwide shipping included for launch orders</li>
+<li>Shipping calculated based on destination</li>
                     </ul>
 
                     <button type="button" class="btn btn-primary" onclick="selectPlan('becoming')">
@@ -859,9 +904,10 @@
               <div class="plan-card" data-plan="legacy">
                 <div class="plan-card-top">
                   <h3>The Legacy</h3>
-                  <p class="plan-price">$129</p>
+                  <p class="plan-price">$149 USD</p>
+                  <p class="shipping-note">Shipping calculated after address confirmation.</p>
                   <p class="plan-summary">
-                    For families who want something truly unforgettable, emotional, and deeply personal.
+                   Our most treasured edition, created to become part of your family legacy.
                   </p>
 
                   <div class="plan-actions">
@@ -893,6 +939,10 @@
             <p class="plan-note">
               Payment is not taken on this page. After your request is reviewed, you’ll receive a secure payment link to begin your story.
             </p>
+
+            <p class="plan-note">
+  Shipping is calculated separately for printed packages based on destination. Digital package has no shipping cost.
+</p>
           </section>
           
           <form id="orderForm" action="https://formspree.io/f/xojpaejp" method="POST">
@@ -1131,7 +1181,7 @@ e.g. curious, shy, playful, thoughtful</p>
               </p>
               <button type="submit" class="btn btn-primary">Begin Your Child’s Story</button>
               <p class="helper" style="margin-top:10px;">
-                No payment is required at this stage — you’ll receive a secure Stripe link after your request is reviewed. You’ll continue to the story form immediately, where the real magic of your child’s story begins.
+                After submitting, your package choice and child details will be saved. The next step will be secure checkout before the full story form is completed.
 </p>
             </div>
           </form>
@@ -1227,12 +1277,11 @@ You can pay securely using your debit or credit card.
     const planCards = document.querySelectorAll(".plan-card");
     const planDetails = document.querySelectorAll(".plan-details");
 
-    const planLabelMap = {
-  seed: "The Seed — $39",
-  becoming: "The Becoming — $89",
-  legacy: "The Legacy — $129"
+const planLabelMap = {
+  seed: "The Seed — $49 USD",
+  becoming: "The Becoming — $99 USD, shipping calculated after address confirmation",
+  legacy: "The Legacy — $149 USD, shipping calculated after address confirmation"
 };
-
     function closeAllPlanDetails() {
       planDetails.forEach(detail => detail.classList.remove("open"));
     }
@@ -1326,7 +1375,7 @@ orderForm.addEventListener("submit", async function (event) {
 const childAge = document.getElementById("childAge").value;
 
 window.location.href =
-  "story-form.html?plan=" + encodeURIComponent(selectedPlanKey) +
+  "checkout.html?plan=" + encodeURIComponent(selectedPlanKey) +
   "&child=" + encodeURIComponent(childName) +
   "&age=" + encodeURIComponent(childAge);
     } else {
@@ -1336,6 +1385,3 @@ window.location.href =
     alert("Network error. Please try again.");
   }
 });
-  </script>
-</body>
-</html>
