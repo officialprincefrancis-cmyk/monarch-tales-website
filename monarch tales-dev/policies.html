@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Policies | Monarch Tales</title>
+  <meta name="description" content="Read the Monarch Tales policies for personalised products, revisions, refunds, privacy, shipping, and production timelines." />
+  <link rel="canonical" href="https://monarchtales.com/policies" />
+
+  <meta
+    name="description"
+    content="Read the Monarch Tales policies for personalized products, revisions, refunds, shipping, delivery, privacy, and intellectual property."
+  />
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: rgba(255, 253, 249, 0.96);
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #ead9c1;
+      --line: rgba(43, 33, 28, 0.08);
+      --radius: 22px;
+      --shadow: 0 12px 30px rgba(43, 33, 28, 0.08);
+      --max: 950px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(234, 217, 193, 0.22), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 1.45rem;
+      color: var(--gold-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 90px 0 50px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: #f4e7d6;
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+      font-weight: 700;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    .policy-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 42px;
+      margin-bottom: 26px;
+    }
+
+    .policy-card h2 {
+      font-size: 1.55rem;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .policy-card p,
+    .policy-card li {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .policy-card ul {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .policy-card li {
+      margin-bottom: 8px;
+    }
+
+    .notice {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      margin: 36px 0 70px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      color: var(--gold-dark);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 34px 0 42px;
+      border-top: 1px solid var(--line);
+      background: rgba(252, 248, 242, 0.95);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .support-box {
+  margin-top: 24px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fffaf4;
+  text-align: center;
+}
+
+.support-box h3 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.support-box p {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .policy-card {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">Monarch Tales</a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#book-preview">Book Preview</a>
+        <a href="preview.html" class="btn">Request Preview</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Monarch Tales Policies</span>
+        <h1>Clear, respectful, and transparent.</h1>
+        <p>
+          These policies explain how Monarch Tales handles personalized products, revisions, refunds, shipping, delivery, privacy, and creative ownership.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <section class="policy-card">
+        <h2>Personalized Product Policy</h2>
+        <p>
+          Every Monarch Tales story is created specifically for an individual child and family.
+        </p>
+        <p>
+          Because each project is personalized, products cannot be resold or reassigned to another customer once story creation has begun.
+        </p>
+        <p>
+          Families are encouraged to review all submitted information carefully before final approval.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Revision Policy</h2>
+        <p>
+          We want every Monarch Tales story to feel meaningful and accurate.
+        </p>
+        <p>
+          Minor factual corrections may be requested before final production.
+        </p>
+        <ul>
+          <li>Name corrections</li>
+          <li>Date corrections</li>
+          <li>Personal detail corrections</li>
+          <li>Minor factual adjustments</li>
+        </ul>
+        <p>
+          Requests that require substantial story redevelopment, major structural changes, or entirely new story directions may incur additional fees.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Refund Policy</h2>
+        <p>
+          Due to the personalized nature of Monarch Tales products, refunds are generally not available once story development has begun.
+        </p>
+        <p>
+          Refund requests submitted before work has started may be considered on a case-by-case basis.
+        </p>
+        <p>
+          If Monarch Tales is unable to complete a project for any reason, an appropriate refund will be provided.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Digital Product Policy</h2>
+        <p>
+          Digital products are delivered electronically and cannot be returned once delivered.
+        </p>
+        <p>
+          Because digital storybooks are personalized and immediately accessible upon delivery, digital purchases are generally non-refundable after completion and delivery.
+        </p>
+      </section>
+
+    <section class="policy-card">
+  <h2>Shipping Policy</h2>
+  <p>
+    Printed package prices may include a separate shipping amount shown in the checkout breakdown.
+  </p>
+  <p>
+    Shipping costs vary based on destination and are included in the final total before payment.
+  </p>
+  <p>
+    Monarch Tales aims to provide transparent shipping pricing and realistic delivery expectations.
+  </p>
+  <p>
+    Customers are responsible for ensuring that shipping information is accurate before production begins.
+  </p>
+</section>
+
+      <section class="policy-card">
+        <h2>Delivery Timeframes</h2>
+        <p>
+          Estimated delivery times may vary depending on product type, production schedules, and shipping destination.
+        </p>
+        <ul>
+          <li><strong>The Seed:</strong> approximately 5–7 business days</li>
+          <li><strong>The Becoming:</strong> approximately 2–4 weeks</li>
+          <li><strong>The Legacy:</strong> approximately 2–4 weeks</li>
+        </ul>
+        <p>
+          Delivery estimates are not guarantees and may vary during busy periods.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Delivery Disclaimer</h2>
+        <p>
+          All delivery timelines provided by Monarch Tales are estimates only.
+        </p>
+        <p>
+          Production schedules, courier delays, customs processing, weather events, holidays, and other factors outside our control may occasionally affect delivery times.
+        </p>
+        <p>
+          While we always strive to meet estimated delivery windows, specific delivery dates cannot be guaranteed.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>International Orders</h2>
+        <p>
+          Monarch Tales proudly serves families internationally.
+        </p>
+        <p>
+          Customers are responsible for any customs duties, import fees, taxes, or local charges that may apply within their country.
+        </p>
+        <p>
+          These charges are determined by local authorities and are outside the control of Monarch Tales.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Privacy Policy</h2>
+        <p>
+          Families trust Monarch Tales with personal stories, photographs, and memories. We take that responsibility seriously.
+        </p>
+        <p>
+          Information submitted to Monarch Tales is used solely for the creation and delivery of personalized products and customer support.
+        </p>
+        <p>
+          Customer information will never be sold to third parties.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Photography & Portfolio Permission</h2>
+        <p>
+          Monarch Tales may occasionally request permission to feature completed books, testimonials, photographs, or customer feedback for marketing purposes.
+        </p>
+        <p>
+          Permission will always be requested before sharing identifiable customer content.
+        </p>
+        <p>
+          Families may decline without affecting their order.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Intellectual Property</h2>
+        <p>
+          All Monarch Tales stories, artwork, layouts, branding, and creative materials remain the intellectual property of Monarch Tales unless otherwise agreed in writing.
+        </p>
+        <p>
+          Customers receive the right to enjoy and share their purchased storybook for personal and family use.
+        </p>
+        <p>
+          Commercial reproduction, resale, redistribution, or republication of Monarch Tales content without permission is prohibited.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Contact</h2>
+        <p>
+          Questions regarding an order, delivery, revisions, or policies can be directed to Monarch Tales through the contact information provided on the website.
+        </p>
+        <p>
+          We are committed to responding respectfully, transparently, and professionally.
+        </p>
+      </section>
+
+      <div class="notice">
+        Monarch Tales exists to preserve meaningful family stories with care, clarity, and respect.
+      </div>
+
+    </div>
+  </main>
+
+  <div class="support-box">
+  <h3>Questions About Your Order?</h3>
+  <p>Message Monarch Tales Customer Care on WhatsApp.</p>
+  <a href="https://wa.me/61432510020" target="_blank" class="btn btn-secondary">
+    Chat on WhatsApp
+  </a>
+</div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="preview.html">Request Preview</a>
+      <a href="policies.html">Policies</a>
+    </div>
+
+    <p>© 2026 Monarch Tales. All rights reserved.</p>
+  </footer>
+</body>
+</html>

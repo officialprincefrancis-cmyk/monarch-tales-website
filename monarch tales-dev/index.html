@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monarch Tales | Personalized Storybooks for Children</title>
+  <meta
+    name="description"
+    content="Monarch Tales creates personalized storybooks where every child becomes the hero of a meaningful, beautifully crafted story designed just for them."
+  />
+  <link rel="canonical" href="https://monarchtales.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Monarch Tales | Personalised Keepsake Storybooks" />
+  <meta property="og:description" content="Handcrafted storybooks centred around one real child, their personality, memories, relationships, and imagination." />
+  <meta property="og:url" content="https://monarchtales.com/" />
+  <meta property="og:image" content="https://monarchtales.com/monarch-books-collection.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Monarch Tales",
+        "url": "https://monarchtales.com/",
+        "logo": "https://monarchtales.com/logo.webp",
+        "sameAs": ["https://www.instagram.com/monarchtales.world"]
+      },
+      {
+        "@type": "Product",
+        "name": "Monarch Tales Personalised Storybook",
+        "description": "A handcrafted keepsake storybook centred around one real child and their family world.",
+        "brand": { "@type": "Brand", "name": "Monarch Tales" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "1"
+        },
+        "review": {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Maddison" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "A beautiful personalised book that makes children feel special and encourages a love of reading."
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "url": "https://monarchtales.com/packages",
+          "priceCurrency": "USD",
+          "lowPrice": "49",
+          "highPrice": "169",
+          "offerCount": "3",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+
+  .price-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 18px;
+}
+
+.package-note {
+  color: var(--gold-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.checkout-note {
+  text-align: center;
+  max-width: 850px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+    :root {
+      --bg: #fbf7f2;
+      --card: rgba(255, 253, 249, 0.96);
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #ead9c1;
+      --gold-pale: #f7efe4;
+      --line: rgba(43, 33, 28, 0.08);
+      --radius: 22px;
+      --shadow: 0 12px 30px rgba(43, 33, 28, 0.08);
+      --max: 1150px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(234, 217, 193, 0.20), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      position: relative;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 1.45rem;
+      color: var(--gold-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  font-size: 0.94rem;
+  color: var(--muted);
+}
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold-soft);
+    }
+
+    .btn-secondary:hover {
+      background: #fff8f0;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 120px 0 110px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: #f4e7d6;
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      line-height: 1.03;
+      margin-bottom: 18px;
+      max-width: 720px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-unique {
+      color: var(--gold-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-launch {
+      color: var(--gold-dark);
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-trust {
+      color: var(--gold-dark);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-payment {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .hero-points span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--line);
+    }
+
+    .hero-card {
+      background: transparent;
+      border: none;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .book-mockup img {
+  width: 100%;
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(43, 33, 28, 0.12);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+    .book-mockup img:hover {
+      transform: scale(1.02);
+    }
+
+    section {
+      padding: 96px 0;
+    }
+    #how-it-works {
+  position: relative;
+  overflow: hidden;
+}
+
+.soft-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(182, 145, 95, 0.08),
+    transparent 70%
+  );
+  top: -180px;
+  right: -120px;
+  pointer-events: none;
+}
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 52px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+   .section-head p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+    .trust-bar {
+      background: linear-gradient(180deg, rgba(246,238,230,0.9), rgba(245,238,230,0.7));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+    }
+
+    #how-it-works {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,253,249,0.96), rgba(246,238,230,0.92));
+  border-top: 1px solid rgba(182,145,95,0.08);
+  border-bottom: 1px solid rgba(182,145,95,0.08);
+}
+#pricing {
+  position: relative;
+  overflow: visible;
+  scroll-margin-top: 120px;
+  padding-top: 110px;
+  background:
+    radial-gradient(circle at top right, rgba(182,145,95,0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255,253,249,0.98), rgba(247,239,228,0.92));
+  border-top: 1px solid rgba(182,145,95,0.08);
+  border-bottom: 1px solid rgba(182,145,95,0.08);
+}
+
+.pricing-grid {
+  align-items: stretch;
+}
+
+.pricing-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-grid .card .btn {
+  margin-top: auto;
+  width: fit-content;
+}
+
+.pricing-grid .card {
+  background: rgba(255, 253, 249, 0.86);
+  border: 1px solid rgba(182,145,95,0.12);
+  border-radius: 28px;
+  padding: 34px 30px;
+  box-shadow: 0 16px 36px rgba(43,33,28,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-grid .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 54px rgba(43,33,28,0.11);
+}
+
+.pricing-grid .popular-card {
+  background: linear-gradient(180deg, #fffdf9, #fff6ea);
+  border: 2px solid rgba(182,145,95,0.5);
+}
+
+.pricing-grid .price {
+  margin: 14px 0 18px;
+}
+
+.pricing-grid .feature-list {
+  margin: 20px 0 24px;
+}
+    .receives-grid,
+    .stories-grid,
+    .reassure-grid,
+    .pricing-grid,
+    .footer-grid,
+    .contact-grid,
+    .creation-grid,
+    .proof-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+   .trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+    .trust-item,
+    .card,
+    .proof-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .trust-item {
+      padding: 20px 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 1.03rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      padding: 34px 30px;
+    }
+
+    .card h3 {
+      font-size: 1.28rem;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+   .steps,
+.receives-grid,
+.stories-grid,
+.reassure-grid,
+.pricing-grid,
+.creation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+    .proof-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .proof-wrapper {
+      margin-top: 8px;
+    }
+
+    .proof-card {
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: #fffdf9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .proof-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(43, 33, 28, 0.12);
+}
+    .proof-image {
+      background: #efe7dd;
+      border-bottom: 1px solid var(--line);
+      min-height: 320px;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      overflow: hidden;
+      filter: contrast(1.03) saturate(0.96) brightness(0.98);
+    }
+
+    .proof-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.03) saturate(0.96) brightness(0.98);
+    }
+
+    .proof-card-body {
+      padding: 30px 28px;
+    }
+
+    .proof-tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--gold-pale);
+      color: var(--gold-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .proof-card-body h3 {
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+    }
+
+    .proof-card-body p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 95%;
+    }
+    
+
+    .proof-line {
+      text-align: center;
+      max-width: 900px;
+      margin: 26px auto 0;
+      color: var(--gold-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .featured-proof {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 26px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #fffdf9, #f7efe4);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.featured-proof-image {
+  height: clamp(420px, 42vw, 560px);
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.featured-proof-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  box-shadow: 0 18px 40px rgba(43, 33, 28, 0.12);
+  object-fit: cover;
+  filter: contrast(1.03) saturate(0.96) brightness(0.98);
+}
+
+#founder .featured-proof-image img {
+  object-position: center 28%;
+}
+
+.featured-proof-content h3 {
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.featured-proof-content p {
+  color: var(--muted);
+  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 95%;
+}
+
+.proof-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.proof-small-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.proof-small-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  background: #f7f1e9;
+  padding: 14px;
+}
+
+.proof-small-content {
+  padding: 20px;
+}
+
+.proof-small-content h3 {
+  font-size: 1.12rem;
+  margin-bottom: 8px;
+}
+
+.proof-small-content p {
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .featured-proof,
+  .proof-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-small-card img {
+    height: auto;
+  }
+
+  .featured-proof-image {
+    height: min(112vw, 500px);
+  }
+}
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .receives-grid .card,
+    .stories-grid .card,
+    .reassure-grid .card,
+    .pricing-grid .card,
+    .creation-grid .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .receives-grid .card::before,
+    .stories-grid .card::before,
+    .reassure-grid .card::before,
+    .pricing-grid .card::before,
+    .creation-grid .card::before {
+      content: "";
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(182, 145, 95, 0.12);
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+
+    .price-name {
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .price {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      color: var(--gold-dark);
+      margin: 10px 0 14px;
+    }
+
+    .popular-card {
+  border: 2px solid rgba(182, 145, 95, 0.55);
+}
+
+    .popular-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
+    }
+
+    .simple-step {
+      font-size: 1.02rem;
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .simple-line {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .delivery-note {
+      text-align: center;
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #fffaf4;
+      border: 1px solid var(--line);
+      color: var(--gold-dark);
+      font-size: 0.96rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      line-height: 1.7;
+    }
+
+    .payment-note {
+      text-align: center;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .limited-note {
+      text-align: center;
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      color: var(--gold-dark);
+      font-size: 0.98rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      line-height: 1.7;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
+      gap: 22px;
+    }
+
+    .testimonial-box {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial-box blockquote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .testimonial-box p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .testimonial-rating {
+      color: #b88425;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-badge {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      color: var(--gold-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-family {
+      margin-top: 18px;
+      color: var(--text) !important;
+      font-weight: 800;
+    }
+
+    .testimonial-detail h3 {
+      margin-bottom: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      color: var(--text);
+    }
+
+    .testimonial-detail p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    details {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+transition: 0.25s ease;
+}
+
+details[open] {
+  background: #fffaf4;
+}
+
+details p {
+  margin-top: 14px;
+}
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      font-size: 1.03rem;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: start;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h3,
+    .contact-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p,
+    .contact-card p,
+    .contact-list li {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.75;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .cta {
+      padding-bottom: 96px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 54px 28px;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(43,33,28,0.06);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+    }
+
+    footer {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 0 42px;
+  border-top: 1px solid var(--line);
+  background: rgba(252,248,242,0.95);
+}
+footer::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(182, 145, 95, 0.08),
+    transparent 70%
+  );
+  top: -240px;
+  left: -140px;
+  pointer-events: none;
+}
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr;
+      align-items: start;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.2rem;
+      color: var(--gold-dark);
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      transition: color 0.25s ease;
+    }
+.footer-col a:hover {
+  color: var(--gold-dark);
+}
+    .footer-col h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-bottom {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .steps,
+      .receives-grid,
+      .stories-grid,
+      .reassure-grid,
+      .pricing-grid,
+      .trust-grid,
+      .contact-grid,
+      .footer-grid,
+      .creation-grid,
+      .proof-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .popular-card {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+@media (max-width: 980px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 110px;
+  }
+
+  .brand {
+    font-size: 1.15rem;
+  }
+      .card,
+      .trust-item,
+      .hero-card,
+      .contact-box,
+      .contact-card,
+      .testimonial-box {
+        padding: 22px;
+      }
+
+      .proof-image {
+        min-height: 280px;
+      }
+    }
+
+ .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.logo-brand img {
+  width: 60px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  white-space: nowrap;
+}
+
+.local-price {
+  font-size: 0.82rem;
+  color: #8a7b70;
+  margin-bottom: 14px;
+}
+
+#book-preview {
+  scroll-margin-top: 110px;
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+#book-preview .section-head {
+  margin-bottom: 34px;
+}
+
+#book-preview .proof-gallery {
+  margin-top: 0;
+}
+
+#book-preview .proof-small-card img {
+  height: 240px;
+  object-fit: contain;
+  background: #f7f1e9;
+  padding: 12px;
+}
+
+.mini-gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-top:30px;
+}
+
+.mini-gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.product-line {
+  color: var(--gold-dark);
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.trust-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 18px;
+}
+
+.trust-chips span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fffaf4;
+  border: 1px solid var(--line);
+  color: var(--gold-dark);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.best-for {
+  color: var(--gold-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.founding-section {
+  background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+}
+
+#next-steps {
+  padding: 18px 0 70px;
+}
+
+.next-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.next-step {
+  text-align: center;
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .next-steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .next-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  section {
+    padding: 64px 0;
+  }
+
+  .hero {
+    padding: 82px 0 70px;
+  }
+
+  .section-head {
+    margin-bottom: 32px;
+  }
+
+  .featured-proof {
+    padding: 18px;
+    gap: 22px;
+  }
+
+  .proof-gallery {
+    gap: 18px;
+  }
+
+  #pricing {
+    padding-top: 78px;
+  }
+
+  #next-steps {
+    padding: 12px 0 52px;
+  }
+
+  .cta {
+    padding-bottom: 64px;
+  }
+}
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJHKH23NQR"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-GJHKH23NQR');
+</script>
+
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.webp" alt="Monarch Tales logo" width="408" height="612" />
+  <span class="logo-text">Monarch Tales</span>
+</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <nav class="nav-links" id="mobileNav">
+        <a href="#about">About</a>
+<a href="#how-it-works">How It Works</a>
+<a href="#pricing">Pricing</a>
+<a href="#book-preview">Book Preview</a>
+<a href="#contact">Contact</a>
+<a href="preview.html" class="btn btn-primary track-preview-click">Request Your Free 1-Page Preview</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Personalized legacy storybooks for children</span>
+
+          <p class="product-line">Personalized storybooks created around your child.</p>
+          <h1>Preserve the childhood you’ll one day miss.</h1>
+
+         <p class="hero-copy">
+  Monarch Tales creates personalized storybooks that capture your child’s personality, memories, relationships, and imagination — so your family can hold onto this season forever.
+</p>
+
+<p class="hero-unique">
+  Unlike template-based personalized books, every Monarch Tale is created around your child’s real personality, memories, relationships, and world.
+</p>
+
+<p class="hero-trust">
+  Real printed books already created and delivered to families in Australia.
+</p>
+
+          <div class="hero-buttons">
+            <a href="preview.html" class="btn btn-primary track-preview-click">Request Your Free 1-Page Preview</a>
+<a href="#pricing" class="btn btn-secondary">See Packages</a>
+          </div>
+<div class="trust-chips">
+  <span>Free preview</span>
+  <span>Worldwide shipping</span>
+  <span>No templates</span>
+</div>
+
+<p class="hero-note">
+  Preview requests are free. You are never required to continue after receiving your preview.
+</p>
+        </div>
+
+        <div class="hero-card">
+          <div class="book-mockup">
+            <img src="knox-reading.webp" alt="Adult reading a storybook with a child" width="898" height="875" fetchpriority="high" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-bar">
+      <div class="container trust-grid">
+        <div class="trust-item">
+  <strong>No templates</strong>
+  Every story is written individually.
+</div>
+<div class="trust-item">
+  <strong>Created from memories</strong>
+  Built around your child’s real life.
+</div>
+<div class="trust-item">
+  <strong>Worldwide shipping</strong>
+  Printed and delivered internationally.
+</div>
+<div class="trust-item">
+  <strong>Premium keepsake</strong>
+  Made to last for years.
+</div>
+      </div>
+    </section>
+
+   <section id="proof">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">A Real Monarch Tale</span>
+
+      <h2>Meet Knox — the first Monarch Tale</h2>
+
+   <p>
+  Knox’s book was printed, delivered in Australia, and held by the child it was made for — turning Monarch Tales from an idea into a real family keepsake.
+</p>
+    </div>
+
+    <div class="featured-proof">
+
+      <div class="featured-proof-image">
+        <img src="knox-cover.webp" alt="Knox holding his Monarch Tales book" width="1536" height="1704" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="featured-proof-content">
+
+        <span class="proof-tag">The First Monarch Tale</span>
+
+        <h3>
+          This is where Monarch Tales became real.
+        </h3>
+
+        <p>
+          Knox’s story was created as a meaningful keepsake built around warmth, memory, imagination, and emotional connection.
+        </p>
+
+        <p>
+          Seeing him hold the finished book transformed Monarch Tales from an idea into something tangible — a story a child could truly call their own.
+        </p>
+
+        <p>
+          Every Monarch Tale is crafted from scratch using the child’s personality, emotional world, relationships, and imagination.
+        </p>
+
+      </div>
+
+    </div>
+    
+<div class="proof-gallery">
+
+      <div class="proof-small-card">
+        <img src="knox-reading.webp" alt="Knox reading his storybook" width="898" height="875" loading="lazy" decoding="async" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Emotion-led storytelling</span>
+
+          <h3>Children see themselves inside the story</h3>
+
+          <p>
+            Every Monarch Tale is built around a child’s world, helping them feel connected to the story they are holding.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="knox-inside.webp" alt="Inside pages of a Monarch Tales book" width="1535" height="1711" loading="lazy" decoding="async" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Beautifully Crafted</span>
+
+          <h3>Stories designed to be explored</h3>
+
+          <p>
+            From custom illustrations to thoughtful storytelling, every page is designed to invite curiosity and imagination.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="knox-cover.webp" alt="Knox holding his personalized storybook" width="1536" height="1704" loading="lazy" decoding="async" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Keepsake experience</span>
+
+          <h3>Created to be kept for years</h3>
+
+          <p>
+           Premium details, dedication pages, and personalized storytelling combine to create a keepsake families can revisit again and again.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <section id="testimonial">
+      <div class="container">
+        <div class="section-head">
+          <h2>What families say</h2>
+          <p>A real review from a family who received their own Monarch Tale.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-box">
+            <div class="testimonial-badge">Real Family Review</div>
+            <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              “A beautiful personalised book that makes children feel special and encourages a love of reading.”
+            </blockquote>
+            <p class="testimonial-family">Maddison, Australia</p>
+            <p>The Legacy package · 5-star review</p>
+          </div>
+
+          <div class="testimonial-box testimonial-detail">
+            <div class="testimonial-badge">Knox's Reaction</div>
+            <h3>He wanted to read it straight away.</h3>
+            <p>
+              Maddison shared that Knox was excited to see himself in the story, and that seeing his face light up when he recognised his family and the illustrations was really special.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <section id="how-it-works">
+  <div class="soft-glow"></div>
+  <div class="container">
+    <div class="section-head">
+      <h2>Two simple ways to begin</h2>
+      <p>
+        Choose the path that feels right for your family — request a complimentary preview first, or begin directly with a package.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="card">
+        <div class="step-number">1</div>
+        <h3>Request a Free 1-Page Preview</h3>
+        <p>
+          Share a few child and family details so we can create a complimentary 1-page story preview before you choose a package.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="step-number">2</div>
+        <h3>Choose your package</h3>
+        <p>
+          After reviewing your preview — or if you are ready to begin immediately — choose Seed, Becoming, or Legacy.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="step-number">3</div>
+        <h3>Complete your story journey</h3>
+        <p>
+          Payment is completed securely, then the full story form is submitted so Monarch Tales can create the complete keepsake.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <h2>Choose the experience your child will keep.</h2>
+      <p>
+       Each Monarch Tales package is designed as a different level of memory, meaning, and keepsake value.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      
+      <!-- SEED -->
+      <div class="card">
+        <h3 class="price-name">The Seed</h3>
+        <div class="price" data-price="seed">$49</div>
+        <p class="best-for">Best for: Digital keepsake</p>
+        <p>A digital personalized storybook for families who want a meaningful story their child can read, keep, and revisit anytime.</p>
+        <ul class="feature-list">
+          <li>Personalized digital storybook</li>
+          <li>Written around the child’s name, traits, and emotional world</li>
+          <li>Dedication page included</li>
+          <li>Mobile-friendly PDF delivery</li>
+          <li>Printable version for home use</li>
+        </ul>
+<a href="checkout.html?plan=seed" class="btn btn-primary track-package-click" data-package="seed">Choose The Seed</a>
+      </div>
+
+      <!-- BECOMING -->
+      <div class="card popular-card">
+        <span class="popular-badge">Core Keepsake Package</span>
+        <h3 class="price-name">The Becoming</h3>
+        <div class="price" data-price="becoming">$119</div>
+        <p class="best-for">Best for: Printed softcover gift</p>
+        <p>The core Monarch Tales keepsake — a premium printed softcover storybook created around your child’s personality, memories, and world.</p>
+        <ul class="feature-list">
+          <li>Everything included in The Seed</li>
+          <li>Premium printed softcover keepsake book</li>
+          <li>Emotion-led personalized storytelling</li>
+          <li>Dedication page & premium interior layout</li>
+          <li>Shipping calculated at checkout based on destination</li>
+        </ul>
+<a href="checkout.html?plan=becoming" class="btn btn-primary track-package-click" data-package="becoming">Choose The Becoming</a>
+      </div>
+
+      <!-- LEGACY -->
+      <div class="card">
+        <h3 class="price-name">The Legacy</h3>
+        <div class="price" data-price="legacy">$169</div>
+        <p class="best-for">Best for: Hardcover collector experience</p>
+        <p>The most complete Monarch Tales experience — a premium hardcover collector edition with personalized audio narration and deluxe keepsake extras.</p>
+        <ul class="feature-list">
+          <li>Everything included in The Becoming</li>
+<li>Premium hardcover collector edition</li>
+<li>Personalized audio narration</li>
+<li>Deluxe keepsake presentation</li>
+<li>Premium printable story artwork</li>
+<li>Priority production experience</li>
+        </ul>
+        <a href="checkout.html?plan=legacy" class="btn btn-primary track-package-click" data-package="legacy">Choose The Legacy</a>
+      </div>
+           </div>
+
+      <div class="delivery-note">
+        Digital: 5–7 days &nbsp;•&nbsp; Printed: 2–4 weeks<br>
+        Each story is carefully crafted after your order—never pre-made.
+      </div>
+
+      <p class="payment-note">
+        Prices are shown in your local currency where available. Printed packages include a separate shipping amount in the checkout breakdown.
+      </p>
+    </div>
+  </section>
+
+<section id="book-preview">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">More Monarch Tales</span>
+
+      <h2>Real Storybooks Created for Real Families</h2>
+
+      <p>
+        Every Monarch Tale is created uniquely for the child and family it belongs to.
+      </p>
+    </div>
+
+    <div class="proof-gallery">
+
+      <div class="proof-small-card">
+        <img src="knox-christmas.webp" alt="Cover of Knox, You Are My Christmas Sunshine" width="1486" height="1497" loading="lazy" decoding="async" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Hardcover Keepsake</span>
+
+          <h3>Knox, You Are My Christmas Sunshine</h3>
+
+          <p>
+            A premium hardcover story celebrating warmth, family, memory, and Christmas wonder.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="knox-map-of-love.webp" alt="Cover of Knox and the Map of Love" width="1418" height="1533" loading="lazy" decoding="async" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Personalized Family Story</span>
+
+          <h3>Knox and the Map of Love</h3>
+
+          <p>
+            A story about connection, belonging, and the people who help shape a child's world.
+          </p>
+        </div>
+      </div>
+
+      <div class="proof-small-card">
+        <img src="lucas-moon-back.webp" alt="Illustrated family adventure featuring Lucas, Lochlan and Scarlett" width="1534" height="1541" loading="lazy" decoding="async" />
+
+        <div class="proof-small-content">
+          <span class="proof-tag">Family Adventure</span>
+
+          <h3>Lucas, Lochlan & Scarlett</h3>
+
+          <p>
+            A story celebrating imagination, togetherness, and family love.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About Monarch Tales</h2>
+          <p>
+            Monarch Tales began from real story creation and is growing into a brand that turns children into the heroes of meaningful keepsake books.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card">
+            <h3>Our mission</h3>
+            <p>
+              To help families preserve meaningful chapters before they disappear. Childhood changes quickly. Memories fade. Photographs capture what life looked like — stories capture what life felt like. Monarch Tales transforms real memories, personalities, milestones, and family moments into personalized keepsakes designed to be treasured for years to come.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Why it matters</h3>
+            <p>
+              Stories shape identity. When a child sees themselves inside a beautifully made story, it can deepen confidence, belonging, wonder, and emotional connection.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>What guides us</h3>
+            <p>
+              Personalization, creativity, connection, inclusion, and legacy are at the heart of Monarch Tales. Each story is crafted to feel meaningful enough to keep, gift, and remember.
+            </p>
+          </div>
+
+          <div class="card">
+  <h3>Built with care from beginning to end</h3>
+  <p>
+    From the first story details to the final digital or printed book, Monarch Tales is designed to feel guided, thoughtful, and deeply personal.
+  </p>
+</div>
+        </div>
+      </div>
+    </section>
+
+       <section id="founder">
+  <div class="container">
+    <div class="featured-proof">
+      <div class="featured-proof-image">
+        <img src="founder.webp" alt="Prince Francix, founder of Monarch Tales" width="2712" height="2971" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="featured-proof-content">
+        <span class="proof-tag">Meet the Founder</span>
+
+        <h3>Built by a storyteller.</h3>
+
+        <p>
+          Monarch Tales was founded by Prince Francix, a storyteller, musician, and creative founder creating personalized keepsake storybooks for families across Australia, the United States, Canada, and the United Kingdom.
+        </p>
+
+        <p>
+          Every story is guided with care, imagination, and respect for the child and family behind it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently asked questions</h2>
+          <p>
+            These are the questions customers are likely to ask before beginning.
+          </p>
+        </div>
+<div class="faq-grid">
+  <details>
+    <summary>How personalized is each book?</summary>
+    <p>
+      Each Monarch Tale is shaped around the child’s name, personality, emotional world, relationships, and story direction. It is not a simple name-swap book.
+    </p>
+  </details>
+
+  <details>
+    <summary>How are character visuals created?</summary>
+    <p>
+      Customers can share a Google Drive or Dropbox photo folder link for stronger likeness, or describe the child’s look and personality for a description-based build.
+    </p>
+  </details>
+
+  <details>
+    <summary>How long does delivery take?</summary>
+    <p>
+      Digital stories usually take 5–7 days. Printed books usually take 2–4 weeks depending on package and production stage.
+    </p>
+  </details>
+
+  <details>
+    <summary>Do you reuse stories?</summary>
+    <p>
+      No. Every story is created from scratch for the child and family who ordered it. We may use a consistent process, but the story itself is not reused.
+    </p>
+  </details>
+
+  <details>
+  <summary>How does payment work?</summary>
+ <p>
+  Direct package orders are completed securely through Stripe. If you request a free 1-page preview first, we review your preview details and send the next step if you’d like to continue.
+</p>
+</details>
+
+  <details>
+    <summary>Do you ship internationally?</summary>
+    <p>
+      Yes. Monarch Tales is designed for families around the world. Printed books can be shipped internationally. Delivery timing may vary depending on your location.
+      </p>
+  </details>
+
+  <details>
+  <summary>Is this made with AI?</summary>
+  <p>
+    Monarch Tales uses modern creative technology to assist parts of the production process, but every story is planned, guided, edited, and shaped with human creative direction. The goal is not to produce a generic AI book — it is to create a thoughtful story around one real child and family.
+  </p>
+</details>
+
+<details>
+  <summary>Can I see a preview before paying?</summary>
+  <p>
+    Yes. You can request a free 1-page preview before choosing a package. You are never required to continue after receiving your preview.
+  </p>
+</details>
+
+<details>
+  <summary>What if I don’t have many details?</summary>
+  <p>
+    That’s completely fine. The preview and story forms are designed to guide you with simple questions. If we need clarification, we’ll contact you before production begins.
+  </p>
+</details>
+
+<details>
+  <summary>Can grandparents order?</summary>
+  <p>
+    Yes. Grandparents, aunties, uncles, godparents, and family friends can order a Monarch Tale as a meaningful gift, provided they can share enough details to guide the story.
+  </p>
+</details>
+
+<details>
+  <summary>Can I order as a gift?</summary>
+  <p>
+    Yes. Monarch Tales makes a meaningful birthday, Christmas, milestone, school, or family keepsake gift.
+  </p>
+</details>
+
+<details>
+  <summary>Will my child’s details remain private?</summary>
+  <p>
+    Yes. Child and family details are used only to create your story and are treated with care. We do not share personal story details publicly without permission.
+  </p>
+</details>
+
+  <details>
+    <summary>What happens after I submit my form?</summary>
+    <p>
+  If you submit a preview request, we review your details and prepare your complimentary 1-page preview. If you place a package order, you’ll complete the full story form so we can begin creating the complete book.
+</p>
+  </details>
+</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact & next steps</h2>
+          <p>
+            If you’re ready to begin or want clarity before starting, this is where the journey stays open and human.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Start the story with confidence</h3>
+            <p>
+              Monarch Tales is built to feel warm, guided, and intentional. If you’re ready, the best next step is to begin the process and choose the package that fits your story experience.
+            </p>
+
+            <div class="social-links">
+              <a href="preview.html" class="btn btn-primary track-preview-click">Request Your Free 1-Page Preview</a>
+              <a href="https://wa.me/61432510020" class="btn btn-secondary track-whatsapp-click">Chat on WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Need reassurance first?</h3>
+            <p>
+              You can explore the journey, review the forms, and understand the process before committing emotionally to the full experience.
+            </p>
+
+           <ul class="contact-list">
+  <li><a href="preview.html" class="track-preview-click">Request Your Free 1-Page Preview</a></li>
+  <li><a href="packages.html">View packages</a></li>
+  <li><a href="story-form.html">Review the story intake form</a></li>
+</ul>
+
+            <div class="social-links">
+              <a href="https://www.instagram.com/monarchtales.world?igsh=MXh4Y2FzejNzdG53cw==" class="btn btn-secondary">Visit Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+      <div class="cta-box">
+  <h2>Start with a free 1-page preview.</h2>
+  <p>
+   See how your child's story could begin before choosing a package.
+  </p>
+  <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+  <a href="preview.html" class="btn btn-primary track-preview-click">Request Your Free 1-Page Preview</a>
+    <a href="#pricing" class="btn btn-secondary">See Packages</a>
+  </div>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Monarch Tales</h3>
+          <p>
+            Monarch Tales creates personalized keepsake storybooks designed to help children feel seen, celebrated, and remembered through meaningful storytelling.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#proof">Real Stories</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="policies.html">Policies</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Journey</h4>
+          <div class="footer-links">
+            <a href="preview.html">Request Your Free 1-Page Preview</a>
+<a href="#pricing">View packages</a>
+<a href="story-form.html">Story Intake Form</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Monarch Tales. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+
+  <script>
+  document.querySelectorAll(".track-preview-click").forEach(button => {
+    button.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "preview_button_click");
+      }
+    });
+  });
+
+  document.querySelectorAll(".track-package-click").forEach(button => {
+    button.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "package_button_click", {
+          package_name: button.dataset.package || "unknown"
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll(".track-whatsapp-click").forEach(button => {
+    button.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "whatsapp_click");
+      }
+    });
+  });
+</script>
+  <script src="pricing.js"></script>
+</body>
+</html>

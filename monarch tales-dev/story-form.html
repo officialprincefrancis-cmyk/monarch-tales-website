@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Story Creation Form | Monarch Tales</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta
+    name="description"
+    content="Share the deeper story details that help shape a child's personalized Monarch Tales book."
+  />
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --card-soft: #f8f1e8;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #f3e8d9;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      position: relative;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.97rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 72px 0 28px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.9rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .selected-plan {
+      max-width: 720px;
+      margin: 20px auto 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      color: var(--gold-dark);
+      font-weight: 700;
+      display: none;
+    }
+
+    .layout {
+      padding: 26px 0 88px;
+    }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .form-card,
+    .side-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-card {
+      padding: 34px;
+    }
+
+    .side-card {
+      padding: 24px;
+      position: sticky;
+      top: 98px;
+    }
+
+    .intro-title {
+      font-size: 1.55rem;
+      margin-bottom: 8px;
+    }
+
+    .intro-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    .intro-note {
+      color: var(--gold-dark);
+      font-size: 0.93rem;
+      margin-bottom: 28px;
+      font-weight: 700;
+    }
+
+    form {
+      display: grid;
+      gap: 26px;
+    }
+
+    .form-section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .form-section-title {
+      font-size: 1.16rem;
+      margin-bottom: 6px;
+    }
+
+    .form-progress {
+      position: sticky;
+      top: 92px;
+      z-index: 20;
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,253,249,0.96);
+      box-shadow: 0 8px 22px rgba(43,33,28,0.07);
+    }
+
+    .form-progress-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .form-progress-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--gold-soft);
+    }
+
+    .form-progress-bar {
+      width: 10%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--gold);
+      transition: width 0.25s ease;
+    }
+
+    .form-section-text {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    .field-full {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(182, 145, 95, 0.14);
+    }
+
+    .checkbox-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .checkbox-option {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffdf9;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .checkbox-option:hover {
+      border-color: var(--gold);
+      background: #fffaf4;
+    }
+
+    .checkbox-option input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--gold-dark);
+    }
+
+    .option-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .option-text strong {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .option-text span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: -2px;
+      line-height: 1.6;
+    }
+
+    .submit-box {
+      background: var(--card-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .submit-box p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .manual-next {
+      margin-top: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .manual-next p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .side-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+    }
+
+    .side-card p,
+    .side-card li {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.72;
+    }
+
+    .side-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .side-card li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .side-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: bold;
+    }
+
+    .side-block + .side-block {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.logo-brand span {
+  color: var(--gold-dark);
+}
+
+@media (max-width: 720px) {
+  .logo {
+    height: 38px;
+  }
+}
+
+    @media (max-width: 920px) {
+      .form-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card,
+      .side-card {
+        padding: 22px;
+      }
+
+      .submit-box {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 54px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612" class="logo">
+  <span>Monarch Tales</span>
+</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div><span></span><span></span><span></span></div>
+      </button>
+
+      <div class="nav-links" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="https://wa.me/61432510020">Need Help?</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="helper">Monarch Tales Creative Intake</p>
+        <span class="eyebrow">Story Creation Form</span>
+        <h1>Now let’s shape the heart of the story.</h1>
+        <p>
+          This stage gathers the deeper details that help us create a Monarch Tale that feels warm, meaningful, and beautifully connected to the child.
+        </p>
+
+        <div class="selected-plan" id="selectedPlanBox"></div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="container form-shell">
+        <div class="form-card">
+          <h2 class="intro-title">Story Details</h2>
+          <p class="intro-text">
+            You do not need perfect words. Choose what feels true, add a few personal notes, and we’ll shape the story with care.
+          </p>
+          <p class="intro-note">Simple answers are enough. You do not need to write perfectly.</p>
+
+<p class="helper">
+  This form usually takes 15–25 minutes. Simple answers are enough.
+</p>
+
+<p class="helper">
+  Child and family details are used only to create your story and are treated with care.
+</p>
+
+<p class="helper">
+  Please complete this form in one sitting. Your answers may not be saved if you leave the page.
+</p>
+
+          <div class="form-progress" aria-live="polite">
+            <div class="form-progress-row">
+              <span id="formProgressText">Step 1 of 10</span>
+              <span>About 15–25 minutes</span>
+            </div>
+            <div class="form-progress-track" aria-hidden="true"><div class="form-progress-bar" id="formProgressBar"></div></div>
+          </div>
+
+          <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST">
+            <input type="hidden" name="_subject" value="New Monarch Tales Story Details" />
+            <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
+
+            <div class="form-section">
+  <h3 class="form-section-title">1. Order Information</h3>
+
+  <p class="form-section-text">
+    Help us connect this story request to your order.
+  </p>
+
+  <div class="grid-2">
+
+    <div class="field-group">
+      <label for="storyFullName">Full Name</label>
+      <input type="text" id="storyFullName" name="fullName" autocomplete="name" required>
+    </div>
+
+    <div class="field-group">
+      <label for="storyEmail">Email Address</label>
+      <input type="email" id="storyEmail" name="email" autocomplete="email" required>
+    </div>
+
+    <div class="field-group">
+      <label for="packagePurchased">Package Purchased</label>
+
+     <input
+type="text"
+name="packagePurchased"
+id="packagePurchased"
+readonly
+placeholder="Package selected"
+>
+  
+    </div>
+
+  </div>
+</div>
+
+<div class="form-section">
+
+<h3 class="form-section-title">
+2. Why Are You Creating This Book?
+</h3>
+
+<p class="form-section-text">
+Understanding the reason behind this gift helps us shape the emotional direction of the story.
+</p>
+
+<div class="checkbox-grid">
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Birthday Gift">
+<span class="option-text"><strong>Birthday Gift</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Christmas Gift">
+<span class="option-text"><strong>Christmas Gift</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Mother's Day">
+<span class="option-text"><strong>Mother's Day</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Father's Day">
+<span class="option-text"><strong>Father's Day</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="New Baby">
+<span class="option-text"><strong>New Baby</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Adoption">
+<span class="option-text"><strong>Adoption</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="School Milestone">
+<span class="option-text"><strong>School Milestone</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Family Keepsake">
+<span class="option-text"><strong>Family Keepsake</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Special Celebration">
+<span class="option-text"><strong>Special Celebration</strong></span>
+</label>
+
+<label class="checkbox-option">
+<input type="checkbox" name="reason[]" value="Just Because">
+<span class="option-text"><strong>Just Because</strong></span>
+</label>
+
+</div>
+
+<div class="field-full">
+
+<label>
+Please tell us more
+</label>
+
+<textarea
+name="reasonStory"
+placeholder="Tell us what inspired you to create this Monarch Tale..."
+></textarea>
+
+</div>
+
+</div>
+<div class="form-section">
+
+<h3 class="form-section-title">
+3. About The Child
+</h3>
+              <p class="form-section-text">
+                These details help us confirm your child as the true hero of the story and keep everything accurate and personal.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+                  <label for="storyChildName">Child’s Name</label>
+                  <input type="text" id="storyChildName" name="storyChildName" placeholder="Child's name" required />
+                </div>
+
+                <div class="field-group">
+                  <label for="storyChildAge">Child’s Age</label>
+                  <input
+type="number"
+id="storyChildAge"
+name="storyChildAge"
+placeholder="e.g. 5"
+min="0"
+max="18"
+required
+/>
+                </div>
+              </div>
+
+           <div class="grid-2">
+
+  <div class="field-group">
+    <label>Date of Birth (Optional)</label>
+    <input type="date" name="childDob">
+  </div>
+
+  <div class="field-group">
+    <label>Country</label>
+    <input type="text" name="childCountry">
+  </div>
+
+</div>
+
+              <div class="field-full">
+                <label>Which best describes your child? (Choose 2–3)</label>
+                <p class="helper">
+e.g. curious, shy, playful, thoughtful</p>
+                <div class="checkbox-grid">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Kind & gentle">
+                    <span class="option-text"><strong>Kind & gentle</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Energetic & playful">
+                    <span class="option-text"><strong>Energetic & playful</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Curious & adventurous">
+                    <span class="option-text"><strong>Curious & adventurous</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Quiet & thoughtful">
+                    <span class="option-text"><strong>Quiet & thoughtful</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Bold & confident">
+                    <span class="option-text"><strong>Bold & confident</strong></span>
+                  </label>
+
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="storyTraits[]" value="Funny & expressive">
+                    <span class="option-text"><strong>Funny & expressive</strong></span>
+                  </label>
+                </div>
+                <p class="helper">Choose the traits that feel closest. You do not need to choose everything.</p>
+                <div class="field-full">
+
+<label>
+Does your child have a favourite animal?
+</label>
+
+<input
+type="text"
+name="favoriteAnimal"
+placeholder="Lion, rabbit, dolphin, dog..."
+>
+
+</div>
+
+<div class="field-full">
+
+<label>
+Does your child have a favourite activity?
+</label>
+
+<input
+type="text"
+name="favoriteActivity"
+placeholder="Football, drawing, dancing, reading..."
+>
+
+</div>
+              </div>
+            </div>
+
+            <div class="form-section">
+
+<h3 class="form-section-title">
+4. Family & Important People
+</h3>
+
+<p class="form-section-text">
+Tell us about the people who make up your child's world.
+</p>
+
+<div class="field-full">
+
+<label>
+Who are the most important people in your child's life?
+</label>
+
+<textarea
+name="importantPeople"
+placeholder="Mum, Dad, Grandma Sarah, Uncle Ben, older sister Emma..."
+></textarea>
+
+</div>
+
+<div class="grid-2">
+
+<div class="field-group">
+<label>Special Person's Name</label>
+<input type="text" name="specialPersonName">
+</div>
+
+<div class="field-group">
+<label>Relationship</label>
+<input type="text" name="specialPersonRelationship" placeholder="Grandma, Dad, Guardian...">
+</div>
+
+</div>
+
+<div class="field-full">
+
+<label>
+What does your child call this person?
+</label>
+
+<input
+type="text"
+name="specialPersonNickname"
+placeholder="Nana, Pop, Daddy, Mumma..."
+>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: Do they share any special traditions together?</label>
+
+<textarea
+name="specialTraditions"
+placeholder="Bedtime stories, Sunday pancakes, prayers, fishing trips..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: What is something this person often says to your child?</label>
+
+<textarea
+name="specialPhraseFromLovedOne"
+placeholder="I love you to the moon and back..."
+></textarea>
+
+</div>
+
+</div>
+
+<div class="form-section">
+
+<h3 class="form-section-title">
+5. Favourite Memories
+</h3>
+
+<p class="form-section-text">
+The moments families never want to forget often become the most meaningful parts of a Monarch Tale.
+</p>
+
+<div class="field-full">
+
+<label>
+What is one memory with your child that you never want to forget?
+</label>
+
+<textarea
+name="favoriteMemory"
+placeholder="Tell us about a moment that means everything to you..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>
+What is something your child has done that made everyone laugh?
+</label>
+
+<textarea
+name="funnyMemory"
+placeholder="Funny stories are welcome..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: What moment perfectly captures who your child is?</label>
+
+<textarea
+name="whoTheyAreMoment"
+placeholder="A moment that shows their personality..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: If you could preserve one stage of your child's life forever, what would it be and why?</label>
+
+<textarea
+name="preserveStage"
+placeholder="Toddler years, first year at school, current age..."
+></textarea>
+
+</div>
+
+</div>
+
+<div class="form-section">
+
+<h3 class="form-section-title">
+6. Emotional Heart of the Story
+</h3>
+
+<p class="form-section-text">
+This is often the most important part of the entire book. It helps us understand the message, hope, and feeling you want your child to carry long after the story ends.
+</p>
+
+<div class="field-full">
+
+<label>
+What truth do you want your child to grow up believing?
+</label>
+
+<textarea
+name="lifeTruth"
+placeholder="I am loved. I belong. I can be brave. I matter. I am enough..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: What kind of person do you hope they become?</label>
+
+<textarea
+name="futureHope"
+placeholder="Kind, courageous, curious, resilient, generous..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: Are there any fears, struggles, challenges, or life lessons you would like the story to gently address?</label>
+
+<textarea
+name="lifeChallenges"
+placeholder="Confidence, anxiety, making friends, believing in themselves, adapting to change..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: Twenty years from now, what do you hope your child remembers about this stage of life?</label>
+
+<textarea
+name="futureMemory"
+placeholder="What would you love them to remember about this season of childhood?"
+></textarea>
+
+</div>
+
+</div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">7. Story Characters</h3>
+              <p class="form-section-text">
+                Choose who should appear or be felt inside the child’s world.
+              </p>
+
+              <div class="checkbox-grid">
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Mum">
+                  <span class="option-text"><strong>Mum</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Dad">
+                  <span class="option-text"><strong>Dad</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Grandma">
+                  <span class="option-text"><strong>Grandma</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Grandpa">
+                  <span class="option-text"><strong>Grandpa</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Sibling">
+                  <span class="option-text"><strong>Sibling</strong></span>
+                </label>
+
+                <label class="checkbox-option">
+                  <input type="checkbox" name="storyCharacters[]" value="Other">
+                  <span class="option-text"><strong>Other</strong></span>
+                </label>
+              </div>
+
+              <div class="field-full">
+                <label for="characterRoleDescription">Optional: describe their role in the child’s life</label>
+                <textarea id="characterRoleDescription" name="characterRoleDescription" placeholder="A few words about their love, presence, support, or importance..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">8. Personal Touches</h3>
+              <p class="form-section-text">
+                These small details can make the story feel unforgettable.
+              </p>
+
+              <div class="field-full">
+                <label for="specialPhrase">Optional: a sweet phrase, lesson, blessing, or line you would love included</label>
+                <textarea id="specialPhrase" name="specialPhrase" placeholder="A short phrase, blessing, or message you want the child to carry..."></textarea>
+              </div>
+
+              <div class="field-full">
+                <label for="specialOccasion">Optional: is this for a birthday, milestone, bedtime keepsake, or special season?</label>
+                <textarea id="specialOccasion" name="specialOccasion" placeholder="Birthday, bedtime keepsake, encouragement, milestone, gift, etc."></textarea>
+              </div>
+
+              <div class="field-full">
+                <label for="dedicationPage">Optional: dedication page or opening message</label>
+                <textarea id="dedicationPage" name="dedicationPage" placeholder="For Knox — who teaches us that love never leaves..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="form-section-title">9. Story Preferences</h3>
+              <p class="form-section-text">
+                These choices guide the feel of the final book.
+              </p>
+
+              <div class="grid-2">
+                <div class="field-group">
+  <label for="storyDepth">Story depth</label>
+  <select id="storyDepth" name="storyDepth">
+    <option value="Balanced story journey">Balanced story journey</option>
+    <option value="Short & gentle">Short & gentle</option>
+    <option value="Deeper immersive experience">Deeper immersive experience</option>
+  </select>
+</div>
+
+                <div class="field-group">
+                  <label for="illustrationStyle">Illustration style</label>
+                  <select id="illustrationStyle" name="illustrationStyle">
+                    <option value="Soft watercolor">Soft watercolor</option>
+                    <option value="Playful cartoon">Playful cartoon</option>
+                    <option value="Bold comic-style">Bold comic-style</option>
+                    <option value="Premium storybook illustration">Premium storybook illustration</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+
+<label>
+Story Mood
+</label>
+
+<select name="storyMood">
+<option>Warm & Heartfelt</option>
+<option>Fun & Playful</option>
+<option>Adventure & Discovery</option>
+<option>Calm Bedtime Story</option>
+<option>Inspirational & Encouraging</option>
+</select>
+
+</div>
+              </div>
+            </div>
+<div class="form-section">
+
+<h3 class="form-section-title">
+10. Story Boundaries & Special Notes
+</h3>
+
+<p class="form-section-text">
+Help us understand anything important we should know while creating your Monarch Tale.
+</p>
+
+<div class="field-full">
+
+<label>
+Is there anything you would prefer us not include?
+</label>
+
+<textarea
+name="avoidTopics"
+placeholder="Characters, themes, fears, situations, topics, etc."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>
+Are there any family circumstances we should be sensitive to?
+</label>
+
+<textarea
+name="familySensitivity"
+placeholder="Adoption, separation, loss, blended family, special circumstances..."
+></textarea>
+
+</div>
+
+<div class="field-full">
+
+<label>
+Would you like faith or Christian themes included?
+</label>
+
+<select name="faithThemes">
+<option>No preference</option>
+<option>Yes - subtle faith themes</option>
+<option>Yes - clearly Christian</option>
+<option>No faith themes</option>
+</select>
+
+</div>
+
+<div class="field-full">
+
+<label>Optional: Anything else you'd like us to know?</label>
+
+<textarea
+name="additionalNotes"
+placeholder="Any final notes, requests, ideas, memories, or details..."
+></textarea>
+
+</div>
+
+</div>
+            <div class="submit-box">
+  <p>
+    You’ve given enough. From here, we shape something meaningful, personal, and worth keeping.
+    <br><br>
+    <span class="helper">You’ll review your story before it’s finalized.</span>
+  </p>
+  <button type="submit" class="btn btn-primary">Submit Story Details</button>
+</div>
+          </form>
+
+        </div>
+
+        <aside class="side-card">
+          <div class="side-block">
+            <h3>Why this form matters</h3>
+            <p>
+              This is where the story becomes personal. The details you share help shape tone, emotion, relationships, and meaning.
+            </p>
+          </div>
+
+          <div class="side-block">
+            <h3>What this step captures</h3>
+            <ul>
+              <li>The child’s personality direction</li>
+              <li>The emotional feeling you want the story to leave</li>
+              <li>The people who matter in the story world</li>
+              <li>Special touches that make it unforgettable</li>
+            </ul>
+          </div>
+
+          <div class="side-block">
+            <h3>You're Almost There</h3>
+            <p>
+             Your payment is complete. These details help us create the full Monarch Tale.
+            </p>
+          </div>
+
+          <div class="side-block">
+            <h3>How to answer well</h3>
+            <p>
+              Choose what feels most true. You do not need long explanations for every question—the structure is designed to guide you.
+            </p>
+          </div>
+
+          <div class="side-block">
+            <a href="https://wa.me/61432510020" class="btn btn-secondary" id="backToOrderButton">Need help? Chat on WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+  const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+const child = params.get("child");
+const age = params.get("age");
+    const planBox = document.getElementById("selectedPlanBox");
+    const planInput = document.getElementById("storySelectedPlanInput");
+    const storyChildName = document.getElementById("storyChildName");
+const storyChildAge = document.getElementById("storyChildAge");
+
+const planMap = {
+  seed: "Selected package: The Seed",
+  becoming: "Selected package: The Becoming",
+  legacy: "Selected package: The Legacy"
+};
+const packagePurchased =
+document.getElementById("packagePurchased");
+
+if (plan === "seed") {
+  packagePurchased.value = "The Seed";
+}
+
+if (plan === "becoming") {
+  packagePurchased.value = "The Becoming";
+}
+
+if (plan === "legacy") {
+  packagePurchased.value = "The Legacy";
+}
+    if (plan && planMap[plan]) {
+      planBox.style.display = "block";
+      planBox.textContent = planMap[plan];
+      planInput.value = planMap[plan];
+    }
+    if (child) {
+  storyChildName.value = child;
+}
+
+if (age) {
+  storyChildAge.value = age;
+}
+const storyForm = document.getElementById("storyForm");
+
+// Connect every visible form control to its nearby written label for assistive technology.
+storyForm.querySelectorAll('input:not([type="hidden"]), select, textarea').forEach((control, index) => {
+  if (!control.id) control.id = `storyField${index + 1}`;
+  if (control.closest('label') || storyForm.querySelector(`label[for="${control.id}"]`)) return;
+  const field = control.closest('.field-group, .field-full');
+  const label = field ? field.querySelector('label') : null;
+  if (label && !label.htmlFor) label.htmlFor = control.id;
+});
+
+const formSections = Array.from(storyForm.querySelectorAll(".form-section"));
+const formProgressText = document.getElementById("formProgressText");
+const formProgressBar = document.getElementById("formProgressBar");
+
+if ("IntersectionObserver" in window && formSections.length) {
+  const progressObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visible) return;
+    const index = formSections.indexOf(visible.target) + 1;
+    formProgressText.textContent = `Step ${index} of ${formSections.length}`;
+    formProgressBar.style.width = `${(index / formSections.length) * 100}%`;
+  }, { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.5] });
+
+  formSections.forEach(section => progressObserver.observe(section));
+}
+
+storyForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(storyForm);
+
+  try {
+    const response = await fetch(storyForm.action, {
+      method: storyForm.method,
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      window.location.href = "story-thank-you.html";
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+});
+  </script>
+</body>
+</html>

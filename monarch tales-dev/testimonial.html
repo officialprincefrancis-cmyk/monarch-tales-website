@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Share Your Monarch Tales Experience</title>
+  <meta name="robots" content="noindex, nofollow" />
+<meta
+  name="description"
+  content="Share your Monarch Tales experience and help other families understand the meaning of a personalized keepsake storybook."
+/>
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #f3e8d9;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
+      --max: 900px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(243,232,217,0.45), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(251,247,242,0.94);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--gold-dark);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+    }
+
+    main {
+      padding: 72px 0;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 36px;
+    }
+
+    form {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(182,145,95,0.14);
+    }
+
+    .note-box {
+      background: #fffaf4;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 26px;
+      border-radius: 999px;
+      border: none;
+      background: var(--gold);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card {
+        padding: 24px;
+      }
+
+      .brand img {
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612">
+        <span>Monarch Tales</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="hero">
+        <span class="eyebrow">Family Testimonial</span>
+
+        <h1>Share Your Monarch Tales Experience.</h1>
+
+        <p>
+          Your words help other families understand what it feels like when a child sees themselves inside a story made just for them.
+        </p>
+      </section>
+
+      <section class="form-card">
+        <form id="testimonialForm" action="https://formspree.io/f/mgobgwrk" method="POST">
+          <input type="hidden" name="_subject" value="New Monarch Tales Testimonial" />
+
+          <div class="grid-2">
+            <div>
+              <label for="testimonialParentName">Parent / Guardian Name</label>
+              <input type="text" id="testimonialParentName" name="parent_name" autocomplete="name" required>
+            </div>
+
+            <div>
+              <label for="testimonialCountry">Country</label>
+              <input type="text" id="testimonialCountry" name="country" autocomplete="country-name" placeholder="Australia, Canada, UK, USA..." required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <label for="testimonialChildName">Child’s Name</label>
+              <input type="text" id="testimonialChildName" name="child_name" required>
+            </div>
+
+            <div>
+              <label for="testimonialPackage">Package Received</label>
+              <select id="testimonialPackage" name="package_received" required>
+                <option value="">Choose one</option>
+                <option>The Seed</option>
+                <option>The Becoming</option>
+                <option>The Legacy</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="testimonialRating">How would you rate your Monarch Tales experience?</label>
+            <select id="testimonialRating" name="rating" required>
+              <option value="">Choose one</option>
+              <option>5 Stars</option>
+              <option>4 Stars</option>
+              <option>3 Stars</option>
+              <option>2 Stars</option>
+              <option>1 Star</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="testimonialReaction">What was your child’s reaction when they first saw the story?</label>
+            <textarea id="testimonialReaction" name="child_reaction" required></textarea>
+          </div>
+
+          <div>
+            <label for="testimonialMoment">Was there a specific moment that stood out to you as a parent or family?</label>
+            <textarea id="testimonialMoment" name="special_moment" required></textarea>
+          </div>
+
+          <div>
+            <label for="testimonialMeaning">What did this story mean to your family?</label>
+            <textarea id="testimonialMeaning" name="family_meaning" required></textarea>
+          </div>
+
+          <div>
+            <label for="testimonialRecommendation">How would you describe Monarch Tales to another family?</label>
+            <textarea id="testimonialRecommendation" name="recommendation_quote" required></textarea>
+          </div>
+
+          <div>
+            <label for="testimonialRecommend">Would you recommend Monarch Tales to other families?</label>
+            <select id="testimonialRecommend" name="would_recommend" required>
+              <option value="">Choose one</option>
+              <option>Definitely</option>
+              <option>Probably</option>
+              <option>Maybe</option>
+              <option>Not Yet</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="testimonialPermission">May Monarch Tales feature your feedback publicly?</label>
+            <select id="testimonialPermission" name="permission_to_use" required>
+              <option value="">Choose one</option>
+              <option>Yes, you may use my words with first names</option>
+              <option>Yes, but use parent first name only</option>
+              <option>Yes, but keep child name private</option>
+              <option>No, please keep this private</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="testimonialMedia">Optional photo or reaction video link</label>
+            <input type="url" id="testimonialMedia" name="media_link" placeholder="Google Drive / Dropbox / video link">
+          </div>
+
+          <div class="note-box">
+            Please only share photos or videos you are comfortable allowing Monarch Tales to view. We will ask permission before using identifiable family content publicly.
+          </div>
+
+          <button type="submit" class="btn">Submit Testimonial</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+
+  <script>
+    const testimonialForm = document.getElementById("testimonialForm");
+
+    testimonialForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(testimonialForm);
+
+      try {
+        const response = await fetch(testimonialForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (response.ok) {
+          window.location.href = "testimonial-thank-you.html";
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        alert("Network error. Please try again.");
+      }
+    });
+  </script>
+
+</body>
+</html>

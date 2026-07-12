@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Start | Monarch Tales</title>
+  <meta name="robots" content="noindex, follow" />
+
+  <meta
+    name="description"
+    content="Begin your Monarch Tales journey and take the first step toward creating a personalized storybook for a child."
+  />
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #f3e8d9;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
+      --radius: 24px;
+      --max: 980px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      position: relative;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.97rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 80px 0 34px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 16px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-note {
+      color: var(--gold-dark);
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 28px 0 80px;
+    }
+
+    .intro-card,
+    .steps-card,
+    .note-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+
+    .intro-card,
+    .steps-card {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .trust-pill {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 12px 14px;
+      text-align: center;
+      color: var(--gold-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .step-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-box h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .step-box p,
+    .note-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .action-wrap {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .small-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .note-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .note-card p {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.logo-brand span {
+  color: var(--gold-dark);
+}
+
+.terms-check {
+  display: block;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.terms-check input {
+  width: auto;
+  margin-right: 8px;
+}
+
+.terms-check a {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .logo {
+    height: 38px;
+  }
+}
+
+    @media (max-width: 860px) {
+      .steps-grid,
+      .trust-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 56px;
+      }
+
+      .intro-card,
+      .steps-card,
+      .note-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612" class="logo">
+  <span>Monarch Tales</span>
+</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <div class="nav-links" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="packages.html" class="btn btn-primary">
+    Choose Your Package
+  </a>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Welcome to Monarch Tales</span>
+
+        <h1>Begin Your Child's Monarch Tale</h1>
+
+        <p>
+          Create a personalized story inspired by your child's personality, imagination, family, and memories — designed to be treasured for years to come.
+        </p>
+
+        <p class="hero-note">No two Monarch Tales are ever the same.</p>
+      </div>
+    </section>
+
+    <section class="story-meaning">
+  <div class="container">
+    <div class="intro-card">
+      <h2 class="section-title">Every Child Has A Story Worth Keeping</h2>
+
+      <p class="section-text">
+        A real personality.
+      </p>
+
+      <p class="section-text">
+        A real family.
+      </p>
+
+      <p class="section-text">
+        A real story worth remembering.
+      </p>
+
+      <br>
+
+      <p class="section-text">
+        Monarch Tales was created to help families preserve the wonder, personality, memories, and imagination that make childhood special.
+      </p>
+
+      <p class="section-text">
+        The next step is simply choosing how that story will be preserved.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <section>
+      <div class="container">
+        <div class="intro-card">
+          <h2 class="section-title">What this step is for</h2>
+          <p class="section-text">
+            This page helps you begin the process without overwhelm. First, you explore the journey, choose the package that fits your family, complete secure checkout, and then enter our Creative Intake experience where we begin creating your child's story.
+          </p>
+
+          <div class="trust-strip">
+            <div class="trust-pill">Digital: 5–7 days</div>
+            <div class="trust-pill">Premium Printed Keepsakes</div>
+            <div class="trust-pill">Secure Checkout</div>
+          </div>
+        </div>
+
+        <div class="steps-card">
+          <h2 class="section-title">What happens next</h2>
+          <p class="section-text">
+            The Monarch Tales process is simple, thoughtful, and guided from beginning to end.
+          </p>
+
+          <div class="steps-grid">
+            <div class="step-box">
+              <div class="step-number">1</div>
+              <h3>Choose your package</h3>
+              <p>
+                Select the experience that fits your family — digital, printed keepsake, or full premium story experience.
+              </p>
+            </div>
+
+            <div class="step-box">
+              <div class="step-number">2</div>
+              <h3>Complete secure checkout</h3>
+              <p>
+                Once you choose your package, you'll complete secure payment and officially reserve your place in the Monarch Tales Studio.
+              </p>
+            </div>
+
+            <div class="step-box">
+              <div class="step-number">3</div>
+              <h3>Begin your Creative Intake</h3>
+              <p>
+                After payment, you'll be invited into our Creative Intake process where we gather the story details, memories, photos, and personality traits that bring your child's book to life.
+              </p>
+            </div>
+          </div>
+
+          <div class="action-wrap">
+            <a href="#" class="btn btn-primary" id="continueButton">
+Continue to Checkout
+</a>
+
+            <p class="small-note">You’ll review your package total, destination, and policies on the secure checkout step before payment.</p>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <h3>Personalized Character Creation</h3>
+          <p>
+           Families can choose story-based character creation with no photos, or provide reference photos during the Creative Intake process after checkout if they would like a closer visual resemblance.
+          </p>
+          <p>
+            This keeps Monarch Tales accessible for families who want privacy, while still serving families who want a more personal visual resemblance.
+          </p>
+          <a href="index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+const continueButton = document.getElementById("continueButton");
+
+if (plan) {
+  continueButton.href = "checkout.html?plan=" + encodeURIComponent(plan);
+} else {
+  continueButton.href = "packages.html";
+  continueButton.textContent = "Choose Your Package";
+}
+
+  </script>
+</body>
+</html>

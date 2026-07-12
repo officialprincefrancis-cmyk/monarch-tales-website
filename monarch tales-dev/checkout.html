@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Checkout | Monarch Tales</title>
+  <meta name="description" content="Review your Monarch Tales package, delivery destination, and total before continuing to secure Stripe payment." />
+  <meta name="robots" content="noindex, follow" />
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #f3e8d9;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
+      --max: 900px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      background: rgba(251, 247, 242, 0.92);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-brand img {
+      width: 48px;
+      height: auto;
+    }
+
+    main {
+      padding: 80px 0;
+    }
+
+    .checkout-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 36px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+
+    .summary-box {
+      background: #fffaf4;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      margin: 26px 0;
+      text-align: left;
+    }
+
+    .summary-box h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--gold-dark);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .summary-box p {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      margin-top: 14px;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+      background: transparent;
+    }
+
+    .notice {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 22px auto;
+      max-width: 620px;
+      text-align: left;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .terms-check input {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+
+    .terms-check a {
+      color: var(--gold-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .secure-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .btn[aria-disabled="true"] {
+      opacity: 0.58;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .support-box {
+  margin-top: 24px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fffaf4;
+  text-align: center;
+}
+
+.support-box h3 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.support-box p {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+    @media (max-width: 700px) {
+      .checkout-card {
+        padding: 26px;
+      }
+
+      .logo-brand img {
+        width: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand logo-brand">
+        <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612">
+        <span>Monarch Tales</span>
+      </a>
+
+      <a href="packages.html">Change Package</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="checkout-card">
+        <span class="eyebrow">Checkout</span>
+
+       <h1>Review your package and continue securely.</h1>
+
+<p class="intro">
+  Confirm your selected package and destination. Your payment is completed securely through Stripe.
+</p>
+        <div class="summary-box">
+         <h2 id="packageName">Selected Package</h2>
+
+<div class="price" id="packagePrice">$0 USD</div>
+
+<p id="packageDescription">
+Your selected Monarch Tales package will appear here.
+</p>
+
+<hr style="margin:20px 0; border:none; border-top:1px solid #ddd;">
+
+<label for="country">
+Shipping Destination
+</label>
+
+<br><br>
+
+<select id="country">
+ <option value="">Select Destination</option>
+<option value="US">United States</option>
+<option value="CA">Canada</option>
+<option value="AU">Australia</option>
+<option value="UK">United Kingdom</option>
+</select>
+
+<br><br>
+
+<p aria-live="polite">
+Subtotal:
+<strong id="subtotal">$0.00</strong>
+</p>
+
+<p>
+Shipping:
+<strong id="shipping">$0.00</strong>
+</p>
+
+<p>
+Total:
+<strong id="total">$0.00</strong>
+</p>
+
+<p id="shippingNote" aria-live="polite"></p>
+        </div>
+
+       <label class="terms-check">
+         <input type="checkbox" id="termsCheck">
+         <span>I have read and agree to the <a href="policies.html" target="_blank" rel="noopener">Terms, Refund Policy, and Production Timeline</a>.</span>
+       </label>
+
+       <a href="#" class="btn btn-primary" id="paymentButton" aria-disabled="true">
+  Select a Destination
+</a>
+       <p class="secure-note">Secure payment is completed on Stripe. Monarch Tales does not store your card details.</p>
+
+        <br>
+
+       <a href="packages.html" class="btn btn-secondary">
+  Change Package
+</a>
+
+<p class="notice">
+  After payment, you’ll continue to the full story form where the deeper story details are collected. If anything is unclear, we’ll contact you before production begins.
+</p>
+
+<p class="notice">
+  Child and family details are used only to create your story and are treated with care.
+</p>
+
+<div class="support-box">
+  <h3>Need help?</h3>
+  <p>Message Monarch Tales Customer Care on WhatsApp.</p>
+  <a href="https://wa.me/61432510020" target="_blank" class="btn btn-secondary">
+    Chat on WhatsApp
+  </a>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+
+<script src="pricing.js"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get("plan") || "seed";
+
+  const packageDescriptions = {
+    seed: "A personalized digital storybook delivered as a PDF.",
+    becoming: "The signature printed softcover keepsake book plus digital version.",
+    legacy: "Premium hardcover collector edition with luxury extras and audio narration."
+  };
+
+  const packageNames = {
+    seed: "The Seed",
+    becoming: "The Becoming",
+    legacy: "The Legacy"
+  };
+
+  const packageName = document.getElementById("packageName");
+  const packagePrice = document.getElementById("packagePrice");
+  const packageDescription = document.getElementById("packageDescription");
+  const countryInput = document.getElementById("country");
+  const subtotalOutput = document.getElementById("subtotal");
+  const shippingOutput = document.getElementById("shipping");
+  const totalOutput = document.getElementById("total");
+  const shippingNote = document.getElementById("shippingNote");
+  const paymentButton = document.getElementById("paymentButton");
+  const termsCheck = document.getElementById("termsCheck");
+
+  function normalizeCountry(country) {
+    if (country === "UK") return "GB";
+    return country;
+  }
+
+  function formatCheckoutMoney(country, amount) {
+    const pricing = MONARCH_PRICING[country];
+
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: pricing.currency,
+      maximumFractionDigits: 0
+    }).format(amount);
+  }
+
+  function getCheckoutCountry() {
+    const saved = localStorage.getItem("monarchCountry");
+
+    if (saved && MONARCH_PRICING[saved]) {
+      return saved;
+    }
+
+    return "";
+  }
+
+  function updateCheckout() {
+    const country = normalizeCountry(countryInput.value);
+
+    if (!MONARCH_PRICING[country]) {
+      packageName.textContent = packageNames[plan];
+      packagePrice.textContent = "Select your destination";
+      packageDescription.textContent = packageDescriptions[plan];
+      subtotalOutput.textContent = "—";
+      shippingOutput.textContent = "—";
+      totalOutput.textContent = "—";
+      shippingNote.textContent = "Choose your destination to see the correct currency, shipping, and total.";
+      paymentButton.href = "#";
+      paymentButton.textContent = "Select a Destination";
+      paymentButton.setAttribute("aria-disabled", "true");
+      return;
+    }
+
+    const pricing = MONARCH_PRICING[country];
+    const selected = pricing[plan];
+
+    packageName.textContent = packageNames[plan];
+    packagePrice.textContent = formatCheckoutMoney(country, selected.total);
+    packageDescription.textContent = packageDescriptions[plan];
+
+    subtotalOutput.textContent = formatCheckoutMoney(country, selected.book);
+    shippingOutput.textContent = formatCheckoutMoney(country, selected.shipping);
+    totalOutput.textContent = formatCheckoutMoney(country, selected.total);
+
+   if (plan === "seed") {
+  shippingNote.textContent = "Digital package — no shipping required.";
+} else {
+  shippingNote.textContent = "Shipping is included in the total shown above.";
+}
+
+    if (termsCheck.checked) {
+      paymentButton.href = selected.stripe;
+      paymentButton.textContent = "Continue to Secure Payment — " + formatCheckoutMoney(country, selected.total);
+      paymentButton.setAttribute("aria-disabled", "false");
+    } else {
+      paymentButton.href = "#";
+      paymentButton.textContent = "Accept Terms to Continue";
+      paymentButton.setAttribute("aria-disabled", "true");
+    }
+
+    localStorage.setItem("monarchCountry", country);
+  }
+
+  paymentButton.addEventListener("click", function (event) {
+  const country = normalizeCountry(countryInput.value);
+  if (!MONARCH_PRICING[country] || !termsCheck.checked) {
+    event.preventDefault();
+    if (!MONARCH_PRICING[country]) countryInput.focus();
+    return;
+  }
+  localStorage.setItem("selectedPlan", plan);
+});
+
+  countryInput.addEventListener("change", updateCheckout);
+  termsCheck.addEventListener("change", updateCheckout);
+
+  const currentCountry = getCheckoutCountry();
+  if (currentCountry) countryInput.value = currentCountry === "GB" ? "UK" : currentCountry;
+
+  updateCheckout();
+</script>
+  
+
+</body>
+</html>

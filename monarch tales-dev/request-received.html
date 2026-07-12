@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Preview Request Received | Monarch Tales</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta
+    name="description"
+    content="Thank you for beginning your Monarch Tales journey. Your personalized story request has been received."
+  />
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --card-soft: #f8f1e8;
+      --text: #2b211c;
+      --muted: #6d5f57;
+      --gold: #b6915f;
+      --gold-dark: #8f6f45;
+      --gold-soft: #f3e8d9;
+      --line: rgba(43, 33, 28, 0.08);
+      --shadow: 0 12px 32px rgba(43, 33, 28, 0.08);
+      --radius: 24px;
+      --max: 980px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(243, 232, 217, 0.38), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      position: relative;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold-dark);
+      margin: 4px 0;
+      transition: 0.25s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.97rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: #f7efe4;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 82px 0 34px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.4px;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 14px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .layout {
+      padding: 28px 0 88px;
+    }
+
+    .thank-card,
+    .next-card,
+    .note-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      margin-bottom: 24px;
+    }
+
+    .status-box {
+      background: linear-gradient(135deg, #f4e8d9, #fffaf4);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      margin-bottom: 26px;
+      text-align: center;
+    }
+
+    .status-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin: 0 auto 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .status-box h2 {
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+    }
+
+    .status-box p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .step-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-box h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .step-box p,
+    .note-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .payment-box {
+      background: #fffaf4;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      margin-top: 20px;
+    }
+
+    .payment-box strong {
+      display: block;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .payment-box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .action-wrap {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .small-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--line);
+      background: #fcf8f2;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.logo-brand span {
+  color: var(--gold-dark);
+}
+
+@media (max-width: 720px) {
+  .logo {
+    height: 38px;
+  }
+}
+
+    @media (max-width: 860px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(251, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 56px;
+      }
+
+      .thank-card,
+      .next-card,
+      .note-card {
+        padding: 22px;
+      }
+
+      .status-box {
+        padding: 22px;
+      }
+
+      .action-wrap {
+        flex-direction: column;
+      }
+
+      .action-wrap .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand logo-brand">
+  <img src="logo.webp" alt="Monarch Tales Logo" width="408" height="612" class="logo">
+  <span>Monarch Tales</span>
+</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <div class="nav-links" id="mobileNav">
+        <a href="index.html">Home</a>
+       <a href="packages.html">Packages</a>
+<a href="preview.html">Preview</a>
+        <a href="index.html#contact" class="btn btn-primary">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Preview Request Received</span>
+
+        <h1>Your child’s Monarch Tale preview request has been received.</h1>
+
+        <p>
+          Thank you for requesting a complimentary Monarch Preview. We’ll review your child’s details and begin shaping a small emotional glimpse of their story world.
+        </p>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="container">
+        <div class="thank-card">
+          <div class="status-box">
+            <div class="status-mark">✓</div>
+
+            <h2>We received your preview request.</h2>
+
+            <p>
+              This is the first glimpse into your child’s Monarch Tale. We’ll review the details you shared and prepare a thoughtful preview direction with care.
+            </p>
+          </div>
+
+          <h2 class="section-title">What happens next?</h2>
+
+          <p class="section-text">
+            Monarch Tales is a handcrafted emotional experience, so we review each preview request carefully before preparing your complimentary glimpse.
+          </p>
+
+          <div class="steps-grid">
+            <div class="step-box">
+              <div class="step-number">1</div>
+              <h3>We review your preview request</h3>
+              <p>
+                 We check your child’s name, age, story feeling, photo link if provided, and any emotional notes you shared.
+              </p>
+            </div>
+
+            <div class="step-box">
+              <div class="step-number">2</div>
+              <h3>We prepare your emotional preview</h3>
+              <p>
+                We shape a small handcrafted preview around your child’s name, personality, and story direction.
+              </p>
+            </div>
+
+            <div class="step-box">
+              <div class="step-number">3</div>
+              <h3>You receive your preview</h3>
+              <p>
+                 We’ll send your complimentary preview by email or WhatsApp within 24–72 hours where possible.
+              </p>
+            </div>
+          </div>
+
+          <div class="action-wrap">
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+            <a href="https://wa.me/61432510020" target="_blank" class="btn btn-secondary">Message Us on WhatsApp</a>
+          </div>
+
+          <p class="small-note">
+            Please check your email or WhatsApp for your preview follow-up.
+          </p>
+        </div>
+
+        <div class="next-card">
+          <h2 class="section-title">A gentle reminder</h2>
+          <p class="section-text">
+            No two Monarch Tales are ever the same. Your child’s story is not pulled from a generic template — it is shaped from their world, personality, and the details you shared.
+          </p>
+
+          <div class="payment-box">
+            <strong>Delivery expectations</strong>
+            <p>
+              Digital stories usually take 5–7 days. Printed books usually take 2–4 weeks depending on the package and production stage.
+            </p>
+          </div>
+        </div>
+
+        <div class="note-card">
+          <h3>Need to add something?</h3>
+          <p>
+            If you forgot an important detail, photo link, dedication note, or story direction, you can message us before production begins.
+          </p>
+
+          <div class="action-wrap">
+          <a href="preview.html" class="btn btn-secondary">Return to Preview Form</a>
+<a href="packages.html" class="btn btn-secondary">View Packages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Monarch Tales. All rights reserved.
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuToggle.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+    });
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+</body>
+</html>
