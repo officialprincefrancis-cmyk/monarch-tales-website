@@ -106,6 +106,10 @@ p { margin: 0; }
 .photo-main { min-height: 650px; }
 .photo-stack { display: grid; gap: 22px; }
 .photo-stack img { min-height: 314px; }
+.family-proof { position: relative; margin-top: 22px; overflow: hidden; border-radius: var(--radius); background: var(--forest); }
+.family-proof img { display: block; width: 100%; aspect-ratio: 16 / 8; object-fit: cover; object-position: center 42%; }
+.family-proof figcaption { position: absolute; left: clamp(18px, 4vw, 48px); bottom: clamp(18px, 4vw, 42px); max-width: 420px; padding: 18px 22px; border-radius: 16px; color: var(--ink); background: rgba(255,253,248,.94); box-shadow: var(--shadow); }
+.family-proof figcaption strong { display: block; margin-bottom: 4px; font-family: var(--serif); color: var(--forest); font-size: 1.35rem; }
 .caption { margin-top: 10px; color: var(--ink-soft); font-size: .78rem; }
 
 .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: step; }
@@ -216,6 +220,8 @@ p { margin: 0; }
   .trust-point, .trust-point:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
   .trust-point:last-child { grid-column: auto; border-bottom: 0; border-top: 0; }
   .photo-main, .photo-stack img { min-height: 0; aspect-ratio: 1 / 1; }
+  .family-proof img { aspect-ratio: 4 / 3; }
+  .family-proof figcaption { position: static; max-width: none; border-radius: 0; box-shadow: none; }
   .field.full { grid-column: auto; }
   .button-row .btn { width: 100%; }
   .cta-panel .btn { width: 100%; }

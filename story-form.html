@@ -319,6 +319,109 @@
       line-height: 1.7;
     }
 
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 7px;
+      color: var(--gold-dark);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .memory-prompt {
+      margin: 0 0 20px;
+      padding: 15px 17px;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 14px 14px 0;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .child-card {
+      margin-top: 18px;
+      padding: 20px;
+      border: 1px solid rgba(182, 145, 95, 0.28);
+      border-radius: 18px;
+      background: #fffdf9;
+    }
+
+    .child-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .child-card-title {
+      color: var(--gold-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+    }
+
+    .remove-child {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .add-child-button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px 18px;
+      border: 1px dashed var(--gold);
+      border-radius: 15px;
+      background: #fffaf4;
+      color: var(--gold-dark);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .field-note {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 400;
+    }
+
+    .comfort-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .step-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .step-actions .btn {
+      min-width: 130px;
+    }
+
+    .step-back {
+      background: transparent;
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    .form-section[hidden],
+    .submit-box[hidden] {
+      display: none;
+    }
+
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -623,14 +726,14 @@
     <section class="layout">
       <div class="container form-shell">
         <div class="form-card">
-          <h2 class="intro-title">Story Details</h2>
+          <h2 class="intro-title">Let’s remember them properly.</h2>
           <p class="intro-text">
-            You do not need perfect words. Choose what feels true, add a few personal notes, and we’ll shape the story with care.
+            This is more than a questionnaire. It is a gentle pause to notice the phrases, habits, relationships, and ordinary moments that make your family unmistakably yours.
           </p>
-          <p class="intro-note">Simple answers are enough. You do not need to write perfectly.</p>
+          <p class="intro-note">Write as you speak. Honest, imperfect answers often give us the most beautiful material.</p>
 
 <p class="helper">
-  This form usually takes 15–25 minutes. Simple answers are enough.
+  Most families take 25–35 minutes. A sentence or a voice-like memory is enough—you do not need to sound like a writer.
 </p>
 
 <p class="helper">
@@ -643,8 +746,8 @@
 
           <div class="form-progress" aria-live="polite">
             <div class="form-progress-row">
-              <span id="formProgressText">Step 1 of 10</span>
-              <span>About 15–25 minutes</span>
+              <span id="formProgressText">Part 1 of 9</span>
+              <span>Take your time</span>
             </div>
             <div class="form-progress-track" aria-hidden="true"><div class="form-progress-bar" id="formProgressBar"></div></div>
           </div>
@@ -654,595 +757,136 @@
             <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
 
             <div class="form-section">
-  <h3 class="form-section-title">1. Order Information</h3>
-
-  <p class="form-section-text">
-    Help us connect this story request to your order.
-  </p>
-
-  <div class="grid-2">
-
-    <div class="field-group">
-      <label for="storyFullName">Full Name</label>
-      <input type="text" id="storyFullName" name="fullName" autocomplete="name" required>
-    </div>
-
-    <div class="field-group">
-      <label for="storyEmail">Email Address</label>
-      <input type="email" id="storyEmail" name="email" autocomplete="email" required>
-    </div>
-
-    <div class="field-group">
-      <label for="packagePurchased">Package Purchased</label>
-
-     <input
-type="text"
-name="packagePurchased"
-id="packagePurchased"
-readonly
-placeholder="Package selected"
->
-  
-    </div>
-
-  </div>
-</div>
-
-<div class="form-section">
-
-<h3 class="form-section-title">
-2. Why Are You Creating This Book?
-</h3>
-
-<p class="form-section-text">
-Understanding the reason behind this gift helps us shape the emotional direction of the story.
-</p>
-
-<div class="checkbox-grid">
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Birthday Gift">
-<span class="option-text"><strong>Birthday Gift</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Christmas Gift">
-<span class="option-text"><strong>Christmas Gift</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Mother's Day">
-<span class="option-text"><strong>Mother's Day</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Father's Day">
-<span class="option-text"><strong>Father's Day</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="New Baby">
-<span class="option-text"><strong>New Baby</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Adoption">
-<span class="option-text"><strong>Adoption</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="School Milestone">
-<span class="option-text"><strong>School Milestone</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Family Keepsake">
-<span class="option-text"><strong>Family Keepsake</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Special Celebration">
-<span class="option-text"><strong>Special Celebration</strong></span>
-</label>
-
-<label class="checkbox-option">
-<input type="checkbox" name="reason[]" value="Just Because">
-<span class="option-text"><strong>Just Because</strong></span>
-</label>
-
-</div>
-
-<div class="field-full">
-
-<label>
-Please tell us more
-</label>
-
-<textarea
-name="reasonStory"
-placeholder="Tell us what inspired you to create this Monarch Tale..."
-></textarea>
-
-</div>
-
-</div>
-<div class="form-section">
-
-<h3 class="form-section-title">
-3. About The Child
-</h3>
-              <p class="form-section-text">
-                These details help us confirm your child as the true hero of the story and keep everything accurate and personal.
-              </p>
-
+              <span class="section-kicker">Part 1 · The beginning</span>
+              <h3 class="form-section-title">Your family and this keepsake</h3>
+              <p class="form-section-text">First, help us connect these memories to the right family and understand why this book matters now.</p>
               <div class="grid-2">
-                <div class="field-group">
-                  <label for="storyChildName">Child’s Name</label>
-                  <input type="text" id="storyChildName" name="storyChildName" placeholder="Child's name" required />
-                </div>
-
-                <div class="field-group">
-                  <label for="storyChildAge">Child’s Age</label>
-                  <input
-type="number"
-id="storyChildAge"
-name="storyChildAge"
-placeholder="e.g. 5"
-min="0"
-max="18"
-required
-/>
-                </div>
+                <div class="field-group"><label for="storyFullName">Your full name</label><input type="text" id="storyFullName" name="fullName" autocomplete="name" required></div>
+                <div class="field-group"><label for="storyEmail">Email address</label><input type="email" id="storyEmail" name="email" autocomplete="email" required></div>
+                <div class="field-group"><label for="packagePurchased">Edition</label><input type="text" name="packagePurchased" id="packagePurchased" readonly placeholder="Founding Families Legacy Edition"></div>
+                <div class="field-group"><label for="familyLocation">Where does your family call home?</label><input type="text" id="familyLocation" name="familyLocation" placeholder="City and country"></div>
               </div>
-
-           <div class="grid-2">
-
-  <div class="field-group">
-    <label>Date of Birth (Optional)</label>
-    <input type="date" name="childDob">
-  </div>
-
-  <div class="field-group">
-    <label>Country</label>
-    <input type="text" name="childCountry">
-  </div>
-
-</div>
-
               <div class="field-full">
-                <label>Which best describes your child? (Choose 2–3)</label>
-                <p class="helper">
-e.g. curious, shy, playful, thoughtful</p>
-                <div class="checkbox-grid">
-                  <label class="checkbox-option">
-                    <input type="checkbox" name="storyTraits[]" value="Kind & gentle">
-                    <span class="option-text"><strong>Kind & gentle</strong></span>
-                  </label>
-
-                  <label class="checkbox-option">
-                    <input type="checkbox" name="storyTraits[]" value="Energetic & playful">
-                    <span class="option-text"><strong>Energetic & playful</strong></span>
-                  </label>
-
-                  <label class="checkbox-option">
-                    <input type="checkbox" name="storyTraits[]" value="Curious & adventurous">
-                    <span class="option-text"><strong>Curious & adventurous</strong></span>
-                  </label>
-
-                  <label class="checkbox-option">
-                    <input type="checkbox" name="storyTraits[]" value="Quiet & thoughtful">
-                    <span class="option-text"><strong>Quiet & thoughtful</strong></span>
-                  </label>
-
-                  <label class="checkbox-option">
-                    <input type="checkbox" name="storyTraits[]" value="Bold & confident">
-                    <span class="option-text"><strong>Bold & confident</strong></span>
-                  </label>
-
-                  <label class="checkbox-option">
-                    <input type="checkbox" name="storyTraits[]" value="Funny & expressive">
-                    <span class="option-text"><strong>Funny & expressive</strong></span>
-                  </label>
-                </div>
-                <p class="helper">Choose the traits that feel closest. You do not need to choose everything.</p>
-                <div class="field-full">
-
-<label>
-Does your child have a favourite animal?
-</label>
-
-<input
-type="text"
-name="favoriteAnimal"
-placeholder="Lion, rabbit, dolphin, dog..."
->
-
-</div>
-
-<div class="field-full">
-
-<label>
-Does your child have a favourite activity?
-</label>
-
-<input
-type="text"
-name="favoriteActivity"
-placeholder="Football, drawing, dancing, reading..."
->
-
-</div>
+                <label for="reasonStory">What made you say, “I want this story for my family”?</label>
+                <textarea id="reasonStory" name="reasonStory" placeholder="A birthday, a changing season, a family keepsake—or simply the feeling that these moments deserve to be remembered..." required></textarea>
+              </div>
+              <div class="field-full">
+                <label for="specialOccasion">Is there a date, occasion, or deadline connected to the book? <span class="field-note">Optional</span></label>
+                <input type="text" id="specialOccasion" name="specialOccasion" placeholder="For example: 6th birthday on 14 October, Christmas, or no fixed date">
               </div>
             </div>
 
-            <div class="form-section">
-
-<h3 class="form-section-title">
-4. Family & Important People
-</h3>
-
-<p class="form-section-text">
-Tell us about the people who make up your child's world.
-</p>
-
-<div class="field-full">
-
-<label>
-Who are the most important people in your child's life?
-</label>
-
-<textarea
-name="importantPeople"
-placeholder="Mum, Dad, Grandma Sarah, Uncle Ben, older sister Emma..."
-></textarea>
-
-</div>
-
-<div class="grid-2">
-
-<div class="field-group">
-<label>Special Person's Name</label>
-<input type="text" name="specialPersonName">
-</div>
-
-<div class="field-group">
-<label>Relationship</label>
-<input type="text" name="specialPersonRelationship" placeholder="Grandma, Dad, Guardian...">
-</div>
-
-</div>
-
-<div class="field-full">
-
-<label>
-What does your child call this person?
-</label>
-
-<input
-type="text"
-name="specialPersonNickname"
-placeholder="Nana, Pop, Daddy, Mumma..."
->
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: Do they share any special traditions together?</label>
-
-<textarea
-name="specialTraditions"
-placeholder="Bedtime stories, Sunday pancakes, prayers, fishing trips..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: What is something this person often says to your child?</label>
-
-<textarea
-name="specialPhraseFromLovedOne"
-placeholder="I love you to the moon and back..."
-></textarea>
-
-</div>
-
-</div>
-
-<div class="form-section">
-
-<h3 class="form-section-title">
-5. Favourite Memories
-</h3>
-
-<p class="form-section-text">
-The moments families never want to forget often become the most meaningful parts of a Monarch Tale.
-</p>
-
-<div class="field-full">
-
-<label>
-What is one memory with your child that you never want to forget?
-</label>
-
-<textarea
-name="favoriteMemory"
-placeholder="Tell us about a moment that means everything to you..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>
-What is something your child has done that made everyone laugh?
-</label>
-
-<textarea
-name="funnyMemory"
-placeholder="Funny stories are welcome..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: What moment perfectly captures who your child is?</label>
-
-<textarea
-name="whoTheyAreMoment"
-placeholder="A moment that shows their personality..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: If you could preserve one stage of your child's life forever, what would it be and why?</label>
-
-<textarea
-name="preserveStage"
-placeholder="Toddler years, first year at school, current age..."
-></textarea>
-
-</div>
-
-</div>
-
-<div class="form-section">
-
-<h3 class="form-section-title">
-6. Emotional Heart of the Story
-</h3>
-
-<p class="form-section-text">
-This is often the most important part of the entire book. It helps us understand the message, hope, and feeling you want your child to carry long after the story ends.
-</p>
-
-<div class="field-full">
-
-<label>
-What truth do you want your child to grow up believing?
-</label>
-
-<textarea
-name="lifeTruth"
-placeholder="I am loved. I belong. I can be brave. I matter. I am enough..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: What kind of person do you hope they become?</label>
-
-<textarea
-name="futureHope"
-placeholder="Kind, courageous, curious, resilient, generous..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: Are there any fears, struggles, challenges, or life lessons you would like the story to gently address?</label>
-
-<textarea
-name="lifeChallenges"
-placeholder="Confidence, anxiety, making friends, believing in themselves, adapting to change..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: Twenty years from now, what do you hope your child remembers about this stage of life?</label>
-
-<textarea
-name="futureMemory"
-placeholder="What would you love them to remember about this season of childhood?"
-></textarea>
-
-</div>
-
-</div>
-
-            <div class="form-section">
-              <h3 class="form-section-title">7. Story Characters</h3>
-              <p class="form-section-text">
-                Choose who should appear or be felt inside the child’s world.
-              </p>
-
-              <div class="checkbox-grid">
-                <label class="checkbox-option">
-                  <input type="checkbox" name="storyCharacters[]" value="Mum">
-                  <span class="option-text"><strong>Mum</strong></span>
-                </label>
-
-                <label class="checkbox-option">
-                  <input type="checkbox" name="storyCharacters[]" value="Dad">
-                  <span class="option-text"><strong>Dad</strong></span>
-                </label>
-
-                <label class="checkbox-option">
-                  <input type="checkbox" name="storyCharacters[]" value="Grandma">
-                  <span class="option-text"><strong>Grandma</strong></span>
-                </label>
-
-                <label class="checkbox-option">
-                  <input type="checkbox" name="storyCharacters[]" value="Grandpa">
-                  <span class="option-text"><strong>Grandpa</strong></span>
-                </label>
-
-                <label class="checkbox-option">
-                  <input type="checkbox" name="storyCharacters[]" value="Sibling">
-                  <span class="option-text"><strong>Sibling</strong></span>
-                </label>
-
-                <label class="checkbox-option">
-                  <input type="checkbox" name="storyCharacters[]" value="Other">
-                  <span class="option-text"><strong>Other</strong></span>
-                </label>
+            <div class="form-section" id="childrenSection">
+              <span class="section-kicker">Part 2 · Meet the child</span>
+              <h3 class="form-section-title">Who are we remembering?</h3>
+              <p class="form-section-text">Add every child who is central to this story. Twins and siblings each receive their own space—because being in the same family never means being the same person.</p>
+              <p class="memory-prompt">Picture them walking into the room. What would we notice first—their words, their movement, their eyes, their laugh, or the way everyone responds to them?</p>
+
+              <div id="childrenContainer">
+                <div class="child-card" data-child-index="1">
+                  <div class="child-card-header"><h4 class="child-card-title">Child 1</h4></div>
+                  <div class="grid-2">
+                    <div class="field-group"><label for="storyChildName">Full name</label><input type="text" id="storyChildName" name="child_1_name" required></div>
+                    <div class="field-group"><label for="child1KnownAs">What do you call them most?</label><input type="text" id="child1KnownAs" name="child_1_known_as" placeholder="Nickname or everyday name"></div>
+                    <div class="field-group"><label for="storyChildAge">Age</label><input type="text" id="storyChildAge" name="child_1_age" placeholder="For example: 1, 5, or 8 months" required></div>
+                    <div class="field-group"><label for="child1Dob">Date of birth <span class="field-note">Optional</span></label><input type="date" id="child1Dob" name="child_1_dob"></div>
+                  </div>
+                  <div class="field-full"><label for="child1Pronunciation">How should we pronounce their name—and how do they say their own name?</label><input type="text" id="child1Pronunciation" name="child_1_name_pronunciation" placeholder="Spell it as it sounds; include their own version if they have one"></div>
+                  <div class="field-full"><label for="child1Personality">Describe them as if you were introducing them to someone who truly wanted to know them.</label><textarea id="child1Personality" name="child_1_personality" placeholder="What are they like at home, around new people, when excited, or when quietly themselves?" required></textarea></div>
+                  <div class="field-full"><label for="child1Voice">What do they say in their own special way?</label><textarea id="child1Voice" name="child_1_voice" placeholder="Exact words, funny pronunciations, sounds, questions, greetings, repeated phrases, or gestures if they are not speaking yet"></textarea></div>
+                  <div class="field-full"><label for="child1Behaviours">What little habits or behaviours would you miss most if they stopped tomorrow?</label><textarea id="child1Behaviours" name="child_1_behaviours" placeholder="The run to the door, the three kisses, the serious thinking face, the way they ask to be carried..."></textarea></div>
+                  <div class="grid-2">
+                    <div class="field-group"><label for="child1Loves">What lights them up?</label><textarea id="child1Loves" name="child_1_loves" placeholder="People, songs, animals, foods, toys, activities, places"></textarea></div>
+                    <div class="field-group"><label for="child1Comfort">What helps them feel safe, calm, or comforted?</label><textarea id="child1Comfort" name="child_1_comfort" placeholder="A person, hug, routine, object, quiet room, prayer, song"></textarea></div>
+                  </div>
+                  <div class="field-full"><label for="child1Sensitive">What tends to frustrate, worry, overwhelm, or upset them—and what response helps?</label><textarea id="child1Sensitive" name="child_1_sensitivities" placeholder="This helps us write with care, never shame their feelings, and show healthy support"></textarea></div>
+                  <div class="field-full"><label for="child1LoveLanguage">How do they show love or care for other people?</label><textarea id="child1LoveLanguage" name="child_1_shows_love" placeholder="Hugs, sharing, checking faces, making jokes, helping, staying close..."></textarea></div>
+                </div>
               </div>
-
-              <div class="field-full">
-                <label for="characterRoleDescription">Optional: describe their role in the child’s life</label>
-                <textarea id="characterRoleDescription" name="characterRoleDescription" placeholder="A few words about their love, presence, support, or importance..."></textarea>
-              </div>
+              <button type="button" class="add-child-button" id="addChildButton">+ Add a sibling or twin</button>
+              <p class="comfort-note">If the book centres on one child, simply continue. Supporting siblings can still be included in the family section.</p>
             </div>
 
             <div class="form-section">
-              <h3 class="form-section-title">8. Personal Touches</h3>
-              <p class="form-section-text">
-                These small details can make the story feel unforgettable.
-              </p>
-
-              <div class="field-full">
-                <label for="specialPhrase">Optional: a sweet phrase, lesson, blessing, or line you would love included</label>
-                <textarea id="specialPhrase" name="specialPhrase" placeholder="A short phrase, blessing, or message you want the child to carry..."></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="specialOccasion">Optional: is this for a birthday, milestone, bedtime keepsake, or special season?</label>
-                <textarea id="specialOccasion" name="specialOccasion" placeholder="Birthday, bedtime keepsake, encouragement, milestone, gift, etc."></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="dedicationPage">Optional: dedication page or opening message</label>
-                <textarea id="dedicationPage" name="dedicationPage" placeholder="For Knox — who teaches us that love never leaves..."></textarea>
-              </div>
+              <span class="section-kicker">Part 3 · Their people</span>
+              <h3 class="form-section-title">The family around them</h3>
+              <p class="form-section-text">A child’s story is also shaped by the people who show up, the names they are called, and the love repeated in ordinary ways.</p>
+              <div class="field-full"><label for="importantPeople">Who belongs in this child’s world?</label><textarea id="importantPeople" name="importantPeople" placeholder="List names, relationships, what the child calls each person, and one sentence about their bond" required></textarea></div>
+              <div class="field-full"><label for="siblingBond">If siblings or twins are involved, what makes their relationship special—and how are they different?</label><textarea id="siblingBond" name="siblingBond" placeholder="What do they do together? How do they comfort, challenge, copy, protect, or make each other laugh?"></textarea></div>
+              <div class="field-full"><label for="familyLove">How does your family usually show love?</label><textarea id="familyLove" name="familyLove" placeholder="Words, food, teasing, prayer, checking in, hugs, practical help, time together..."></textarea></div>
+              <div class="field-full"><label for="specialPhraseFromLovedOne">What words, nicknames, blessings, or expressions are often heard in your home?</label><textarea id="specialPhraseFromLovedOne" name="specialPhraseFromLovedOne" placeholder="Please write them exactly as your family says them. Include another language and its meaning if helpful."></textarea></div>
+              <div class="field-full"><label for="familySensitivity">Is there anything about your family structure or relationships we should represent with particular care?</label><textarea id="familySensitivity" name="familySensitivity" placeholder="For example: blended family, adoption, separation, loss, chosen family, a loved one who lives far away, or a relationship not to include"></textarea></div>
             </div>
 
             <div class="form-section">
-              <h3 class="form-section-title">9. Story Preferences</h3>
-              <p class="form-section-text">
-                These choices guide the feel of the final book.
-              </p>
-
+              <span class="section-kicker">Part 4 · Ordinary magic</span>
+              <h3 class="form-section-title">The moments time might otherwise take</h3>
+              <p class="memory-prompt">Think beyond milestones. Often it is the untied shoelace, the bedtime request, the car song, or the way they wait at the window that becomes priceless later.</p>
+              <div class="field-full"><label for="ordinaryRoutine">Walk us through one ordinary routine you would love to experience again years from now.</label><textarea id="ordinaryRoutine" name="ordinaryRoutine" placeholder="Morning, school run, bath time, cooking, church, bedtime, visiting grandparents—include what everyone does and says" required></textarea></div>
+              <div class="field-full"><label for="favoriteMemory">Tell us one memory you never want your family to forget.</label><textarea id="favoriteMemory" name="favoriteMemory" placeholder="Where were you? Who was there? What happened? What tiny detail brings it back?" required></textarea></div>
+              <div class="field-full"><label for="funnyMemory">What moment still makes everyone laugh?</label><textarea id="funnyMemory" name="funnyMemory" placeholder="Write it the way your family retells it"></textarea></div>
+              <div class="field-full"><label for="whoTheyAreMoment">When did you look at them and think, “That is so them”?</label><textarea id="whoTheyAreMoment" name="whoTheyAreMoment" placeholder="A moment that revealed their kindness, courage, humour, curiosity, sensitivity, determination, or wonderfully stubborn side"></textarea></div>
               <div class="grid-2">
-                <div class="field-group">
-  <label for="storyDepth">Story depth</label>
-  <select id="storyDepth" name="storyDepth">
-    <option value="Balanced story journey">Balanced story journey</option>
-    <option value="Short & gentle">Short & gentle</option>
-    <option value="Deeper immersive experience">Deeper immersive experience</option>
-  </select>
-</div>
-
-                <div class="field-group">
-                  <label for="illustrationStyle">Illustration style</label>
-                  <select id="illustrationStyle" name="illustrationStyle">
-                    <option value="Soft watercolor">Soft watercolor</option>
-                    <option value="Playful cartoon">Playful cartoon</option>
-                    <option value="Bold comic-style">Bold comic-style</option>
-                    <option value="Premium storybook illustration">Premium storybook illustration</option>
-                  </select>
-                </div>
-
-                <div class="field-group">
-
-<label>
-Story Mood
-</label>
-
-<select name="storyMood">
-<option>Warm & Heartfelt</option>
-<option>Fun & Playful</option>
-<option>Adventure & Discovery</option>
-<option>Calm Bedtime Story</option>
-<option>Inspirational & Encouraging</option>
-</select>
-
-</div>
+                <div class="field-group"><label for="memoryPlace">What place should this book help preserve?</label><textarea id="memoryPlace" name="memoryPlace" placeholder="Home, Grandma’s kitchen, a street, school, park, church, holiday place"></textarea></div>
+                <div class="field-group"><label for="memoryObject">What object from this season might they outgrow?</label><textarea id="memoryObject" name="memoryObject" placeholder="A blanket, toy, cup, bicycle, favourite outfit, book, lunchbox"></textarea></div>
               </div>
+              <div class="field-full"><label for="sensoryMemory">What did this season sound, smell, taste, or feel like?</label><textarea id="sensoryMemory" name="sensoryMemory" placeholder="A song in the car, Sunday rice, rain on the roof, hair cream, warm pyjamas, noisy cousins..."></textarea></div>
             </div>
-<div class="form-section">
 
-<h3 class="form-section-title">
-10. Story Boundaries & Special Notes
-</h3>
+            <div class="form-section">
+              <span class="section-kicker">Part 5 · Heart and growth</span>
+              <h3 class="form-section-title">What should the story quietly give them?</h3>
+              <p class="form-section-text">We do not lecture children or turn struggles into labels. We use warmth, example, and age-appropriate moments to strengthen the beliefs and skills you want them to carry.</p>
+              <div class="field-full"><label for="lifeTruth">What truth do you want them to grow up knowing—even on a difficult day?</label><textarea id="lifeTruth" name="lifeTruth" placeholder="I am loved. My voice matters. I can try again. Kindness and boundaries can live together. God is with me..." required></textarea></div>
+              <div class="field-full"><label for="familyValues">Which qualities or values matter most in your family, and what do they look like in everyday life?</label><textarea id="familyValues" name="familyValues" placeholder="For example: honesty means telling the truth safely; kindness includes caring for yourself; faith means trusting and giving thanks"></textarea></div>
+              <div class="field-full"><label for="lifeChallenges">Is there a challenge, fear, behaviour, or changing season the story may gently support?</label><textarea id="lifeChallenges" name="lifeChallenges" placeholder="Tell us what happens, how the child may feel, and what healthy response you hope they learn. You may leave this blank."></textarea></div>
+              <div class="field-full"><label for="protectStrength">Is there a part of their personality you never want the world to make smaller?</label><textarea id="protectStrength" name="protectStrength" placeholder="Their sensitivity, curiosity, loud joy, independence, imagination, tenderness, confidence..."></textarea></div>
+              <div class="field-full"><label for="futureHope">Who do you hope they become—not by achievement, but in character?</label><textarea id="futureHope" name="futureHope" placeholder="How do you hope they treat themselves, other people, their faith, and the life they build?"></textarea></div>
+            </div>
 
-<p class="form-section-text">
-Help us understand anything important we should know while creating your Monarch Tale.
-</p>
+            <div class="form-section">
+              <span class="section-kicker">Part 6 · Voice and belonging</span>
+              <h3 class="form-section-title">Culture, faith, and the language of home</h3>
+              <p class="form-section-text">The story should feel rooted in your family—not like a generic story with a name added.</p>
+              <div class="grid-2">
+                <div class="field-group"><label for="faithThemes">Faith in the story</label><select id="faithThemes" name="faithThemes"><option>No preference</option><option>Yes — subtle faith themes</option><option>Yes — clearly Christian</option><option>Yes — another faith or spiritual tradition</option><option>No faith themes</option></select></div>
+                <div class="field-group"><label for="storyMood">The feeling you want at bedtime</label><select id="storyMood" name="storyMood"><option>Warm, safe, and heartfelt</option><option>Calm and comforting</option><option>Playful and joyful</option><option>Adventurous but emotionally grounded</option><option>Encouraging and hopeful</option></select></div>
+              </div>
+              <div class="field-full"><label for="faithDetails">Are there prayers, scriptures, songs, beliefs, or traditions that genuinely belong in your family life?</label><textarea id="faithDetails" name="faithDetails" placeholder="Tell us how faith is lived at home so it feels natural, never pasted on"></textarea></div>
+              <div class="field-full"><label for="cultureLanguage">What cultural, regional, or language details would make your family say, “Yes, that feels like home”?</label><textarea id="cultureLanguage" name="cultureLanguage" placeholder="Greetings, food, clothing, music, family titles, celebrations, weather, neighbourhood details, words in another language and their meanings"></textarea></div>
+              <div class="field-full"><label for="storyReality">How grounded or imaginative should the story feel?</label><select id="storyReality" name="storyReality"><option>Mostly real life, with a little wonder</option><option>Completely grounded in real family life</option><option>Real memories shaped into a gentle adventure</option><option>More imaginative, while keeping the child emotionally true</option></select></div>
+            </div>
 
-<div class="field-full">
+            <div class="form-section">
+              <span class="section-kicker">Part 7 · The book they will hold</span>
+              <h3 class="form-section-title">Personal touches and visual truth</h3>
+              <p class="form-section-text">Monarch Tales controls the premium visual style. Your details help us make the people, places, and meaningful objects feel true.</p>
+              <div class="field-full"><label for="appearanceDetails">What appearance details must we get right for each person shown?</label><textarea id="appearanceDetails" name="appearanceDetails" placeholder="Hair and skin tone, glasses, freckles, height differences, mobility aids, favourite clothing, jewellery, or distinctive features"></textarea></div>
+              <div class="field-full"><label for="visualMustHaves">Are there meaningful objects, colours, places, or visual details you hope to see?</label><textarea id="visualMustHaves" name="visualMustHaves" placeholder="A red bicycle, a particular blanket, family home, city skyline, garden, toy, cultural clothing..."></textarea></div>
+              <div class="field-full"><label for="dedicationPage">What would you like the dedication to say?</label><textarea id="dedicationPage" name="dedicationPage" placeholder="Write it in your own words, or tell us the feeling and we can help shape it"></textarea></div>
+              <p class="comfort-note">We will request clear reference photographs through the approved private process. Please do not send sensitive documents.</p>
+            </div>
 
-<label>
-Is there anything you would prefer us not include?
-</label>
+            <div class="form-section">
+              <span class="section-kicker">Part 8 · Care and boundaries</span>
+              <h3 class="form-section-title">What should we handle gently—or leave out?</h3>
+              <p class="form-section-text">You are in control of what belongs in your family’s book. Clear boundaries help us create safely and respectfully.</p>
+              <div class="field-full"><label for="avoidTopics">What should never appear or be implied?</label><textarea id="avoidTopics" name="avoidTopics" placeholder="People, relationships, fears, themes, places, words, family roles, or situations to avoid"></textarea></div>
+              <div class="field-full"><label for="hardTruthHandling">If you shared something difficult, how would you like us to hold it?</label><select id="hardTruthHandling" name="hardTruthHandling"><option>Use only the positive truth or lesson—do not depict the difficult event</option><option>Address it through a gentle, age-appropriate everyday moment</option><option>Keep it only as background guidance for the writer</option><option>Not applicable</option></select></div>
+              <div class="field-full"><label for="wordsToAvoid">Are there labels, expressions, moral messages, or descriptions you do not use with your child?</label><textarea id="wordsToAvoid" name="wordsToAvoid" placeholder="For example: naughty, shy, big boys don’t cry, perfect, broken family..."></textarea></div>
+            </div>
 
-<textarea
-name="avoidTopics"
-placeholder="Characters, themes, fears, situations, topics, etc."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>
-Are there any family circumstances we should be sensitive to?
-</label>
-
-<textarea
-name="familySensitivity"
-placeholder="Adoption, separation, loss, blended family, special circumstances..."
-></textarea>
-
-</div>
-
-<div class="field-full">
-
-<label>
-Would you like faith or Christian themes included?
-</label>
-
-<select name="faithThemes">
-<option>No preference</option>
-<option>Yes - subtle faith themes</option>
-<option>Yes - clearly Christian</option>
-<option>No faith themes</option>
-</select>
-
-</div>
-
-<div class="field-full">
-
-<label>Optional: Anything else you'd like us to know?</label>
-
-<textarea
-name="additionalNotes"
-placeholder="Any final notes, requests, ideas, memories, or details..."
-></textarea>
-
-</div>
-
-</div>
-            <div class="submit-box">
+            <div class="form-section">
+              <span class="section-kicker">Part 9 · A letter across time</span>
+              <h3 class="form-section-title">One last pause</h3>
+              <p class="memory-prompt">Imagine the child opening this book twenty years from now. They look up and ask, “What were you hoping I would always remember?”</p>
+              <div class="field-full"><label for="futureMemory">What would you tell them?</label><textarea id="futureMemory" name="futureMemory" placeholder="Speak directly from the heart. This helps us understand the lasting emotional promise of the book." required></textarea></div>
+              <div class="field-full"><label for="additionalNotes">Is there anything we did not ask that makes this child or family who they are?</label><textarea id="additionalNotes" name="additionalNotes" placeholder="A detail, correction, private context, cherished person, running joke, dream, or memory"></textarea></div>
+              <div class="field-full"><label class="checkbox-option"><input type="checkbox" name="detailsAccuracyConfirmed" value="Yes" required><span class="option-text"><strong>I have checked names, spellings, relationships, and sensitive details.</strong><span>We will still review the story together before it is finalised.</span></span></label></div>
+            </div>
+            <div class="submit-box" id="submitBox" hidden>
   <p>
-    You’ve given enough. From here, we shape something meaningful, personal, and worth keeping.
+    Thank you for slowing down and remembering. From here, we turn these details into a story that could belong only to your family.
     <br><br>
     <span class="helper">You’ll review your story before it’s finalized.</span>
   </p>
@@ -1256,31 +900,31 @@ placeholder="Any final notes, requests, ideas, memories, or details..."
           <div class="side-block">
             <h3>Why this form matters</h3>
             <p>
-              This is where the story becomes personal. The details you share help shape tone, emotion, relationships, and meaning.
+              A photograph remembers a face. These answers help us remember the voice, habits, relationships, values, and feelings around it.
             </p>
           </div>
 
           <div class="side-block">
             <h3>What this step captures</h3>
             <ul>
-              <li>The child’s personality direction</li>
-              <li>The emotional feeling you want the story to leave</li>
-              <li>The people who matter in the story world</li>
-              <li>Special touches that make it unforgettable</li>
+              <li>How each child speaks, moves, loves, and feels safe</li>
+              <li>The family routines and tiny behaviours time can erase</li>
+              <li>The moral, emotional, cultural, and faith foundations</li>
+              <li>The people, places, and objects the illustrations should preserve</li>
             </ul>
           </div>
 
           <div class="side-block">
-            <h3>You're Almost There</h3>
+            <h3>Your place is reserved</h3>
             <p>
-             Your payment is complete. These details help us create the full Monarch Tale.
+             This private story discovery begins after acceptance. Your answers guide planning; they do not replace your story review and character approval stages.
             </p>
           </div>
 
           <div class="side-block">
             <h3>How to answer well</h3>
             <p>
-              Choose what feels most true. You do not need long explanations for every question—the structure is designed to guide you.
+              Use exact words when you remember them. Describe what happened rather than trying to explain what it means. Skip optional questions that do not fit your family.
             </p>
           </div>
 
@@ -1327,7 +971,8 @@ const storyChildAge = document.getElementById("storyChildAge");
 const planMap = {
   seed: "Selected package: The Seed",
   becoming: "Selected package: The Becoming",
-  legacy: "Selected package: The Legacy"
+  legacy: "Selected edition: Founding Families Legacy Edition",
+  founding: "Selected edition: Founding Families Legacy Edition"
 };
 const packagePurchased =
 document.getElementById("packagePurchased");
@@ -1341,7 +986,15 @@ if (plan === "becoming") {
 }
 
 if (plan === "legacy") {
-  packagePurchased.value = "The Legacy";
+  packagePurchased.value = "Founding Families Legacy Edition";
+}
+
+if (plan === "founding") {
+  packagePurchased.value = "Founding Families Legacy Edition";
+}
+
+if (!packagePurchased.value) {
+  packagePurchased.value = "Founding Families Legacy Edition";
 }
     if (plan && planMap[plan]) {
       planBox.style.display = "block";
@@ -1357,6 +1010,55 @@ if (age) {
 }
 const storyForm = document.getElementById("storyForm");
 
+const childrenContainer = document.getElementById("childrenContainer");
+const addChildButton = document.getElementById("addChildButton");
+let childCount = 1;
+
+function childCardTemplate(index) {
+  return `
+    <div class="child-card" data-child-index="${index}">
+      <div class="child-card-header">
+        <h4 class="child-card-title">Child ${index}</h4>
+        <button type="button" class="remove-child" aria-label="Remove child ${index}">Remove</button>
+      </div>
+      <div class="grid-2">
+        <div class="field-group"><label for="child${index}Name">Full name</label><input type="text" id="child${index}Name" name="child_${index}_name" required></div>
+        <div class="field-group"><label for="child${index}KnownAs">What do you call them most?</label><input type="text" id="child${index}KnownAs" name="child_${index}_known_as" placeholder="Nickname or everyday name"></div>
+        <div class="field-group"><label for="child${index}Age">Age</label><input type="text" id="child${index}Age" name="child_${index}_age" placeholder="For example: 1, 5, or 8 months" required></div>
+        <div class="field-group"><label for="child${index}Dob">Date of birth <span class="field-note">Optional</span></label><input type="date" id="child${index}Dob" name="child_${index}_dob"></div>
+      </div>
+      <div class="field-full"><label for="child${index}Pronunciation">How should we pronounce their name—and how do they say their own name?</label><input type="text" id="child${index}Pronunciation" name="child_${index}_name_pronunciation" placeholder="Spell it as it sounds; include their own version if they have one"></div>
+      <div class="field-full"><label for="child${index}Personality">Describe them as if you were introducing them to someone who truly wanted to know them.</label><textarea id="child${index}Personality" name="child_${index}_personality" placeholder="What are they like at home, around new people, when excited, or when quietly themselves?" required></textarea></div>
+      <div class="field-full"><label for="child${index}Voice">What do they say in their own special way?</label><textarea id="child${index}Voice" name="child_${index}_voice" placeholder="Exact words, funny pronunciations, sounds, questions, greetings, repeated phrases, or gestures if they are not speaking yet"></textarea></div>
+      <div class="field-full"><label for="child${index}Behaviours">What little habits or behaviours would you miss most if they stopped tomorrow?</label><textarea id="child${index}Behaviours" name="child_${index}_behaviours" placeholder="The run to the door, the three kisses, the serious thinking face, the way they ask to be carried..."></textarea></div>
+      <div class="grid-2">
+        <div class="field-group"><label for="child${index}Loves">What lights them up?</label><textarea id="child${index}Loves" name="child_${index}_loves" placeholder="People, songs, animals, foods, toys, activities, places"></textarea></div>
+        <div class="field-group"><label for="child${index}Comfort">What helps them feel safe, calm, or comforted?</label><textarea id="child${index}Comfort" name="child_${index}_comfort" placeholder="A person, hug, routine, object, quiet room, prayer, song"></textarea></div>
+      </div>
+      <div class="field-full"><label for="child${index}Sensitive">What tends to frustrate, worry, overwhelm, or upset them—and what response helps?</label><textarea id="child${index}Sensitive" name="child_${index}_sensitivities" placeholder="This helps us write with care, never shame their feelings, and show healthy support"></textarea></div>
+      <div class="field-full"><label for="child${index}LoveLanguage">How do they show love or care for other people?</label><textarea id="child${index}LoveLanguage" name="child_${index}_shows_love" placeholder="Hugs, sharing, checking faces, making jokes, helping, staying close..."></textarea></div>
+    </div>`;
+}
+
+addChildButton.addEventListener("click", () => {
+  if (childrenContainer.querySelectorAll(".child-card").length >= 5) {
+    addChildButton.textContent = "For larger families, tell us in the final notes";
+    addChildButton.disabled = true;
+    return;
+  }
+  childCount += 1;
+  childrenContainer.insertAdjacentHTML("beforeend", childCardTemplate(childCount));
+  childrenContainer.lastElementChild.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+childrenContainer.addEventListener("click", (event) => {
+  const removeButton = event.target.closest(".remove-child");
+  if (!removeButton) return;
+  removeButton.closest(".child-card").remove();
+  addChildButton.disabled = false;
+  addChildButton.textContent = "+ Add a sibling or twin";
+});
+
 // Connect every visible form control to its nearby written label for assistive technology.
 storyForm.querySelectorAll('input:not([type="hidden"]), select, textarea').forEach((control, index) => {
   if (!control.id) control.id = `storyField${index + 1}`;
@@ -1369,21 +1071,65 @@ storyForm.querySelectorAll('input:not([type="hidden"]), select, textarea').forEa
 const formSections = Array.from(storyForm.querySelectorAll(".form-section"));
 const formProgressText = document.getElementById("formProgressText");
 const formProgressBar = document.getElementById("formProgressBar");
+const submitBox = document.getElementById("submitBox");
+let currentPart = 0;
 
-if ("IntersectionObserver" in window && formSections.length) {
-  const progressObserver = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visible) return;
-    const index = formSections.indexOf(visible.target) + 1;
-    formProgressText.textContent = `Step ${index} of ${formSections.length}`;
-    formProgressBar.style.width = `${(index / formSections.length) * 100}%`;
-  }, { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.5] });
-
-  formSections.forEach(section => progressObserver.observe(section));
+function sectionIsComplete(section) {
+  const requiredFields = Array.from(section.querySelectorAll("[required]"));
+  for (const field of requiredFields) {
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      field.focus({ preventScroll: true });
+      field.scrollIntoView({ behavior: "smooth", block: "center" });
+      return false;
+    }
+  }
+  return true;
 }
+
+function showPart(index, shouldScroll = true) {
+  currentPart = Math.max(0, Math.min(index, formSections.length - 1));
+  formSections.forEach((section, sectionIndex) => {
+    section.hidden = sectionIndex !== currentPart;
+  });
+  submitBox.hidden = currentPart !== formSections.length - 1;
+  formProgressText.textContent = `Part ${currentPart + 1} of ${formSections.length}`;
+  formProgressBar.style.width = `${((currentPart + 1) / formSections.length) * 100}%`;
+  if (shouldScroll) {
+    document.querySelector(".form-progress").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+formSections.forEach((section, index) => {
+  const actions = document.createElement("div");
+  actions.className = "step-actions";
+
+  if (index > 0) {
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "btn step-back";
+    back.textContent = "Back";
+    back.addEventListener("click", () => showPart(index - 1));
+    actions.appendChild(back);
+  } else {
+    actions.appendChild(document.createElement("span"));
+  }
+
+  if (index < formSections.length - 1) {
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "btn btn-primary";
+    next.textContent = index === 0 ? "Begin remembering" : "Continue";
+    next.addEventListener("click", () => {
+      if (sectionIsComplete(section)) showPart(index + 1);
+    });
+    actions.appendChild(next);
+  }
+
+  section.appendChild(actions);
+});
+
+showPart(0, false);
 
 storyForm.addEventListener("submit", async function (event) {
   event.preventDefault();
