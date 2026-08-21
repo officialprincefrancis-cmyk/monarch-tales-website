@@ -11,7 +11,7 @@ Current prices:
 | Region | Total | 50% deposit | Final balance |
 |---|---:|---:|---:|
 | United States | US$149.00 | US$74.50 | US$74.50 |
-| Australia | A$225.00 | A$112.50 | A$112.50 |
+| Australia | A$209.00 | A$104.50 | A$104.50 |
 | Canada | C$215.00 | C$107.50 | C$107.50 |
 | United Kingdom | £119.00 | £59.50 | £59.50 |
 
@@ -139,4 +139,3 @@ Please also confirm that the delivery address below is still correct:
 Warmly,
 
 Prince
-
