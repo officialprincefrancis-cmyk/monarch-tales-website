@@ -19,11 +19,18 @@
   }
   function metaLead() {
     try {
-      if (advertisingConsent && typeof window.fbq === "function") window.fbq("track", "Lead");
+      if (!advertisingConsent || navigator.globalPrivacyControl || navigator.doNotTrack === "1") return;
+      if (!/\/application-received(?:\.html)?\/?$/.test(location.pathname)) return;
+      if (sessionStorage.getItem("monarchMetaLeadPending") !== "true") return;
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Lead");
+        sessionStorage.removeItem("monarchMetaLeadPending");
+      }
     } catch (_) { /* Optional measurement must never block an application. */ }
   }
   if (funnelPage && !navigator.globalPrivacyControl && navigator.doNotTrack !== "1") {
     startMetaTracking();
+    metaLead();
     let savedChoice = null;
     try { savedChoice = localStorage.getItem("monarchAdvertisingConsent"); } catch (_) {}
     if (!savedChoice) {
@@ -123,7 +130,8 @@
           headers: { Accept: "application/json" }
         });
         if (!response.ok) throw new Error("Submission failed");
-        metaLead();
+        // Send from the confirmation page, where navigation cannot cancel delivery.
+        try { sessionStorage.setItem("monarchMetaLeadPending", advertisingConsent ? "true" : "false"); } catch (_) {}
         sessionStorage.setItem("monarchApplicationComplete", "true");
         window.location.href = "application-received.html";
       } catch (error) {
