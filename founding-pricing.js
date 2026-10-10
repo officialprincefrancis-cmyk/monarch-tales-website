@@ -16,7 +16,7 @@ window.MONARCH_FOUNDING_PRICING = {
 
   function update(country) {
     if (!window.MONARCH_FOUNDING_PRICING[country]) country = "AU";
-    localStorage.setItem("monarchFoundingCountry", country);
+    try { localStorage.setItem("monarchFoundingCountry", country); } catch (_) {}
     selectors.forEach(function (selector) { selector.value = country; });
     document.querySelectorAll("[data-founding-price]").forEach(function (output) {
       output.textContent = formatPrice(country);
@@ -30,5 +30,9 @@ window.MONARCH_FOUNDING_PRICING = {
     selector.addEventListener("change", function () { update(selector.value); });
   });
 
-  update(localStorage.getItem("monarchFoundingCountry") || "AU");
+  // Explicit campaign links can select a supported country without geolocation.
+  const requestedCountry = new URLSearchParams(window.location.search).get("country");
+  let savedCountry;
+  try { savedCountry = localStorage.getItem("monarchFoundingCountry"); } catch (_) {}
+  update(window.MONARCH_FOUNDING_PRICING[requestedCountry] ? requestedCountry : savedCountry || "AU");
 })();
