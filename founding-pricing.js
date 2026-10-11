@@ -21,6 +21,11 @@ window.MONARCH_FOUNDING_PRICING = {
     document.querySelectorAll("[data-founding-price]").forEach(function (output) {
       output.textContent = formatPrice(country);
     });
+    document.querySelectorAll("[data-founding-half]").forEach(function (output) {
+      const item = window.MONARCH_FOUNDING_PRICING[country];
+      const prefix = { AU: "A$", US: "US$", CA: "C$", GB: "£" }[country];
+      output.textContent = prefix + (item.amount / 2).toFixed(2);
+    });
     document.querySelectorAll("[data-country-name]").forEach(function (output) {
       output.textContent = window.MONARCH_FOUNDING_PRICING[country].label;
     });
@@ -34,5 +39,16 @@ window.MONARCH_FOUNDING_PRICING = {
   const requestedCountry = new URLSearchParams(window.location.search).get("country");
   let savedCountry;
   try { savedCountry = localStorage.getItem("monarchFoundingCountry"); } catch (_) {}
-  update(window.MONARCH_FOUNDING_PRICING[requestedCountry] ? requestedCountry : savedCountry || "AU");
+  // A privacy-preserving estimate, not GPS/IP geolocation. Visitors can override it.
+  function estimateCountry() {
+    let zone = "";
+    try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (_) {}
+    if (zone.startsWith("Australia/")) return "AU";
+    if (["Europe/London", "Europe/Belfast", "GB", "GB-Eire"].includes(zone)) return "GB";
+    if (["America/Toronto", "America/Vancouver", "America/Edmonton", "America/Winnipeg", "America/Halifax", "America/St_Johns", "America/Regina", "America/Moncton", "America/Glace_Bay", "America/Goose_Bay", "America/Thunder_Bay", "America/Iqaluit", "America/Whitehorse", "America/Dawson", "America/Dawson_Creek", "America/Fort_Nelson", "America/Creston", "America/Rankin_Inlet", "America/Resolute", "America/Inuvik", "America/Yellowknife", "America/Rainy_River", "America/Atikokan"].includes(zone)) return "CA";
+    if (["America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles", "America/Phoenix", "America/Detroit", "America/Anchorage", "America/Juneau", "America/Sitka", "America/Nome", "America/Adak", "America/Metlakatla", "America/Yakutat", "Pacific/Honolulu"].includes(zone) || zone.startsWith("America/Indiana/") || zone.startsWith("America/Kentucky/") || zone.startsWith("America/North_Dakota/")) return "US";
+    return "AU";
+  }
+  const prices = window.MONARCH_FOUNDING_PRICING;
+  update(prices[requestedCountry] ? requestedCountry : prices[savedCountry] ? savedCountry : estimateCountry());
 })();

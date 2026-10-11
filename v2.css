@@ -255,6 +255,12 @@ p { margin: 0; }
   .announcement { font-size: .72rem; }
 }
 
+.founder-film { min-width: 0; margin: 0; }
+.founder-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 18px; background: #111; }
+.founder-transcript { margin-top: 18px; }
+.founder-transcript summary { cursor: pointer; }
+.founder-transcript .body-stack { margin-top: 16px; font-size: .9rem; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }

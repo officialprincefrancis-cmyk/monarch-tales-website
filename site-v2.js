@@ -1,4 +1,24 @@
 (function () {
+  const privacySignal = navigator.globalPrivacyControl || navigator.doNotTrack === "1";
+  let analyticsConsent = false;
+  try { analyticsConsent = localStorage.getItem("monarchAnalyticsConsent") === "yes"; } catch (_) {}
+  function startAnalytics() {
+    if (!analyticsConsent || privacySignal || window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", "G-GJHKH23NQR", { allow_google_signals: false, allow_ad_personalization_signals: false });
+    const script = document.createElement("script");
+    script.async = true; script.src = "https://www.googletagmanager.com/gtag/js?id=G-GJHKH23NQR";
+    document.head.appendChild(script);
+    try {
+      if (/\/application-received(?:\.html)?\/?$/.test(location.pathname) && sessionStorage.getItem("monarchApplicationComplete") === "true") {
+        window.gtag("event", "application_complete");
+        sessionStorage.removeItem("monarchApplicationComplete");
+      }
+    } catch (_) {}
+  }
+  startAnalytics();
   // Advertising tracking is opt-in and never reads application fields.
   const funnelPage = /\/(?:index|founding-families|apply|application-received)(?:\.html)?\/?$/.test(location.pathname) || location.pathname === "/";
   let advertisingConsent = false;
@@ -33,19 +53,30 @@
     metaLead();
     let savedChoice = null;
     try { savedChoice = localStorage.getItem("monarchAdvertisingConsent"); } catch (_) {}
-    if (!savedChoice) {
+    let savedAnalytics = null;
+    try { savedAnalytics = localStorage.getItem("monarchAnalyticsConsent"); } catch (_) {}
+    if (!savedChoice || !savedAnalytics) {
       const choice = document.createElement("section");
       choice.setAttribute("aria-label", "Optional advertising cookies");
       choice.style.cssText = "position:fixed;bottom:16px;left:16px;right:16px;max-width:560px;margin:auto;padding:18px;background:#fff;color:#172b24;border:1px solid #bbb;border-radius:12px;box-shadow:0 4px 24px #0002;z-index:10000;font:14px/1.5 sans-serif";
-      choice.innerHTML = '<p style="margin:0 0 12px">May we use optional Meta advertising cookies to measure page visits and completed applications? We do not send your form answers. You can apply without accepting. <a href="policies.html">Privacy information</a></p><button type="button" data-meta-accept>Accept advertising cookies</button> <button type="button" data-meta-decline>No thanks</button>';
+      choice.innerHTML = '<p style="margin:0 0 12px">Choose optional measurement independently. We do not send your form answers. <a href="policies.html">Privacy information</a></p><label><input type="checkbox" data-analytics-choice> Google Analytics website measurement</label><br><label><input type="checkbox" data-advertising-choice> Meta advertising measurement</label><br><button type="button" data-meta-accept>Save choices</button> <button type="button" data-meta-decline>Reject optional cookies</button>';
       function choose(value) {
         try { localStorage.setItem("monarchAdvertisingConsent", value); } catch (_) {}
         advertisingConsent = value === "yes";
         choice.remove();
         if (advertisingConsent) startMetaTracking();
       }
-      choice.querySelector("[data-meta-accept]").addEventListener("click", function () { choose("yes"); });
-      choice.querySelector("[data-meta-decline]").addEventListener("click", function () { choose("no"); });
+      choice.querySelector("[data-meta-accept]").addEventListener("click", function () {
+        analyticsConsent = choice.querySelector("[data-analytics-choice]").checked;
+        try { localStorage.setItem("monarchAnalyticsConsent", analyticsConsent ? "yes" : "no"); } catch (_) {}
+        startAnalytics();
+        choose(choice.querySelector("[data-advertising-choice]").checked ? "yes" : "no");
+      });
+      choice.querySelector("[data-meta-decline]").addEventListener("click", function () {
+        analyticsConsent = false;
+        try { localStorage.setItem("monarchAnalyticsConsent", "no"); } catch (_) {}
+        choose("no");
+      });
       document.body.appendChild(choice);
     }
   }
@@ -60,6 +91,16 @@
         privacy.querySelector("[data-meta-status]").textContent = "Advertising consent withdrawn. Future visits will not load Meta tracking.";
       });
       main.appendChild(privacy);
+      const analyticsInfo = document.createElement("section");
+      analyticsInfo.className = "narrow";
+      analyticsInfo.innerHTML = '<h2>Optional Google Analytics measurement</h2><p>Only with your separate permission, Google Analytics measures website visits and interactions, including successful applications. Google receives standard browser/network information and cookie identifiers; we do not send form answers or children\'s story information. Advertising personalisation and Google signals are disabled. You can use the website without agreeing.</p><p><a href="https://policies.google.com/privacy">Google privacy policy</a></p><button type="button" data-reset-analytics>Withdraw analytics consent</button><p data-analytics-status role="status"></p>';
+      analyticsInfo.querySelector("[data-reset-analytics]").addEventListener("click", function () {
+        analyticsConsent = false;
+        window["ga-disable-G-GJHKH23NQR"] = true;
+        try { localStorage.setItem("monarchAnalyticsConsent", "no"); } catch (_) {}
+        analyticsInfo.querySelector("[data-analytics-status]").textContent = "Analytics consent withdrawn. Analytics events are disabled and future visits will not load Google Analytics.";
+      });
+      main.appendChild(analyticsInfo);
     }
   }
   const toggle = document.querySelector("[data-nav-toggle]");
@@ -96,7 +137,7 @@
   }
 
   function track(name, parameters) {
-    if (typeof window.gtag === "function") window.gtag("event", name, parameters || {});
+    if (analyticsConsent && !privacySignal && typeof window.gtag === "function") window.gtag("event", name, parameters || {});
   }
 
   document.querySelectorAll("[data-track]").forEach(function (element) {
