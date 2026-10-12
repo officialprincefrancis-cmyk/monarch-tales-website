@@ -58,12 +58,13 @@
     if (!savedChoice || !savedAnalytics) {
       const choice = document.createElement("section");
       choice.setAttribute("aria-label", "Optional advertising cookies");
-      choice.style.cssText = "position:fixed;bottom:16px;left:16px;right:16px;max-width:560px;margin:auto;padding:18px;background:#fff;color:#172b24;border:1px solid #bbb;border-radius:12px;box-shadow:0 4px 24px #0002;z-index:10000;font:14px/1.5 sans-serif";
-      choice.innerHTML = '<p style="margin:0 0 12px">Choose optional measurement independently. We do not send your form answers. <a href="policies.html">Privacy information</a></p><label><input type="checkbox" data-analytics-choice> Google Analytics website measurement</label><br><label><input type="checkbox" data-advertising-choice> Meta advertising measurement</label><br><button type="button" data-meta-accept>Save choices</button> <button type="button" data-meta-decline>Reject optional cookies</button>';
+      choice.className = "cookie-notice";
+      choice.innerHTML = '<span class="eyebrow">Your privacy, your choice</span><h2>A little clarity about cookies.</h2><p>Optional cookies help us understand visits and advertising. Your form answers are never included, and you can continue without agreeing. <a href="policies.html">Privacy information</a></p><div class="cookie-options"><label><input type="checkbox" data-analytics-choice><span>Website measurement<small>Google Analytics</small></span></label><label><input type="checkbox" data-advertising-choice><span>Advertising measurement<small>Meta</small></span></label></div><div class="cookie-actions"><button class="btn btn-secondary" type="button" data-meta-accept>Save choices</button><button class="btn btn-secondary" type="button" data-meta-decline>Reject optional cookies</button></div>';
       function choose(value) {
         try { localStorage.setItem("monarchAdvertisingConsent", value); } catch (_) {}
         advertisingConsent = value === "yes";
-        choice.remove();
+        choice.classList.add("is-leaving");
+        window.setTimeout(function () { choice.remove(); }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 180);
         if (advertisingConsent) startMetaTracking();
       }
       choice.querySelector("[data-meta-accept]").addEventListener("click", function () {

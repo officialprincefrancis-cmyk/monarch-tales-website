@@ -72,6 +72,21 @@ p { margin: 0; }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 0 23px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: .9rem; font-weight: 800; transition: transform .25s ease, background .25s ease, box-shadow .25s ease; cursor: pointer; }
 .btn:hover { transform: translateY(-2px); }
+.btn, button { transition: transform .18s ease-in-out, background-color .18s ease-in-out, box-shadow .18s ease-in-out; -webkit-tap-highlight-color: transparent; }
+.btn:active, button:active { transform: translateY(1px) scale(.98); }
+.btn:focus-visible, button:focus-visible { outline: 3px solid var(--forest); outline-offset: 4px; }
+.cookie-notice { position:fixed; bottom:20px; left:20px; right:20px; max-width:580px; margin:auto; padding:26px; background:var(--cream, #fffaf0); color:var(--ink); border:1px solid var(--line); border-radius:24px; box-shadow:0 18px 65px rgba(23,43,36,.22); z-index:10000; font-size:.85rem; animation:cookie-enter .3s ease-out both; transition:opacity .18s ease-in, transform .18s ease-in; }
+.cookie-notice h2 { font-size:2rem; margin:8px 0 12px; }
+.cookie-notice p { margin:0 0 18px; }
+.cookie-options { display:grid; gap:10px; margin-bottom:20px; }
+.cookie-options label { display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; cursor:pointer; }
+.cookie-options input { width:20px; height:20px; accent-color:var(--forest); flex-shrink:0; }
+.cookie-options small { display:block; opacity:.7; }
+.cookie-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.cookie-actions .btn { flex:1 1 210px; min-height:46px; font-size:.8rem; padding:10px 14px; }
+.cookie-notice.is-leaving { opacity:0; transform:translateY(12px); pointer-events:none; }
+@keyframes cookie-enter { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@media (max-width:600px) { .cookie-notice { left:12px; right:12px; bottom:12px; padding:20px; max-height:85vh; overflow:auto; } }
 .btn-primary { color: #fffaf0; background: var(--forest); box-shadow: 0 12px 28px rgba(38,57,47,.18); }
 .btn-primary:hover { background: #18271f; }
 .btn-gold { color: #221b10; background: #e5c480; box-shadow: 0 12px 28px rgba(170,124,45,.18); }
@@ -265,4 +280,5 @@ p { margin: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
+  .btn:hover, .btn:active, button:active { transform:none; }
 }
