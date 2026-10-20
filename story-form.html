@@ -704,7 +704,7 @@
 
       <div class="nav-links" id="mobileNav">
         <a href="index.html">Home</a>
-        <a href="https://wa.me/61432510020">Need Help?</a>
+        <a href="mailto:hello@monarchtales.com">Email us</a> <a href="https://www.instagram.com/monarchtales.world/" target="_blank" rel="noopener noreferrer">Message on Instagram</a>
       </div>
     </div>
   </header>
@@ -741,8 +741,14 @@
 </p>
 
 <p class="helper">
-  Please complete this form in one sitting. Your answers may not be saved if you leave the page.
+  You can save a draft on this browser and return later. Enable saving below on a device you trust.
 </p>
+          <div style="padding:18px;border:1px solid #c9aa6c;border-radius:12px;background:#faf7f0;margin:20px 0">
+            <label><input type="checkbox" id="saveStoryProgress"> Save my progress on this device</label>
+            <p class="helper">Your draft includes private family details. It stays in this browser for up to 30 days, not on our server. Avoid shared devices. Clearing browser data removes it; it will not follow you to another device. File attachments must be selected again.</p>
+            <p id="storyDraftStatus" role="status" aria-live="polite">Progress saving is off.</p>
+            <button type="button" id="clearStoryDraft" class="btn step-back">Delete saved draft</button>
+          </div>
 
           <div class="form-progress" aria-live="polite">
             <div class="form-progress-row">
@@ -752,7 +758,7 @@
             <div class="form-progress-track" aria-hidden="true"><div class="form-progress-bar" id="formProgressBar"></div></div>
           </div>
 
-          <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST">
+          <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST" novalidate>
             <input type="hidden" name="_subject" value="New Monarch Tales Story Details" />
             <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
 
@@ -929,7 +935,7 @@
           </div>
 
           <div class="side-block">
-            <a href="https://wa.me/61432510020" class="btn btn-secondary" id="backToOrderButton">Need help? Chat on WhatsApp</a>
+            <a href="mailto:hello@monarchtales.com" class="btn btn-secondary">Email us</a> <a href="https://www.instagram.com/monarchtales.world/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Message on Instagram</a>
           </div>
         </aside>
       </div>
@@ -1098,6 +1104,7 @@ function showPart(index, shouldScroll = true) {
   if (shouldScroll) {
     document.querySelector(".form-progress").scrollIntoView({ behavior: "smooth", block: "start" });
   }
+  if (typeof draftReady !== "undefined" && draftReady) saveDraft();
 }
 
 formSections.forEach((section, index) => {
@@ -1131,8 +1138,81 @@ formSections.forEach((section, index) => {
 
 showPart(0, false);
 
+const draftKey = "monarch-story-draft-v1";
+const savePreference = document.getElementById("saveStoryProgress");
+const draftStatus = document.getElementById("storyDraftStatus");
+var draftReady = false;
+let draftSubmitted = false;
+function draftControls() {
+  return Array.from(storyForm.querySelectorAll("input, textarea, select")).filter(field =>
+    field.name && field.name !== "detailsAccuracyConfirmed" && !["hidden", "file", "submit", "button", "password"].includes(field.type) && !field.readOnly);
+}
+function saveDraft() {
+  if (!draftReady || !savePreference.checked || draftSubmitted) return;
+  try {
+    const fields = draftControls().map(field => ({ name: field.name, value: field.value, checked: field.checked }));
+    const children = Array.from(childrenContainer.querySelectorAll(".child-card")).map(card => Number(card.dataset.childIndex));
+    localStorage.setItem(draftKey, JSON.stringify({ version: 1, savedAt: Date.now(), part: currentPart, children, fields }));
+    draftStatus.textContent = "Progress saved on this device. You can safely return using this browser.";
+  } catch (error) {
+    draftStatus.textContent = "This browser could not save your progress. Keep this page open or copy your answers somewhere safe.";
+  }
+}
+try {
+  const rawDraft = localStorage.getItem(draftKey);
+  if (rawDraft) {
+    const draft = JSON.parse(rawDraft);
+    if (draft.version !== 1 || !Number.isFinite(draft.savedAt) || Date.now() - draft.savedAt > 30 * 86400000 || !Array.isArray(draft.fields) || !Array.isArray(draft.children)) {
+      localStorage.removeItem(draftKey);
+      draftStatus.textContent = "Your previous draft expired or could not be restored. Start a new draft below.";
+    } else {
+      const indices = [...new Set(draft.children)].filter(index => Number.isSafeInteger(index) && index > 1 && index < 10000).slice(0, 4);
+      indices.forEach(index => childrenContainer.insertAdjacentHTML("beforeend", childCardTemplate(index)));
+      childCount = Math.max(1, ...indices);
+      draftControls().forEach(field => {
+        const saved = draft.fields.find(item => item && item.name === field.name && (field.type !== "checkbox" && field.type !== "radio" || item.value === field.value));
+        if (!saved) return;
+        if (field.type === "checkbox" || field.type === "radio") field.checked = saved.checked === true;
+        else if (typeof saved.value === "string") field.value = saved.value;
+      });
+      savePreference.checked = true;
+      showPart(Number.isInteger(draft.part) ? draft.part : 0, false);
+      draftStatus.textContent = "Your saved draft has been restored on this device. Please check it belongs to the family you are writing about.";
+    }
+  }
+} catch (error) {
+  draftStatus.textContent = "Saved progress is unavailable in this browser. You can still complete and submit the form.";
+}
+draftReady = true;
+savePreference.addEventListener("change", () => {
+  if (savePreference.checked) saveDraft();
+  else {
+    try { localStorage.removeItem(draftKey); draftStatus.textContent = "Saving is off and the saved draft was deleted. Your answers remain on this page."; }
+    catch (error) { draftStatus.textContent = "Saving is off. This browser could not delete the old draft; clear this site's browser data to remove it."; }
+  }
+});
+document.getElementById("clearStoryDraft").addEventListener("click", () => {
+  if (!confirm("Delete the draft saved in this browser? Your current answers will remain on this page, but saving will be turned off.")) return;
+  savePreference.checked = false;
+  savePreference.dispatchEvent(new Event("change"));
+});
+storyForm.addEventListener("input", saveDraft);
+storyForm.addEventListener("change", saveDraft);
+new MutationObserver(saveDraft).observe(childrenContainer, { childList: true });
+window.addEventListener("pagehide", saveDraft);
+
 storyForm.addEventListener("submit", async function (event) {
   event.preventDefault();
+  if (draftSubmitted || storyForm.dataset.submitting === "true") return;
+  for (let index = 0; index < formSections.length; index++) {
+    if (Array.from(formSections[index].querySelectorAll("[required]")).some(field => !field.checkValidity())) {
+      showPart(index);
+      sectionIsComplete(formSections[index]);
+      return;
+    }
+  }
+  saveDraft();
+  storyForm.dataset.submitting = "true";
 
   const formData = new FormData(storyForm);
 
@@ -1146,12 +1226,16 @@ storyForm.addEventListener("submit", async function (event) {
     });
 
     if (response.ok) {
+      draftSubmitted = true;
+      try { localStorage.removeItem(draftKey); } catch (error) { /* Browser storage may be unavailable. */ }
       window.location.href = "story-thank-you.html";
     } else {
       alert("Something went wrong. Please try again.");
     }
   } catch (error) {
     alert("Network error. Please try again.");
+  } finally {
+    storyForm.dataset.submitting = "false";
   }
 });
   </script>
