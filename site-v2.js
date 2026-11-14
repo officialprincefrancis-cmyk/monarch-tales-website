@@ -121,6 +121,96 @@
     });
   }
 
+  const founderPlay = document.querySelector("[data-founder-play]");
+  if (founderPlay) {
+    founderPlay.addEventListener("click", function () {
+      const figure = founderPlay.closest(".founder-film");
+      const video = figure && figure.querySelector("video");
+      const poster = figure && figure.querySelector("[data-founder-poster]");
+      if (!video) return;
+      poster.hidden = true;
+      video.hidden = false;
+      video.focus();
+      const playback = video.play();
+      if (playback && typeof playback.catch === "function") playback.catch(function () { video.controls = true; });
+    });
+  }
+
+  const siteHeader = document.querySelector(".site-header");
+  function updateHeader() {
+    if (siteHeader) siteHeader.classList.toggle("is-compact", window.scrollY > 24);
+  }
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  const lightboxLinks = Array.from(document.querySelectorAll("a[data-lightbox]"));
+  if (lightboxLinks.length && "HTMLDialogElement" in window) {
+    const lightbox = document.createElement("dialog");
+    lightbox.className = "lightbox";
+    lightbox.setAttribute("aria-label", "Book image viewer");
+    lightbox.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close image viewer">×</button><button class="lightbox-prev" type="button" aria-label="Previous image">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lightbox-next" type="button" aria-label="Next image">›</button>';
+    document.body.appendChild(lightbox);
+    const lightboxImage = lightbox.querySelector("img");
+    const lightboxCaption = lightbox.querySelector("figcaption");
+    let activeGroup = [];
+    let activeIndex = 0;
+    let touchStartX = 0;
+    function showImage(index) {
+      activeIndex = (index + activeGroup.length) % activeGroup.length;
+      const link = activeGroup[activeIndex];
+      const thumbnail = link.querySelector("img");
+      lightboxImage.src = link.href;
+      lightboxImage.alt = thumbnail ? thumbnail.alt : (link.getAttribute("aria-label") || "Monarch Tales book image");
+      const caption = link.closest("figure")?.querySelector("figcaption");
+      lightboxCaption.textContent = caption ? caption.textContent.trim() : lightboxImage.alt;
+      const multiple = activeGroup.length > 1;
+      lightbox.querySelector(".lightbox-prev").hidden = !multiple;
+      lightbox.querySelector(".lightbox-next").hidden = !multiple;
+    }
+    lightboxLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const groupName = link.dataset.lightbox;
+        activeGroup = lightboxLinks.filter(function (candidate) { return candidate.dataset.lightbox === groupName; });
+        showImage(activeGroup.indexOf(link));
+        lightbox.showModal();
+      });
+    });
+    lightbox.querySelector(".lightbox-close").addEventListener("click", function () { lightbox.close(); });
+    lightbox.querySelector(".lightbox-prev").addEventListener("click", function () { showImage(activeIndex - 1); });
+    lightbox.querySelector(".lightbox-next").addEventListener("click", function () { showImage(activeIndex + 1); });
+    lightbox.addEventListener("click", function (event) { if (event.target === lightbox) lightbox.close(); });
+    lightbox.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") { event.preventDefault(); showImage(activeIndex - 1); }
+      if (event.key === "ArrowRight") { event.preventDefault(); showImage(activeIndex + 1); }
+    });
+    lightbox.addEventListener("touchstart", function (event) { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+    lightbox.addEventListener("touchend", function (event) {
+      const delta = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) > 55 && activeGroup.length > 1) showImage(activeIndex + (delta < 0 ? 1 : -1));
+    }, { passive: true });
+  }
+
+  const homepageHero = document.querySelector(".hero");
+  const footer = document.querySelector(".site-footer");
+  if (homepageHero && document.querySelector("#founding-families")) {
+    const mobileCta = document.createElement("a");
+    mobileCta.className = "mobile-story-cta";
+    mobileCta.href = "apply.html";
+    mobileCta.textContent = "Tell Us Their Story";
+    mobileCta.setAttribute("aria-label", "Tell us your family’s story");
+    document.body.appendChild(mobileCta);
+    document.body.classList.add("has-mobile-cta");
+    function updateMobileCta() {
+      const pastHero = homepageHero.getBoundingClientRect().bottom < 0;
+      const atFooter = footer && footer.getBoundingClientRect().top < window.innerHeight;
+      mobileCta.classList.toggle("is-visible", pastHero && !atFooter && window.matchMedia("(max-width: 620px)").matches);
+    }
+    updateMobileCta();
+    window.addEventListener("scroll", updateMobileCta, { passive: true });
+    window.addEventListener("resize", updateMobileCta);
+  }
+
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealItems = document.querySelectorAll("[data-reveal]");
   if (reducedMotion || !("IntersectionObserver" in window)) {
