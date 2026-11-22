@@ -740,6 +740,10 @@
   Child and family details are used only to create your story and are treated with care.
 </p>
 
+<p class="helper" id="intakeRouteNote" role="status" aria-live="polite">
+  This private questionnaire is for a Founding Family whose 50% deposit has been confirmed. If you are taking part in a gifted collaboration, do not use this form; follow the separate brief agreed with Monarch Tales.
+</p>
+
 <p class="helper">
   You can save a draft on this browser and return later. Enable saving below on a device you trust.
 </p>
@@ -761,6 +765,8 @@
           <form id="storyForm" action="https://formspree.io/f/xojpaejp" method="POST" novalidate>
             <input type="hidden" name="_subject" value="New Monarch Tales Story Details" />
             <input type="hidden" id="storySelectedPlanInput" name="storySelectedPlan" value="" />
+            <input type="hidden" id="storyIntakeRouteInput" name="intakeRoute" value="" />
+            <input type="hidden" id="storyCollectionInput" name="storyCollection" value="" />
 
             <div class="form-section">
               <span class="section-kicker">Part 1 · The beginning</span>
@@ -770,6 +776,7 @@
                 <div class="field-group"><label for="storyFullName">Your full name</label><input type="text" id="storyFullName" name="fullName" autocomplete="name" required></div>
                 <div class="field-group"><label for="storyEmail">Email address</label><input type="email" id="storyEmail" name="email" autocomplete="email" required></div>
                 <div class="field-group"><label for="packagePurchased">Edition</label><input type="text" name="packagePurchased" id="packagePurchased" readonly placeholder="Founding Families Legacy Edition"></div>
+                <div class="field-group"><label for="storyCollection">Story collection</label><select id="storyCollection" name="storyCollectionChoice"><option value="Family Story">Family Story</option><option value="My Rwanda Adventure">My Rwanda Adventure</option><option value="Seasonal or occasion story">Seasonal or occasion story</option><option value="Other / to be discussed">Other / to be discussed</option></select><span class="field-note">Your collection shapes the story adventure. Your edition describes the book format.</span></div>
                 <div class="field-group"><label for="familyLocation">Where does your family call home?</label><input type="text" id="familyLocation" name="familyLocation" placeholder="City and country"></div>
               </div>
               <div class="field-full">
@@ -779,6 +786,20 @@
               <div class="field-full">
                 <label for="specialOccasion">Is there a date, occasion, or deadline connected to the book? <span class="field-note">Optional</span></label>
                 <input type="text" id="specialOccasion" name="specialOccasion" placeholder="For example: 6th birthday on 14 October, Christmas, or no fixed date">
+              </div>
+              <div class="collection-questions" id="rwandaAdventureQuestions" hidden>
+                <span class="section-kicker">My Rwanda Adventure · Trip memories</span>
+                <p class="form-section-text">Help us turn the family’s Rwanda journey into a story that brings the trip back to life.</p>
+                <div class="field-full"><label for="rwandaTripDates">When did you visit Rwanda, or when will you be here?</label><input id="rwandaTripDates" name="rwandaTripDates" placeholder="Dates or approximate season; future trips are welcome"></div>
+                <div class="field-full"><label for="rwandaTripPlaces">Which places in Rwanda were part of the journey?</label><textarea id="rwandaTripPlaces" name="rwandaTripPlaces" placeholder="Cities, neighbourhoods, parks, lakes, museums, family homes, hotels, cafés, or places you hope to visit"></textarea></div>
+                <div class="field-full"><label for="rwandaTripPurpose">What brought you to Rwanda, and who travelled together?</label><textarea id="rwandaTripPurpose" name="rwandaTripPurpose" placeholder="Holiday, family visit, celebration, work mixed with travel, reunion, or another reason"></textarea></div>
+                <div class="field-full"><label for="rwandaFirstImpression">What do you remember noticing first when you arrived?</label><textarea id="rwandaFirstImpression" name="rwandaFirstImpression" placeholder="The view, sounds, welcome, weather, traffic, landscape, a first conversation, or how the children reacted"></textarea></div>
+                <div class="field-full"><label for="rwandaFavoriteMoment">Which moment from the trip would you most want to relive together?</label><textarea id="rwandaFavoriteMoment" name="rwandaFavoriteMoment" placeholder="What happened, where were you, who was there, and what made it yours?"></textarea></div>
+                <div class="field-full"><label for="rwandaUnexpectedMoment">Was there a funny, surprising, difficult, or unexpected moment that became part of the adventure?</label><textarea id="rwandaUnexpectedMoment" name="rwandaUnexpectedMoment" placeholder="The small detours and honest moments can matter as much as the planned highlights"></textarea></div>
+                <div class="field-full"><label for="rwandaSensoryDetails">What sounds, tastes, smells, textures, or colours bring the Rwanda trip back?</label><textarea id="rwandaSensoryDetails" name="rwandaSensoryDetails" placeholder="A meal, music, rain, a market, a lake, red earth, a familiar greeting, or something specific to your experience"></textarea></div>
+                <div class="field-full"><label for="rwandaPeopleEncounters">Who did you meet or spend time with, and what would you like remembered about them?</label><textarea id="rwandaPeopleEncounters" name="rwandaPeopleEncounters" placeholder="Family, guides, hosts, new friends, or someone whose kindness or story stayed with you"></textarea></div>
+                <div class="field-full"><label for="rwandaReturnMemory">When your family is back home, what do you hope the children will remember or feel about Rwanda?</label><textarea id="rwandaReturnMemory" name="rwandaReturnMemory" placeholder="A feeling, discovery, connection, question, or thing they now see differently"></textarea></div>
+                <div class="field-full"><label for="rwandaRepresentation">Are there places, cultural details, words, or experiences we should represent accurately or handle with care?</label><textarea id="rwandaRepresentation" name="rwandaRepresentation" placeholder="Share spellings or meanings of words, context, permissions, boundaries, or details we should verify"></textarea></div>
               </div>
             </div>
 
@@ -855,10 +876,10 @@
               <h3 class="form-section-title">Culture, faith, and the language of home</h3>
               <p class="form-section-text">The story should feel rooted in your family—not like a generic story with a name added.</p>
               <div class="grid-2">
-                <div class="field-group"><label for="faithThemes">Faith in the story</label><select id="faithThemes" name="faithThemes"><option>No preference</option><option>Yes — subtle faith themes</option><option>Yes — clearly Christian</option><option>Yes — another faith or spiritual tradition</option><option>No faith themes</option></select></div>
+                <div class="field-group"><label for="faithThemes">Faith, spirituality, or worldview in the story</label><select id="faithThemes" name="faithThemes"><option>No preference</option><option>No faith or spiritual themes</option><option>Christianity</option><option>Islam</option><option>Judaism</option><option>Hinduism</option><option>Buddhism</option><option>Sikhism</option><option>Baháʼí Faith</option><option>Jainism</option><option>Shinto</option><option>Taoism / Daoism</option><option>Traditional or Indigenous spiritual tradition</option><option>Personal spirituality or another worldview</option><option>Another faith or tradition (please describe below)</option></select></div>
                 <div class="field-group"><label for="storyMood">The feeling you want at bedtime</label><select id="storyMood" name="storyMood"><option>Warm, safe, and heartfelt</option><option>Calm and comforting</option><option>Playful and joyful</option><option>Adventurous but emotionally grounded</option><option>Encouraging and hopeful</option></select></div>
               </div>
-              <div class="field-full"><label for="faithDetails">Are there prayers, scriptures, songs, beliefs, or traditions that genuinely belong in your family life?</label><textarea id="faithDetails" name="faithDetails" placeholder="Tell us how faith is lived at home so it feels natural, never pasted on"></textarea></div>
+              <div class="field-full"><label for="faithDetails">Are there prayers, scriptures, songs, beliefs, practices, or traditions that genuinely belong in your family life?</label><textarea id="faithDetails" name="faithDetails" placeholder="Name the tradition or describe what matters to your family, how it is practised, and what should or should not appear. You can also tell us if faith is private or not part of the story."></textarea></div>
               <div class="field-full"><label for="cultureLanguage">What cultural, regional, or language details would make your family say, “Yes, that feels like home”?</label><textarea id="cultureLanguage" name="cultureLanguage" placeholder="Greetings, food, clothing, music, family titles, celebrations, weather, neighbourhood details, words in another language and their meanings"></textarea></div>
               <div class="field-full"><label for="storyReality">How grounded or imaginative should the story feel?</label><select id="storyReality" name="storyReality"><option>Mostly real life, with a little wonder</option><option>Completely grounded in real family life</option><option>Real memories shaped into a gentle adventure</option><option>More imaginative, while keeping the child emotionally true</option></select></div>
             </div>
@@ -920,10 +941,10 @@
             </ul>
           </div>
 
-          <div class="side-block">
-            <h3>Your place is reserved</h3>
+          <div class="side-block" id="intakeRouteCard">
+            <h3 id="intakeRouteHeading">Founding Family onboarding</h3>
             <p>
-             This private story discovery begins after acceptance. Your answers guide planning; they do not replace your story review and character approval stages.
+             This questionnaire is issued after your Founding Family 50% deposit is confirmed. Your answers guide planning; they do not replace your story review and character approval stages.
             </p>
           </div>
 
@@ -967,6 +988,8 @@
 
   const params = new URLSearchParams(window.location.search);
 const plan = params.get("plan");
+const intakeRoute = params.get("route");
+const collection = params.get("collection");
 const child = params.get("child");
 const age = params.get("age");
     const planBox = document.getElementById("selectedPlanBox");
@@ -982,6 +1005,35 @@ const planMap = {
 };
 const packagePurchased =
 document.getElementById("packagePurchased");
+const collectionSelect = document.getElementById("storyCollection");
+const routeInput = document.getElementById("storyIntakeRouteInput");
+const collectionInput = document.getElementById("storyCollectionInput");
+const rwandaAdventureQuestions = document.getElementById("rwandaAdventureQuestions");
+
+function updateCollectionQuestions() {
+  const showRwandaQuestions = collectionSelect.value === "My Rwanda Adventure";
+  rwandaAdventureQuestions.hidden = !showRwandaQuestions;
+  collectionInput.value = collectionSelect.value;
+  rwandaAdventureQuestions.querySelectorAll("input, textarea, select").forEach(field => {
+    field.disabled = !showRwandaQuestions;
+  });
+}
+
+if (intakeRoute !== "founding-family" || plan !== "legacy") {
+  const routeMessage = document.getElementById("intakeRouteNote");
+  routeMessage.textContent = "This link is incomplete or is not a Founding Family onboarding link. The private questionnaire is sent after the 50% deposit is confirmed. If you are part of a gifted collaboration, please use the separate collaboration brief.";
+  routeMessage.style.padding = "16px";
+  routeMessage.style.border = "1px solid #c9aa6c";
+  routeMessage.style.borderRadius = "10px";
+  document.getElementById("storyForm").hidden = true;
+  document.getElementById("intakeRouteHeading").textContent = "Private Founding Family form";
+  document.getElementById("intakeRouteCard").querySelector("p").textContent = "This form requires the individual link sent after a Founding Family deposit is confirmed. For help, email hello@monarchtales.com.";
+} else {
+  routeInput.value = "Founding Family — deposit confirmed onboarding";
+  if (collection && Array.from(collectionSelect.options).some(option => option.value === collection)) collectionSelect.value = collection;
+  updateCollectionQuestions();
+  collectionSelect.addEventListener("change", updateCollectionQuestions);
+}
 
 if (plan === "seed") {
   packagePurchased.value = "The Seed";
@@ -999,7 +1051,7 @@ if (plan === "founding") {
   packagePurchased.value = "Founding Families Legacy Edition";
 }
 
-if (!packagePurchased.value) {
+if (!packagePurchased.value && intakeRoute === "founding-family" && plan === "legacy") {
   packagePurchased.value = "Founding Families Legacy Edition";
 }
     if (plan && planMap[plan]) {

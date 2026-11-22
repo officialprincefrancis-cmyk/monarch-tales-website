@@ -184,11 +184,11 @@
       Welcome to the Monarch Tales Studio ✨
     </span>
 
-    <h1>
-      Your child’s story journey has officially begun.
+    <h1 id="welcomeTitle">
+      Welcome to your Monarch Tales story journey.
     </h1>
 
-    <p class="lead">
+    <p class="lead" id="welcomeLead">
       Thank you for choosing Monarch Tales.
     </p>
 
@@ -197,8 +197,8 @@
       their personality, emotions, imagination, and world.
     </p>
 
-    <p class="lead">
-      The next step is simple:
+    <p class="lead" id="welcomeNextStep">
+      After your Founding Family deposit has been confirmed, the next step is simple:
       <span class="highlight">
         tell us more about the child we’re creating this story for.
       </span>
@@ -231,7 +231,7 @@
         <div class="timeline-text">
           <strong>We Begin Creation</strong>
           <span>
-            Your story, illustrations, and emotional world begin taking shape inside the Monarch Tales studio.
+            Once we receive your completed form, your story, illustrations, and emotional world begin taking shape inside the Monarch Tales studio.
           </span>
         </div>
       </div>
@@ -258,12 +258,30 @@
   </div>
 <script>
   const params = new URLSearchParams(window.location.search);
-  const plan = params.get("plan") || localStorage.getItem("selectedPlan") || "";
+  const plan = params.get("plan") || "";
+  const route = params.get("route") || "";
 
   const storyFormButton = document.getElementById("storyFormButton");
 
-  if (plan) {
-    storyFormButton.href = "story-form.html?plan=" + plan;
+  if (route === "founding-family" && plan === "legacy") {
+    document.getElementById("welcomeTitle").textContent = "Your Founding Family place is confirmed.";
+    document.getElementById("welcomeLead").textContent = "Thank you. Your 50% deposit has been confirmed, and your private story questionnaire is ready.";
+    document.getElementById("welcomeNextStep").innerHTML = 'Your place is secured. Now <span class="highlight">tell us the family memories and details that will shape your book.</span>';
+    storyFormButton.href = "story-form.html?route=founding-family&plan=legacy";
+  } else if (route === "gifted-collaboration") {
+    document.getElementById("welcomeTitle").textContent = "A story collaboration with Monarch Tales.";
+    document.getElementById("welcomeLead").textContent = "This is a gifted collaboration, separate from the Founding Families programme.";
+    document.getElementById("welcomeNextStep").innerHTML = 'Please use the agreed collaboration brief and <span class="highlight">do not submit a Founding Families story form.</span>';
+    storyFormButton.textContent = "Return to collaboration details";
+    storyFormButton.href = "partners.html#gifted-collaborations";
+    document.querySelector(".timeline").hidden = true;
+  } else {
+    document.getElementById("welcomeTitle").textContent = "This private onboarding link needs an update.";
+    document.getElementById("welcomeLead").textContent = "The story questionnaire is sent individually after a Founding Family deposit is confirmed.";
+    document.getElementById("welcomeNextStep").innerHTML = 'If you have already paid, please email us and we will send your current private link.';
+    storyFormButton.textContent = "Email Monarch Tales";
+    storyFormButton.href = "mailto:hello@monarchtales.com?subject=Founding%20Family%20story%20form";
+    document.querySelector(".timeline").hidden = true;
   }
 </script>
 </body>
